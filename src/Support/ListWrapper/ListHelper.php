@@ -441,11 +441,14 @@ class ListHelper extends ListCore{
 		//EXPORT
 		$this->ctrl->setVar('_export_list',$this->template_data['export']);
 
-		foreach($this->template_data['export_types'] as $t){
-			$export_type = "_export_{$t}_list";
-			$this->ctrl->setVar($export_type,1);
-
+		if( isset($this->template_data['export_types']) ){
+			foreach($this->template_data['export_types'] as $t){
+				$export_type = "_export_{$t}_list";
+				$this->ctrl->setVar($export_type,1);
+	
+			}
 		}
+		
 		
 
 		$fields = $this->template_data['fields'];

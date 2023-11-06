@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<module>
+    <info> 
+        <author>Ciro Napolitano</author>
+        <name>Tickets</name>
+        <permission>superadmin</permission>
+        <tag>tickets</tag>
+        <kind>cms</kind>
+        <version>0.1.0</version>
+         <compatibility>
+            <min>2.6.0</min>
+        </compatibility>
+        <autoload>1</autoload>
+        <scope></scope> 
+        <description><![CDATA[Integra nel CMS la gestione dei tickets]]></description> 
+    </info>
+    <admin>
+	  <menu>
+		<items>
+			<item>
+				<locale>
+					<name>
+						<it>Tickets</it>
+						<en>Tickets</en>
+					</name>
+				</locale>
+				<tag>tickets</tag> 
+				<icon>fa fa-archive</icon> 
+				<permission>cms</permission> 
+				<priority>100</priority> 
+			</item>
+            <item>
+				<locale>
+					<name>
+						<it>Stati</it>
+						<en>Stati</en>
+					</name>
+				</locale>
+				<tag>tickets_status</tag> 
+                <parent>tickets</parent>
+				<permission>cms</permission> 
+				<priority>100</priority> 
+                <url>index.php?mod=tickets&amp;ctrl=Status&amp;action=list</url>
+			</item>
+			
+		</items>
+	</menu>
+  </admin>
+</module>
