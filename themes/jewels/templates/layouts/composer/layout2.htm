@@ -1,0 +1,9 @@
+{% extends 'layouts/composer/base.htm' %}
+
+
+{% block container %}
+	<div class="pagecomposer-contenitore full-width">
+		{{page_composer('content')}}
+	</div>
+	{{parent()}}
+{% endblock %}

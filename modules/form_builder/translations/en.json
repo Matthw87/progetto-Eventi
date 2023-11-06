@@ -1,0 +1,4 @@
+{
+    "invalid_field_message":"Il campo <b>%s</b> non e' valido",
+    "mandatory_field_message":"Il campo <b>%s</b> e' obbligatorio"
+}

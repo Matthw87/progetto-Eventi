@@ -1,0 +1,95 @@
+<nav class="sidebar-nav filtri_ricerca">
+	<div class="titcolsx titcolsx-catalogo">{{tr('Categorie','catalogo')}}</div>
+	<ul class="metismenu" id="menu">
+		{% for v in menuside %}
+			<li  class="{% if itemActive == v.id %}active{% endif %}" section="{{v.id}}">
+				{% if v.children|length == 0 %} 
+					<a href="{{v.getUrl()}}" >
+						<span class="sidebar-nav-item">{{v.get('name')}}</span>
+					</a>
+				{% else %}
+					<a aria-expanded="false">
+						<span class="sidebar-nav-item">{{v.get('name')}}</span>
+						<span class="fa arrow"></span>
+					</a>
+					<ul aria-expanded="false">
+						{% for v1 in v.children %}
+							<li class="{% if itemActive == v1.id %}active{% endif %}" section="{{v1.id}}">
+								{% if v1.children is empty %}
+									<a href="{{v1.getUrl()}}">
+										<span class="sidebar-nav-item">{{v1.get('name')}}</span>
+									</a>
+								{% else %}
+									<a>
+										<span class="sidebar-nav-item">{{v1.get('name')}}</span>
+										<span class="fa arrow"></span>
+									</a>
+									<ul aria-expanded="false">
+										{% for v2 in v1.children %}
+											<li class="{% if itemActive == v2.id %}active{% endif %}" section="{{v2.id}}">
+												{% if v2.children is empty %}
+													<a href="{{v2.getUrl()}}">
+														<span class="sidebar-nav-item">{{v2.get('name')}}</span>
+													</a>
+												{% else %}
+													<a>
+														<span class="sidebar-nav-item">{{v2.get('name')}}</span>
+														<span class="fa arrow"></span>
+													</a>
+													<ul aria-expanded="false">
+														{% for v2 in v1.children %}
+															<li class="{% if itemActive == v3.id %}active{% endif %}"  section="{{v3.id}}">
+																{% if v3.children is empty %}
+																	<a href="{{v3.getUrl()}}">
+																		<span class="sidebar-nav-item">{{v3.get('name')}}</span>
+																	</a>
+																{% else %}
+																	<a>
+																		<span class="sidebar-nav-item">{{v3.get('name')}}</span>
+																		<span class="fa arrow"></span>
+																	</a>
+																	<ul aria-expanded="false">
+																		{% for v4 in v3.children %}
+																			<li class="{% if itemActive == v4.id %}active{% endif %}" section="{{v4.id}}">
+																				<a href="{{v4.getUrl()}}" >
+																					<span class="sidebar-nav-item">{{v4.get('name')}}</span>
+																				</a>
+																			</li>
+																		{% endfor %}
+																	</ul>
+																{% endif %}
+															</li>
+														{% endfor %}
+													</ul>
+												{% endif %}
+											</li>
+										{% endfor %}
+									</ul>
+								{% endif %}
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+</nav>
+
+<script>
+	$(function () {
+		$('#menu').metisMenu({
+			activeClass: 'active'
+		});
+	});
+	var js_section = "{{section|escape('js')}}";
+	if( typeof js_section != 'undefined' && js_section != 'null'){
+		$('#menu li').each(function(){
+			var el = $(this);
+			if( el.hasClass('active')){
+				el.parents().each(function(i,el){
+					$(this).addClass('active');
+				});
+			}
+		});
+	}
+</script>

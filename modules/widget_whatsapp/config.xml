@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<module>
+	<info> 
+		<author>Ciro Napolitano</author>
+		<name>Whatsapp icon</name>
+		<permission>superadmin</permission>
+		<tag>widget_whatsapp</tag>
+		<kind>cms</kind>
+		<version>2.0.1</version>
+		<compatibility>
+			<min>2.0.0</min>
+		</compatibility>
+		<scope></scope> 
+		<description><![CDATA[Integra nel cms la lo shortcode di whatsapp]]></description> 
+   </info>
+   <widgets>
+		<widget> 
+			<name>Whatsapp icon</name>
+			<function>WidgetWhatsappIcon</function>
+			<url_conf>index.php?ctrl=Conf&amp;mod=widget_whatsapp</url_conf>
+			<repeatable>1</repeatable>
+		</widget>
+	</widgets>
+	<dependencies>
+        <dependence>pagecomposer</dependence>
+   </dependencies>
+</module>

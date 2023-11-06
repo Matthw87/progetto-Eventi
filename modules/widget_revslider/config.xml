@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<module>
+	<info> 
+		<author>Ciro Napolitano</author>
+		<name>Revolution slider</name>
+		<permission>superadmin</permission>
+		<tag>widget_revslider</tag>
+		<kind>cms</kind>
+		<scope></scope> 
+		<version>3.0.1</version>
+		<compatibility>
+			<min>2.0.0</min>
+		</compatibility>
+		<description><![CDATA[Integra nel cms i revolution sliders]]></description> 
+   </info>
+   <widgets>
+		<widget> 
+			<name>Revolution slider</name>
+			<function>WidgetRevSliderComponent</function>
+			<url_conf>index.php?ctrl=Widget&amp;mod=widget_revslider</url_conf>
+			<repeatable>1</repeatable>
+		</widget>
+	</widgets>
+	<admin>
+	  <menu>
+		<items>
+			
+			<item>
+				<locale>
+					<name>
+						<it>Revolution Sliders</it>
+						<en>Revolution Sliders</en>
+					</name>
+				</locale>
+				<parent>cms</parent>
+				<tag>revolution_sliders</tag> 
+				<permission>cms</permission> 
+				<url>index.php?ctrl=Slider&amp;mod=widget_revslider&amp;action=list</url>
+				<priority>3</priority> 
+			</item>
+		</items>
+	</menu>
+  </admin>
+  <dependencies>
+        <dependence>pagecomposer</dependence>
+  </dependencies>
+</module>

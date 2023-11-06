@@ -1,0 +1,31 @@
+/* Slick Modals - Alert 2 */
+.alert-2 {
+    padding: 20px 30px;
+}
+.alert-2:not([data-state="warning"]) * {
+    color: #fff;
+}
+.alert-2[data-state="success"] {
+    background-color: #59bda5;
+}
+.alert-2[data-state="error"] {
+    background-color: #dc6868;
+}
+.alert-2[data-state="info"] {
+    background-color: #7cc5e8;
+}
+.alert-2[data-state="warning"] {
+    background-color: #f7eab7;
+    color: #333;
+}
+.alert-2 .title {
+    font-weight: 700;
+    font-size: 18px;
+    display: block;
+    padding-bottom: 2px;
+}
+.alert-2 p {
+    font-size: 13px;
+    line-height: 20px;
+    padding: 0;
+}

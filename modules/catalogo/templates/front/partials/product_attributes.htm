@@ -1,0 +1,69 @@
+<!-- SE IL PRODOTTO HA UN TEMPLATE CON ATTRIBUTI-->
+<div class="form-group variationsGroup m-b-0">	
+	{% for name,option in options_product %}
+		
+		{% if option.type == 'select' %}
+			<div class="form-group variationsProduct" type_option="select" attribute="{{name}}">
+				<p class="subtitle">
+					{{option.name}}
+				</p>
+				<div class="controls">
+					<select name="formdata[{{name}}]" type="select" class="form-control"  id="attribute_{{name}}"  onchange="changeAttribute($(this)); return false;">
+						<option value="">{{option.name}}</option>
+						{% for k,v in option['values'] %}
+						<option value="{{k}}">{{v['value']}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		{% else %}
+
+			<div class="variationsProduct" type_option="radio" attribute="{{name}}">
+				<p class="subtitle">
+					{{option.name}}<span id="name_variation_selected"></span>
+				</p>
+				{% if option.img == 1 %}
+					<ul class="controls form-inline radiocolor attribute-color clearfix">
+						{% for k,v in option['values'] %}
+							{% if k > 0 %}
+								<li>	
+									<input type="radio" style="display:none" name="formdata[{{name}}]" class="{{name}}" onchange="changeAttribute($(this)); return false;" id="{{name}}_{{k}}" value="{{k}}" name_option="{{v.value}}" />
+									<label for="{{name}}_{{k}}" class="label_{{name}} label_attribute" style="background-image:url('{{baseurl}}img/{{v.img}}/or-nw/attribute.png')"><br></label>
+								</li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+				{% else %}
+
+					<ul class="controls form-inline radiocolor clearfix">
+						{% for k,v in option['values'] %}
+							{% if k > 0 %}
+								<li {% if name == 'taglia' %}class="list_filtro_size"{% endif %}>	
+									<input type="radio" style="display:none" name="formdata[{{name}}]" class="{{name}}"  onchange="changeAttribute($(this)); return false;" id="{{name}}_{{k}}" value="{{k}}" />
+									<label for="{{name}}_{{k}}" class="label_{{name}} label_attribute">{{v.value}}</label>
+								</li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+					
+				{% endif %}
+			</div>
+
+		{% endif %}
+
+	{% endfor %}
+</div>
+<!-- SE IL PRODOTTO HA UN TEMPLATE SENZA ATTRIBUTI-->
+{% if options_product_without_attributes %}
+	<div class="form-group variationsProduct" type_option="select" attribute="child">
+		<div class="controls">
+			<select name="formdata[child]" class="form-control"  id="{{name}}"  onchange="changeAttribute($(this)); return false;" flexy:ignore>
+				{% for k,v in options_product_without_attributes %}
+					<option value="{{k}}">{{v}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+{% endif %}
+
+<!-- FINE -->

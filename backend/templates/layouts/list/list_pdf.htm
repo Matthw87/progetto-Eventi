@@ -1,0 +1,75 @@
+<html>
+<head>
+<base href="{{root_dir}}">
+
+<style>
+table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+}
+table {
+  width: 100%;
+}
+th {
+  height: 50px;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+</style>
+</head>
+<body>
+<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+					
+					<table id="sezioni-table" class="table table-tools table-hover">
+						<thead>
+							<tr>
+								{% for v in _header_list %}
+									
+										{% if v.type == 'value' %}
+										<th>
+											<strong>{{v.value|raw}}</strong>
+											
+										
+										
+										</th>
+										{% endif %}
+										
+										
+										
+										
+									
+
+								{% endfor %}
+								
+								
+							</tr>
+						</thead>
+						
+						<tbody>
+							{% for row in _list %}
+							<tr>
+								{% for v in row %}
+								
+								{% if v.type == 'value' %}
+									<td>
+									{{v.value|raw}}
+									</td>
+								{% endif %}
+								
+								{% endfor %}
+								
+							</tr>
+							{% endfor %}
+							
+						</tbody>
+					</table>
+				
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "@core/layouts/base_form_widget.htm" %}
+
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+
+
+
+{{form.buildCol(dataform.custom_image,'col-md-12')}}
+
+<div class="row" style="display:block">
+	<div class="col-md-12">
+	{{form.buildFileManager(dataform.image_plus,'col-md-12')}}
+	{{form.buildFileManager(dataform.image_minus,'col-md-12')}}
+	</div>
+</div>
+
+
+
+{% endblock %}
+

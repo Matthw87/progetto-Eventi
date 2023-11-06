@@ -1,0 +1,212 @@
+{% extends "@core/layouts/base.htm" %}
+{% block page_title %} {% if theme_list %}{{tr('modules.list.title.themes')|title}}{% else %}{{tr('modules.list.title.modules')|title}}{% endif %}{% endblock %} 
+{% block before_content %}
+
+<style>
+.gruppo-modulo{
+	display: inline;
+	padding: 8px 16px;
+	font-weight: 600;
+	line-height: 1;
+	color: #000000;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	background: #FFFFFF;
+	margin-right:10px;
+}
+.gruppo-modulo.active{
+	background:#4C9AFF;
+	color:#fff;
+}
+
+.cont-tags > a{
+	text-decoration:none;
+}
+</style>
+
+
+<div class="row">
+				
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<form action="{{script_url}}" method="GET">
+					<div class="input-group">
+						<input type="text" class="form-control " name="search" placeholder="{% if theme_list %}{{tr('modules.list.theme_name')}}{% else %}{{tr('modules.list.module_name')}}{% endif %}" value="{{search}}">
+						<span class="input-group-btn">
+							<button class="btn btn-success" type="submit" tabindex="-1"><i class="fa fa-search"></i> {{tr('modules.list.buttons.search')}}</button>
+						  </span>
+					</div>
+					<input type="hidden" name="action" value="list" >
+					<input type="hidden" name="type" value="{{gruppo}}" >
+					<input type="hidden" name="theme" value="{{theme_list}}" >
+					<input type="hidden" name="ctrl" value="ModuleAdmin">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+				
+	<div class="col-md-12 m-b-10 cont-tags">
+		{% for t in tipologies %}
+			<a href="{{url_list}}&type={{t}}&theme={{theme_list}}">
+				<span class="gruppo-modulo {% if gruppo == t %}active{% endif %}"> {{t|upper}}</span>
+			</a>
+		{% endfor %}
+		
+		
+
+		<a href="{{url_list}}&type=all&theme={{theme_list}}">
+		<span class="gruppo-modulo {% if gruppo == 'all' %}active{% endif %}"> {{tr('modules.list.all')}}</span>
+		</a>
+		
+	</div>
+</div>
+
+{% endblock %}
+{% block content %}
+{% if modules %}
+	<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+		<table id="sezioni-table" class="table table-tools table-hover">
+			<thead>
+				<tr>
+					<td><input type="checkbox" onchange="select_all_module($(this));"></td>
+					<th style="max-width:80px;"></th>
+					
+					<th><strong>{{tr('modules.list.fields.name')}}</strong></th>
+					<th><strong>{{tr('modules.list.fields.version')}}</strong></th>
+					{% if auth('superadmin') %}
+					<th><strong>{{tr('modules.list.fields.author')}}</strong></th>
+					<th><strong>{{tr('modules.list.fields.permission')}}</strong></th>
+					{% endif %}
+					<!--<th><strong>{{tr('group')}}</strong></th>-->
+					<th><strong>{{tr('modules.list.fields.description')}}</strong></th>
+					<th class="text-center">
+						<strong>{{tr('modules.list.fields.actions')}}</strong>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for v in modules %}
+
+				{% if auth(v.permission) %}
+				<tr {% if v.compatibility == false %}class="danger"{% endif %}>
+					<td><input type="checkbox" class="module_check"  value="{{v.dir_module}}" active="{{v.active}}"></td>
+					<td><img src="{{v.img}}"></td>
+					
+					
+					<td>{{v.name}}</td>
+					<td>{{v.version}}</td>
+					{% if auth('superadmin') %}
+					<td>{{v.author}}</td>
+					<td>{{v.permission}}</td>
+					{% endif %}
+					<!--<td>{{v.kind|upper}}</td>-->
+					<td>{{v.description|raw}}</td>
+					
+					<td class="text-center" style="width:180px;max-width:180px !important;"> 
+						{% if v.compatibility  %}
+						{% if enable_market == false or v.dir_module in modules_account %}
+						<div class="btn-group media-group">
+							 {% if v.installed %}
+								{% if v.active %}
+									{% if v.link_setting %}
+									 <a href="{{v.link_setting}}" class="btn btn-default btn-sm"><i class="fa fa-wrench"></i> {{tr('modules.list.buttons.configure')}}</a>
+									 {% else %}
+										
+										<a href="#" onclick="module_action('{{v.dir_module}}','disable','{{v.from_theme}}'); return false;" class="btn btn-default btn-sm"><i class="fa fa-thumbs-o-down"></i> {{tr('modules.list.buttons.disable')}}</a>
+										
+									 {% endif %}
+									
+								{% else %}
+									
+									<a href="#"  onclick="module_action('{{v.dir_module}}','active','{{v.from_theme}}'); return false;"  class="btn btn-default btn-sm"><i class="fa fa-thumbs-o-up"></i> {{tr('modules.list.buttons.enable')}}</a>
+								
+								{% endif %}
+								<button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
+									<span class="caret"></span>
+								 </button>
+								  <ul class="dropdown-menu media-menu text-left" role="menu">
+								  {% if v.active == true %}
+								  <li>
+									{% if theme_list %}
+									<a href="index.php?ctrl=ModuleAdmin&action=css&module={{v.dir_module}}"  ><i class="fa fa-code"></i> {{tr('CSS')}}</a>
+									<a href="index.php?ctrl=ModuleAdmin&action=js&module={{v.dir_module}}"  ><i class="fa fa-code"></i> {{tr('Javascript')}}</a>
+									<a href="#"  onclick="module_action('{{v.dir_module}}','seeder','{{v.from_theme}}'); return false;" ><i class="fa fa-upload"></i> {{tr('modules.list.buttons.import_data')}}</a>
+									{% endif %}
+									<a href="#" onclick="module_action('{{v.dir_module}}','disable','{{v.from_theme}}'); return false;"  ><i class="fa fa-thumbs-o-down"></i> {{tr('modules.list.buttons.disable')}}</a>
+									
+									
+									
+									
+								  </li>
+								  {% endif %}
+								 
+									
+								  <li>
+									
+									<a href="#"  onclick="module_action('{{v.dir_module}}','uninstall','{{v.from_theme}}'); return false;"><i class="fa fa-trash-o"></i> {{tr('modules.list.buttons.uninstall')}}</a>
+									
+									
+								  </li>
+								  </ul>
+
+							  {% else %}
+							  	
+								<a href="#"  onclick="module_action('{{v.dir_module}}','install','{{v.from_theme}}'); return false;" class="btn btn-default btn-sm"><i class="fa fa-caret-square-o-up"></i> {{tr('modules.list.buttons.install')}}</a>
+								
+								 
+							 {% endif %}
+							
+						</div>
+						{% else %}
+							<a href="" class="btn btn-default btn-sm"><i class="fa fa-dollar"></i> {{tr('modules.list.buttons.buy')}}</a>
+							{% if info_modules[v.dir_module] %}
+							<p>
+							{{info_modules[v.dir_module].currency}} {{formattanumero(info_modules[v.dir_module].price)}}
+							</p>
+							{% endif %}
+						{% endif %}
+						{% endif %}
+
+						
+					</td>
+				</tr>
+				{% endif %}
+			  {% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+<div class="" >
+		<div class="btn-group media-group">
+		  <a href="" class="btn btn-default" data-toggle="dropdown"><i class="fa fa-list"></i> Azioni di massa</a>
+		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				<span class="caret"></span>
+		  </button>
+		   <ul class="dropdown-menu media-menu text-left" role="menu">
+				
+				<li><a  href="#"  onclick="submit_bulk_action_modules('active'); return false;"><i class="fa fa-thumbs-o-up"></i> abilita</a></li>
+				<li><a  href="#"  onclick="submit_bulk_action_modules('disable'); return false;"><i class="fa fa-thumbs-o-down"></i> disabilita</a></li>
+		   </ul>
+		</div>
+		{% if links %}
+		<span class="pull-right">
+		{{links[all]|raw}}
+		</span>
+		{% endif %}
+	</div>
+</div>
+		
+	
+
+{% else %}
+	{{tr('modules.list.no_modules')}}
+{% endif %}
+
+{% endblock %}
+
+

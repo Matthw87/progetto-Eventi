@@ -1,0 +1,28 @@
+/* Slick Modals - Overlay Menu */
+.overlayMenu .company {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    padding-bottom: 80px;
+}
+.overlayMenu a {
+    display: inline-block;
+    width: 100%;
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0 0 50px 0;
+    opacity: 0.7;
+}
+.overlayMenu a span {
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    padding-top: 6px;
+}
+.overlayMenu a:hover {
+    opacity: 1;
+}
+.overlayMenu a:last-of-type {
+    margin-bottom: 0;
+}

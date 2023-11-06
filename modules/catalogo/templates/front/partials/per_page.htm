@@ -1,0 +1,10 @@
+{% if select_num_page %}
+<span>{{tr('Mostra')}}: </span>
+<select class="selordina" onchange="pagenumber_catalog('{{return_location}}',$(this).val()); return false;">
+	  {% for k,v in select_num_page %}
+				<option value="{{k}}" {% if page_number_selected == k %}selected{% endif %}>{{v}}</option>
+	  {% endfor %}
+	 
+</select>	
+<span> {{tr('per pagina')}}
+{% endif %}

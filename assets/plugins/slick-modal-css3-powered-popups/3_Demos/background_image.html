@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Background Image</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="bgImage demoPopup" data-sm-init="true">
+            <h1>You are almost set</h1>
+            <p>This is a simple demo which you can use as a starting point for building your new awesome popup.</p>
+            <div class="cta green" data-sm-close="true">Ok, got it!</div>
+        </div>
+
+        <script>
+            $('.bgImage').SlickModals({
+                popup_animation: 'slideRight',
+                popup_position: 'bottomRight',
+                popup_css: {
+                    'padding': '40px',
+                    'margin' : '30px'
+                },
+                overlay_css: {
+                    'background': 'url("../src/demos/img/background_image.jpg") no-repeat center center / cover'
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

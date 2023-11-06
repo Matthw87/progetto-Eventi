@@ -1,0 +1,174 @@
+{% extends "@core/layouts/base.htm" %}
+
+{% block javascript %}
+{{parent()}}
+<script>
+var js_id_home="{{id_page| escape('js')}}";
+var js_block="{{block| escape('js')}}";
+</script>
+{% endblock %} 
+
+
+{% block buttons_right %}
+	<a  class="btn btn-info m-t-10" onclick="import_row(0); return false;"><i class="fa fa-upload p-r-10"></i> Importa</a>
+	<a target="_blank" href="index.php?ctrl=PageComposerAdmin&mod=pagecomposer&action=export&id={{id_page}}"  class="btn btn-info m-t-10"><i class="fa fa-download p-r-10"></i> Esporta</a>
+	{% if bozza %}
+	<a onclick="confirm_reset_edit_page(); return false;" target="_blank" class="btn btn-warning m-t-10"><i class="fa fa-eraser p-r-10"></i> Reset Modifiche</a>
+	<a  id="btn_save_modify" onclick="confirm_save_edit_home(); return false;" target="_blank" class="btn btn-success m-t-10"><i class="fa fa-check p-r-10"></i> Conferma modifiche</a>
+	{% else %}
+	<a  id="btn_save_modify" style="display:none" onclick="confirm_save_edit_home(); return false;" target="_blank" class="btn btn-success m-t-10"><i class="fa fa-check p-r-10"></i> Conferma modifiche</a>
+	{% endif %}
+	<a  href="/modules/pagecomposer/index.php?action=preview_page&id_page={{id_page}}" target="_blank" class="btn btn-primary m-t-10"><i class="fa fa-eye p-r-10"></i> Anteprima</a>
+{% endblock %}
+
+
+{% block content_container %}
+	{% if block %}
+		{{parent()}}
+	{% endif %}
+{% endblock %}
+
+{% block page_title %} Page Composer {% endblock %} 
+{% block before_content %}
+{% if no_select_block == false %}
+
+<div class="row" id="" style="">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">				
+				<div class="col-md-12">
+						<div class="form-group">
+							<label>Seleziona blocco :</label>
+							<div class="controls">
+								<select type="select" class="form-control" name="block" onchange="document.location.href='{{script_url}}&action=edit&id={{id_page}}&block='+$(this).val()">
+									<option value="0">Seleziona...</option>
+									{% for v in blocks %}
+									<option value="{{v}}" {% if v==block %}selected{% endif %}>{{v}}</option>
+									
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+		<div class="col-md-12" id="composizione_home_list">
+			<div class="dd" id="nestable">
+				<ol class="dd-list">
+					{% for v in items %}
+					<li class="dd-item block_{{v['id']}}" data-id="{{v['id']}}">
+
+						<div class="dd-handle {{v['class_parent']}} {{v['class_edit']}}">
+								{{page_composer_buttons(v)}}
+								<div class="row">
+									
+									<div class="col-md-12 cont-columns">
+										{% for k1,v1 in v['children'] %}
+										<div class="{{v1['class_edit']}} sortable dd-nodrag cont-elements" id="{{v1['id']}}" parent="{{v1['parent']}}" style="padding:25px;">
+												{{page_composer_buttons(v1)}}
+												
+												{% for v2 in v1['children'] %}	
+													<div class="col-md-12 element-child {{v2['class_edit']}} dd-nodrag" id="{{v2['id']}}">
+														{{page_composer_buttons(v2)}}	
+														
+
+														{{page_composer_element(v2)}}
+														
+
+														
+
+
+													</div>
+												{% endfor %}
+												{{page_composer_add_buttons(v1)}}
+										
+												
+										</div>
+										{% endfor %}
+
+										
+									</div>
+									{% if hasSpaceRowComposer(v) %}
+										{% if v['type'] == 'row' %}
+											<div class="dd-nodrag box-columns">
+												{% if isAvailableColumnComposer(v,'25') %}
+													<button onclick="add_column('colonna','col-25','',{{v['id']}}); return false;"><i class="fa fa-plus"></i> COL-25</button> 
+												{% endif %}
+												
+												{% if isAvailableColumnComposer(v,'33') %}
+												<button onclick="add_column('colonna','col-33','',{{v['id']}}); return false;"><i class="fa fa-plus"></i> COL-33</button> 
+												{% endif %}
+												{% if isAvailableColumnComposer(v,'50') %}
+												<button onclick="add_column('colonna','col-50','',{{v['id']}}); return false;"><i class="fa fa-plus"></i> COL-50</button> 
+												{% endif %}
+												{% if isAvailableColumnComposer(v,'75') %}
+												<button onclick="add_column('colonna','col-75','',{{v['id']}}); return false;"><i class="fa fa-plus"></i> COL-75</button> 
+												{% endif %}
+												{% if isAvailableColumnComposer(v,'100') %}
+												<button onclick="add_column('colonna','col-100','',{{v['id']}}); return false;"><i class="fa fa-plus"></i> COL-100</button>
+												{% endif %}
+											</div>
+										{% endif %}
+
+									{% endif %}
+									
+								</div>
+							</div>
+
+
+
+
+					</li>
+					{% endfor %}
+				<ol>
+			</div>
+		</div>
+</div>
+
+
+
+
+<div class="row" id="box_widgtes" style="display:none">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{% for v in widgets %}
+				<div class="col-md-3" onclick="add_block_home($(this),'{{v['title']}}','{{v['type']}}','{{v['module']}}',{{v['id']}},{{v['repeat']}}); return false;">
+					<div class="panel panel-primary" style="margin:0;">
+						 <div class="panel-body clearfix box-n-col">
+								<img class="ico-colonne" src="{{v['icon']}}">
+								<h3>
+								{{v['title']}}
+								</h3>
+						  </div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix">
+   
+
+	 <div class="pull-right">
+		
+			<a  onclick="$('#box_widgtes').toggle()" class="btn btn-info m-t-10"><i class="fa fa-plus p-r-10"></i> Aggiungi blocco</a>
+	</div>
+</div>
+
+
+
+{% include 'popup_editor.htm' %}
+
+ 
+ 
+{% endblock %}

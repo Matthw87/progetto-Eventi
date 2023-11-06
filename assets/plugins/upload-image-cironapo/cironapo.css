@@ -1,0 +1,67 @@
+.ciornapo_img_preview {
+	margin-top: -70px;
+	max-height: 175px;
+	max-width: 200px !important;
+}
+.ciornapo_img_preview_sm {
+margin-top: -9px;
+max-height: 77px;
+max-width: 44px !important;
+}
+
+.cironapo_fileinput {
+width: 100%;
+height: 192px;
+background: #fff;
+padding: 50px;
+font-size: 24px;
+color: #8A8687 !important;
+cursor: pointer;
+border:1px solid #D3D3D3;
+padding-top:75px;
+text-align:center;
+}
+
+.cironapo_fileinput_sm {
+		width: 62%;
+		height: 38px;
+		background: #fff;
+		padding: 0px;
+		font-size: 18px;
+		color: #8A8687 !important;
+		cursor: pointer;
+		border: 1px solid #D3D3D3;
+		border-radius: 5px;
+		padding-top: 6px;
+		text-align: center;
+		padding-left: 9px;
+	}
+
+
+#cironapo_loader{
+width: 30px;
+}
+
+#cironapo_upload_message{
+font-size: 15px;
+
+}
+
+.cironapo_error{
+color: #c75757;
+}
+
+
+.cironapo_success{
+color: #18a689;
+}
+
+.cironapo_warning{
+color: #f0ad4e;
+}
+
+.btn-cironapo {
+padding: 0px 7px !important;
+float: left;
+margin-right: 5px;
+}

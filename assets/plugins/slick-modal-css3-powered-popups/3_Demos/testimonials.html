@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Testimonials</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/testimonials.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/demos/js/testimonials.js"></script>
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="testimonials" data-sm-init="true">
+            <ul>
+                <li>
+                    <img src="../src/demos/img/testimonials.png" />
+                    <div class="title">Client 1</div>
+                    <p>Lorem ipsum dolor sit amet, duo ut dicta dolore phaedrum, eum eu vocibus iudicabit periculis. Sed ea eros habeo, quod alii hinc vel an.</p>
+                </li>
+                <li>
+                    <img src="../src/demos/img/testimonials.png" />
+                    <div class="title">Client 2</div>
+                    <p>Lorem ipsum dolor sit amet, duo ut dicta dolore phaedrum, eum eu vocibus iudicabit periculis. Sed ea eros habeo, quod alii hinc vel an.</p>
+                </li>
+                <li>
+                    <img src="../src/demos/img/testimonials.png" />
+                    <div class="title">Client 3</div>
+                    <p>Lorem ipsum dolor sit amet, duo ut dicta dolore phaedrum, eum eu vocibus iudicabit periculis. Sed ea eros habeo, quod alii hinc vel an.</p>
+                </li>
+                <li>
+                    <img src="../src/demos/img/testimonials.png" />
+                    <div class="title">Client 4</div>
+                    <p>Lorem ipsum dolor sit amet, duo ut dicta dolore phaedrum, eum eu vocibus iudicabit periculis. Sed ea eros habeo, quod alii hinc vel an.</p>
+                </li>
+                <li>
+                    <img src="../src/demos/img/testimonials.png" />
+                    <div class="title">Client 5</div>
+                    <p>Lorem ipsum dolor sit amet, duo ut dicta dolore phaedrum, eum eu vocibus iudicabit periculis. Sed ea eros habeo, quod alii hinc vel an.</p>
+                </li>
+            </ul>
+            <div class="dots"></div>
+        </div>
+
+        <script>
+            $('.testimonials').SlickModals({
+                overlay_isVisible: false,
+                popup_type: 'delayed',
+                popup_delayedTime: '1s',
+                popup_animation: 'slideBottom',
+                popup_position: 'bottomCenter',
+                popup_closeButtonPlace: 'inside',
+                popup_css: {
+                    'width': '520px',
+                    'background': '#fff',
+                    'padding': '0',
+                    'margin': '20px'
+                },
+                overlay_css: {
+                    'background': 'rgba(0, 0, 0, 0.2)',
+                    'animation-duration': '0.3s'
+                },
+                page_animate: true,
+                page_animation: 'blur',
+                page_animationDuration: '.3s',
+                page_blurRadius: '2px',
+                content_animate: true,
+                content_animation: 'slideBottom',
+                content_css        : {
+                    'animation-duration': '0.4s',
+                    'animation-delay'   : '0.4s',
+                    'text-align': 'center',
+                    'color': '#333'
+                },
+                mobile_breakpoint: '520px',
+                mobile_position: 'bottomCenter',
+                mobile_css: {
+                    'width': '100%',
+                    'height': 'auto',
+                    'padding': '0',
+                    'margin': '0'
+                },
+                callback_afterVisible: function () {
+                    sm_Testimonials('.testimonials', 3000);
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

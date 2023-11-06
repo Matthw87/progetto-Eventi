@@ -1,0 +1,121 @@
+/* Slick Modals - Drop down menu */
+
+/*
+    Note: If you wish to use the menu at the bottom
+    add class "bottom" to main wrapper selector (for example: <div class="dropdownMenu bottom">)
+    and change popup_position in the plugin settings to 'bottomLeft'
+*/
+
+.dropdownMenu .menuItem {
+    display: inline-block;
+    position: relative;
+    background: #fff;
+}
+.dropdownMenu .menuItem .title {
+    cursor: default;
+}
+.dropdownMenu .menuItem a,
+.dropdownMenu .menuItem .title {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none;
+}
+.dropdownMenu .menuItem > a,
+.dropdownMenu .menuItem .title {
+    padding: 20px;
+}
+.dropdownMenu .menuItem > a:hover,
+.dropdownMenu .menuItem > .title:hover,
+.dropdownMenu .menuItem:hover > a,
+.dropdownMenu .menuItem:hover > .title {
+    background: #629fd5;
+    color: #fff;
+}
+.dropdownMenu .menuItem .subItems {
+    min-width: 100%;
+    white-space: nowrap;
+    z-index: 10;
+}
+.dropdownMenu .menuItem .subItems ul {
+    background: #fff;
+    padding: 20px;
+    border-color: #629fd5;
+    border-width: 3px;
+}
+.dropdownMenu .menuItem .subItems ul li {
+    list-style: none;
+    margin-bottom: 6px;
+}
+.dropdownMenu .menuItem .subItems ul li:last-of-type {
+    margin-bottom: 0;
+}
+.dropdownMenu .menuItem .subItems ul li a {
+    opacity: 0.6;
+}
+.dropdownMenu .menuItem .subItems ul li a:hover {
+    opacity: 1;
+}
+@media screen and (min-width: 800px) {
+    .dropdownMenu .menuItem .subItems {
+        position: absolute;
+        left: 0;
+        transition: all 0.2s ease;
+        opacity: 0;
+        visibility: hidden;
+    }
+    .dropdownMenu.top .menuItem .subItems {
+        top: 100%;
+    }
+    .dropdownMenu.bottom .menuItem .subItems {
+        bottom: 100%;
+    }
+    .dropdownMenu.top .menuItem .subItems {
+        transform: translateY(20px);
+    }
+    .dropdownMenu.bottom .menuItem .subItems {
+        transform: translateY(-20px);
+    }
+    .dropdownMenu .menuItem:hover .subItems,
+    .dropdownMenu .menuItem:hover .subItems:hover {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0px);
+    }
+    .dropdownMenu.top .menuItem .subItems ul {
+        border-top-style: solid;
+    }
+    .dropdownMenu.bottom .menuItem .subItems ul {
+        border-bottom-style: solid;
+    }
+}
+@media screen and (max-width: 800px) {
+    .dropdownMenu .menuItem,
+    .dropdownMenu .menuItem > a,
+    .dropdownMenu .menuItem .title {
+        width: 100%;
+        font-size: 14px;
+    }
+    .dropdownMenu .menuItem > a,
+    .dropdownMenu .menuItem .title {
+        padding: 14px;
+    }
+    .dropdownMenu .menuItem .title:before {
+        content: "+";
+        padding-right: 10px;
+    }
+    .dropdownMenu .menuItem:hover .title:before {
+        content: "-";
+    }
+    .dropdownMenu .menuItem .subItems {
+        display: none;
+    }
+    .dropdownMenu .menuItem:hover .subItems,
+    .dropdownMenu .menuItem:hover .subItems:hover {
+        display: block;
+    }
+    .dropdownMenu .menuItem .subItems a {
+        padding-left: 10px;
+    }
+}

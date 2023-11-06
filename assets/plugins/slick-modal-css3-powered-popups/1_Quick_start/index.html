@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Slick Modals - Quick Start Template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main CSS and JS files and adjust the path according to your location on the server) -->
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+	</head>
+	<body class="demo blank">
+
+        <!-- START COPYING -->
+        <!-- Popup HTML -->
+        <div class="sm-1 demoPopup" data-sm-init="true">
+            <!-- Remove "demoPopup" class from the wrapper above and replace the content below with your own -->
+            <h1>You are almost set</h1>
+            <p>This is a simple demo which you can use as a starting point for building your new awesome popup.</p>
+            <div class="cta green" data-sm-close="true">Ok, got it!</div>
+            <a href="../4_Documentation/index.html" target="_blank">Open the documentation</a>
+        </div>
+        <!-- Popup settings -->
+        <script>
+            jQuery('.sm-1').SlickModals({
+                popup_reopenClass: 'open-sm',
+                popup_animation: 'slideRight',
+                popup_position: 'bottomRight',
+                popup_css: {
+                    'padding': '40px',
+                    'margin' : '30px'
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+	</body>
+</html>

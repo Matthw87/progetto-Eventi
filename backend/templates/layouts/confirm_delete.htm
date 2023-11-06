@@ -1,0 +1,19 @@
+{% extends "@core/layouts/base.htm" %}
+{% block page_title %} {{confirm_delete_title|title}} {% endblock %} 
+
+{% block content %}
+	 <div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+			<p>{{confirm_delete_message}}</p>
+
+			<div class="row">
+				<div class="col-md-12 pull-right">
+					
+					<a class="btn btn-default" href="{{url_back}}"><i class="fa fa-undo"></i> {{tr('general.cancel')}}</a>
+					<a class="btn btn-info" href="{{url_delete}}&last_action={{last_action}}"><i class="fa fa-check"></i> {{tr('general.confirm')}}</a>
+				</div>
+			</div>
+		</div>
+		 
+	</div>
+{% endblock %}

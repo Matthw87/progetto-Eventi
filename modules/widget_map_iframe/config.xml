@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<module>
+	<info> 
+		<author>Ciro Napolitano</author>
+		<name>Goggle Map Iframe</name>
+		<permission>superadmin</permission>
+		<tag>widget_map_iframe</tag>
+		<kind>cms</kind>
+		<scope></scope> 
+		<version>2.0.1</version>
+		<compatibility>
+			<min>2.0.0</min>
+		</compatibility>
+		<description><![CDATA[Questo modulo permette di inserire una mappa]]></description> 
+   </info>
+   <widgets>
+		<widget> 
+			<name>Map iframe</name>
+			<function>WidgetMapIframeComponent</function>
+			<url_conf>index.php?ctrl=Conf&amp;mod=widget_map_iframe</url_conf>
+			<repeatable>1</repeatable>
+		</widget>
+   </widgets>
+   <dependencies>
+        <dependence>pagecomposer</dependence>
+  </dependencies>
+</module>

@@ -1,0 +1,42 @@
+<span id="pagecomposer_name_element_{{v2['id']}}" class="pagecomposer_name_element" ondblclick="pagecomposer_edit_name_widget({{v2['id']}}); return false;">{% if v2.custom_name %}{{v2.custom_name}}{% else %}Accordion container{% endif %}</span>
+<input type="text" class="pagecomposer_name_element_input" id_widget="{{v2['id']}}" id="pagecomposer_name_element_input_{{v2['id']}}" style="display:none" value="{% if v2.custom_name %}{{v2.custom_name}}{% else %}Accordion container{% endif %}">
+
+<!--{foreach:v2[children],k3,v3}
+	<div class="col-md-12 element-child {v3[class_edit]} dd-nodrag" id="{v3[id]}">
+	{page_composer_element(v3)}
+	</div>
+{end:}-->
+{% for k3,v3 in v2['children'] %}
+<div class="accordion-item ui-state-default" id="{{v3['id']}}">
+	 <div class="row" style="padding: 0 16px;">
+		<div class="accordion col-md-12" style="background:#EBECF0">
+			<a href="#tab_{{v3['id']}}" data-toggle="tab">
+				<span id="pagecomposer_name_element_{{v3['id']}}" class="pagecomposer_name_element" ondblclick="pagecomposer_edit_name_widget({{v3['id']}}); return false;">{% if v3.custom_name %}{{v3.custom_name}}{% else %}Accordion {{v3['position']}}{% endif %}</span>
+				<input type="text" class="pagecomposer_name_element_input" id_widget="{{v3['id']}}" id="pagecomposer_name_element_input_{{v3['id']}}" style="display:none" value="{% if v3.custom_name %}{{v3.custom_name}}{% else %}Accordion {{v3['position']}}{% endif %}">
+			</a>
+			
+			<div class="btn-accordion">
+				<div class="modifica-tab dd-nodrag" onclick="open_edit_page({{v3['id']}},'{{v3['url_edit']}}'); return false;"><img src="/modules/pagecomposer/img/ico-imp.png"/></div>
+				<div class="ordina-tab dd-nodrag" onclick="sort_items({{v3['id']}}); return false;"><img src="/modules/pagecomposer/img/ico-ordina.png"/></div>	
+				<div class="elimina-tab dd-nodrag" onclick="elimina_blocco_home({{v3['id']}}); return false;"><img src="/modules/pagecomposer/img/ico-cestino.png"/></div>	
+			</div>
+
+			{# {{page_composer_buttons(v3)}} #}
+		</div>
+
+		<div class="panel panel-accordion col-md-12">	
+		   {% for k4,v4 in v3['children'] %}
+			<div class="col-md-12 element-child {{v4['class_edit']}} dd-nodrag tab-element" id="{{v4[id]}}">		
+					{{page_composer_element(v4)}}
+					{{page_composer_buttons(v4)}}		
+			</div>
+			{% endfor %}
+			<br>
+			<br>
+			{{page_composer_add_buttons(v3)}}
+		</div>
+	</div>
+</div>
+{% endfor %}
+
+<button class="pull-right add-widget add_accordion dd-nodrag" style="margin-bottom:10px;" onclick="addAccordion({{v2['id']}});"><img src="/modules/pagecomposer/img/plus.png" /> Aggiungi accordion</button>

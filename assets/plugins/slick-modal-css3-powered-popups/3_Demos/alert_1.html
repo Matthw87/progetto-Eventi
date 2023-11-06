@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Alert 1</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/alert_1.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo alerts">
+
+        <!-- START COPYING -->
+        <div class="alert-1" data-sm-init="true" data-state="success"> <!-- Possible states: success, error, warning, info -->
+            <div class="title">Success!</div>
+            <p>Lorem ipsum dolor sit amet, ut facete mentitum vim.</p>
+            <div class="close" data-sm-close="true">Close</div>
+        </div>
+
+        <script>
+            $('.alert-1').SlickModals({
+                popup_type: 'instant',
+                popup_animation: 'slideBottom',
+                popup_position: 'bottomRight',
+                popup_closeButtonPlace: 'inside',
+                popup_css: {
+                    'width': '280px',
+                    'background': 'transparent',
+                    'padding': '0',
+                    'margin': '30px',
+                    'text-align': 'center'
+                },
+                overlay_isVisible: false,
+                mobile_breakpoint: '480px',
+                mobile_position: 'center',
+                mobile_css: {
+                    'width': '100%',
+                    'background': 'transparent',
+                    'padding': '0',
+                    'margin': 'auto',
+                    'text-align': 'center'
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

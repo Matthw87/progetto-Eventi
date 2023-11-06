@@ -1,0 +1,35 @@
+{% extends "@core/layouts/base_form_widget.htm" %}
+{% block content %}
+{% import "macro/form.htm" as form %}
+<!--<style>
+#wrapper{
+	position:relative;
+	height:350px;
+	width:100%;
+}
+</style>
+<div id="wrapper">				
+<textarea id="js_box" name="formdata[js_box]">{{dataform.js_box.value}}</textarea>
+<script>
+	TLN.append_line_numbers('js_box')
+</script>
+</div>-->
+
+<textarea id="js_box" name="formdata[js_box]">{{dataform.js_box.value}}</textarea>
+
+
+<script>
+
+	  
+	CodeMirror.fromTextArea(document.getElementById('js_box'), {
+		lineNumbers: true,
+		styleActiveLine: true,
+		matchBrackets: true,
+		theme:'panda-syntax'
+	  });
+
+  
+ 
+
+</script>
+{% endblock %}

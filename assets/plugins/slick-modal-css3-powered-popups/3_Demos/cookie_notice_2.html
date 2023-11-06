@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Cookie Notice 2</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/cookie_notice_2.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="cookieNotice-2" data-sm-init="true">
+            <div class="title">We use a few cookies</div>
+            <p>Our site uses non fat, delicious cookies which help us improve your user experience. You can read more about it <a href="#" target="_blank">on our Privacy page</a>.</p>
+        </div>
+
+        <script>
+            $('.cookieNotice-2').SlickModals({
+                popup_type: 'instant',
+                restrict_cookieSet: true,
+                restrict_cookieName: 'sm-cookieNotice-2',
+                restrict_cookieDays: '60',
+                restrict_cookieSetClass: 'sm-cookieNotice-2-setCookie',
+                popup_animation: 'slideBottom',
+                popup_position: 'bottomLeft',
+                popup_closeButtonStyle: 'text label',
+                popup_closeButtonText: 'Great, close this!',
+                popup_css: {
+                    'width': '100%',
+                    'padding': '24px',
+                    'margin': '0',
+                    'background': 'rgba(0,0,0,0.8)'
+                },
+                overlay_isVisible: false,
+                page_animate: true,
+                page_animation: 'blur',
+                mobile_breakpoint: '480px',
+                mobile_position: 'bottomLeft',
+                mobile_css: {
+                    'width': '100%',
+                    'padding': '20px',
+                    'margin': '0',
+                    'background': 'rgba(0,0,0,0.8)'
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

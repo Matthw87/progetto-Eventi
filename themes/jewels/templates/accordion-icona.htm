@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it" {% block html_tag %}{% endblock %}>
+<head>	
+	<title>
+	{% block title %}
+		{{setting['info']['nomesito']}}
+	{% endblock %}
+	</title>
+
+	{% block metatags %}
+
+	{% endblock %}
+	{% block css %}
+		{% include 'partials/css.htm' %}
+	{% endblock %}
+
+	{% block javascript %}
+		{% include 'partials/javascript.htm' %}
+	{% endblock %}
+
+	<style>
+		.faq-composer {
+			width: 100%;
+			border-radius: 0;
+			background: transparent;
+			border: 2px solid #F3F1EE;
+			padding: 30px 34px;
+			margin: 0 0 8px;
+		}
+
+		.faq-composer.active {
+			background: #F3F1EE;
+		}
+
+		.faq-composer .tit-faq {
+			width: 100%;
+			display: block;
+			clear: both;
+			cursor: pointer;
+			font-size: 44px;
+			font-weight: 500;
+			line-height: 30px;
+			color: #362715;
+			position: relative;
+			padding: 0 28px 0 0;
+		}
+
+		.faq-composer .tit-faq img.open-acc {
+			width: 16px;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			-webkit-transform: translateY(-50%);
+			-moz-transform: translateY(-50%);
+			-o-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			transform: translateY(-50%);
+		}
+
+		.faq-composer .content-faq {
+			display: none;
+			padding-top: 24px;
+		}
+
+		.faq-composer.active .content-faq {
+			display: block;
+		}
+
+		.tit-faq img.icona-voce-faq {
+			height: 47px;
+			width: auto;
+			margin-right: 40px;
+			position: initial;
+			top: auto;
+			right: auto;
+			transform: none;
+			-webkit-transform: none;
+			-moz-transform: none;
+			-ms-transform: none;
+		}
+	</style>
+</head>
+<body>
+	{% block page_init %}
+
+	{% endblock %}
+	<!--- TOP ---->
+	{% include 'partials/top.htm' %}
+	<!--- END TOP ---->
+
+	<div class="faq-composer active">
+		<div class="tit-faq">
+			<img class="icona-voce-faq" src="/modules/pagecomposer/img/icona-voce-acc.png"> How to reach us<img class="open-acc" src="/modules/pagecomposer/img/ico-meno.png">
+		</div>
+		<div class="content-faq">
+			<p>Guests arriving by car should follow the road signs to the orbital road, exit near the harbour, take Via Marina and follow the directions for Piazza Bovio.</p>
+		</div>
+	</div>
+	<div class="faq-composer">
+		<div class="tit-faq">
+			<img class="icona-voce-faq" src="/modules/pagecomposer/img/icona-voce-acc.png"> How to reach us<img class="open-acc" src="/modules/pagecomposer/img/ico-piu.png">
+		</div>
+		<div class="content-faq">
+			<p>Guests arriving by car should follow the road signs to the orbital road, exit near the harbour, take Via Marina and follow the directions for Piazza Bovio.</p>
+		</div>
+	</div>
+
+	<script>
+		function faq() {
+			$(".faq-composer .tit-faq").click(function(){			
+				var lui = $(this);
+				
+				if(lui.parents(".faq-composer").hasClass("active"))
+				{
+					lui.parents(".faq-composer").removeClass("active");
+					//lui.parents(".faq-composer").find(".content-faq").slideToggle();
+					lui.parents(".faq-composer").find(".content-faq").slideUp();
+					lui.find("img.open-acc").attr("src", "/modules/pagecomposer/img/ico-piu.png");	
+				}
+				else
+				{
+					$(".faq-composer").each(function(){
+						if($(this).hasClass("active"))
+						{
+							$(this).removeClass("active");
+							//$(this).find(".content-faq").slideToggle();
+							$(this).find(".content-faq").slideUp();
+							$(this).find(".tit-faq").find("img.open-acc").attr("src", "/modules/pagecomposer/img/ico-piu.png");
+						}
+					});
+					//lui.parents(".faq-composer").find(".content-faq").slideToggle();
+					lui.parents(".faq-composer").find(".content-faq").slideDown();
+					lui.parents(".faq-composer").addClass("active");
+					lui.find("img.open-acc").attr("src", "/modules/pagecomposer/img/ico-meno.png");
+				}
+			});
+		}
+
+		$(document).ready(function(){
+			faq();
+		});
+	</script>
+</body>
+
+{% block javascript_end %}
+	{% include 'partials/javascript_end.htm' %}
+{% endblock %}
+</html>

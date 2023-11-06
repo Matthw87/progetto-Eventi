@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<module>
+	<info> 
+		<author>Ciro Napolitano</author>
+		<name>Jewels</name>
+		<permission>superadmin</permission>
+		<tag>jewels</tag>
+		<kind>Eshop</kind>
+		<version>2.0.0</version>
+		<compatibility>
+			<min>2.0.0</min>
+		</compatibility>
+		<scope>frontend</scope> 
+		<theme>1</theme>
+		<description><![CDATA[Tema base di un eshop per oggetti di bijoutteria]]></description> 
+   </info>
+</module>

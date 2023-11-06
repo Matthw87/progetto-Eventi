@@ -1,0 +1,38 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="tabcordion">
+			<ul id="tab_data" class="nav nav-tabs">
+				{% for k,v1 in group_widgets %}
+					<li class="{% if k == active_tab %}active{% endif %}"><a href="#{{k}}" data-toggle="tab">{{k|upper}}</a></li>
+				{% endfor %}
+			</ul>
+			<div id="tab_data_content" class="tab-content" style="border:1px solid #D3D3D3;">
+				{% for k1,v1 in group_widgets %}
+					<div class="tab-pane fade {% if k1 == active_tab %}active{% endif %} in" id="{{k1}}">
+						<div class="row">
+							<div class="col-md-12">
+								<input type="text" class="form-control pagecomposer-ricerca-widgets" placeholder="ricera rapida">
+							</div>
+						</div>
+						<div class="row">
+							{% for k,v in v1 %}
+								<div class="col-md-3 colonna-widget" title="{{v['title']}}">
+									<div class="col100" onclick="add_block_home($(this),'{{v['title']}}','{{v['type']}}','{{v['module']}}','{{v['function']}}',{{v['id']}},{{v['repeat']}},{{id_row}},{{position}}); return false;">	
+										 <div class="panel-body clearfix box-n-col perWidget">
+											{% if v['img_logo'] %}
+												<img class="ico-widget" src="{{v['img_logo']}}">
+											{% endif %}
+											<h4>{{v['title']}}</h4>
+										  </div>	
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				{% endfor %}		
+			</div>
+		</div>
+	</div>
+</div>
+
+

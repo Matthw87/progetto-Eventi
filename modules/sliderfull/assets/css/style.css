@@ -1,0 +1,28 @@
+.slider-arrows{
+    position: absolute;
+    bottom: 54px;
+    right: 0px;
+    display: flex;
+    width: 100px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.slider-arrows.vertical{
+
+    flex-direction: column;
+    height: 100px;
+    bottom: 34px;
+
+}
+
+.slider-arrows.horizontal .arrow-left{
+    transform: rotate(270deg);
+}
+
+.slider-arrows.horizontal .arrow-right{
+    transform: rotate(270deg);
+}
+
+

@@ -1,0 +1,116 @@
+/* Slick Modals - Gdpr Settings */
+.gdprSettings * {
+    color: #666;
+}
+.gdprSettings .title {
+    font-size: 18px;
+    font-weight: 700;
+}
+.gdprSettings p {
+    font-size: 14px;
+    padding: 20px 0;
+    color: #aaa;
+}
+.gdprSettings > div {
+    display: inline-block;
+    width: 100%;
+}
+.gdprSettings > div input:not([type='submit']) {
+    display: none;
+}
+.gdprSettings > div label {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    font-size: 14px;
+    padding-left: 30px;
+    cursor: pointer;
+}
+.gdprSettings > div label:before,
+.gdprSettings > div label:after {
+    content: '';
+    position: absolute;
+    display: block;
+    transition: all .2s ease;
+}
+.gdprSettings > div label:before {
+    background: #eee;
+}
+.gdprSettings > div input:checked + label:before {
+    background: #3dc197;
+}
+.gdprSettings .check {
+    border-bottom: dashed 1px #ddd;
+    padding-bottom: 30px;
+    margin: 10px 0 30px 0;
+}
+.gdprSettings .check label:before {
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+}
+.gdprSettings .check label:after {
+    top: 1px;
+    left: 6px;
+    width: 4px;
+    height: 11px;
+    border-style: none solid solid none;
+    border-color: transparent #fff #fff transparent;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+}
+.gdprSettings .check input:checked + label:after {
+    opacity: 1;
+}
+.gdprSettings .onOff {
+    margin: 10px 0;
+}
+.gdprSettings .onOff label {
+    padding-left: 0;
+}
+.gdprSettings .onOff label:before {
+    top: 0;
+    right: 0;
+    width: 36px;
+    height: 20px;
+    border-radius: 30px;
+}
+.gdprSettings .onOff label:after {
+    top: 2px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+}
+.gdprSettings .onOff input:checked + label:after {
+    right: 18px;
+}
+.gdprSettings .actions {
+    margin: 30px 0 20px 0;
+}
+.gdprSettings .actions input {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    padding: 6px 30px;
+    border: none;
+    outline: none;
+    background: #3d96c1;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+.gdprSettings .actions input:hover {
+    background: #666;
+}
+.gdprSettings .actions a {
+    font-size: 12px;
+    color: #aaa;
+    padding-top: 10px;
+    float: right;
+}
+.gdprSettings .actions a:hover {
+    color: #666;
+}

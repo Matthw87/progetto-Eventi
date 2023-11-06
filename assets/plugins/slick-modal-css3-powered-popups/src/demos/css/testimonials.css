@@ -1,0 +1,53 @@
+/* Slick Modals - Testimonials */
+.testimonials ul {
+    display: inline-block;
+    width: 100%;
+    min-height: 120px;
+    position: relative;
+    margin: 20px 0;
+}
+.testimonials li {
+    list-style: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.testimonials li img {
+    position: absolute;
+    top: -64px;
+    left: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    border-radius: 50%;
+}
+.testimonials li .title {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 30px 0 4px 0;
+}
+.testimonials li p {
+    font-size: 12px;
+    line-height: 18px;
+    opacity: 0.8;
+}
+.testimonials .dots {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.testimonials .dot {
+    float: left;
+    content: '';
+    height: 5px;
+    background: #cfcfcf;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+.testimonials .dot:hover,
+.testimonials .dot.active {
+    background: #ba6a6a;
+}

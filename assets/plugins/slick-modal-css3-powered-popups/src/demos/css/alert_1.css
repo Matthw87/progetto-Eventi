@@ -1,0 +1,100 @@
+/* Slick Modals - Alert 1 */
+.alert-1 {
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+}
+.alert-1:not([data-state="warning"]) * {
+    color: #fff;
+}
+.alert-1[data-state="success"] {
+    background-color: #59bda5;
+}
+.alert-1[data-state="error"] {
+    background-color: #dc6868;
+}
+.alert-1[data-state="info"] {
+    background-color: #7cc5e8;
+}
+.alert-1[data-state="warning"] {
+    background-color: #f7eab7;
+    color: #333;
+}
+.alert-1 .title {
+    font-weight: 700;
+    font-size: 24px;
+    display: block;
+    margin-top: 130px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.alert-1 p {
+    font-size: 14px;
+    padding-bottom: 50px;
+    line-height: 20px;
+}
+.alert-1 .title,
+.alert-1 p {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.alert-1 .title:before,
+.alert-1 .title:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.alert-1:not([data-state="warning"]) .title:before {
+    top: -70px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    border: solid 2px #fff;
+}
+.alert-1[data-state="success"] .title:after {
+    top: -56px;
+    width: 8px;
+    height: 20px;
+    border: solid #fff;
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
+}
+.alert-1[data-state="error"] .title:after {
+    top: -89px;
+    font-size: 60px;
+    line-height: 90px;
+    content: "\00D7";
+}
+.alert-1[data-state="warning"] .title:before {
+    top: -70px;
+    width: 0;
+    height: 0;
+    border-left: 34px solid transparent;
+    border-right: 34px solid transparent;
+    border-bottom: 54px solid rgba(0,0,0,0.2);
+}
+.alert-1[data-state="warning"] .title:after,
+.alert-1[data-state="info"] .title:after {
+    content: "i";
+    font-size: 28px;
+    font-family: monospace, sans-serif;
+}
+.alert-1[data-state="warning"] .title:after {
+    top: -52px;
+}
+.alert-1[data-state="info"] .title:after {
+    top: -60px;
+}
+.alert-1 .close {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 20px;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.2);
+}
+.alert-1 .close:hover {
+    opacity: 0.6;
+}

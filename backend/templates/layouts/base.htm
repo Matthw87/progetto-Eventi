@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js sidebar-large lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js sidebar-large lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js sidebar-large lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js sidebar-large">
+    <head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block head %}
+			{% block css %}
+				{{include('@core/partials/css.htm')}}
+
+
+				<style>
+					.filemanager_editor_form{
+						margin-top:15px; 
+						position:relative;
+						cursor:pointer;
+					}
+					/*.filemanager_editor_form.no-image{
+						background: none;
+						background-color: #c7cedc;
+					}*/
+					
+					.preview_box_filemanager{
+						text-align: center;
+						min-height: 200px;
+						background: url('../assets/images/folder.svg') no-repeat;
+						background-size: 100px;
+						background-position:center;
+						background-color: #FFFFFF;
+						
+					}
+					.preview_box_filemanager.no-image{
+						background: none;
+						background-color: #FFFFFF;
+
+					}
+					.preview_box_filemanager > img{
+						margin-left: auto;
+						margin-right: auto;
+						display: block;
+						max-width:300px;
+					}
+
+					.btn_remove_image_filemanager{
+						position: absolute;
+						right: 25px;
+						cursor: pointer;
+						font-weight: 900;
+						color: #000000;
+						font-size: 24px;
+						top: -1px;
+						width: 30px;
+					}
+
+					.btn_remove_image_filemanager:hover{
+						color: #000000;
+					}
+					.flag-form-multilang{
+						display:inline-block;
+						cursor:pointer;
+					}
+					.flag-form-multilang.active{
+						border:4px solid red;
+					}
+					
+				</style>
+			{% endblock %}
+
+			{% block javascript %}
+			<script>
+				var js_error_title_alert="{{gettext.strings.error_title_alert|escape('js')}}"
+				var js_success_title_alert="{{gettext.strings.success_title_alert|escape('js')}}"
+				var js_confirm_title_alert="{{gettext.strings.confirm_title_alert|escape('js')}}"
+				var js_confirm_cancel_alert="{{gettext.strings.confirm_cancel_alert|escape('js')}}"
+				var js_confirm_ok_alert="{{gettext.strings.confirm_ok_alert|escape('js')}}"
+				var js_confirm_text_alert="{{gettext.strings.confirm_text_alert|escape('js')}}"
+				var js_activelocale="{{activelocale|escape('js')}}"
+				var javascript_activelocale = js_activelocale;
+				//var js_sidebarThemeAdmin="{{userdata.sidebarThemeAdmin|escape('js')}}"
+			</script>
+			{{include('@core/partials/javascript.htm')}}
+			{% endblock %}
+
+
+			
+            <title>{% block title %}{% endblock %}</title>
+        {% endblock %}
+    </head>
+    <body data-page="dashboard">
+		{{include('@core/partials/loader.htm')}}
+		{% block menu_top %}
+		{{include('@core/partials/menu_top.htm')}}
+		{% endblock %}
+		<div id="wrapper">
+			{% block sidebar %}	
+			{{include('@core/partials/sidebar.htm')}}
+			{% endblock %}
+			<div id="main-content" class="dashboard">
+				{% block page_header %}
+				<div class="m-b-20 m-t-10 clearfix barra-fixed">
+					<div class="page-title pull-left">	
+						<h1 class="titolo">{% block page_title %}{{title|raw}}{% endblock %}</h1>
+						{% if (action == 'edit' or show_btn_edit==true)  %} 
+							<span class="sottotit">{{tr('form.edit')}}</span>
+						{% elseif (action== 'add' or action == 'duplicate' or show_btn_add==true) %} 
+							<span class="sottotit">{{tr('form.add')}}</span> 
+						{% endif %}
+					</div>
+					<div class="pull-right">
+						{% block buttons_right %}	
+							{% for b in tool_buttons %}
+								<a href="{{b.url}}" {% if b.targetBlank %}target="_blank"{% endif %} class="{{b.class}} m-t-10">
+								{% if b.iconType == 'icon' %}
+									<i class="{{b.icon}}"></i> 
+								{% else %}
+									<img src="{{b.img}}"> 
+								{% endif %} {{b.text}}</a>
+							{% endfor %}
+						{% endblock %}
+					</div>
+				</div>
+				{% endblock %}
+				{% block messages %}{{messages|raw}}{% endblock %}
+				{% block before_content %}
+				{% endblock %}
+				{% block content_container %}
+				<div class="row">
+				
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								{% block content %}{% endblock %}
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endblock %}
+       
+			</div>
+		</div>
+		{{include('@core/partials/javascript_end.htm')}}
+		<script>
+				function openPopup(title,url){
+					if( $('#popup-form-widget').length > 0 ){
+						$("#popup-form-widget").iziModal('close');
+						$("#popup-form-widget").iziModal('destroy');
+						$("#popup-form-widget").remove();
+					}
+					
+					$('<div data-iziModal-fullscreen="true"  data-iziModal-icon="icon-home"></div>').appendTo('body').attr('id','popup-form-widget');
+					$("#popup-form-widget").iziModal({
+						title: title,
+						iframe: true,
+						iframeHeight: 500,
+						iframeURL: url,
+						onClosed: function(){
+							//reload_list();
+						}
+					});
+					$("#popup-form-widget").iziModal('open');
+				}
+
+				function closePopup(){
+					$("#popup-form-widget").iziModal('close');
+				}
+		</script>
+
+		{% block end_body %}
+
+		{% endblock %}
+    </body>
+</html>
+

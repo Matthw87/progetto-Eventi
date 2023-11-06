@@ -1,0 +1,76 @@
+<xml>
+    <sheet>
+        <tabs>
+            <tab name="users_management.form.tabs.access">
+                    <row>   
+                        <col>
+                            <field name="username"/>
+                        </col>
+                        <col>
+                            <field name="email"/>
+                        </col>
+                    </row>
+                    <row>   
+                        <col>
+                            <field name="user_category_id"/>
+                        </col>
+                        <col>
+                            <field name="active"/>
+                        </col>
+                    </row>
+                    <row>   
+                        <col>
+                            <field name="reset_password"/>
+                        </col>
+                    </row>
+                    <row id="password_row">   
+                        <col>
+                            <field name="password"/>
+                        </col>
+                        <col>
+                            <field name="password_confirm"/>
+                        </col>
+                    </row>
+            </tab>
+             <tab name="users_management.form.tabs.info">
+                    <row>   
+                        <col>
+                            <field name="name"/>
+                        </col>
+                        <col>
+                            <field name="surname"/>
+                        </col>
+                    </row>
+                    <row>   
+                        <col>
+                            <field name="phone"/>
+                        </col>
+                        <col>
+                            <field name="cellular"/>
+                        </col>
+                    </row>
+                    <row>   
+                        <col>
+                            <field name="city"/>
+                        </col>
+                        <col>
+                            <field name="address"/>
+                        </col>
+                    </row>
+                     <row>   
+                        <col>
+                            <field name="postal_code"/>
+                        </col>
+                        <col>
+                            <field name="country"/>
+                        </col>
+                        <col>
+                            <field name="province"/>
+                            <field name="id" hidden="true"/>
+                        </col>
+                    </row>
+            </tab>
+           
+        </tabs>
+    </sheet>
+</xml>

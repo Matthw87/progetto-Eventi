@@ -1,0 +1,10 @@
+{% extends "@core/layouts/base.htm" %}
+{% block page_title %} {{mail_view.subject}} {% endblock %} 
+
+
+{% block content %}
+<div class="well">
+    {{mail_view.html|raw}}
+</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block edit_page_title %} Importa Pagina {% endblock %} 
+{% block javascript %}
+{{parent()}}
+<script>
+	$(document).ready(function(){
+		$('.col3').click(function(){
+			var el = $(this);
+			$('.col3').removeClass('active');
+			$('.col3').find('span').html('Scegli');
+			
+			el.find('input').prop('checked',true);
+
+			el.addClass("active");
+			el.find('span').html('<i class="fa fa-check"></i> selezionato');
+		});
+	});
+</script>
+{% endblock %}
+
+{% block content %}
+
+{% import "macro/form.htm" as form %}
+
+<div class="form-group" id="div_tipo">
+	<label>Seleziona in file zip da importare</label>
+	<div class="controls">
+		<input type="file" class="form-control" name="file">
+	</div>
+</div>
+
+
+{% endblock %}
+
+ {% block btn_text_save_form %}Importa{% endblock %}

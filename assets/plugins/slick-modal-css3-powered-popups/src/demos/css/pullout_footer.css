@@ -1,0 +1,68 @@
+/* Slick Modals - Pullout footer */
+.pulloutFooter * {
+    color: #555;
+}
+.pulloutFooter {
+    text-align: center;
+}
+.pulloutFooter .links {
+    display: inline-block;
+    width: 100%;
+}
+.pulloutFooter .links a {
+    display: inline-block;
+    margin: 0 18px;
+    font-size: 14px;
+    text-decoration: none;
+}
+.pulloutFooter .links a:first-of-type {
+    margin-left: 0;
+}
+.pulloutFooter .links a:last-of-type {
+    margin-right: 0;
+}
+.pulloutFooter .links a:before {
+    content: '•';
+    padding-right: 8px;
+}
+.pulloutFooter .links a:hover {
+    color: #4a8fff;
+}
+.pulloutFooter .copy {
+    display: inline-block;
+    font-size: 12px;
+    border-top: solid 1px #ddd;
+    padding-top: 30px;
+    margin-top: 30px;
+    min-width: 40%;
+}
+.sm-sticky-button.openPulloutFooter {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    margin: auto;
+    max-width: 140px;
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+    transition: all .3s ease;
+}
+body.pulloutFooter-visible .sm-sticky-button.openPulloutFooter {
+    transform: translateY(100%);
+}
+@media (max-width: 640px) {
+    .pulloutFooter {
+        text-align: left;
+    }
+    .pulloutFooter .links a {
+        display: block;
+        margin: 10px 0;
+    }
+    .pulloutFooter .copy {
+        width: 100%;
+    }
+    .sm-sticky-button.openPulloutFooter {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,12 @@
+<xml>
+    <sheet>
+        <row>
+            <col>
+                <field name="email"/>
+                <field name="token" hidden="true"/>
+            </col>
+            <col>
+            </col>
+        </row>
+    </sheet>
+</xml>

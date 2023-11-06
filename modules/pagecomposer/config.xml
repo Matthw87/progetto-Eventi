@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<module>
+	<info> 
+		<author>Ciro Napolitano</author>
+		<name>Page Composer</name>
+		<permission>superadmin</permission>
+		<tag>pagecomposer</tag>
+		<kind>cms</kind>
+		<version>2.0.3</version>
+		<compatibility>
+			<min>2.0.0</min>
+		</compatibility>
+		<scope></scope> 
+		<description><![CDATA[Integra il pagecomposer nel cms]]></description> 
+   </info>
+</module>

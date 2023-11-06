@@ -1,0 +1,46 @@
+
+{% block page_header %}
+{% block javascript %}{% endblock %}
+{% block css %}{% endblock %}
+<div class="row">
+	<div class="col-md-12">
+		<div class="pull-left">
+			<h4 class="titolo">{% block page_title %}{% endblock %}
+			{% if (action == 'edit' or show_btn_edit==true)  %} 
+				<small>{{tr('form.edit')}}</small>
+			{% elseif (action== 'add' or action == 'duplicate' or show_btn_add==true) %} 
+				<small>{{tr('form.add')}}</small> 
+			{% endif %}
+			</h4>
+		</div>
+
+		<div class="pull-right p-b-10">					
+			{% block buttons_right %}	
+				{% for b in tool_buttons %}
+					<a href="{{b.url}}" {% if b.targetBlank %}target="_blank"{% endif %} class="{{b.class}} m-t-10">
+					{% if b.iconType == 'icon' %}
+						<i class="{{b.icon}}"></i> 
+					{% else %}
+						<img src="{{b.img}}"> 
+					{% endif %} {{b.text}}</a>
+				{% endfor %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block messages %}{{messages|raw}}{% endblock %}
+{% block before_content %}
+{% endblock %}
+{% block content_container %}
+<div class="row">
+
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

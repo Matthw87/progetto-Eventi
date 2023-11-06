@@ -1,0 +1,83 @@
+/* Slick Modals - Coupon Code */
+.couponCode * {
+    text-align: center;
+    color: #333;
+}
+.couponCode .title {
+    font-size: 24px;
+    font-weight: 700;
+    padding-bottom: 10px;
+    position: relative;
+}
+.couponCode .title span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    padding: 4px 6px;
+    background: #4c94a5;
+    border-radius: 4px;
+    margin-top: -12px;
+}
+.couponCode p {
+    font-size: 14px;
+    line-height: 22px;
+}
+.couponCode .sm-couponCode {
+    display: inline-block;
+    width: 100%;
+    margin: 24px 0;
+    background: #d76a6a;
+    height: 60px;
+    line-height: 60px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    border-radius: 6px;
+}
+.couponCode .sm-couponCode:before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -11px;
+    width: 105%;
+    height: 80px;
+    border: dashed 2px #bbb;
+    border-radius: 6px;
+}
+.couponCode .sm-couponCode:after {
+    position: absolute;
+    top: -26px;
+    left: -20px;
+    content: "\2702";
+    font-size: 20px;
+    font-weight: normal;
+    line-height: normal;
+    height: auto;
+    color: #333;
+    background: #fff;
+}
+.couponCode ul {
+    display: inline-block;
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+}
+.couponCode ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+.couponCode ul li p {
+    display: inline;
+}
+.couponCode ul li p span {
+    font-size: 22px;
+    font-weight: 700;
+}
+.couponCode ul li p em {
+    font-size: 12px;
+}

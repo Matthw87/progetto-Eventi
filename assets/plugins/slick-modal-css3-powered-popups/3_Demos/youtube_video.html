@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - YouTube Video</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+        <script src="https://www.youtube.com/player_api"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div id="ytVideo" data-sm-init="true" style="width: 100%; height: 100%"></div>
+
+        <script>
+            var ytVideo;
+            function onYouTubePlayerAPIReady () {
+                ytVideo = new YT.Player('ytVideo', {
+                    videoId: 'vsObnzivL1A' // Insert your YouTube video ID here
+                });
+            }
+            $('#ytVideo').SlickModals({
+                popup_animation: 'fadeIn',
+                popup_position: 'center',
+                popup_closeButtonStyle: 'text label',
+                popup_css: {
+                    'width': '80%',
+                    'height': '80%',
+                    'padding': '0',
+                    'margin' : 'auto'
+                },
+                mobile_breakpoint: '640px',
+                mobile_position: 'center',
+                mobile_css: {
+                    'width': '90%',
+                    'height': '90%',
+                    'padding': '0',
+                    'margin' : 'auto'
+                },
+                callback_afterVisible: function () {
+                    ytVideo.playVideo();
+                },
+                callback_afterClose: function () {
+                    ytVideo.pauseVideo();
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

@@ -1,0 +1,15 @@
+---
+deployment:
+  tasks:
+    - export PHP_PATH=/opt/cpanel/ea-php72/root/usr/bin/php
+    - export DEPLOY_PATH=/home/connector/public_html
+    - /bin/wget 'https://getcomposer.org/installer' -O $DEPLOY_PATH/composer-installer.php
+    - /bin/cp ./.env.production ./.env
+    - $PHP_PATH -d allow_url_fopen=on $DEPLOY_PATH/composer-installer.php --install-dir=$DEPLOY_PATH
+    - /bin/cp -r * $DEPLOY_PATH
+    - $PHP_PATH $DEPLOY_PATH/composer.phar install --optimize-autoloader --no-dev --working-dir=$DEPLOY_PATH
+    - /bin/rm -f $DEPLOY_PATH/composer.phar
+    - /bin/rm -f $DEPLOY_PATH/composer-installer.php
+    - /bin/cp  ./.env $DEPLOY_PATH/
+    - /bin/cp ./.htaccess $DEPLOY_PATH/
+    - /bin/bash ./deploy.sh $DEPLOY_PATH

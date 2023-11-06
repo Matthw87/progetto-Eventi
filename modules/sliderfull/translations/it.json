@@ -1,0 +1,34 @@
+{
+    "general": "Generale",
+    "images": "Immagine",
+    "webp_images": "Immagine (in formato <b>webp</b>)",
+    "appear": "Aspetto",
+    "slider": {
+        "form":{
+            "name": "Nome",
+            "arrows_direction": "Direzione frecce",
+            "horizontal": "orizzontale",
+            "vertical": "verticale"
+        }
+    },
+    "slide": {
+        "list":{
+            "title": "Slides di %s"
+        },
+        "form":{
+            "title": "Titolo",
+            "subtitle": "Sottotitolo",
+            "order_view": "Ordine visualizzazione",
+            "url": "url",
+            "date_start": "Data inizio",
+            "date_end": "Data fine",
+            "image": "Immagine (desktop)",
+            "image_mobile": "Immagine (mobile)",
+            "title_color": "Colore testo titolo",
+            "sutitle_color": "Colore testo sottotitolo",
+            "restricted_langs": "Restizione lingue",
+            "restricted_user_categories": "Restizione categorie utente"
+            
+        }
+    }
+}

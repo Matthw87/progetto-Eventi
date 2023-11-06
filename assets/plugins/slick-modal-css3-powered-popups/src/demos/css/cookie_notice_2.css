@@ -1,0 +1,14 @@
+/* Slick Modals - Cookie Notice 2 */
+.cookieNotice-2 * {
+    color: #fff;
+    text-align: left;
+}
+.cookieNotice-2 .title {
+    font-weight: 700;
+    padding: 0 0 6px 0;
+    font-size: 18px;
+}
+.cookieNotice-2 p {
+    font-size: 14px;
+    padding: 0;
+}

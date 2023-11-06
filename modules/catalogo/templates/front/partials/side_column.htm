@@ -1,0 +1,18 @@
+<div class="colsx {%if filtri_attivi %}active visible{% endif %}">
+	<!--<div class="breadcumbs">
+		<a href="index.php">{{tr('Home')}}</a>
+		<span>></span>
+		<a href="catalog.htm">{{tr('Catalogo')}}</a>
+		{% if sezione %}
+		<span>></span>
+			{% include '@catalogo/partials/bread_crumbs.htm' %}
+		{% endif %}
+	</div>
+	<div class="space40"></div>
+	<div class="space40"></div>-->
+	<span id="advanced_search_box_active"></span>
+	
+	{% include '@catalogo/partials/categories.htm' %}
+	{{do_action('display_catalog_list_sidebar')}}
+</div>
+

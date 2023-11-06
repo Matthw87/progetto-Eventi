@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Countdown banner</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/countdown_banner.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/demos/js/countDown.js"></script>
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="countDownBanner" data-sm-init="true">
+            <div class="price">-30<span>%</span></div>
+            <div class="location">on all destinations in Europe</div>
+            <div class="title">Don't miss out</div>
+            <div class="intro">limited offer for travelers!</div>
+            <ul class="sm-countDown"
+                data-sm-countDown-endDate="2019-12-31, 15:00:00"
+                data-sm-countDown-useServerTime="false"
+                data-sm-countDown-serverTimeFile="../src/plugin/getTime.php"
+                data-sm-countDown-endMsg="Ending message goes here.">
+                <li>
+                    <p><span class="days">00</span></p>
+                    <p><em class="textDays">days</em></p>
+                </li>
+                <li>
+                    <p><span class="hours">00</span></p>
+                    <p><em class="textHours">hours</em></p>
+                </li>
+                <li>
+                    <p><span class="minutes">00</span></p>
+                    <p><em class="textMinutes">minutes</em></p>
+                </li>
+                <li class="hide">
+                    <p><span class="seconds">00</span></p>
+                    <p><em class="textSeconds">seconds</em></p>
+                </li>
+            </ul>
+            <a class="close" href="#" data-sm-close="true">Get your <span>deal now</span></a>
+        </div>
+
+        <script>
+            $('.countDownBanner').SlickModals({
+                popup_type: 'instant',
+                popup_animation: 'flipInY',
+                popup_position: 'bottomRight',
+                popup_closeButtonStyle: 'text label',
+                popup_css: {
+                    'width': '400px',
+                    'height': '400px',
+                    'background': 'transparent',
+                    'padding': '0',
+                    'margin': '30px',
+                    'animation-duration': '0.6s'
+                },
+                overlay_closesPopup: false,
+                mobile_breakpoint: '400px',
+                mobile_position: 'bottomCenter',
+                mobile_css: {
+                    'width': '100%',
+                    'height': '400px',
+                    'background': 'transparent',
+                    'padding': '0',
+                    'margin': '20px',
+                    'animation-duration': '0.6s'
+                },
+                callback_afterInit: function () {
+                    sm_countDown('.countDownBanner');
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

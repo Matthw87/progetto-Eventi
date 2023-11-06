@@ -1,0 +1,67 @@
+<xml>
+    <sheet>
+        <tabs>
+            <tab name="categories.form.tabs.general">
+                    <row>   
+                        <col>
+                            <field name="id" hidden="true"/>
+                            <field name="parent_id"/>
+                        </col>
+                    </row>
+                    <row>
+                        <col>
+                            <field name="name"/>
+                        </col>
+                    </row>
+                    <row>   
+                        <col>
+                            <field name="description"/>
+                        </col>
+                    </row>
+                    <row>   
+                        <col>
+                            <field name="order_view"/>
+                        </col>
+                        <col>
+                            <field name="online"/>
+                        </col>
+                    </row>
+                    <row>   
+                        <col>
+                            <field name="product_category_related"/>
+                        </col>
+                    </row>
+            </tab>
+            <tab name="categories.form.tabs.media">
+                    <row>   
+                        <col>
+                            <field name="images"/>
+                        </col>
+                    </row>
+                    <row>
+                        <col>
+                            <field name="attachments"/>
+                        </col>
+                    </row>
+            </tab>
+            <tab name="categories.form.tabs.seo">
+                    <row>   
+                        <col>
+                            <field name="slug"/>
+                        </col>
+                    </row>
+                    <row>   
+                        <col>
+                            <field name="meta_title"/>
+                        </col>
+                    </row>
+                    <row>   
+                        <col>
+                            <field name="meta_description"/>
+                        </col>
+                    </row>
+            </tab>
+           
+        </tabs>
+    </sheet>
+</xml>

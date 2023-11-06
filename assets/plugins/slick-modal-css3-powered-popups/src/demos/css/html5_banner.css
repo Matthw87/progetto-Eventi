@@ -1,0 +1,440 @@
+/* Slick Modals - HTML5 Banner (made with Google Web designer) */
+.html5Banner * {
+    box-sizing: border-box;
+}
+.gwd-page-content {
+    background-color: transparent;
+    transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    transform-style: preserve-3d;
+    position: absolute;
+    overflow: hidden;
+}
+.gwd-page-wrapper {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    transform: translateZ(0px);
+}
+.gwd-page-size {
+    width: 460px;
+    height: 360px;
+}
+.gwd-img-11g9 {
+    position: absolute;
+    width: 460px;
+    height: 360px;
+    left: 0px;
+    top: 0px;
+    opacity: 1;
+}
+.gwd-p-1qqq {
+    position: absolute;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    font-size: 38px;
+    left: 195px;
+    top: 93px;
+}
+.gwd-p-5d55 {
+    font-size: 28px;
+    color: rgb(20, 18, 18);
+    left: 219px;
+    top: 181px;
+    transform: translate3d(158px, 0px, 0px);
+    opacity: 0;
+}
+.gwd-p-1tk5 {
+    left: 168px;
+    top: 142px;
+    transform: translate3d(180px, 0px, 0px);
+    opacity: 0;
+}
+@keyframes gwd-gen-yqu9gwdanimation_gwd-keyframes {
+    0% {
+        transform: translate3d(180px, 0px, 0px);
+        opacity: 0;
+        animation-timing-function: ease;
+    }
+    10.33% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+        animation-timing-function: linear;
+    }
+    24.44% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    34.64% {
+        transform: translate3d(0px, -71px, 0px);
+        opacity: 1;
+        animation-timing-function: linear;
+    }
+    91.76% {
+        transform: translate3d(0px, -71px, 0px);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    100% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 0;
+        animation-timing-function: linear;
+    }
+}
+#gwd-html5Banner.gwd-play-animation .gwd-gen-yqu9gwdanimation {
+    animation: gwd-gen-yqu9gwdanimation_gwd-keyframes 5.45s linear 0.256s 1 normal forwards;
+}
+@keyframes gwd-gen-uermgwdanimation_gwd-keyframes {
+    0% {
+        transform: translate3d(158px, 0px, 0px);
+        opacity: 0;
+        animation-timing-function: ease;
+    }
+    10.63% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+        animation-timing-function: linear;
+    }
+    26.15% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    35.6% {
+        transform: translate3d(0px, -61px, 0px);
+        opacity: 1;
+        animation-timing-function: linear;
+    }
+    91.51% {
+        transform: translate3d(0px, -61px, 0px);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    100% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 0;
+        animation-timing-function: linear;
+    }
+}
+#gwd-html5Banner.gwd-play-animation .gwd-gen-uermgwdanimation {
+    animation: gwd-gen-uermgwdanimation_gwd-keyframes 5.231s linear 0.394s 1 normal forwards;
+}
+.gwd-p-1qir {
+    position: absolute;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    font-size: 24px;
+    left: 265px;
+    top: 252px;
+}
+.gwd-p-1og6 {
+    font-weight: 700;
+    font-size: 32px;
+    left: 217px;
+    top: 255px;
+    transform: translate3d(0px, 40px, 0px);
+    opacity: 0;
+    transform-style: preserve-3d;
+}
+.gwd-canvas-1qtj {
+    position: absolute;
+    left: 152.5px;
+    top: 218.5px;
+    width: 241px;
+    height: 91px;
+    opacity: 0;
+    transform: translate3d(0px, 42px, 0px);
+    transform-style: preserve-3d;
+    border: solid 2px #fff;
+}
+.gwd-p-10su {
+    font-size: 16px;
+    left: 190px;
+    top: 220px;
+    opacity: 0;
+    transform: translate3d(0px, 40px, 0px);
+    transform-style: preserve-3d;
+}
+@keyframes gwd-gen-1660gwdanimation_gwd-keyframes {
+    0% {
+        transform: translate3d(0px, 42px, 0px);
+        opacity: 0;
+        animation-timing-function: ease;
+    }
+    17.11% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+        animation-timing-function: linear;
+    }
+    87.4% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    100% {
+        transform: translate3d(0px, 40px, 0px);
+        opacity: 0;
+        animation-timing-function: linear;
+    }
+}
+#gwd-html5Banner.gwd-play-animation .gwd-gen-1660gwdanimation {
+    animation: gwd-gen-1660gwdanimation_gwd-keyframes 3.326s linear 2.212s 1 normal forwards;
+}
+@keyframes gwd-gen-7qqogwdanimation_gwd-keyframes {
+    0% {
+        transform: translate3d(0px, 40px, 0px);
+        opacity: 0;
+        animation-timing-function: ease;
+    }
+    18.37% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+        animation-timing-function: linear;
+    }
+    86.03% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    100% {
+        transform: translate3d(0px, 40px, 0px);
+        opacity: 0;
+        animation-timing-function: linear;
+    }
+}
+#gwd-html5Banner.gwd-play-animation .gwd-gen-7qqogwdanimation {
+    animation: gwd-gen-7qqogwdanimation_gwd-keyframes 2.863s linear 2.574s 1 normal forwards;
+}
+@keyframes gwd-gen-1urigwdanimation_gwd-keyframes {
+    0% {
+        transform: translate3d(0px, 40px, 0px);
+        opacity: 0;
+        animation-timing-function: ease;
+    }
+    21.53% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+        animation-timing-function: linear;
+    }
+    83.59% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    100% {
+        transform: translate3d(0px, 40px, 0px);
+        opacity: 0;
+        animation-timing-function: linear;
+    }
+}
+#gwd-html5Banner.gwd-play-animation .gwd-gen-1urigwdanimation {
+    animation: gwd-gen-1urigwdanimation_gwd-keyframes 2.438s linear 2.906s 1 normal forwards;
+}
+@keyframes gwd-gen-yde1gwdanimation_gwd-keyframes {
+    0% {
+        opacity: 1;
+        animation-timing-function: linear;
+    }
+    92.16% {
+        opacity: 1;
+        animation-timing-function: linear;
+    }
+    100% {
+        opacity: 0;
+        animation-timing-function: linear;
+    }
+}
+#gwd-html5Banner.gwd-play-animation .gwd-gen-yde1gwdanimation {
+    animation: gwd-gen-yde1gwdanimation_gwd-keyframes 5.819s linear 0s 1 normal forwards;
+}
+.gwd-img-139j {
+    position: absolute;
+    width: 460px;
+    height: 360px;
+    left: 0px;
+    top: 0px;
+    transform: translate3d(0px, -137px, 0px);
+    opacity: 0;
+}
+@keyframes gwd-gen-9sgggwdanimation_gwd-keyframes {
+    0% {
+        opacity: 0;
+        transform: translate3d(0px, -137px, 0px);
+        animation-timing-function: linear;
+    }
+    90.17% {
+        opacity: 0;
+        transform: translate3d(0px, -137px, 0px);
+        animation-timing-function: ease;
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0px, 0px, 0px);
+        animation-timing-function: linear;
+    }
+}
+#gwd-html5Banner.gwd-play-animation .gwd-gen-9sgggwdanimation {
+    animation: gwd-gen-9sgggwdanimation_gwd-keyframes 6.287s linear 0s 1 normal forwards;
+}
+.gwd-span-12d6 {
+    position: absolute;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(33, 33, 36);
+    font-size: 14px;
+    left: 20px;
+    top: 311px;
+    transform: translate3d(0px, 40px, 0px);
+    opacity: 0;
+    transform-style: preserve-3d;
+}
+.gwd-span-1bgv {
+    position: absolute;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    color: rgb(67, 90, 187);
+    font-weight: 700;
+    left: 20px;
+    top: 281px;
+    transform: translate3d(0px, 32px, 0px);
+    opacity: 0;
+    transform-style: preserve-3d;
+}
+@keyframes gwd-gen-20togwdanimation_gwd-keyframes {
+    0% {
+        opacity: 0;
+        transform: translate3d(0px, 32px, 0px);
+        animation-timing-function: linear;
+    }
+    92.24% {
+        opacity: 0;
+        transform: translate3d(0px, 32px, 0px);
+        animation-timing-function: ease;
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0px, -10px, 0px);
+        animation-timing-function: linear;
+    }
+}
+#gwd-html5Banner.gwd-play-animation .gwd-gen-20togwdanimation {
+    animation: gwd-gen-20togwdanimation_gwd-keyframes 6.756s linear 0s 1 normal forwards;
+}
+@keyframes gwd-gen-1nfdgwdanimation_gwd-keyframes {
+    0% {
+        opacity: 0;
+        transform: translate3d(0px, 40px, 0px);
+        animation-timing-function: linear;
+    }
+    92.4% {
+        opacity: 0;
+        transform: translate3d(0px, 40px, 0px);
+        animation-timing-function: ease;
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0px, -10px, 0px);
+        animation-timing-function: linear;
+    }
+}
+#gwd-html5Banner.gwd-play-animation .gwd-gen-1nfdgwdanimation {
+    animation: gwd-gen-1nfdgwdanimation_gwd-keyframes 6.831s linear 0s 1 normal forwards;
+}
+.gwd-canvas-1pd6 {
+    position: absolute;
+    width: 104.5px;
+    height: 104.5px;
+    top: 22px;
+    left: 333px;
+    opacity: 0;
+    transform: scale3d(0.5, 0.5, 0.5);
+    background: #4acc8b;
+    border-radius: 50%;
+}
+.gwd-span-fren {
+    position: absolute;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    font-size: 36px;
+    left: 342px;
+    top: 51px;
+    transform: scale3d(0.5, 0.5, 0.5);
+    opacity: 0;
+}
+.gwd-span-10uc {
+    position: absolute;
+    font-family: 'Open Sans', sans-serif;
+    left: 21px;
+    top: 333px;
+    color: rgb(11, 11, 11);
+    font-size: 10px;
+    opacity: 0;
+}
+@keyframes gwd-gen-af1egwdanimation_gwd-keyframes {
+    0% {
+        transform: scale3d(0.5, 0.5, 0.5);
+        opacity: 0;
+        animation-timing-function: linear;
+    }
+    91.81% {
+        transform: scale3d(0.5, 0.5, 0.5);
+        opacity: 0;
+        animation-timing-function: ease;
+    }
+    97.27% {
+        transform: scale3d(1.1, 1.1, 1.1);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+        animation-timing-function: linear;
+    }
+}
+#gwd-html5Banner.gwd-play-animation .gwd-gen-af1egwdanimation {
+    animation: gwd-gen-af1egwdanimation_gwd-keyframes 7.999s linear 0s 1 normal forwards;
+}
+@keyframes gwd-gen-765bgwdanimation_gwd-keyframes {
+    0% {
+        transform: scale3d(0.5, 0.5, 0.5);
+        opacity: 0;
+        animation-timing-function: linear;
+    }
+    91.56% {
+        transform: scale3d(0.5, 0.5, 0.5);
+        opacity: 0;
+        animation-timing-function: ease;
+    }
+    96.7% {
+        transform: scale3d(1.1, 1.1, 1.1);
+        opacity: 1;
+        animation-timing-function: ease;
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+        animation-timing-function: linear;
+    }
+}
+#gwd-html5Banner.gwd-play-animation .gwd-gen-765bgwdanimation {
+    animation: gwd-gen-765bgwdanimation_gwd-keyframes 8.124s linear 0s 1 normal forwards;
+}
+@keyframes gwd-gen-lmz7gwdanimation_gwd-keyframes {
+    0% {
+        opacity: 0;
+        animation-timing-function: linear;
+    }
+    94.17% {
+        opacity: 0;
+        animation-timing-function: linear;
+    }
+    100% {
+        opacity: 1;
+        animation-timing-function: linear;
+    }
+}
+#gwd-html5Banner.gwd-play-animation .gwd-gen-lmz7gwdanimation {
+    animation: gwd-gen-lmz7gwdanimation_gwd-keyframes 9.205s linear 0s 1 normal forwards;
+}

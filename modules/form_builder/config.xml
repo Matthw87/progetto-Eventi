@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<module>
+	<info> 
+		<author>Ciro Napolitano</author>
+		<name>Widget Form</name>
+		<permission>superadmin</permission>
+		<tag>form_builder</tag>
+		<kind>cms</kind>
+		<autoload>1</autoload>
+		<version>2.1.3</version>
+		<compatibility>
+			<min>2.0.0</min>
+		</compatibility>
+		<scope></scope>
+		<description><![CDATA[Permette di creare un form nella pagine del pagecomposer]]></description> 
+   </info>
+   <widgets>
+		<widget> 
+			<name>Form</name>
+			<function>WidgetForm</function>
+			<url_conf>index.php?ctrl=EditorForm&amp;mod=form_builder</url_conf>
+			<repeatable>1</repeatable>
+		</widget>
+	</widgets>
+	<dependencies>
+        <dependence>pagecomposer</dependence>
+    </dependencies>
+</module>

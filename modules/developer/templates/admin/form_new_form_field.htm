@@ -1,0 +1,19 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block edit_page_title %} {{tr('form_field','developer')|title}} {% endblock %} 
+
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+<div class="form-group col-md-12" id="div_type">
+		<label>Tipo Html <span class="asterisk">*</span>:</label>
+		<div class="controls">
+			<select name="type" class="form-control">
+			{% for k,v in select %}
+				<option value="{{k}}">{{v}}</option>
+			{% endfor %}
+			</select>
+		</div>
+</div>
+<input type="hidden" name="mod" value="developer">
+<input type="hidden" name="form" value="{{id_form}}">
+{% endblock %}

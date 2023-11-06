@@ -1,0 +1,27 @@
+{% extends 'layouts/page.htm' %}
+{% block content %}
+
+  <div class="row">
+
+		<div class="space40"></div>
+		<div class="bread_crumbs_userarea">
+			<a href="/account/home.htm">{{tr('Il mio account')}}</a><i class="fa fa-angle-right"></i>
+			<a class="active" href="#">{% block breadcrumb_home %}{% endblock %}</a>
+			<div class="right">
+				<a href="javascript: window.history.go(-1)" class="indietro"><i class="fa fa-arrow-left"></i> {{tr('Indietro')}}</a>
+			</div>
+		</div>
+		<div class="space20"></div>
+
+		<div class="col-xs-12 col-md-12 col-lg-12">
+			<h1 class="tal">{% block title_home %}{% endblock %}</h1>
+			{% block content_home %}
+
+			{% endblock %}
+		</div>
+		<div class="space40"></div>
+
+
+	</div>
+
+{% endblock %}

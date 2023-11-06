@@ -1,0 +1,222 @@
+*******************************
+  Slick Modal [changelog]
+*******************************
+
+version 5.1
+------------------------------
+- [BUG] Fixed draggable popup when using centered position
+- [UPDATE] Settings Generator
+- [UPDATE] Documentation
+
+version 5.0
+------------------------------
+- [NEW] Pullout Price List demo
+- [NEW] Pullout Footer demo
+- [NEW] Spin Wheel demo
+- [NEW] Privacy settings demo
+- [NEW] Added new slideIn animation effect
+- [NEW] Reverse animations for most of the effects
+- [NEW] Date range for popup visibility
+- [NEW] Show popup after X visits
+- [NEW] Draggable popup window
+- [NEW] Custom popup class when popup is active
+- [NEW] Custom body class when popup is active
+- [NEW] Activate popup with click or hover on defined element
+- [NEW] Load html content via Ajax on popup initialization
+- [NEW] Close popup when user scroll's back up or leave it open
+- [NEW] Set opening of exit popup to always or just once
+- [NEW] Style popup & overlay with own custom CSS properties
+- [NEW] Set fixed or auto height of the popup
+- [NEW] Hide on pages with regex pattern matching
+- [NEW] Close button left or right position
+- [NEW] Close button placement inside or outside popup
+- [NEW] Close button custom text
+- [NEW] Redirect user on URL upon closing the popup
+- [NEW] Enable sticky button which reopens the popup
+- [NEW] Callback before and after popup init/build
+- [NEW] Callback before and after popup is opened
+- [NEW] Callback after popup is visible
+- [NEW] Callback before and after popup close
+- [NEW] Callback after popup is hidden
+- [NEW] Plugin api/public methods
+- [BUG] Fixed exit popup which was not working in Edge and MSE
+- [BUG] Prevent default action when links are used to open the popup
+- [BUG] Prevent multiple instances showing simultaneously
+- [BUG] Transitions timing correction
+- [UPDATE] Complete plugin rewrite and performance optimization
+- [UPDATE] Demos optimization
+- [UPDATE] Removed Slick Stats due to preferable usage of 3rd party analytics
+- [UPDATE] Removed video support due to more efficient usage of official API's (Youtube etc...)
+- [UPDATE] New documentation
+
+* Note: To upgrade please reinstall the plugin completely as the new version is not backwards compatible.
+
+version 4.4
+------------------------------
+
+- [UPDATE] Added safe prefix to avoid conflicts with other plugins (like animate.js and similar)
+- [UPDATE] Defined default values for plugin settings
+- [UPDATE] Removed unused plugin options within the demos
+- [UPDATE] Removed overflow inside the modal
+- [UPDATE] Plugin performance optimization
+- [UPDATE] Documentation
+- [BUG] Fixed a bug when clicking Preview button in the generator which blocked input focus afterwards
+- [BUG] Auto close timer reset upon closing the modal
+- [BUG] Other minor plugin bug fixes
+
+version 4.3
+------------------------------
+- [NEW] Added setting to open popup via url hash
+- [NEW] Sticky SlideIn Banner demo
+- [UPDATE] Overflow inside the modal
+- [UPDATE] Documentation
+
+version 4.2
+------------------------------
+- [NEW] Added new modal effects
+- [NEW] Added new overlay effects
+- [NEW] Added new page/background effects
+- [NEW] Events calendar demo
+- [NEW] Testimonials rotator demo
+- [NEW] Promo banner demos
+- [NEW] Image gallery demo
+- [NEW] Welcome message demo
+- [NEW] Alert message demos
+- [NEW] Quick view demo
+- [NEW] Audio player demo
+- [NEW] Content window demo
+- [UPDATE] Main plugin files optimization (css and js)
+- [UPDATE] Popup generator optimization
+- [UPDATE] Statistics plugin minor update
+- [UPDATE] Documentation
+
+* Note: If your are using version prior 4.2 please update all the main files (css in js) and the plugin settings/options as some settings names have been changed and new options have been added within the plugin.
+
+version 4.1
+------------------------------
+- [NEW] Products carousel demo
+- [NEW] Dropdown menu demo
+- [NEW] Overlay menu demo
+- [NEW] Coupon code popup demo
+- [NEW] Survey form popup demo
+- [NEW] Search form popup demo
+- [NEW] HTML5 animated banner popup demo
+- [NEW] Next post popup demo
+- [UPDATE] Demos optimization
+- [UPDATE] Main plugin minor fixes
+- [UPDATE] Popup generator update
+- [UPDATE] Statistics plugin update
+- [UPDATE] Documentation
+
+version 4.0
+------------------------------
+- [NEW] Slick Modal statistics plugin
+- [NEW] Live popup generator
+- [NEW] Option to auto close the popup
+- [NEW] Option to show/hide the popup on mobile/custom resolutions
+- [NEW] Contact form demo with field validation
+- [NEW] All demos are now responsive
+- [UPDATE] Plugin optimisation and update
+- [UPDATE] Updated to jQuery 3.x
+- [UPDATE] Updated documentation
+
+version 3.8
+------------------------------
+- [NEW] Added new demos
+- [BUG] Exit popup bug fix
+
+
+version 3.7
+------------------------------
+- [NEW] Added mobile options
+- [UPDATE] Updated documentation
+
+
+version 3.6
+------------------------------
+- [NEW] Added new demo
+- [BUG] Exit type bug fix
+- [UPDATE] Performance optimization
+- [UPDATE] Updated documentation
+
+
+version 3.5
+------------------------------
+- [NEW] ESC key can close the modal and set a cookie to hide it
+- [NEW] Youtube videos can be autoplayed and stopped on modal close
+- [NEW] Hide the modal on specific pages on the website
+- [NEW] Choose if the overlay closes the modal
+- [NEW] On modal load and close events
+- [NEW] Animate popup inner content separately
+- [NEW] Cookie scope can now be set on domain or certain page
+- [NEW] Added 13 new transition effects (28 total)
+- [NEW] Added new button style
+- [NEW] Added Top bar countdown
+- [UPDATE] Complete plugin rewrite and update
+- [UPDATE] Performance optimization (both js and css)
+- [UPDATE] Fixed exit popup, so it opens only when user moves the mouse upwards
+- [UPDATE] Fixed overlay issue, which wasn't correctly disabled
+- [UPDATE] Fixed the modal centering when choosing certain positions
+- [UPDATE] Fixed potential conflicts with other scripts and stylesheets
+- [UPDATE] Other minor various fixes and improvements
+- [UPDATE] Updated documentation
+
+
+version 3.4
+------------------------------
+- [NEW] Added new demos (Social share, Cookie notices, Special countdowns, Facebook page)
+- [UPDATE] Updated documentation
+
+
+version 3.3
+------------------------------
+- [NEW] Added new demos (Multiple popups, Background image, Panorama view & Random stats)
+- [NEW] Popup can now be set to show only on pages that contain certain string in the url
+- [UPDATE] Updated documentation and refreshed the content, specially FAQ, Tips & Tricks and some definitions
+
+
+version 3.0
+------------------------------
+- [NEW] Added responsive modal demo
+- [UPDATE] Updated documentation
+
+
+version 2.8
+------------------------------
+- [NEW] Added common demo layouts
+- [UPDATE] Updated documentation
+
+
+version 2.3
+------------------------------
+- [NEW] Added exit and scroll popup types
+- [NEW] Added new background effect
+- [NEW] Added option to set custom cookie name
+- [NEW] Added option to set session cookie
+- [NEW] Now you can have multiple popups on the same page
+- [NEW] Additional 10+ various plugin options
+- [NEW] All functional options are now avaliable via plugin settings,
+- [NEW] All styling options are now avaliable via plugin settings,
+- [NEW] Added common demos/layouts for help,
+- [UPDATE] Plugin optimization
+- [UPDATE] Code optimization
+- [UPDATE] Updated documentation
+
+
+version 2.2
+------------------------------
+- [UPDATE] change on load to document ready plugin invoke, which will call the plugin earlier
+- [UPDATE] updated documentation
+
+
+version 2.0
+------------------------------
+- [NEW] Advanced options are now a jQuery plugin
+- [NEW] Added new transition] blur
+- [UPDATE] Plugin optimization
+- [UPDATE] Updated documentation
+
+
+version 1.0
+------------------------------
+- Initial release

@@ -1,0 +1,23 @@
+{% extends 'layouts/composer/base.htm' %}
+
+
+{% block container %}
+	
+	<div class="pagecomposer-top">
+		
+		{{page_composer('top')}}
+		
+	</div>
+	
+	<div class="pagecomposer-contenitore-left">
+		
+		{{page_composer('content')}}
+		
+	</div>
+	<div class="pagecomposer-side-right">
+		
+		{{page_composer('right')}}
+		
+	</div>
+	{{parent()}}
+{% endblock %}

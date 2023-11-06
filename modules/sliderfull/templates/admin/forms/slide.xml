@@ -1,0 +1,77 @@
+<xml>
+    <sheet>
+        <tabs>
+            <tab name="general">
+                <row>
+                    <col>
+                        <field name="id" hidden="true"/>
+                        <field name="slider_id" hidden="true"/>
+                        <field name="title"/>
+                    </col>
+                    <col>
+                        <field name="color_title"/>
+                    </col>
+                </row> 
+                <row>
+                    <col>
+                        <field name="subtitle"/>
+                    </col>
+                    <col>
+                        <field name="color_subtitle"/>
+                    </col>
+                </row> 
+                <row>
+                    <col>
+                        <field name="url"/>
+                    </col>
+                </row>
+                 <row>
+                    <col>
+                        <field name="allowed_user_categories"/>
+                    </col>
+                    <col>
+                        <field name="allowed_langs"/>
+                    </col>
+                </row> 
+                <row>
+                    <col>
+                        <field name="order_view"/>
+                    </col>
+                    <col>
+                        <field name="date_start"/>
+                    </col>
+                    <col>
+                        <field name="date_end"/>
+                    </col>
+                </row> 
+
+            </tab>
+            <tab name="images">
+                <row>
+                    <col>
+                        <field name="image"/>
+                    </col>
+                </row>
+                 <row>
+                    <col>
+                        <field name="mobile_image"/>
+                    </col>
+                </row>
+            </tab>
+             <tab name="webp_images">
+                <row>
+                    <col>
+                        <field name="webp_image"/>
+                    </col>
+                </row>
+                 <row>
+                    <col>
+                        <field name="webp_mobile_image"/>
+                    </col>
+                </row>
+            </tab>
+        </tabs>
+        
+          
+    </sheet>
+</xml>

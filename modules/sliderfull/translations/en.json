@@ -1,0 +1,16 @@
+{
+    "slider": {
+        "form":{
+            "name": "Nome"
+        }
+    },
+    "slide": {
+        "form":{
+            "title": "Titolo",
+            "subtitle": "Sottotitolo",
+            "order_view": "Ordine visualizzazione",
+            "date_start": "Data inizio",
+            "date_end": "Data fine"
+        }
+    }
+}

@@ -1,0 +1,69 @@
+{% extends 'layouts/page.htm' %}
+{% block metatags_title %}{{meta_title}}{% endblock %}
+{% block metatags_description %}{{meta_description}}{% endblock %}
+{% block content %}
+<h4 class="txtc m-b-0">{{title}}</h4>
+<div class="clear"></div>
+<div class="row precprod">
+	<div class="col-xs-12 col-sm-6 col-sm-6 col-lg-6">
+		<button class="selfiltri  {%if filtri_attivi %}active{% endif %}">
+			<img src="themes/jewels/images/ico_filtri.png">
+			<img src="themes/jewels/images/ico_close_filtri.png">
+			Filtri
+		</button>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-sm-6 col-lg-6">
+		{% include '@catalogo/partials/order_type.htm' %}
+		{% include '@catalogo/partials/view_type.htm' %}
+		{% include '@catalogo/partials/per_page.htm' %}
+	</div>
+</div>
+{% include '@catalogo/partials/side_column.htm' %}
+<div class="coldx  {%if filtri_attivi %}resize{% endif %}">
+	<div class="contprod">
+		{% if prodotti == false %}
+			<span>{{tr('product_list.no_products','catalogo')}}</span>
+		{% else %}
+			{% for riga in prodotti %}
+				<!--{card_product_list(riga,type_img,class_row)}-->
+				{% include '@catalogo/partials/product_list.htm' with {'product_row': riga,'img_type_product_list':type_img,'class_row_product':class_row} %}
+			{% endfor %}
+		{% endif %}
+	</div>
+	{% if other_products_pager %}
+	<div class="btn-showmore" id="btn-showmore" onclick="show_other_products($(this),document.location.href,1)" style="display:{% if load_on_scroll %}none{% else %}block{% endif %}">
+		{{tr('product_list.show_more','catalogo')}}
+	</div>
+	{% if load_on_scroll %}
+		<div class="space20"></div>
+		<div id="loader-ajax" style="display:none">{{tr('product_list.loading','catalogo')}}</div>
+		<span class="end_list_page"></span>
+	{% endif %}
+	{% endif %}
+	<div class="space40"></div>
+	{% include '@catalogo/partials/pager.htm' %}
+	<!--<div class="cont_prod_corr" flexy:if="sezione.getRelatedProducts()">
+		<div class="cont_mod" flexy:if="auth(#cms_page#)">
+			<a href="{url_page_edit(#titolo_correlati#,#1#)}" class="mod"><img src="/themes/jewels/images/ico_mod.jpg"> {tr(#Modifica#)}</a>
+		</div>
+		<div class="header_corr">
+			{output_page_content(#titolo_correlati#)}
+		</div>
+		<div class="slider_corr">
+			<div class="bxslider">
+				<span flexy:foreach="sezione.getRelatedProducts(),v">
+					{card_product_list(v,#small#,#slide_corr#)}
+				</span>
+			</div>
+		</div>
+	</div>-->
+	<div class="space40"></div>
+</div>
+
+
+   
+
+
+
+
+{% endblock %}

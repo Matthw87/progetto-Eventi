@@ -1,0 +1,81 @@
+/* Slick Modals - Newsletter Form */
+.newsletterForm * {
+    color: #fff;
+}
+.newsletterForm {
+    text-align: center;
+}
+.newsletterForm form {
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 20px;
+}
+.newsletterForm form:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.newsletterForm .title {
+    font-size: 32px;
+    position: relative;
+    padding-top: 70px;
+}
+.newsletterForm .title:before,
+.newsletterForm .title:after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    content: '';
+    margin: auto;
+}
+.newsletterForm .title:before {
+    top: 0;
+    width: 64px;
+    height: 40px;
+    background: transparent;
+    border: solid 2px #fff;
+    border-radius: 6px;
+}
+.newsletterForm .title:after {
+    top: -6px;
+    width: 30px;
+    height: 30px;
+    border-right: solid 2px #fff;
+    border-bottom: solid 2px #fff;
+    transform: rotate(35deg) skew(-20deg);
+}
+.newsletterForm p {
+    font-size: 14px;
+    padding-bottom: 40px;
+}
+.newsletterForm input {
+    float: left;
+    font-size: 14px;
+    padding: 0 10px;
+    line-height: 40px;
+}
+.newsletterForm input[type="email"] {
+    width: 65%;
+    background: rgba(0,0,0,.2);
+}
+.newsletterForm input[type="submit"] {
+    width: 35%;
+    background: #333;
+    font-weight: 700;
+    cursor: pointer;
+}
+.newsletterForm input[type="submit"]:hover {
+    opacity: .7;
+}
+.newsletterForm input::-webkit-input-placeholder {
+    color: #fff;
+}
+.newsletterForm input:-moz-placeholder {
+    color: #fff;
+}
+.newsletterForm input::-ms-input-placeholder {
+    color: #fff;
+}
+.newsletterForm input::placeholder {
+    color: #fff;
+}

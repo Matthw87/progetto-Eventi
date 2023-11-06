@@ -1,0 +1,27 @@
+{% extends "@core/layouts/tab/base_form.htm" %}
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+
+{{form.buildCol(dataform.enable_select_order_product,'col-md-6')}}
+{{form.buildCol(dataform.parameters_select_order_product,'col-md-6')}}
+
+{{form.buildCol(dataform.type_view,'col-md-6')}}
+{{form.buildCol(dataform.type_pager_section,'col-md-6')}}
+{{form.buildCol(dataform.enable_select_number_product_page,'col-md-6')}}
+{{form.buildCol(dataform.enable_select_view_product,'col-md-6')}}
+
+
+{% if isActivedModule('ecommerce') %}
+	{{form.buildCol(dataform.enable_add_wishlist,'col-md-6')}}
+
+	{{form.buildCol(dataform.enable_add_cart_button,'col-md-6')}}
+	{{form.buildCol(dataform.enable_quantity_add_cart,'col-md-6')}}
+   
+{% endif %}
+
+                
+
+               
+
+{% endblock %}

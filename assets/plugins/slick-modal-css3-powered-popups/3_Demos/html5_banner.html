@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - HTML5 Banner</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/html5_banner.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="html5Banner" data-sm-init="true">
+            <a href="#" target="_blank" data-sm-close="true">
+                <gwd-genericad id="gwd-ad">
+                    <div is="gwd-pagedeck" class="gwd-page-container gwd-pagedeck" id="pagedeck">
+                        <div is="gwd-page" id="gwd-html5Banner" class="gwd-page-wrapper gwd-page-size gwd-lightbox gwd-page" data-gwd-width="460px" data-gwd-height="360px">
+                            <div class="gwd-page-content gwd-page-size">
+                                <img is="gwd-image" source="../src/demos/img/html5_banner_1.jpg" id="img1" class="gwd-img-11g9 gwd-gen-yde1gwdanimation" src="../src/demos/img/html5_banner_1.jpg">
+                                <p class="gwd-p-1qqq gwd-p-1tk5 gwd-gen-yqu9gwdanimation">Lorem ipsum</p>
+                                <p class="gwd-p-1qqq gwd-p-5d55 gwd-gen-uermgwdanimation">dot color?</p>
+                                <div width="241" height="91" class="gwd-canvas-1qtj gwd-gen-1660gwdanimation"></div>
+                                <p class="gwd-p-1qir gwd-p-10su gwd-gen-7qqogwdanimation">Vim vocent abhorreant</p>
+                                <p class="gwd-p-1qir gwd-p-1og6 gwd-gen-1urigwdanimation">ceteros</p>
+                                <img is="gwd-image" source="../src/demos/img/html5_banner_2.jpg" id="gwd-image_1" class="gwd-img-139j gwd-gen-9sgggwdanimation" src="../src/demos/img/html5_banner_2.jpg"><span class="gwd-span-1bgv gwd-gen-20togwdanimation">Lorem ipsum</span><span class="gwd-span-12d6 gwd-gen-1nfdgwdanimation">Vim vocent abhorreant an, at ius suas hinc ceteros.</span>
+                                <div width="104" height="104" class="gwd-canvas-1pd6 gwd-gen-af1egwdanimation"></div><span class="gwd-span-fren gwd-gen-765bgwdanimation">-25%</span><span class="gwd-span-10uc gwd-gen-lmz7gwdanimation">Vim vocent abhorreant an, at ius suas hinc ceteros &nbsp;@ &nbsp;www.example.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </gwd-genericad>
+            </a>
+        </div>
+
+        <script>
+            $('.html5Banner').SlickModals({
+                popup_type: 'instant',
+                popup_animation: 'zoomIn',
+                popup_css: {
+                    'width': '460px',
+                    'height': '360px',
+                    'background': '#fff',
+                    'padding': '0',
+                    'margin': 'auto'
+                },
+                overlay_css: {
+                    'background': 'rgba(0, 0, 0, 0.6)'
+                },
+                mobile_breakpoint: '480px',
+                mobile_position: 'center',
+                mobile_css: {
+                    'width': '460px',
+                    'height': '360px',
+                    'background': '#fff',
+                    'padding': '0',
+                    'margin': 'auto'
+                },
+                callback_afterVisible: function () {
+                    $('#gwd-html5Banner').addClass('gwd-play-animation');
+                },
+                callback_afterHidden: function () {
+                    $('#gwd-html5Banner').removeClass('gwd-play-animation');
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

@@ -1,0 +1,17 @@
+{% for link in items_link_menu %}
+	{% if link.children %}
+		<li style="cursor:pointer;" class="open_sub"><a>{{link.get('title')}} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+			<ul class="sub-menu">
+				{% for link2 in link.children %}
+					<li class="col-xs-12 col-sm-4 col-md-4 col-lg-2 sub">
+						<a href="{{link2.getUrl()}}" {% if link2.target_blank %}target="_blank"{% endif %}><img src="/img/{{link2.image}}/or-nw/{{link2.get('title')}}" class="pos_img"><span>{{link2.get('title')}}</span></a>
+					</li>
+				{% endfor %}
+			</ul>
+		</li>
+	{% else %}
+		<li>
+			<a href="{{link.getUrl()}}" {% if link.target_blank %}target="_blank"{% endif %}>{{link.get('title')}}</a>
+		</li>
+	{% endif %}
+{% endfor %}

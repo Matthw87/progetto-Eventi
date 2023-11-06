@@ -1,0 +1,76 @@
+/* Slick Modals - Statistics */
+.stats .row {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+}
+.stats .title {
+    margin-bottom: 26px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+}
+.stats .data-title {
+    width: 30%;
+    color: #fff;
+    font-size: 14px;
+    line-height: 22px;
+    float: left;
+}
+.stats .data-title span {
+    padding-right: 4px;
+    color: #ddd;
+}
+.stats .data {
+    width: 70%;
+    height: 22px;
+    float: right;
+    overflow: hidden;
+}
+.stats .data span {
+    width: 15%;
+    height: 100%;
+    display: inline-block;
+    color: #fff;
+    font-size: 12px;
+    line-height: 22px;
+    padding-left: 10px;
+    background: #e67373;
+}
+.stats .data span.value-1 {
+    width: 23%;
+}
+.stats .data span.value-2 {
+    width: 58%;
+}
+.stats .data span.value-3 {
+    width: 36%;
+}
+.stats .data span.value-4 {
+    width: 79%;
+}
+.stats .data span.value-5 {
+    width: 48%;
+}
+.stats .result {
+    display: block;
+    margin-top: 10px;
+    float: left;
+}
+.stats .result span {
+    color: #fff;
+    font-size: 12px;
+}
+.stats .result span b {
+    font-weight: 700;
+    color: #fff;
+}
+.stats .result span:before {
+    content: '';
+    display: inline-block;
+    background: #e67373;
+    width: 12px;
+    height: 12px;
+    vertical-align: top;
+    margin: 5px 6px 0 0;
+}

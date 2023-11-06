@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Content Box</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/content_box.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="content_box" data-sm-init="true">
+            <img src="../src/demos/img/content_box.jpg" />
+            <div class="content">
+                <div class="title">Lorem ipsum</div>
+                <p>Lorem ipsum dolor sit amet, vim an dolores suscipit sadipscing. Quidam virtute percipitur eos ea, paulo suscipit et ius, et pri ponderum cotidieque referrentur. Ius ei enim illum impetus, electram forensibus deterruisset nam ea, sed eu meis propriae conclusionemque. Mel habeo facilisis vulputate cu.</p>
+                <p>Ad nec quis ancillae pericula. Expetendis posidonium nec no, graeci timeam detracto vis et. Ad elitr interpretaris cum. Laoreet tractatos nam cu, in mei malorum vivendo, eu aliquam nominavi intellegebat pro. Cibo vulputate an nam, usu essent voluptatibus at. Etiam tation efficiantur at has. Probatus senserit no nam.</p>
+                <div class="subtitle">Ius enim illum</div>
+                <p>Ex vel possit contentiones, mea quaestio disputationi ut. Per et molestie pertinacia, tamquam platonem intellegam ad usu, tale cibo deterruisset nam ex. Quem justo reprimique ei est, feugait gubergren at mei. Delicata tractatos his an. Duis deserunt at pro. Diam clita conclusionemque qui ne, error mucius mei an. Ut vero aliquip vel, sea id nibh malis debet.</p>
+                <div class="subtitle">Cibo vulputate</div>
+                <p>Ex vel possit contentiones, mea quaestio disputationi ut. Per et molestie pertinacia, tamquam platonem intellegam ad usu, tale cibo deterruisset nam ex. Quem justo reprimique ei est, feugait gubergren at mei.</p>
+                <div class="title">Vix ne malis</div>
+                <p>His hendrerit pertinacia eu. Nusquam honestatis in eam, id modo porro delectus pri. Vix ne malis tation prompta. Ad vix habeo eloquentiam, est ut alia tritani prodesset, ut unum mucius luptatum mel. Eum id commune contentiones, id noster discere his.</p>
+                <ul>
+                    <li>ut unum mucius luptatum mel</li>
+                    <li>honestatis in eam</li>
+                    <li>id noster discere his</li>
+                    <li>error mucius mei an</li>
+                    <li>deserunt at pro</li>
+                </ul>
+                <div class="close" data-sm-close="true">&xlarr;&nbsp;&nbsp; Go back</div>
+            </div>
+        </div>
+
+        <script>
+            $('.content_box').SlickModals({
+                popup_type: 'delayed',
+                popup_delayedTime: '1s',
+                popup_animation: 'slideRight',
+                popup_position: 'topRight',
+                popup_closeButtonPlace: 'inside',
+                popup_css: {
+                    'width': '420px',
+                    'height': '100%',
+                    'background': '#fff',
+                    'padding': '0',
+                    'margin': '0'
+                },
+                overlay_css: {
+                    'background': 'rgba(0, 0, 0, 0.6)'
+                },
+                mobile_breakpoint: '480px',
+                mobile_position: 'topCenter',
+                mobile_css: {
+                    'width': '100%',
+                    'height': '100%',
+                    'padding': '0',
+                    'margin': '0'
+                },
+                popup_bodyClass: 'content_box_visible'
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

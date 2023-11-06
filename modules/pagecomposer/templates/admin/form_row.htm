@@ -1,0 +1,55 @@
+{% extends "@core/layouts/base_form_widget.htm" %}
+
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+
+
+
+
+{{form.buildCol(dataform.custom_name,'col-md-12')}}
+{{form.buildCol(dataform.active,'col-md-12')}}
+
+
+
+{{form.buildCol(dataform.detect_mobile_type,'col-md-12')}}
+
+
+<div class="mobile-detect">
+	{{form.buildCol(dataform.enable_mobile,'col-md-4')}}
+	{{form.buildCol(dataform.enable_tablet,'col-md-4')}}
+	{{form.buildCol(dataform.enable_desktop,'col-md-4')}}
+</div>
+
+
+<script>
+	$('#detect_mobile_type').on('change',function(){
+		switch($(this).val()){
+			case 'server':
+			case 'client':
+				$('.mobile-detect').show();
+				break;
+			default:
+				$('.mobile-detect').hide();
+				break;
+		}
+	})
+
+
+	switch($('#detect_mobile_type').val()){
+		case 'server':
+		case 'client':
+			$('.mobile-detect').show();
+			break;
+		default:
+			$('.mobile-detect').hide();
+			break;
+	}
+	
+</script>
+
+
+
+{% endblock %}
+
+

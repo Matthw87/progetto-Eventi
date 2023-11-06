@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Contact Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/contact_form.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+        <script src="../src/demos/js/contact_form.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="contactForm" data-sm-init="true">
+            <div class="topIcon"></div>
+            <div class="title">Get in touch</div>
+            <p>Get in touch with us and we'll be with you in no time!</p>
+            <form name="smForm-1" id="smForm-1">
+                <input type="text" name="name" class="field name" placeholder="Your name" />
+                <input type="email" name="email" class="field email" placeholder="Your email" />
+                <input type="tel" name="phone" class="field phone" placeholder="Contact phone" />
+                <input type="text" name="message" class="field message" placeholder="Your message" />
+                <input type="submit" class="send cta" value="Send message" />
+                <div class="errorMsg"></div>
+            </form>
+            <div class="close sm-contactFormCookie" data-sm-close="true">No thanks, i don't want to chat right now</div>
+        </div>
+
+        <script>
+            $('.contactForm').SlickModals({
+                popup_type: 'instant',
+                restrict_cookieSet: true,
+                restrict_cookieName: 'sm-contactForm',
+                restrict_cookieDays: '14',
+                restrict_cookieSetClass: 'sm-contactFormCookie',
+                popup_animation: 'flipInY',
+                popup_closeButtonEnable: false,
+                popup_css: {
+                    'width': '420px',
+                    'background': 'transparent',
+                    'padding': '0',
+                    'margin': 'auto',
+                    'animation-duration': '0.8s'
+                },
+                mobile_breakpoint: '480px',
+                mobile_position: 'center',
+                mobile_css: {
+                    'width': '100%',
+                    'height': 'auto',
+                    'background': 'transparent',
+                    'padding': '20px',
+                    'margin': '0'
+                },
+                popup_bodyClass: 'sm-contactForm-active',
+                callback_afterVisible: function () {
+                    sm_contactForm('.contactForm');
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Slick Modals - Documentation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/docs.css" rel="stylesheet" type="text/css" />
+
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/docs.js"></script>
+
+    </head>
+    <body class="docs">
+
+        <div id="menu">
+            <div class="title">Slick Modals</div>
+            <div class="info">- documentation</div>
+            <div class="links">
+                <div class="goto active" data-goto="Overview">Overview</div>
+                <div class="goto" data-goto="Structure">Structure</div>
+                <div class="goto" data-goto="Usage">Usage</div>
+                <div class="goto" data-goto="Configuration">Configuration</div>
+                <div class="goto" data-goto="Public">Public API</div>
+                <div class="goto" data-goto="Faq">Faq</div>
+                <div class="goto" data-goto="Tips">Tips &amp; Tricks</div>
+                <div class="goto" data-goto="Troubleshooting">Troubleshooting</div>
+                <div class="goto" data-goto="Support">Support</div>
+            </div>
+            <div class="info">Last updated: 10.11.2018</div>
+            <div class="info">Support: <a href="mailto:support@justcapelle.com">support@justcapelle.com</a></div>
+        </div>
+
+        <div class="main">
+
+            <!-- Overview -->
+            <div id="Overview" class="section">
+                <h2>Overview</h2>
+                <p>Slick Modals is a HTML5 and CSS3 popup intended to be easily implemented into almost any website with some basic HTML and CSS knowledge. It is a plugin made for easy usage, customization and further development. <b>It is not a CMS plugin, module or widget</b> hence it needs to be installed manually into specific CMS. For further reading Slick Modal will be referenced as a <i>plugin</i>.</p>
+
+                <h3>Supported browsers</h3>
+                <ul>
+                    <li>Google Chrome 40+</li>
+                    <li>Opera 40+</li>
+                    <li>Firefox 30+</li>
+                    <li>Internet Explorer 11+</li>
+                    <li>Microsoft Edge</li>
+                </ul>
+                <div class="notes">
+                    <p class="note">Plugin is tested in browsers listed above on Windows 10 platform. Older browsers (like Internet Explorer 10 and below) or browsers that don't support CSS3 and some Javascript features in full will not render plugin correctly. Plugin should work on almost all modern portable devices (iOS and Android) to but it was created and tested to work mainly on desktops and high-res tablets which support features used in the plugin.</p>
+                </div>
+
+                <h3>Responsiveness</h3>
+                <p>Although plugin has responsive settings, they are bound to the popup wrapper and will not affect the inner content. If you plan to use responsive content, it's best to adapt your content with CSS media queries. You can read more about media queries at <a href="http://www.w3schools.com/css/css_rwd_mediaqueries.asp" target="_blank">W3Schools</a>.</p>
+
+                <h3>Package contents</h3>
+                <ol>
+                    <li><b>Quick_start</b> - a basic demo for a quick start and usage reference</li>
+                    <li><b>Settings_Generator</b> - quick settings generator with simple preview</li>
+                    <li><b>Demos</b> - contains various popup usage demos</li>
+                    <li><b>Documentation</b> - currently reading :)</li>
+                    <li><b>src</b> - source files for the plugin, package demos and support pages</li>
+                    <li><b>changelog.txt</b> -  plugin version history and updates</li>
+                </ol>
+            </div>
+
+            <!-- Structure -->
+            <div id="Structure" class="section">
+                <h2>Plugin structure</h2>
+                <p>Plugin is made of base HTML element which defines the popup content wrapper, CSS for basic design along with animations and jQuery plugin which controls the functionality of the popup.</p>
+
+                <h3>HTML</h3>
+                <p>Plugin HTML base is a wrapper element with <span class="code">ID</span> or <span class="code">class</span> and <span class="code">data-sm-init="true"</span> attribute which is used as a target element when invoking and setting up the plugin options. For example:</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">div</span> <span class="sel">class="myPopup" data-sm-init="true"</span><span class="br">&gt;</span>
+        <span class="com">... popup inner content ...</span>
+    <span class="br">&lt;</span><span class="el">/div</span><span class="br">&gt;</span>
+</pre>
+                <div class="notes">
+                    <p class="note"><span class="code">data-sm-init="true"</span> is mandatory as it prevents popup flicker on page load. Without it the plugin will not work.</p>
+                    <p class="note">Plugin dynamically creates all the necessary wrapping elements and attributes.</p>
+                </div>
+
+                <h3>CSS</h3>
+                <p>The CSS contains main layout definitions, buttons styles and animations:</p>
+                <ol>
+                    <li>Reset and basics</li>
+                    <li>Popup positions</li>
+                    <li>Popup transitions</li>
+                    <li>Close buttons</li>
+                </ol>
+
+                <h3>jQuery plugin</h3>
+                <p>jQuery plugin controls the functionality part of the popup. The invoke consists from definable popup settings and callbacks. Below is an example of a simple plugin invoke based on the HTML structure above:</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">script</span><span class="br">&gt;</span>
+        <span class="el">jQuery</span><span class="sel">('.myPopup')</span>.<span class="mtd">SlickModals</span>({
+            popup_position: <span class="sel">'center'</span>,
+            popup_css: {
+                <span class="sel">'padding': '40px',
+                'margin' : '30px'</span>
+            }
+        });
+    <span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span>
+</pre>
+                <div class="notes">
+                    <p class="note">Plugin can also be <b>chained</b> with other jQuery methods. For example: <span class="code">jQuery('.myPopup').attr('title', 'foo').addClass('foo').SlickModals()</span>.</p>
+                </div>
+            </div>
+
+            <!-- Usage -->
+            <div id="Usage" class="section">
+                <h2>Usage</h2>
+                <p>Before using the plugin please check the requirements:</p>
+                <ul>
+                    <li><b>Required:</b> jQuery 1.8+ has to be loaded on your website</li>
+                    <li><b>Optional:</b> PHP 5.6+ in case you are using server side scripts of the plugin (for example: server time for date range restriction)</li>
+                </ul>
+                <h3>Upload plugin files</h3>
+                <p>In order for the plugin to work it needs the CSS and Javascript files. Upload the following files from the <span class="code">/src/plugin/</span> folder to your web server:</p>
+                <ol>
+                    <li><b>slickmodal.min.css</b></li>
+                    <li><b>jquery.slickmodal.min.js</b></li>
+                </ol>
+
+                <h3>Include the plugin files</h3>
+                <p>Edit the <span class="code">&lt;head&gt;</span> section of your page and include the plugin CSS. For example:</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">head</span><span class="br">&gt;</span>
+        <span class="com">... other head elements ...</span>
+        <span class="br">&lt;</span><span class="el">link</span> <span class="sel">href="yourUploadPath/slickmodal.min.css" rel="stylesheet" type="text/css"</span> <span class="br">/&gt;</span>
+        <span class="com">... other head elements ...</span>
+    <span class="br">&lt;/</span><span class="el">head</span><span class="br">&gt;</span>
+</pre>
+                <p>Include the plugin Javascript right before closing <span class="code">&lt;/body&gt;</span> tag on your page. For example:</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">body</span><span class="br">&gt;</span>
+        <span class="com">... other body elements ...</span>
+        <span class="br">&lt;</span><span class="el">script</span> <span class="sel">src="yourUploadPath/jquery.slickmodal.min.js"</span><span class="br">&gt;</span><span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span>
+    <span class="br">&lt;/</span><span class="el">body</span><span class="br">&gt;</span>
+</pre>
+
+                <div class="notes">
+                    <p class="note">For performance it is always recommended to use <b>minified</b> version of both CSS and Javascript files (.min.).</p>
+                    <p class="note">Always load plugin Javascript file (jquery.slickmodal.min.js) <b>after jQuery</b> library has loaded on your site.</p>
+                    <p class="note">Be sure you have specified correct path which reflects the CSS and Javascript files location on your web server.</p>
+                    <p class="note">You can also include the plugin Javascript file inside <span class="code">&lt;head&gt;</span> section if needed but after the jQuery library.</p>
+                </div>
+
+                <h3>Create HTML structure</h3>
+                <p>Start by creating a main popup wrapper which should have an <span class="code">id</span> or a <span class="code">class</span> attribute defined. The main wrapper will serve as a target element for the plugin invoke and a wrapper for the inner content. After creating the main wrapper insert the popup content inside.</p>
+                <p>It's best to place the popup wrapper <b>after the plugin</b> script call and <b>right before closing</b> <span class="code">&lt;/body&gt;</span> <b>tag</b>. For example:</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">body</span><span class="br">&gt;</span>
+        <span class="com">... other body elements ...</span>
+        <span class="br">&lt;</span><span class="el">script</span> <span class="sel">src="yourUploadPath/jquery.slickmodal.min.js"</span><span class="br">&gt;</span><span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span>
+        <span class="br">&lt;</span><span class="el">div</span> <span class="sel">class="myPopup" data-sm-init="true"</span><span class="br">&gt;</span>
+            <span class="com">... popup inner content ...</span>
+        <span class="br">&lt;</span><span class="el">/div</span><span class="br">&gt;</span>
+    <span class="br">&lt;/</span><span class="el">body</span><span class="br">&gt;</span>
+</pre>
+                <div class="notes">
+                    <p class="note"><b>DO NOT</b> nest the popup HTML inside other elements. It should always be a <b>first child</b> of the <span class="code">&lt;body&gt;</span>.</p>
+                    <p class="note">You can put any HTML element inside the popup content; iframe, video, image or other elements.</p>
+                    <p class="note">You can also use a Quick Start template or other demo(s) from the package and copy the HTML for a reference and a starting point.</p>
+                </div>
+
+                <h3>Plugin setup &amp; settings</h3>
+                <p>Create plugin invoke, place it <b>below the popup main wrapper</b> and adjust the settings to your likings. For example:</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">body</span><span class="br">&gt;</span>
+        <span class="com">... other body elements ...</span>
+        <span class="br">&lt;</span><span class="el">script</span> <span class="sel">src="yourUploadPath/jquery.slickmodal.min.js"</span><span class="br">&gt;</span><span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span>
+        <span class="br">&lt;</span><span class="el">div</span> <span class="sel">class="myPopup" data-sm-init="true"</span><span class="br">&gt;</span>
+            <span class="com">... popup inner content ...</span>
+        <span class="br">&lt;</span><span class="el">/div</span><span class="br">&gt;</span>
+        <span class="br">&lt;</span><span class="el">script</span><span class="br">&gt;</span>
+            <span class="el">jQuery</span><span class="sel">('.myPopup')</span>.<span class="mtd">SlickModals</span>({
+                <span class="com">... plugin settings ...</span>
+            });
+        <span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span>
+    <span class="br">&lt;/</span><span class="el">body</span><span class="br">&gt;</span>
+</pre>
+                <div class="notes">
+                    <p class="note">If you don't define the <span class="code">popupType</span> within the settings the plugin will use the default value which is set to "none". With <span class="code">popupType</span> not defined the popup can be opened only by setting the <span class="code">popup_reopenClass</span> and adding the defined reopen class to your element or via plugin api. If you wish to use delayed, scrolled or exit popup you <b>must define</b> the type and additional settings for the chosen type.</p>
+                    <p class="note">Use the same <span class="code">selector</span> as used within the plugin main wrapper in the step 3.</p>
+                </div>
+            </div>
+
+            <!-- Configuration -->
+            <div id="Configuration" class="section">
+                <h2>Configuration</h2>
+
+                <h3>Available options</h3>
+                <p>Plugin is packed with extensive options range for flexibility and usability. Below is a complete reference list of all available options with their <b>default / fallback values</b> which are overrideable upon plugin invoke or with public methods (see <span class="goto" data-goto="Public">Public API</span> for reference).</p>
+<pre>
+    <span class="com">// Restrictions</span>
+    restrict_hideOnUrls                   : [],
+    restrict_cookieSet                    : <span class="bool">false</span>,
+    restrict_cookieName                   : <span class="sel">'slickModal-1'</span>,
+    restrict_cookieScope                  : <span class="sel">'domain'</span>,
+    restrict_cookieDays                   : <span class="sel">'30'</span>,
+    restrict_cookieSetClass               : <span class="sel">'setSmCookie-1'</span>,
+    restrict_dateRange                    : <span class="bool">false</span>,
+    restrict_dateRangeStart               : <span class="sel">''</span>,
+    restrict_dateRangeEnd                 : <span class="sel">''</span>,
+    restrict_dateRangeServerTime          : <span class="bool">true</span>,
+    restrict_dateRangeServerTimeFile      : <span class="sel">''</span>,
+    restrict_dateRangeServerTimeZone      : <span class="sel">'Europe/London'</span>,
+    restrict_showAfterVisits              : <span class="bool">1</span>,
+    restrict_showAfterVisitsResetWhenShown: <span class="bool">false</span>,
+
+    <span class="com">// Popup</span>
+    popup_type                    : <span class="sel">'none'</span>,
+    popup_delayedTime             : <span class="sel">'1s'</span>,
+    popup_scrollDistance          : <span class="sel">'400px'</span>,
+    popup_scrollHideOnUp          : <span class="bool">false</span>,
+    popup_exitShowAlways          : <span class="bool">false</span>,
+    popup_autoClose               : <span class="bool">false</span>,
+    popup_autoCloseAfter          : <span class="sel">'5s'</span>,
+    popup_openWithHash            : <span class="bool">false</span>,
+    popup_redirectOnClose         : <span class="bool">false</span>,
+    popup_redirectOnCloseUrl      : <span class="sel">''</span>,
+    popup_redirectOnCloseTarget   : <span class="sel">_blank</span>,
+    popup_redirectOnCloseTriggers : <span class="sel">'overlay button'</span>,
+    popup_position                : <span class="sel">'center'</span>,
+    popup_animation               : <span class="sel">'fadeIn'</span>,
+    popup_closeButtonEnable       : <span class="bool">true</span>,
+    popup_closeButtonStyle        : <span class="sel">'cancel simple'</span>,
+    popup_closeButtonAlign        : <span class="sel">'right'</span>,
+    popup_closeButtonPlace        : <span class="sel">'outside'</span>,
+    popup_closeButtonText         : <span class="sel">'Close'</span>,
+    popup_reopenClass             : <span class="sel">'open-sm'</span>,
+    popup_reopenClassTrigger      : <span class="sel">'click'</span>,
+    popup_reopenStickyButtonEnable: <span class="bool">false</span>,
+    popup_reopenStickyButtonText  : <span class="sel">'Open popup'</span>,
+    popup_enableESC               : <span class="bool">true</span>,
+    popup_bodyClass               : <span class="sel">''</span>,
+    popup_wrapperClass            : <span class="sel">''</span>,
+    popup_draggableEnable         : <span class="bool">false</span>,
+    popup_allowMultipleInstances  : <span class="bool">false</span>,
+    popup_css                     : {
+        'width'             : <span class="sel">'480px'</span>,
+        'height'            : <span class="sel">'auto'</span>,
+        'background'        : <span class="sel">'#fff'</span>,
+        'margin'            : <span class="sel">'24px'</span>,
+        'padding'           : <span class="sel">'24px'</span>,
+        'animation-duration': <span class="sel">'0.4s'</span>
+    },
+
+    <span class="com">// Overlay</span>
+    overlay_isVisible  : <span class="bool">true</span>,
+    overlay_closesPopup: <span class="bool">true</span>,
+    overlay_animation  : <span class="sel">'fadeIn'</span>,
+    overlay_css        : {
+        'background'        : <span class="sel">'rgba(0, 0, 0, .8)'</span>,
+        'animation-duration': <span class="sel">'0.4s'</span>,
+        'animation-delay'   : <span class="sel">'0s'</span>
+    },
+
+    <span class="com">// Content</span>
+    content_loadViaAjax: <span class="bool">false</span>,
+    content_animate    : <span class="bool">false</span>,
+    content_animation  : <span class="sel">'zoomIn'</span>,
+    content_css        : {
+        'animation-duration': <span class="sel">'0.4s'</span>,
+        'animation-delay'   : <span class="sel">'0.4s'</span>
+    },
+
+    <span class="com">// Page</span>
+    page_animate          : <span class="bool">false</span>,
+    page_animation        : <span class="sel">'scale'</span>,
+    page_animationDuration: <span class="sel">'.4s'</span>,
+    page_blurRadius       : <span class="sel">'1px'</span>,
+    page_scaleValue       : <span class="sel">'.9'</span>,
+    page_moveDistance     : <span class="sel">'30%'</span>,
+
+    <span class="com">// Mobile</span>
+    mobile_show      : <span class="bool">true</span>,
+    mobile_breakpoint: <span class="sel">'480px'</span>,
+    mobile_position  : <span class="sel">'bottomCenter'</span>,
+    mobile_css       : {
+        'width'             : <span class="sel">'100%'</span>,
+        'height'            : <span class="sel">'auto'</span>,
+        'background'        : <span class="sel">'#fff'</span>,
+        'margin'            : <span class="sel">'0'</span>,
+        'padding'           : <span class="sel">'18px'</span>,
+        'animation-duration': <span class="sel">'0.4s'</span>
+    },
+
+    <span class="com">// Callbacks</span>
+    callback_beforeInit  : <span class="bool">$</span>.<span class="mtd">noop</span>,
+    callback_afterInit   : <span class="bool">$</span>.<span class="mtd">noop</span>,
+    callback_beforeOpen  : <span class="bool">$</span>.<span class="mtd">noop</span>,
+    callback_afterOpen   : <span class="bool">$</span>.<span class="mtd">noop</span>,
+    callback_afterVisible: <span class="bool">$</span>.<span class="mtd">noop</span>,
+    callback_beforeClose : <span class="bool">$</span>.<span class="mtd">noop</span>,
+    callback_afterClose  : <span class="bool">$</span>.<span class="mtd">noop</span>,
+    callback_afterHidden : <span class="bool">$</span>.<span class="mtd">noop</span>
+</pre>
+
+                <h3>Options definitions</h3>
+                <p>Below is a list of options with definitions, their types, usage examples or possible values.</p>
+
+                <div class="definitions">
+                    <div>
+                        <p><span class="code">restrict_hideOnUrls<span>array</span></span></p>
+                        <p>Defines the pages where popup should stay hidden. It can accept a string with path or URL and a regular expression via <span class="code">new RegExp</span> object for pattern precise matching.</p>
+                        <p>Example: ['/yourUrl/', new RegExp(/^(your)|(URL)/)]</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_cookieSet<span>boolean</span></span></p>
+                        <p>Enables or disables setting a cookie which is used to hide the popup after the cookie has been set.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_cookieName<span>string</span></span></p>
+                        <p>Defines the cookie name for the current popup instance. Each popup should have a unique cookie name. Popups which have the same cookie name will all be hidden.</p>
+                        <p>Example: 'slickModalCookie-1'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_cookieScope<span>string</span></span></p>
+                        <p>Sets the cookie scope to entire domain or just the current page.</p>
+                        <p>Possible values: 'domain' | 'page'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_cookieDays<span>number</span></span></p>
+                        <p>Sets the expiration days for the cookie. If <span class="code">0</span> is set the cookie will expire after the current session is closed eg. visitor closes the active tab.</p>
+                        <p>Possible values: 0 - 365</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_cookieSetClass<span>string</span></span></p>
+                        <p>Defines a class of the element on the page which sets the cookie for specific popup instance. Useful if you wish to set the cookie with another element outside the popup.</p>
+                        <p>Example: 'reopenSlick-1'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_dateRange<span>boolean</span></span></p>
+                        <p>Enables or disables date range restriction.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_dateRangeStart<span>string</span></span></p>
+                        <p>Specifies the starting date for date range. It must use the following format: <span class="code">Y-M-D, H:M:S</span>.</p>
+                        <p>Example: '2018-10-24, 15:00:00'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_dateRangeEnd<span>string</span></span></p>
+                        <p>Specifies the ending date for date range. It must use the following format: <span class="code">Y-M-D, H:M:S</span>.</p>
+                        <p>Example: '2019-03-22, 10:30:00'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_dateRangeServerTime<span>boolean</span></span></p>
+                        <p>Enables or disables usage of server time collected via Ajax.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_dateRangeServerTimeFile<span>string</span></span></p>
+                        <p>File location for the server time PHP script, provided with the package inside src/plugin directory. You can also use your own script to retrieve the server time.</p>
+                        <p>Example: 'folder/getTime.php'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_dateRangeServerTimeZone<span>string</span></span></p>
+                        <p>Defines the time zone, used for the server time. Reference list for available PHP time zones: <a href="http://php.net/manual/en/timezones.php" target="_blank">PHP timezones list</a></p>
+                        <p>Example: 'Europe/London'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_showAfterVisits<span>number</span></span></p>
+                        <p>Restricts the popup visibility for defined number of page loads. Value <span class="code">1</span> will show the popup always. Any number above will start to count the visits.</p>
+                        <p>Possible values: 1 - &infin;</p>
+                    </div>
+                    <div>
+                        <p><span class="code">restrict_showAfterVisitsResetWhenShown<span>boolean</span></span></p>
+                        <p>Defines if the popup should be hidden again on the next page load after it has been shown to the visitor when <span class="code">restrict_showAfterVisits</span> option is enabled.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_type<span>string</span></span></p>
+                        <p>Defines the popup type on page load.</p>
+                        <p>Possible values: 'delayed' | 'scrolled' | 'exit' | 'instant' | 'none'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_delayedTime<span>'string'</span></span></p>
+                        <p>Sets the popup delayed time in seconds when <span class="code">popup_type: 'delayed'</span> is used.</p>
+                        <p>Example: '3s'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_scrollDistance<span>string</span></span></p>
+                        <p>Sets the popup scroll distance when <span class="code">popup_type: 'scrolled'</span> is used.</p>
+                        <p>Example: '440px'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_scrollHideOnUp<span>boolean</span></span></p>
+                        <p>Defines is popup should stay hidden when visitors scroll back up upon using <span class="code">popup_type: 'scrolled'</span>.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_exitShowAlways<span>boolean</span></span></p>
+                        <p>Defines if exit popup should appear always when using <span class="code">popup_type: 'exit'</span>.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_autoClose<span>boolean</span></span></p>
+                        <p>Sets the popup auto close after it has been opened.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_autoCloseAfter<span>string</span></span></p>
+                        <p>Defines the time in seconds when the popup will auto close upon opening.</p>
+                        <p>Example: '5s'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_openWithHash<span>string</span></span></p>
+                        <p>Enables opening the popup via URL hash. If empty it will disable this option.</p>
+                        <p>Example: '#openMyPopup'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_redirectOnClose<span>boolean</span></span></p>
+                        <p>Defines if visitor gets redirected to another URL after popup gets closed.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_redirectOnCloseUrl<span>string</span></span></p>
+                        <p>Redirect URL after popup gets closed.</p>
+                        <p>Example: 'https://example.com'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_redirectOnCloseTarget<span>string</span></span></p>
+                        <p>Sets the target of the redirection when using <span class="code">popup_redirectOnClose</span> feature.</p>
+                        <p>Possible values: '_blank' | '_self'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_redirectOnCloseTriggers<span>string</span></span></p>
+                        <p>Defines which elements should trigger the redirection upon closing the popup. Possible values can be combined together.</p>
+                        <p>Possible values: 'overlay' | 'button' | 'close' | 'overlay button' | 'overlay close' | 'button close' | 'overlay button close'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_position<span>string</span></span></p>
+                        <p>Defines the popup position on desktop devices.</p>
+                        <p>Possible values: 'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'left' | 'right' | 'center'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_animation<span>string</span></span></p>
+                        <p>Defines the popup animation upon opening. Closing animation will apply automatically for most of the animations. Animations which don't support closing animation use fade out effect.</p>
+                        <p>Possible values: <b class="effectsList"></b></p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_closeButtonEnable<span>boolean</span></span></p>
+                        <p>Defines if close button should be displayed with the popup.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_closeButtonStyle<span>string</span></span></p>
+                        <p>Defines the closing button style.</p>
+                        <p>Possible values: 'cancel simple' | 'cancel circle' | 'cancel square' | 'text simple' | 'text label'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_closeButtonAlign<span>string</span></span></p>
+                        <p>Sets the alignment of the closing button.</p>
+                        <p>Possible values: 'left' | 'right'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_closeButtonPlace<span>string</span></span></p>
+                        <p>Sets the placement of the closing button in relation to the popup.</p>
+                        <p>Possible values: 'inside' | 'outside'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_closeButtonText<span>string</span></span></p>
+                        <p>Sets the custom text within the closing button when 'text simple' or 'text label' button style is used.</p>
+                        <p>Example: 'Close'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_reopenClass<span>string</span></span></p>
+                        <p>Defines the element class on the page which opens the popup instance. This class should be applied to the element that will trigger popup to open.</p>
+                        <p>Example: 'openMyPopup-1'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_reopenClassTrigger<span>string</span></span></p>
+                        <p>Defines the event type of the element which opens the popup instance.</p>
+                        <p>Possible values: 'click' | 'hover'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_reopenStickyButtonEnable<span>boolean</span></span></p>
+                        <p>Enables sticky button which opens the current popup instance. <span class="code">popup_reopenClass</span> must be defined if sticky button is enabled. <span class="code">popup_reopenClassTrigger</span> affects buttons trigger behaviour.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_reopenStickyButtonText<span>string</span></span></p>
+                        <p>Defines the text inside the sticky button element.</p>
+                        <p>Example: 'Open my popup'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_enableESC<span>boolean</span></span></p>
+                        <p>Defines if visitor can close the popup upon pressing ESC key.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_bodyClass<span>string</span></span></p>
+                        <p>Sets additional class to page body when popup is visible. Useful for manipulating elements on the page when popup is visible.</p>
+                        <p>Example: 'slickModal-1-active'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_wrapperClass<span>string</span></span></p>
+                        <p>Sets additional class to popup wrapper when it's visible. Useful for manipulating the elements inside the popup when visible.</p>
+                        <p>Example: 'myAdditionalClass'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_draggableEnable<span>boolean</span></span></p>
+                        <p>Enables draggable feature for the popup window. This feature work properly only on desktop devices.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_allowMultipleInstances<span>boolean</span></span></p>
+                        <p>Allows having current popup instance opened simultaneously along with other active popup(s).</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">popup_css<span>object</span></span></p>
+                        <p>Sets the custom CSS for the popup. Any valid CSS attributes can be used. They must be applied in the same format as show in the example below.</p>
+                        <p>Example: {'background': '#fff', 'width': '480px', 'margin': '24px', 'animation-duration': '0.4s', 'box-shadow': '0 0 10px rgba(0,0,0,.2)'}</p>
+                    </div>
+                    <div>
+                        <p><span class="code">overlay_isVisible<span>boolean</span></span></p>
+                        <p>Defines if overlay should be visible.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">overlay_closesPopup<span>boolean</span></span></p>
+                        <p>Defines if overlay can close the popup on click.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">overlay_animation<span>string</span></span></p>
+                        <p>Defines the overlay animation upon popup opening. Closing animation will apply automatically for most of the animations. Animations which don't support closing animation use fade out effect.</p>
+                        <p>Possible values: <b class="effectsList"></b></p>
+                    </div>
+                    <div>
+                        <p><span class="code">overlay_css<span>object</span></span></p>
+                        <p>Sets the custom CSS for the overlay. Any valid CSS attributes can be used. They must be applied in the same format as show in the example below.</p>
+                        <p>Example: {'background': 'rgba(0,0,0,.4)', 'animation-duration': '0.4s', 'animation-delay': '1s'}</p>
+                    </div>
+                    <div>
+                        <p><span class="code">content_loadViaAjax<span>string</span></span></p>
+                        <p>Specifies the path for the HTML file which is loaded via Ajax and injected inside the popup main wrapper first opening. If left empty the plugin will ignore this setting.</p>
+                        <p>Example: 'myFile.html'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">content_animate<span>boolean</span></span></p>
+                        <p>Defines if inner content should be animated upon opening the popup.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">content_animation<span>string</span></span></p>
+                        <p>Defines the inner content animation upon popup opening. Closing animation will apply automatically for most of the animations. Animations which don't support closing animation use fade out effect.</p>
+                        <p>Possible values: <b class="effectsList"></b></p>
+                    </div>
+                    <div>
+                        <p><span class="code">content_css<span>object</span></span></p>
+                        <p>Sets the custom CSS for the inner content main wrapper. Any valid CSS attributes can be used. They must be applied in the same format as show in the example below.</p>
+                        <p>Example: {'background': '#ccc', 'animation-duration': '0.4s', 'animation-delay': '0.4s'}</p>
+                    </div>
+                    <div>
+                        <p><span class="code">page_animate<span>boolean</span></span></p>
+                        <p>Defines if page animation should be used. When used all the first child elements of the <span class="code">body</span> (except the plugin elements) will be affected by the animation.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">page_animation<span>string</span></span></p>
+                        <p>Sets the page animation effect.</p>
+                        <p>Possible values: 'blur' | 'scale' | 'moveUp' | 'moveDown' | 'moveLeft' | 'moveRight'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">page_animationDuration<span>string</span></span></p>
+                        <p>Sets the page animation effect duration in seconds.</p>
+                        <p>Example: '0.4s'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">page_blurRadius<span>string</span></span></p>
+                        <p>Sets the blur radius when <span class="code">'blur'</span> page animation effect is used.</p>
+                        <p>Example: '1px'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">page_scaleValue<span>string</span></span></p>
+                        <p>Sets the scale value when <span class="code">'scale'</span> page animation effect is used.</p>
+                        <p>Example: '0.9'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">page_moveDistance<span>string</span></span></p>
+                        <p>Sets the move distance value when <span class="code">'moveXY'</span> page animation effect is used.</p>
+                        <p>Example: 20%'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">mobile_show<span>boolean</span></span></p>
+                        <p>Defines if popup should be visible on mobile / smaller screen devices.</p>
+                        <p>Possible values: true | false</p>
+                    </div>
+                    <div>
+                        <p><span class="code">mobile_breakpoint<span>string</span></span></p>
+                        <p>Sets the breakpoint for the mobile / smaller screen devices. After this breakpoint <span class="code">mobile_css</span> rules will apply (see setting below).</p>
+                        <p>Example: '480px'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">mobile_position<span>string</span></span></p>
+                        <p>Defines the popup position on mobile / smaller screen devices.</p>
+                        <p>Possible values: 'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight' | 'left' | 'right' | 'center'</p>
+                    </div>
+                    <div>
+                        <p><span class="code">mobile_css<span>object</span></span></p>
+                        <p>Sets the custom CSS for popup on mobile / smaller screen devices. Any valid CSS attributes can be used. They must be applied in the same format as show in the example below.</p>
+                        <p>Example: {'width': '100%', 'animation-duration': '0.2s'}</p>
+                    </div>
+                    <div>
+                        <p><span class="code">callback_beforeInit<span>function</span></span></p>
+                        <p>Callback function before instance initialization and popup build.</p>
+                        <p>Possible values: function</p>
+                    </div>
+                    <div>
+                        <p><span class="code">callback_afterInit<span>function</span></span></p>
+                        <p>Callback function after instance initialization and popup build.</p>
+                        <p>Possible values: function</p>
+                    </div>
+                    <div>
+                        <p><span class="code">callback_beforeOpen<span>function</span></span></p>
+                        <p>Callback function before popup is opened.</p>
+                        <p>Possible values: function</p>
+                    </div>
+                    <div>
+                        <p><span class="code">callback_afterOpen<span>function</span></span></p>
+                        <p>Callback function after popup is opened.</p>
+                        <p>Possible values: function</p>
+                    </div>
+                    <div>
+                        <p><span class="code">callback_afterVisible<span>function</span></span></p>
+                        <p>Callback function after popup is visible.</p>
+                        <p>Possible values: function</p>
+                    </div>
+                    <div>
+                        <p><span class="code">callback_beforeClose<span>function</span></span></p>
+                        <p>Callback function before popup is closed.</p>
+                        <p>Possible values: function</p>
+                    </div>
+                    <div>
+                        <p><span class="code">callback_afterClose<span>function</span></span></p>
+                        <p>Callback function after popup is closed.</p>
+                        <p>Possible values: function</p>
+                    </div>
+                    <div>
+                        <p><span class="code">callback_afterHidden<span>function</span></span></p>
+                        <p>Callback function after popup is hidden.</p>
+                        <p>Possible values: function</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Public -->
+            <div id="Public" class="section">
+                <h2>Public API</h2>
+
+                <h3>Public methods</h3>
+                <p>Plugin has some useful public methods which can be used to modify the popup behaviour or looks. In case you need to alter the plugin core to fit your needs a non minified version is available which can be used to customize or adjust existing functionality of the plugin. Below are definitions for each method and some common usage examples. All methods are passed as a parameter and some are accompanied with additional parameters.</p>
+
+                <div class="definitions">
+                    <div>
+                        <p><span class="code">openPopup()<span>function</span></span></p>
+                        <p>Opens the existing popup instance.</p>
+                        <p>Usage: 'openPopup'</p>
+<pre>
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'openPopup'</span>);
+</pre>
+                    </div>
+                    <div>
+                        <p><span class="code">closePopup()<span>function</span></span></p>
+                        <p>Closes the existing popup instance.</p>
+                        <p>Usage: 'closePopup'</p>
+<pre>
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'closePopup'</span>);
+</pre>
+                    </div>
+                    <div>
+                        <p><span class="code">styleElement()<span>function</span></span></p>
+                        <p>Sets CSS attributes for the popup or overlay for the current instance.</p>
+                        <p>Usage: 'styleElement', 'popup | overlay', object</p>
+<pre>
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'styleElement', 'popup',</span> {
+        'border-radius': <span class="sel">'20px'</span>,
+        'background': <span class="sel">'#fefefe'</span>
+    });
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'styleElement', 'overlay',</span> {
+        'background': <span class="sel">'rgba(255,255,255,.7)'</span>,
+        'animation-delay': <span class="sel">'1s'</span>
+    });
+</pre>
+                    </div>
+                    <div>
+                        <p><span class="code">popupPosition()<span>function</span></span></p>
+                        <p>Sets the position for the current popup instance.</p>
+                        <p>Usage: 'popupPosition', location</p>
+<pre>
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'popupPosition', 'right'</span>);
+</pre>
+                    </div>
+                    <div>
+                        <p><span class="code">setEffect()<span>function</span></span></p>
+                        <p>Sets the effect for the popup or overlay for the current instance.</p>
+                        <p>Usage: 'setEffect', 'popup | overlay', effect</p>
+<pre>
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'setEffect', 'popup', 'zoomIn'</span>);
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'setEffect', 'overlay', 'slideLeft'</span>);
+</pre>
+                    </div>
+                    <div>
+                        <p><span class="code">setType()<span>function</span></span></p>
+                        <p>Sets the type and value (depending on the type - exit and instant require no value) for the current popup instance.</p>
+                        <p>Usage: 'setType', type, val</p>
+<pre>
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'setType', 'delayed', '3s'</span>);
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'setType', 'scrolled', '400px'</span>);
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'setType', 'exit'</span>);
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'setType', 'instant'</span>);
+</pre>
+                    </div>
+                    <div>
+                        <p><span class="code">autoClose()<span>function</span></span></p>
+                        <p>Sets auto close for the current popup instance. Value is needed only when enabling auto close.</p>
+                        <p>Usage: 'autoClose', 'enable | disable', val</p>
+<pre>
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'autoClose', 'enable', '2s'</span>);
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'autoClose', 'disable'</span>);
+</pre>
+                    </div>
+                    <div>
+                        <p><span class="code">destroy()<span>function</span></span></p>
+                        <p>Destroys the current popup instance.</p>
+                        <p>Usage: 'destroy'</p>
+<pre>
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'destroy'</span>);
+</pre>
+                    </div>
+
+                    <h3>Methods chaining</h3>
+                    <p>Public methods can also be easily chained. Below is an example:</p>
+<pre>
+    <span class="el">jQuery</span><span class="sel">('.foo')</span>.<span class="mtd">SlickModals</span>(<span class="sel">'popupPosition', 'left'</span>)
+                  .<span class="mtd">SlickModals</span>(<span class="sel">'setEffect', 'popup', 'fadeIn'</span>)
+                  .<span class="mtd">SlickModals</span>(<span class="sel">'setType', 'delayed', '2s'</span>)
+                  .<span class="mtd">SlickModals</span>(<span class="sel">'openPopup'</span>);
+</pre>
+                </div>
+            </div>
+
+            <!-- Faq -->
+            <div id="Faq" class="section">
+                <h2>Frequently asked questions</h2>
+
+                <h3>How to close the popup on element click?</h3>
+                <p>You can add an attribute <span class="code">data-sm-close="true"</span> to any element inside the popup and it will trigger closing that popup on click. For example:</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">div</span> <span class="sel">class="myPopup" data-sm-init="true"</span><span class="br">&gt;</span>
+        <span class="com">... popup inner content ...</span>
+        <span class="br">&lt;</span><span class="el">button</span> <span class="sel">data-sm-close="true"</span><span class="br">&gt;<span class="c-white">Close the popup</span></span><span class="br">&lt;</span><span class="el">/button</span><span class="br">&gt;</span>
+    <span class="br">&lt;</span><span class="el">/div</span><span class="br">&gt;</span>
+</pre>
+                <p>The same element can also set a cookie to hide the popup. Simply enable cookie settings and define <span class="code">restrict_cookieSetClass</span>. Then add that class to the element that closes the popup. For example:</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">div</span> <span class="sel">class="myPopup" data-sm-init="true"</span><span class="br">&gt;</span>
+        <span class="com">... popup inner content ...</span>
+        <span class="br">&lt;</span><span class="el">button</span> <span class="sel">class="setMyPopupCookie" data-sm-close="true"</span><span class="br">&gt;<span class="c-white">Close the popup</span></span><span class="br">&lt;</span><span class="el">/button</span><span class="br">&gt;</span>
+    <span class="br">&lt;</span><span class="el">/div</span><span class="br">&gt;</span>
+    <span class="br">&lt;</span><span class="el">script</span><span class="br">&gt;</span>
+        <span class="el">jQuery</span><span class="sel">('.myPopup')</span>.<span class="mtd">SlickModals</span>({
+            restrict_cookieSet: <span class="bool">true</span>,
+            restrict_cookieName: <span class="sel">'hideMyPopup'</span>,
+            restrict_cookieDays: <span class="sel">'14'</span>,
+            restrict_cookieSetClass: <span class="sel">'setMyPopupCookie'</span>
+            <span class="com">... other settings ...</span>
+        });
+    <span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span>
+</pre>
+
+                <h3>How do I setup multiple popups on the same page?</h3>
+                <p>In order to have multiple popups on the same page you should create a HTML wrapper for each instance. If the options of the popups will be the same then you can use one invoke for all of them.</p>
+                <p><b>Example 1:</b> Three popups with the same options</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">div</span> <span class="sel">class="myPopup" data-sm-init="true"</span><span class="br">&gt;</span>
+        <span class="com">... popup 1 inner content ...</span>
+    <span class="br">&lt;</span><span class="el">/div</span><span class="br">&gt;</span>
+    <span class="br">&lt;</span><span class="el">div</span> <span class="sel">class="myPopup" data-sm-init="true"</span><span class="br">&gt;</span>
+        <span class="com">... popup 2 inner content ...</span>
+    <span class="br">&lt;</span><span class="el">/div</span><span class="br">&gt;</span>
+    <span class="br">&lt;</span><span class="el">div</span> <span class="sel">class="myOtherPopup" data-sm-init="true"</span><span class="br">&gt;</span>
+        <span class="com">... popup 2 inner content ...</span>
+    <span class="br">&lt;</span><span class="el">/div</span><span class="br">&gt;</span>
+    <span class="br">&lt;</span><span class="el">script</span><span class="br">&gt;</span>
+        <span class="el">jQuery</span><span class="sel">('.myPopup, .myOtherPopup')</span>.<span class="mtd">SlickModals</span>({
+            popup_position: <span class="sel">'bottomRight'</span>,
+            popup_css: {
+                <span class="sel">'padding': '40px',
+                'margin' : '30px',
+                'padding' : '30px',
+                'background' : '#333'</span>
+            }
+            <span class="com">... other settings ...</span>
+        });
+    <span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span>
+</pre>
+                <p><b>Example 2:</b> Two popups with different options</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">div</span> <span class="sel">class="myPopup-1" data-sm-init="true"</span><span class="br">&gt;</span>
+        <span class="com">... popup 1 inner content ...</span>
+    <span class="br">&lt;</span><span class="el">/div</span><span class="br">&gt;</span>
+    <span class="br">&lt;</span><span class="el">div</span> <span class="sel">class="myPopup-2" data-sm-init="true"</span><span class="br">&gt;</span>
+        <span class="com">... popup 2 inner content ...</span>
+    <span class="br">&lt;</span><span class="el">/div</span><span class="br">&gt;</span>
+    <span class="br">&lt;</span><span class="el">script</span><span class="br">&gt;</span>
+        <span class="el">jQuery</span><span class="sel">('.myPopup-1')</span>.<span class="mtd">SlickModals</span>({
+            restrict_cookieSet: <span class="bool">true</span>,
+            restrict_cookieName: <span class="sel">'myPopup-1'</span>,
+            restrict_cookieDays: <span class="sel">'14'</span>,
+            popup_type: <span class="sel">'delayed'</span>,
+            popup_delayedTime: <span class="sel">'2s'</span>,
+            popup_closeButtonStyle: <span class="sel">'text simple'</span>,
+            popup_position: <span class="sel">'bottomRight'</span>,
+            popup_css: {
+                <span class="sel">'padding': '40px',
+                'margin': '30px',
+                'background': '#fefefe'</span>
+            }
+            <span class="com">... other settings ...</span>
+        });
+        <span class="el">jQuery</span><span class="sel">('.myPopup-2')</span>.<span class="mtd">SlickModals</span>({
+            overlay_isVisible: <span class="bool">false</span>,
+            content_animate: <span class="bool">true</span>,
+            content_animation: <span class="sel">'bounceInLeft'</span>,
+            popup_position: <span class="sel">'center'</span>,
+            popup_css: {
+                <span class="sel">'padding': '20px',
+                'background': '#fff'</span>
+            },
+            mobile_show: <span class="bool">false</span>
+            <span class="com">... other settings ...</span>
+        });
+    <span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span>
+</pre>
+
+                <h3>How do I make popup responsive?</h3>
+                <p>Plugin already has an option to define mobile rules via <span class="code">mobile_css</span> option. But those options control the CSS <b>only for popup the wrapper</b> hence you need to create mobile or responsive rules for the inner content manually with <b>CSS media queries</b>. More info about media queries can be found at <a href="http://www.w3schools.com/css/css_rwd_mediaqueries.asp" target="_blank">W3Schools</a>.</p>
+
+                <h3>How to install plugin into CMS?</h3>
+                <p>Popup is not made as a plugin, module or extension for any CMS hence it needs to be installed manually. In order to install it into a CMS you can follow the <span class="goto" data-goto="Usage">Usage</span> guide. Before starting you should be familiar with editing the appropriate template files and if needed create backups.</p>
+
+                <h3>How to use Settings Generator</h3>
+                <p>Popup settings generator is made mainly as a quick settings generator but it also has a simple preview so you can see the popup wrapper styling in real time. Simply select the settings you need, adjust the CSS styling and copy the generated code to your HTML. Settings Generator is currently in Beta so bugs might appear.</p>
+
+                <h3>How can i make the overlay to be a background image?</h3>
+                <p>You can set a background image simply by editing overlay's settings upon invoke. For example:</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">script</span><span class="br">&gt;</span>
+        <span class="el">jQuery</span><span class="sel">('.myPopup')</span>.<span class="mtd">SlickModals</span>({
+            <span class="com">... other settings ...</span>
+            overlay_css: {
+                <span class="sel">'background': 'url('path/image.jpg') 0 0 no-repeat'</span>
+            }
+        });
+    <span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span>
+</pre>
+
+                <h3>Are the demo(s) fully functional?</h3>
+                <p>Demos, provided within the plugin package are <b>not fully functional</b> (for example: contact form doesn't send emails, Mini cart doesn't update actual shopping cart etc...) as they're main purpose is only to demonstrate some of the usage possibilities and popup capabilities. All the styling and the functionality within the popup demos content and it's element(s) is made only as a preview to help get you started using the popup more quickly or get an idea for what can popup be used. Scripts in the popup demos are created for a single popup instance on the page. Support for the demos is not provided. Any additional styling, customizations and functional modifications/upgrades are left for you to implement.</p>
+
+                <h3>How to upgrade from older version of the plugin?</h3>
+                <p>In order to upgrade the plugin please check the changelog.txt which contains notes regarding the upgrade.</p>
+            </div>
+
+            <!-- Tips & Tricks -->
+            <div id="Tips" class="section">
+                <h2>Tips &amp; Tricks</h2>
+
+                <h3>Use minified version</h3>
+                <p>For better performance use minified versions of the plugin core files - both CSS and Javascript. They are located in the <span class="code">src/plugin</span> directory.</p>
+
+                <h3>Avoid mixing same popup types</h3>
+                <p>Although the popup has a safety feature built in which prevents multiple popups showing at the same time you should avoid using the same popup types at once / on the same page.</p>
+
+                <h3>Avoid overdoing blur or scale effect</h3>
+                <p>Blur &amp; scale effects are appealing but they can also affect the site performance as the browser has to redraw all the elements upon firing the animation. This can lead to higher CPU or GPU usage, throttling and slower animation transitions. It's recommended to use lower values for blur and values closer to 1 for scale effect.</p>
+
+                <h3>Use browser debug tools</h3>
+                <p>If there is an issue with the plugin you can also open debug / developer tools inside the browser and see if there is an error or a message from the plugin within the <b>console</b> pane. This can often point out quick solution for the issue.</p>
+            </div>
+
+            <!-- Troubleshooting -->
+            <div id="Troubleshooting" class="section">
+                <h2>Troubleshooting</h2>
+
+                <h3>Uncaught TypeError: $(...).SlickModals is not a function</h3>
+                <p>If you see this error in the console pane inside the browser developer tools it could means either:</p>
+                <ol>
+                    <li>that the plugin is <b>not loaded after jQuery library</b> or</li>
+                    <li><b>jQuery library is missing</b> on the website or</li>
+                    <li><b>there is a conflict</b> with $ namespace and you should rename all <span class="code">$</span> symbols with <span class="code">jQuery</span> within the plugin invoke.</li>
+                </ol>
+
+                <h3>Popup has no styling</h3>
+                <p>If the popup displays only bare HTML without any styling it is <b>missing the CSS</b> call inside <span class="code">&lt;head&gt;</span> section. In order to fix this please upload the plugin CSS (slickmodal.min.css) file to your web server and insert it into the <span class="code">&lt;head&gt;</span> section. See <span class="goto" data-goto="Usage">Usage</span> section for more information.</p>
+
+                <h3>Page animations are not working on page load</h3>
+                <p>This can happen due to the nature of how the browser loads the web page. This means that the page effect function within the plugin is searching for the <span class="code">body</span> elements but they currently don't exist as the browser hasn't finished loading all the elements on the page. To solve this you should wrap the plugin invoke into a <span class="code">onload</span> function which will wait for all the page elements to render and afterwards the page effect will work normally. For example:</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">script</span><span class="br">&gt;</span>
+        <span class="el">jQuery</span>(window).<span class="mtd">on</span>(<span class="sel">'load'</span>, <span class="mtd">function</span> () {
+            <span class="el">jQuery</span>(<span class="sel">'.myPopup'</span>).<span class="mtd">SlickModals</span>({
+                <span class="com">... popup settings ...</span>
+            });
+        });
+    <span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span>
+</pre>
+
+                <h3>Why does my popup look messy?</h3>
+                <p>If the demo (popup inner content) doesn't look as within the package preview it's due to CSS overriding from your website template. In that case it's best to inspect which CSS rules are overriding the popup styles and adjust them. Also if you use different font family on your page the fonts my distort the layout and design.</p>
+
+                <h3>I have installed the popup correctly but it still doesn't show up</h3>
+                <p>If you don't define the <span class="code">popupType</span> within the settings the plugin will use the default value which is set to "none". With <span class="code">popupType</span> not defined the popup can be opened only by setting the <span class="code">popup_reopenClass</span> and adding the defined reopen class to your element or via plugin api. So for example if you wish the popup to show up after 5 seconds you should define the <span class="code">popupType</span> like this:</p>
+<pre>
+    <span class="br">&lt;</span><span class="el">script</span><span class="br">&gt;</span>
+        <span class="el">jQuery</span><span class="sel">('.myPopup')</span>.<span class="mtd">SlickModals</span>({
+            popup_type: <span class="sel">'delayed'</span>,
+            popup_delayedTime: <span class="sel">'5s'</span>,
+            <span class="com">... other plugin settings ...</span>
+        });
+    <span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span>
+</pre>
+            </div>
+
+            <!-- Support -->
+            <div id="Support" class="section">
+                <h2>Support</h2>
+
+                <h3>Feature requests and bug reporting</h3>
+                <p>In case you are missing a feature within the plugin or documentation needs an update with more useful content please send a support email. If possible the feature will be added on the plugin's ToDo list.</p>
+                <p>If you have found a bug or other issue you can also report it via the support email.</p>
+
+                <h3>Your rating counts!</h3>
+                <p>Every opinion and feedback is very welcome and your rating would be highly appreciated. You can rate the plugin by visiting your <a href="https://codecanyon.net/downloads" target="_blank">downloads page on Codecanyon</a> and submit it in a few simple steps. <b>Thank you!</b></p>
+                <div class="rating">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" xml:space="preserve">
+                        <polygon points="255,402.212 412.59,497.25 370.897,318.011 510,197.472 326.63,181.738 255,12.75 183.371,181.738 0,197.472 139.103,318.011 97.41,497.25"></polygon>
+                    </svg>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" xml:space="preserve">
+                        <polygon points="255,402.212 412.59,497.25 370.897,318.011 510,197.472 326.63,181.738 255,12.75 183.371,181.738 0,197.472 139.103,318.011 97.41,497.25"></polygon>
+                    </svg>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" xml:space="preserve">
+                        <polygon points="255,402.212 412.59,497.25 370.897,318.011 510,197.472 326.63,181.738 255,12.75 183.371,181.738 0,197.472 139.103,318.011 97.41,497.25"></polygon>
+                    </svg>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" xml:space="preserve">
+                        <polygon points="255,402.212 412.59,497.25 370.897,318.011 510,197.472 326.63,181.738 255,12.75 183.371,181.738 0,197.472 139.103,318.011 97.41,497.25"></polygon>
+                    </svg>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" xml:space="preserve">
+                        <polygon points="255,402.212 412.59,497.25 370.897,318.011 510,197.472 326.63,181.738 255,12.75 183.371,181.738 0,197.472 139.103,318.011 97.41,497.25"></polygon>
+                    </svg>
+                </div>
+
+                <div class="notes" style="padding-top: 60px">
+                    <p class="note">Before installing the plugin and modifying your files it is always recommended to have a proper technical knowledge to complete the task and to always create safety backups. The plugin author is not responsible for any damage or loss during installation and usage of this plugin or inability to use the plugin.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+</html>

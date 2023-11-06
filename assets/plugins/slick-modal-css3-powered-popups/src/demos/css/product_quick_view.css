@@ -1,0 +1,163 @@
+/* Slick Modals - Product Quick View */
+.productQuickView * {
+    color: #333;
+}
+.productQuickView .left,
+.productQuickView .right {
+    width: 50%;
+}
+.productQuickView .left {
+    float: left;
+}
+.productQuickView .right {
+    float: right;
+    padding-left: 50px;
+}
+.productQuickView .left img {
+    width: 100%;
+}
+.productQuickView .right .stock {
+    font-size: 12px;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+.productQuickView .right .stock:before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    vertical-align: middle;
+    margin: -2px 6px 0 0;
+    border-radius: 50%;
+}
+.productQuickView .right .stock.true {
+    color: #67c198;
+}
+.productQuickView .right .stock.true:before {
+    background: #67c198;
+}
+.productQuickView .right .stock.false {
+    color: red;
+}
+.productQuickView .right .stock.false:before {
+    background: red;
+}
+.productQuickView .right .name {
+    font-size: 24px;
+}
+.productQuickView .right p {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 20px 0 30px 0;
+    color: #999;
+}
+.productQuickView .right .price.new {
+    font-size: 24px;
+    font-weight: 700;
+    padding-bottom: 6px;
+}
+.productQuickView .right .price.old {
+    font-size: 12px;
+    color: #999;
+}
+.productQuickView .right .info {
+    font-size: 12px;
+    padding-top: 30px;
+}
+.productQuickView .right .info:before {
+    content: "\2022\A0\A0";
+}
+.productQuickView .right .options {
+    margin: 30px 0;
+}
+.productQuickView .right .options input {
+    display: none;
+}
+.productQuickView .right .options label {
+    cursor: pointer;
+    opacity: 0.4;
+    transition: all 0.2s ease;
+}
+.productQuickView .right .options input:checked + label,
+.productQuickView .right .options label:hover {
+    opacity: 1;
+}
+.productQuickView .right .options.radio label {
+    display: inline-block;
+    margin-right: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    border: solid 2px #333;
+    border-radius: 50px;
+    padding: 6px 12px;
+}
+.productQuickView .right .toCart {
+    display: inline-block;
+    position: relative;
+    padding: 14px 0;
+    background: #48c9ca;
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    width: 150px;
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+    transition: all 0.2s ease;
+}
+.productQuickView .right .toCart:hover {
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    transform: scale(0.98);
+    background: #3eb6b7;
+}
+.productQuickView .right .toCart span {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+.productQuickView .right .toCart:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #e86565;
+    border-radius: 50px;
+    transition: all 0.1s ease;
+    display: none;
+}
+.productQuickView .right .toCart.added:after {
+    display: block;
+    animation: slideBg 1s forwards;
+}
+@keyframes slideBg {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@media screen and (max-width: 800px) {
+    .productQuickView {
+        overflow-y: auto;
+    }
+    .productQuickView .left,
+    .productQuickView .right {
+        width: 100%;
+        float: none;
+    }
+    .productQuickView .right {
+        padding-left: 0;
+        padding-top: 30px;
+    }
+    .productQuickView .right .options.radio label {
+        margin-bottom: 10px;
+    }
+}

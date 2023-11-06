@@ -1,0 +1,733 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block edit_page_title %} {{tr('product')|title}} {% endblock %} 
+
+{% block javascript %}
+{{parent()}}
+<script>
+	var js_num_products_related = "{{num_products_related|escape('js')}}";
+	var js_num_sections_related = "{{num_sections_related|escape('js')}}";
+	var js_list_products_related = "{{list_products_related|json_encode|escape('js')}}";
+	var js_list_sections_related = "{{list_sections_related|json_encode|escape('js')}}";
+	var js_id_price_list = "{{id_price_list|escape('js')}}";
+	
+</script>
+{% endblock %}
+
+{% block css %}
+{{parent()}}
+<style>
+.tab-content {
+    padding: 25px 15px 15px;
+}
+.var-attributo{
+    border: 1px solid #eee;
+    padding: 3px;
+    min-width: 32px;
+    text-align: center;
+    cursor: pointer;
+}
+.var-attributo.var-attributo-color{
+    border-radius: 100%;
+    border-color: transparent;
+}
+.var-attributo.selected,
+.var-attributo.var-attributo-color.selected{
+    border-color: #000;
+}
+.var-attributo input{
+    visibility:hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+} 
+.color-var{
+    border-radius: 100%;
+    width: 30px;
+}
+.controls-name {
+    position: relative;
+}
+.controls-name input {
+    padding-right:140px;
+}
+.controls-name .bootstrap-select.form-control {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 128px;
+    margin: 0;
+}
+.controls-name .bootstrap-select.form-control .btn {
+    border-radius: 0px 4px 4px 0;
+}
+div#div_name {
+    margin: 20px 0;
+}
+.panel.panel-primary {
+    margin: 10px 0 30px;
+    color: #172b4d;
+}
+button.btn.dropdown-toggle.selectpicker.btn-default {
+    background-color: #FAFBFC;
+    border: 1px solid #DFE1E6;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+.cironapo_fileinput_sm {
+    width: 100%;
+}
+
+/*variazioni*/
+label.nome-img:empty {
+    display: none;
+}
+label.nome-img, .cironapo_fileinput_sm {
+    line-height: normal;
+    margin: 0;
+}
+.cironapo_fileinput_sm {
+    height: auto;
+    padding: 8px;
+}
+.btn-cironapo {
+    float: none;
+    width: 40px;
+    margin: 10px 5px 0;
+}
+.ciornapo_img_preview_sm {
+    margin-top: 0;
+    max-height: 50px;
+    max-width: none !important;
+}
+
+/*correlati*/
+#cont_related .panel {
+    border: 0;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 0px 1px rgba(199,199,199,1);
+    -moz-box-shadow: 0px 0px 0px 1px rgba(199,199,199,1);
+    box-shadow: 0px 0px 0px 1px rgba(199,199,199,1);
+    overflow: hidden;
+}
+#cont_related .panel-info>.panel-heading {
+    color: #172B4D;
+    background-color: #d7dadf;
+    border: 0;
+}
+#cont_related .panel-body {
+    background-color: #fafbfc;
+    padding: 15px;
+}
+</style>
+
+
+{% endblock %}
+
+
+{% block before_content %}
+	{% if dataform.parent.value > 0 %}
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-info" style="width:100%">
+					{% if action == 'add' %}
+					Stai aggiungento una variazione al prodotto <b>{{parent_product.get('sku')}}</b>
+					{% else %}
+					Stai effettuando una modifica ad una variazione del prodotto <b>{{parent_product.get('sku')}}</b>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+{% import "macro/form.htm" as form %}
+<div class="tabcordion">
+	<ul id="myTab" class="nav nav-tabs">
+		<li class="{{tabActive(tabActive,'general')}}"><a href="#general" data-toggle="tab">{{tr('general')|title}}</a></li>
+		
+		<li class="{{tabActive(tabActive,'images')}}"><a href="#images" data-toggle="tab">{{tr('media')|title}}</a></li>
+		{% if dataform.type.value == 2 %}
+		<li class="{{tabActive(tabActive,'inventory')}}"><a href="#inventory" data-toggle="tab">{{tr('inventory')|title}}</a></li>
+		{% endif %}
+		{% if dataform.parent.value == 0 %}
+		<li class="{{tabActive(tabActive,'seo')}}"><a href="#seo" data-toggle="tab">{{tr('seo')|title}}</a></li>
+		<li class="{{tabActive(tabActive,'product_related')}}"><a href="#product_related" data-toggle="tab">Correlati</a></li>
+		{% endif %}
+		<li class="{{tabActive(tabActive,'other')}}"><a href="#other" data-toggle="tab">{{tr('other','catalogo')|title}}</a></li>
+		{% for tab in admin_tab_classes %}
+			<li class="{{tabActive(tabActive,tab.getTag())}} tab_{{tab.getTag()}}"><a  href="#tab_{{tab.getTag()}}" data-toggle="tab">{{tab.getTitle()|title}}</a></li>
+		{% endfor %}
+		{{do_action('tab_product_admin')}}
+		
+	</ul>
+	<div id="myTabContent" class="tab-content">
+			
+			<!-- GENERAL -->
+			<div class="tab-pane {{tabActive(tabActive,'general')}} in" id="general">
+				<div class="row">		
+					{{form.build(dataform.id)}}
+					{{form.build(dataform.redirect)}}
+					{{form.build(dataform.parent)}}
+					{{form.build(dataform.attributeSet)}}
+					{{form.build(dataform.type)}}
+					
+					{% if dataform.parent.value == 0 %}
+						{{form.buildCol(dataform.section,'col-md-6')}}
+						{{form.buildCol(dataform.otherSections,'col-md-6')}}
+					{% endif %}
+					{% if 'sku' not in parent_attributes %}
+						{{form.buildCol(dataform.sku,'col-md-6')}}
+					{% endif %}
+
+					{% if 'manufacturer' not in parent_attributes %}
+						{{form.buildCol(dataform.manufacturer,'col-md-6')}}
+					{% endif %}
+					
+					<div class="clearfix"></div>
+					{% if 'ean' not in parent_attributes %}
+						{{form.buildCol(dataform.ean,'col-md-6')}}
+					{% endif %}
+
+					{% if 'upc' not in parent_attributes %}
+						{{form.buildCol(dataform.upc,'col-md-6')}}
+					{% endif %}
+
+					{{form.buildCol(dataform.name,'col-md-12')}}
+					{{form.buildCol(dataform.descriptionShort,'col-md-12')}}
+					{{form.buildCol(dataform.description,'col-md-12')}}
+					
+					{% if dataform.type.value == 1 %}
+						{{form.buildCol(dataform.weight,'col-md-2')}}
+					{% endif %}
+					{{form.buildCol(dataform.stock,'col-md-2')}}
+					{% if dataform.parent.value == 0 %}
+						{{form.buildCol(dataform.orderView,'col-md-2')}}
+					{% endif %}
+					{{form.buildCol(dataform.tags,'col-md-6')}}
+
+                    <div class="clearfix"></div>
+                                        
+                    {{form.buildCol(dataform.visibility,'col-md-2')}}
+					{{form.buildCol(dataform.freeShipping,'col-md-2')}}
+					
+					{% if 'offer' not in parent_attributes %}
+						{{form.buildCol(dataform.offer,'col-md-2')}}
+					{% endif %}
+					
+					{% if dataform.type.value == 1 %}
+						{% if attributes %}
+							{% for k,valori in attributes %}
+							<div class="form-group col-md-12">
+								<label>Seleziona {{k}} :</label>
+								<div class="controls">
+								<select type="select" class="form-control" name="formdata[{{k}}]" id="{{k}}"> 
+									{% for k1,v1 in valori %}
+										<option value="{{k1}}" {% if k1 == attributiSelezionati[k] %}selected{% endif %}>{{v1}}</option>											
+									{% endfor %}
+								</select>
+									
+								</div>
+							</div>
+							{% endfor %}
+						{% endif %}
+					{% endif %}
+				</div>
+			</div>
+
+			<!-- IMAGES -->
+			<div class="tab-pane fade {{tabActive(tabActive,'images')}} in" id="images">
+                            <div class="row">		
+                                <div class="col-md-12">	
+                                    {{form.dropzone(dataform.images)}}
+                                    {{form.dropzone(dataform.attachments)}}
+                                </div>
+                            </div>
+			</div>
+
+			{% if dataform.type.value == 2 %}
+			<!--- INVENTORY -->
+			 <div class="tab-pane fade {{tabActive(tabActive,'inventory')}}" id="inventory">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="m-b-20 clearfix">
+							{% if dataform.id.value > 0 %}
+							<div class="pull-right">
+								{% if no_button_variations == false %}
+									<a href="#" data-toggle="modal" data-target="#modal_variazione" class="btn btn-principale m-t-10"><i class="fa fa-plus p-r-10" ></i> Aggiungi variazione rapida</a>
+									<!--<a href="#" onclick="check_variation({dati[id]},1); return false;" class="btn btn-success m-t-10"><i class="fa fa-plus p-r-10" ></i> Aggiungi variazioni rapida</a>-->
+								{% endif %}
+								<a href="{{script_url}}&action=add&id={{dataform.id.value}}" class="btn btn-primary m-t-10"><i class="fa fa-plus p-r-10"></i> Aggiungi variazione</a>
+							</div>
+							{% else %}
+								<div class="alert alert-warning" style="width:100%">Per gestire l'inventario del prodotto occorre prima crearlo! </div>
+							{% endif %}
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+                                            {% if form_veloce_stock == false %}
+                                                {% if dataform.id.value > 0 %}
+                                                    <p id="nessuna_variazione">Nessuna variazione ancora disponibile</p>
+						{% endif %}
+						<table id="figli-table" class="table table-striped table-hover"  style="display:none">
+                                                    <thead>
+                                                        <th></th>
+                                                        <th class="text-center">Immagine</th>
+                                                        <th>Variazione</th>
+                                                        <th>COD. ART.</th>
+                                                        <th>EAN</th>
+                                                        <th>UPC</th>
+                                                        <th>Quantità</th>
+                                                        <th>Peso (<b>gr.</b>)</th>
+                                                        <th>Qnt minima ordinabile</th>
+                                                        <th></th>
+                                                        <th class="text-center">Azione</th>
+                                                    </thead>
+                                                    <tbody id="list_child_product">	
+                                                        <tr class="warning">
+                                                            <td><input id="check_stock_bulk" type="checkbox"></td>
+                                                            <td class="text-center">-</td>
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                            <td><input class="form-control solointeri" id="qnt_stock_bulk" type="text"></td>
+                                                            <td><input class="form-control solointeri" id="weight_stock_bulk" type="text"></td>
+                                                            <td><input class="form-control solointeri" id="minorder_stock_bulk" type="text"></td>
+                                                            <td><input class="form-control solointeri" id="maxorder_stock_bulk" type="text"></td>
+                                                            <td>-</td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+						</table>
+                                            {% else %}
+                                                <p id="nessuna_variazione" style="display:none">Nessuna variazione ancora disponibile</p>
+
+                                                <table id="figli-table" class="table table-striped table-hover">
+                                                    <thead>
+                                                        <th></th>
+                                                        <th class="text-center">Immagine</th> 
+                                                        <th>Variazione</th>
+                                                        <th>COD. ART.</th>
+                                                        <th>EAN</th>
+                                                        <th>UPC</th>
+                                                        <th>Quantità</th>
+                                                        <th>Peso (<b>gr.</b>)</th>
+                                                        <th></th>
+                                                        <th class="text-center">Azione</th>
+                                                    </thead>
+                                                    <tbody id="list_child_product">	
+                                                        <tr class="warning">
+                                                            <td><input id="check_stock_bulk" type="checkbox"></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td><input class="form-control solointeri" id="qnt_stock_bulk" type="text"></td>
+                                                            <td><input class="form-control solointeri" id="weight_stock_bulk" type="text"></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        {% for key_child,child in form_veloce_stock %}
+                                                            <tr id="child_{{key_child}}">
+                                                                <td style="vertical-align: middle;"><input class="check_stock_bulk" type="checkbox"></td>
+                                                                {% if child.name %}
+                                                                    <input type="hidden" name="formdata[stock_children][{{key_child}}][attributes]"  value="{{child.attributes|serialize}}">
+                                                                {% else %}
+                                                                    <input type="hidden" name="formdata[stock_children][{{key_child}}][name]"  value="{{child.name}}">
+                                                                {% endif %}
+                                                                <td style="vertical-align: middle;" class="text-center">
+                                                                    {% set data_img ={ 'id': key_child,'value':child.image?child.image:'',name:'formdata[stock_children]['~key_child~'][image]'} %}
+                                                                    {{form.buildUploadImage(data_img,'',true)}}
+                                                                    <!--<input type="file" id="img_{{key_child}}">
+                                                                    <input type="hidden" id="image_{{key_child}}" name="formdata[stock_children][{{key_child}}][image]"  value="{{child.image}}">
+                                                                    <div id="wrapper-upload_{{key_child}}"></div> -->
+                                                                </td>
+                                                                <td style="vertical-align: middle;">
+                                                                    {% if child.name %}
+                                                                        <strong>{{child.name}}:</strong>
+                                                                    {% else %}
+                                                                        {% for k1,v1 in child.attributes %}
+                                                                            <span><strong>{{k1}}:</strong> {{v1}} </span><br>
+                                                                        {% endfor %}
+                                                                    {% endif %}
+                                                                </td>
+                                                                <td style="vertical-align: middle;">
+                                                                    <input type="text" class="form-control" name="formdata[stock_children][{{key_child}}][sku]" value="{{child.sku}}">
+                                                                </td>
+                                                                <td style="vertical-align: middle;">
+                                                                    <input type="text" class="form-control" name="formdata[stock_children][{{key_child}}][ean]" value="{{child.ean}}">
+                                                                </td>
+                                                                <td style="vertical-align: middle;">
+                                                                    <input type="text" class="form-control" name="formdata[stock_children][{{key_child}}][upc]" value="{{child.upc}}">
+                                                                </td>
+                                                                <td style="vertical-align: middle;">
+                                                                    <input type="text" class="form-control solointeri qnt_child" name="formdata[stock_children][{{key_child}}][stock]" value="{{child.stock}}">
+                                                                </td>
+                                                                <td style="vertical-align: middle;">
+                                                                    <input type="text" class="form-control solointeri weight_child" name="formdata[stock_children][{{key_child}}][weight]" value="{{child.weight}}">
+                                                                </td>
+
+                                                                <td style="vertical-align: middle;" class="text-center">
+                                                                    <span class="label {% if child.visibility == true %}label-success{% else %}label-danger{% endif %}" id="status_{{child.id}}" style="cursor:pointer;" onclick="change_visibility({{child.id}}); return false;">{% if child.visibility == true %}ONLINE{% else %}OFFLINE{% endif %}</span>	
+                                                                </td>
+                                                                <td class="text-center" style="width:180px;vertical-align: middle;"> 
+                                                                    <div class="btn-group media-group">
+                                                                        <a href="{{script_url}}&action=edit&id={{key_child}}" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i> modifica</a>
+                                                                        <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
+                                                                            <span class="caret"></span>
+                                                                        </button>
+                                                                        <ul class="dropdown-menu media-menu text-left" role="menu">	
+                                                                            <li><a href="{{script_url}}&action=confirm_delete&id={{key_child}}&url_back={{(url_edit~'&tab=inventory')|url_encode}}"><i class="fa fa-trash-o"></i> Elimina</a></li>
+                                                                        </ul>
+                                                                    </div>	
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+						</table>
+                                            {% endif %}
+					</div>
+				</div>
+			</div>
+
+			{% endif %}
+
+			
+
+			<!-- SEO -->
+			<div class="tab-pane fade {{tabActive(tabActive,'seo')}} in" id="seo">
+				<div class="row">	
+					<div class="col-md-12">	
+						{{form.buildCol(dataform.prettyUrl)}}
+						{{form.buildCol(dataform.urlType)}}
+						{{form.buildCol(dataform.metaTitle)}}
+						{{form.buildCol(dataform.metaDescription)}}
+					</div>
+				</div>
+			</div>
+			
+            <!-- CORRELATI -->
+			{% if dataform.parent.value == 0 %}
+			 <div class="tab-pane fade {{tabActive(tabActive,'product_related')}} in" id="product_related">
+					<div class="row">
+                                            <div class="form-group col-md-12" >
+                                                <label>Seleziona una o pi&ugrave; categorie dei prodotti correlati che vuoi mostrare:</label>
+                                                <div class="controls">						
+                                                    {{form.build(dataform.related,dataform.related.other)}}
+                                                </div>
+                                            </div>
+					</div>
+					<div class="row">
+						<div class="col-md-12" id="cont_related">
+							{% for k,sect in relatedSections%}
+                                                            <div class="panel panel-info" id="section_related_{{k}}">
+                                                                <div class="panel-heading" id="nome_sezione"><strong>Categoria:</strong> {{sect.section_name}}
+                                                                    <i style="font-size: 18px; cursor:pointer;" class="fa fa-times right" onclick="remove_section_related({{k}},{{sect.section}}); return false;" aria-hidden="true"></i>
+                                                                </div>
+                                                                {% if sect.type == 'random' %}
+                                                                    <div class="panel-body">
+                                                                        <div class="form-group form-inline col-md-6" >
+                                                                            <div class="controls">
+                                                                                <input type="radio" class="form-control flag_related_selection" name="formdata[section_related][{{k}}][type]" checked value="random" style="margin: -4px 5px 0px 0px;" onchange="change_related_selection($(this),{{k}}); return false;"> <b>Selezione casuale</b>
+                                                                                <input type="radio" style="margin: -4px 5px 0px 0px;" class="form-control flag_related_selection"  name="formdata[section_related][{{k}}][type]" value="specific" onchange="change_related_selection($(this),{{k}}); return false;"> <b>Specifica prodotti</b>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="input-group col-md-6 flag_specific" style="display:none;" id="flag_specific_{{k}}">
+                                                                            <input class="form-control relatedProductSearch" section="{{sect.section}}" num="{{k}}" placeholder="nome o codice articolo" id="search_product" type="text">
+                                                                            <span class="input-group-addon bg-blue" style="cursor:pointer;" id="product_related_add_{{k}}" onclick="add_product_related($(this),{{k}}); return false;">     
+                                                                                <span class="arrow"></span>
+                                                                                <i class="fa fa-plus"></i> 
+                                                                            </span>
+                                                                        </div>
+
+                                                                         <div class="form-group col-md-6" id="flag_random_{{k}}">
+                                                                            <div class="controls">		
+                                                                                <input type="text" class="form-control" id="limit_related_products" name="formdata[section_related][{{k}}][num_products]" placeholder="numero di prodotti da selezionare" value="{{sect.num_products}}"> 	 	
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row cont_related" id="box_container_product_related_{{k}}" style="display:none">
+                                                                            <div class="form-group col-md-12" id="cont_prod_section_{{k}}" name="formdata[section_related][{{k}}][value]"></div>
+                                                                        </div>
+                                                                        <input type="hidden" id="section_related_value" value="{{sect.section}}" name="formdata[section_related][{{k}}][section]">
+                                                                    </div>
+                                                                {% else %}
+                                                                    <div class="panel-body">
+									<div class="form-group form-inline col-md-6" >
+                                                                            <div class="controls">
+                                                                                <input type="radio" class="form-control flag_related_selection" name="formdata[section_related][{{k}}][type]"  value="random" style="margin: -4px 5px 0px 0px;" onchange="change_related_selection($(this),{{k}}); return false;"> <b>Selezione casuale</b>
+                                                                                <input type="radio" style="margin: -4px 5px 0px 0px;" class="form-control flag_related_selection"  name="formdata[section_related][{{k}}][type]" checked value="specific" onchange="change_related_selection($(this),{{k}}); return false;"> <b>Specifica prodotti</b>
+                                                                            </div>
+									</div>
+
+									<div class="input-group col-md-6 flag_specific"  id="flag_specific_{{k}}">
+                                                                            <input class="form-control relatedProductSearch" section="{{sect.section}}" num="{{k}}" placeholder="nome o codice articolo" id="search_product" type="text">
+                                                                            <span class="input-group-addon bg-blue" style="cursor:pointer;" id="product_related_add_{{k}}" onclick="add_product_related($(this),{{k}}); return false;">     
+                                                                                <span class="arrow"></span>
+                                                                                <i class="fa fa-plus"></i> 
+                                                                            </span>
+									</div>
+
+                                                                        <div class="form-group col-md-6" style="display:none;" id="flag_random_{{k}}">
+                                                                            <div class="controls">		
+                                                                                <input type="text" class="form-control" id="limit_related_products" name="formdata[section_related][{{k}}][num_products]" placeholder="numero di prodotti da selezionare" value="{{sect.num_products}}"> 	 	
+                                                                            </div>
+									</div>
+                                                                        <div class="row cont_related"  id="box_container_product_related_{{k}}">
+                                                                            <div class="form-group col-md-12" id="cont_prod_section_{{k}}">
+                                                                                {% for k1,v1 in sect.products%}
+                                                                                    <div id="prod_related_{{k1}}" style="padding: 0;" class="panel panel-primary col-md-3">
+                                                                                        <div class="panel-heading" id="prodotto_correlato_name">{{v1.get('name#')}}
+                                                                                            <i style="font-size: 18px; cursor:pointer;" class="fa fa-times white right elimina_prodotto_correlato_{{k}}" aria-hidden="true" onclick="remove_product_related($(this),{{v1.id}}); return false;"></i>
+                                                                                        </div>
+                                                                                        <div class="panel-body">
+                                                                                            <img id="prodotto_correlato_img" src="{{v1.getUrlImage(0,'small')}}"/>
+                                                                                        </div>
+
+                                                                                        <input type="hidden" value="{{v1.id}}" name="formdata[section_related][{{k}}][products][]">
+                                                                                    </div>
+                                                                                {% endfor %}
+                                                                            </div>
+                                                                        </div>
+									<input type="hidden" id="section_related_value" name="formdata[section_related][[{k}}][section]" value="{{sect.section}}">
+                                                                    </div>
+                                                                {% endif %}
+                                                            </div>
+							{% endfor %}
+                                                </div>
+					</div>
+			</div>
+
+			{% endif %}
+
+			<!-- OTHER -->
+			<div class="tab-pane {{tabActive(tabActive,'other')}} fade" id="other">
+				<div class="row">
+					{{form.buildCol(dataform.virtual_product,'col-md-6')}}
+					{% if dataform.type.value == 2 %}
+						{{form.buildCol(dataform.centralized_stock,'col-md-6')}}
+					{% endif %}
+					
+					{{form.buildCol(dataform.recurrent_payment,'col-md-6 hidden')}}
+					{{form.buildCol(dataform.recurrent_payment_frequency,'col-md-6 hidden')}}	
+				</div>
+			</div>
+			{% for tab in admin_tab_classes %}
+				<div class="tab-pane {{tabActive(tabActive,tab.getTag())}} fade" id="tab_{{tab.getTag()}}">
+					<div class="row">
+						<div class="col-md-12">
+							{{tab.getContent()}}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			{{do_action('tab_product_content_admin')}}
+	</div>
+</div>
+
+
+{% endblock %}
+
+
+{% block btn_form_save %}
+<div class="row">			
+	 <div class="col-md-12 m-t-20 m-b-40 align-right">
+		{% if action == 'edit' %}
+		<a href="{{url_confirm_delete}}"  class="btn btn-danger m-t-10"><i class="fa fa-trash-o"></i> {{tr('delete')}}</a>
+		{% endif %}
+		{% if dataform.id.value  %}
+		<button type="button" onclick="salva_e_rimani();"  class="btn btn-success m-t-10"><i class="fa fa-check"></i> Salva e rimani</button>
+		{% endif %}
+		<button type="button" onclick="salva();"  class="btn btn-success m-t-10"><i class="fa fa-check"></i> {{tr('save')}}</button>
+	</div>
+</div>
+{% endblock %}
+
+
+{% block end_body %}
+
+<!-- MODELLI -->
+<div class="panel panel-default" id="modello_pricelist" style="display:none">
+	<div class="panel-body row_pricelist">
+		<div class="row">
+			<div id="del_list" onclick="del_pricelist({k}); return false;">X</div>
+			<div class="col-md-2">
+				<div class="form-group">
+					<label>Listino:</label>
+					<div class="controls" id="cont_listino">		
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group form-inline">
+					<label>Tipo:</label>
+					<div class="controls">
+						<input type="radio" class="form-control" id="price_list_percentage"  value="percentage"> <b>percentuale</b>
+						<input type="radio" class="form-control" id="price_list_price"  value="price" checked> <b>prezzo</b>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="form-group">
+					<label>Prezzo:</label>
+					<div class="controls">		
+						<input type="text" id="modello_prezzo" class="form-control"> 	 	
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group">
+					<label>Valido per quantità maggiori o uguali di:</label>
+					<div class="controls">		
+						<input type="text" id="modello_quantita" class="form-control" value="1"> 	 	
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="form-group form-inline">
+					<label>&nbsp;</label>
+					<div class="controls">		
+						<input type="checkbox" id="modello_avanzate" class="form-control" name="" value="1"> Opzioni avanzate		 	
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="advanced_option_pricelist" style="display:none">
+			<div class="col-md-3">
+				<div class="form-group">
+					<label>Applicabile alla categoria Utente:</label>
+					<div class="controls" id="cont_categoria_utente">		
+						
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group">
+					<label>Data inizio validità:</label>
+					<div class="controls">		
+						<input type="text" id="modello_datainizio" class="form-control"> 	 	
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group">
+					<label>Data fine validità:</label>
+					<div class="controls">		
+						<input type="text" id="modello_datafine" class="form-control"> 	 	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-info" id="modello_sezione_correlato" style="display:none">
+  <div class="panel-heading">
+		<strong>Categoria:</strong> <span id="nome_sezione">Nome sezione</span>
+		<i style="font-size: 18px; cursor:pointer;" class="fa fa-times right" aria-hidden="true" id="elimina"></i>
+  </div>
+  <div class="panel-body">
+		<div class="form-group form-inline col-md-6" >
+			<div class="controls">
+				<input type="radio" class="form-control flag_related_selection" checked value="random" style="margin: -4px 5px 0px 0px;"> <b>Selezione casuale</b>
+				<input type="radio" class="form-control flag_related_selection" value="specific" style="margin: -4px 5px 0px 0px;"> <b>Specifica prodotti</b>
+			</div>
+		</div>
+
+		<div class="input-group col-md-6 flag_specific" style="display:none;" id="flag_specific">
+			<input class="form-control" placeholder="nome o codice articolo" id="search_product" type="text">
+			<span class="input-group-addon bg-blue" style="cursor:pointer;" id="product_related_add" onclick="add_product_related($(this)); return false;">     
+				<span class="arrow"></span>
+				<i class="fa fa-plus"></i> 
+			</span>
+		</div>
+
+		 <div class="form-group col-md-6" id="flag_random">
+			<div class="controls">		
+				<input type="text" class="form-control" id="limit_related_products" placeholder="numero di prodotti da selezionare" value="1"> 	 	
+			</div>
+		</div>
+		 <div class="row cont_related" id="box_container_product_related" style="display:none">
+		    <div class="form-group col-md-12" id="cont_prod_section"></div>
+		 </div>
+		<input type="hidden" value="" id="section_related_value">
+  </div>
+</div>
+
+<div id="modello_prodotto_correlato" style="display:none; padding: 0;" class="panel panel-primary col-md-3">
+	<div class="panel-heading" >
+		<span id="prodotto_correlato_name">Nome prodotto</span>
+		<i style="font-size: 18px; cursor:pointer;" class="fa fa-times white right" aria-hidden="true" id="elimina"></i>
+	</div>
+	<div class="panel-body">
+		<img id="prodotto_correlato_img"/>
+	</div>	
+	<input type="hidden" value="" id="product_related_value">
+</div>
+
+
+<div style="display:none">
+	<select id="select_gruppo_utente"  type="select" class="form-control">
+		<option value="0">Tutte</option>
+		{% for v in categorie %}
+		<option value="{{v.getId()}}">{{v.get('name')}}</option>
+		{% endfor %}
+	</select>
+</div>
+
+<div style="display:none">
+	<select id="select_listino_prezzo"  type="select" class="form-control">
+		{% for v in pricelist %}
+		<option value="{{v.label}}">{{v.get('name')}}</option>
+		{% endfor %}
+	</select>	 
+</div>
+ 
+ <!-- Modal Variazioni rapida-->
+  <div class="modal fade" id="modal_variazione" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Aggiungi variazione</h4>
+        </div>
+        <div class="modal-body">
+			<form id="form_var_prod">
+			{% for etichetta,temp in select_variazione_prodotto %}
+			
+			<h5>{{etichetta|upper}}</h5>
+			<div class="cont-var-prod">
+			{% for k1,v1 in  temp.values %}
+				{% if k1 > 0 %}
+				<label class="var-attributo">
+					<input type="radio" class="variation-attr" name="formdata[combinazioni][0][attributi][{{etichetta}}]" value="{{k1}}" required/>
+					{% if v1.img %}
+						<img class="color-var" src="/img/{{v1.img}}/or/var.png"/>
+					{% else %}
+					{{v1.value}}
+					{% endif %}
+				</label>
+				{% endif %}
+			{% endfor %}
+			<!--<label class="var-attributo" style="background:red">+</label>-->
+			 <input type="hidden" name="formdata[combinazioni][0][stock]" value="0">
+			 <input type="hidden" name="formdata[combinazioni][0][checked]" value="1">
+			 <input type="hidden" name="formdata[parent]" value="{{dataform.id.value}}">
+			</div>
+			{% endfor %}
+			</form>
+        </div>
+        <div class="modal-footer">	
+          <button type="button" class="btn btn-success" onclick="salva_variazione()"><i class="fa fa-plus"></i> Aggiungi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

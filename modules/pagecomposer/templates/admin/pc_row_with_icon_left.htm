@@ -1,0 +1,31 @@
+<div class="row pagecomposer-riga-icona" style="margin-bottom:30px;margin-top:30px;">
+<div class="col-md-12 cont-elements">
+
+{% for k3,v3 in v2['children'] %}
+
+		<div class="col-md-12 element-child cont-div-row {{v3['class_edit']}} dd-nodrag" id="{{v3['id']}}">
+			<br>
+			{{page_composer_buttons(v3)}}
+			{% for k4,v4 in v3['children'] %}
+				<div class="row">
+					<div class="col-md-12 element-child {{v4['class_edit']}} dd-nodrag" id="{{v4['id']}}">
+						
+						
+						{{page_composer_buttons(v4)}}
+						{{page_composer_element(v4)}}
+						
+					</div>
+				</div>
+			{% endfor %}
+			<br>
+			
+			
+			{{page_composer_add_buttons(v3,k3)}}
+			
+		</div>
+
+		
+{% endfor %}
+
+</div>
+</div>

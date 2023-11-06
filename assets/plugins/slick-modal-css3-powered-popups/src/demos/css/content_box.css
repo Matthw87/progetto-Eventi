@@ -1,0 +1,56 @@
+/* Slick Modals - Content Box */
+body.content_box_visible .sm-button:before,
+body.content_box_visible .sm-button:after {
+    background: #fff !important;
+}
+body.content_box_visible .sm-popup {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.content_box {
+    color: #333;
+}
+.content_box .content {
+    padding: 40px;
+}
+.content_box .content .title,
+.content_box .content .subtitle,
+.content_box .content p {
+    padding: 14px 0;
+}
+.content_box .content .title {
+    font-size: 28px;
+}
+.content_box .content .title:first-of-type {
+    padding-top: 0;
+}
+.content_box .content .subtitle {
+    font-size: 18px;
+    font-weight: 700;
+    border-bottom: solid 1px #dedede;
+    margin-bottom: 14px;
+}
+.content_box .content ul {
+    margin-top: 20px;
+}
+.content_box .content p,
+.content_box .content ul li {
+    font-size: 14px;
+    line-height: 22px;
+}
+.content_box .content p {
+    opacity: 0.7;
+}
+.content_box .content ul li {
+    margin-left: 14px;
+}
+.content_box .content .close {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+}
+.content_box .content .close:hover {
+    opacity: 0.6;
+}

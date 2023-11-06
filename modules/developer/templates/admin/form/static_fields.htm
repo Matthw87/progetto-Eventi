@@ -1,0 +1,122 @@
+
+<span class="multilocale">
+{% for loc in locales %}
+<div class="col-md-12 panel panel-success">
+    <div class="panel-heading">
+        <img src="../img/flags/{{loc}}.png"> Inserisci le opzioni
+    </div>
+    <div class="panel-body">
+        
+    
+        <table class="table">
+            <thead>
+                <th>Etichetta</th>
+                <th>Valore</th>
+                <th></th>
+            </thead>
+            <tbody id="tbody_{{loc}}">
+                {% for k,v in form_options_multilocale[loc] %}
+                <tr>
+                    <td>
+                        <input type="text" name="formdata1[{{loc}}][etichetta][]" value="{{v}}">
+                    </td>
+                    <td>
+                        <input type="text" name="formdata1[{{loc}}][valore][]" value="{{k}}">
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" type="button" onclick="$(this).closest('tr').remove(); return false;"><i class="fa fa-trash-o"></i> elimina</button>
+                    </td>
+                
+                </tr>
+                {% endfor %}
+        
+            </tbody>
+            <tfoot>
+                <td colspan="3">
+                    <button class="pull-right btn btn-success" type="button" onclick="add_option_form('{{loc}}'); return false;">aggungi</button>
+                </td>
+            </tfoot>
+        
+            
+            
+        </table>
+    </div>
+</div>
+{% endfor %}
+    
+<table style="display:none">
+    <td id="modello_opzione">
+        <td class="etichetta">
+            <input type="text">
+        </td>
+        <td class="valore">
+            <input type="text">
+        </td>
+    </tr>
+</table>
+
+<script>
+    function add_option_form(loc){
+        $('#tbody_'+loc).append(
+            '<tr><td class="etichetta"><input type="text" name="formdata1['+loc+'][etichetta][]"></td>'+
+            '<td class="valore" ><input type="text" name="formdata1['+loc+'][valore][]"></td>'+
+            '<td><button class="btn btn-sm btn-danger" type="button" onclick="$(this).closest(\'tr\').remove(); return false;"><i class="fa fa-trash-o"></i> elimina</button></td></tr>'
+        );
+    }
+</script>
+
+</span>
+
+<span class="no_multilocale">
+    <div class="col-md-12 panel panel-success">
+        <div class="panel-heading">
+             Inserisci le opzioni
+        </div>
+        <div class="panel-body">
+            
+        
+            <table class="table">
+                <thead>
+                    <th>Etichetta</th>
+                    <th>Valore</th>
+                    <th></th>
+                </thead>
+                <tbody id="tbody">
+                    {% for k,v in form_options %}
+                    <tr>
+                        <td>
+                            <input type="text" name="formdata2[etichetta][]" value="{{v}}">
+                        </td>
+                        <td>
+                            <input type="text" name="formdata2[valore][]" value="{{k}}">
+                        </td>
+                         <td>
+                            <button class="btn btn-sm btn-danger" type="button" onclick="$(this).closest('tr').remove(); return false;"><i class="fa fa-trash-o"></i> elimina</button>
+                        </td>
+                    
+                    </tr>
+                    {% endfor %}
+            
+                </tbody>
+                <tfoot>
+                    <td colspan="3">
+                        <button class="pull-right btn btn-success" type="button" onclick="add_option_form2(); return false;">aggungi</button>
+                    </td>
+                </tfoot>
+            
+                
+                
+            </table>
+        </div>
+    </div>
+</span>
+
+<script>
+    function add_option_form2(){
+        $('#tbody').append(
+            '<tr><td class="etichetta"><input type="text" name="formdata2[etichetta][]"></td>'+
+            '<td class="valore" ><input type="text" name="formdata2[valore][]"></td>'+
+            '<td><button class="btn btn-sm btn-danger" type="button" onclick="$(this).closest(\'tr\').remove(); return false;"><i class="fa fa-trash-o"></i> elimina</button></td></tr>'
+        );
+    }
+</script>

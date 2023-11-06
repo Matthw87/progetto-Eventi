@@ -1,0 +1,18 @@
+{% extends "@core/layouts/base.htm" %}
+{% block page_title %} ERROR {% endblock %} 
+{% block buttons_right %}{% endblock %}
+{% block content %}
+	 <div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+			<p>{{tr('general.error')}}</p>
+
+			<div class="row">
+				<div class="col-md-12 pull-right">
+					
+					{{message|raw}}
+				</div>
+			</div>
+		</div>
+		 
+	</div>
+{% endblock %}

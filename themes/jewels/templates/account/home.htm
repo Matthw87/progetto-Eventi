@@ -1,0 +1,32 @@
+{% extends 'layouts/page.htm' %}
+{% block content %}
+	<div class="top-dashboard">
+		<div class="container-medium">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
+					<h4 class="m-t-0">{{tr(['Ciao, %s %s',userdata.name,userdata.surname])}}</h4>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-5 col-lg-4 text-right">
+					{% if auth('admin') %}
+						<a class="area-admin" href="backend/index.php?ctrl=Index"><img src="/themes/jewels/images/ico-area-admin-backend.png">{{tr('Area Admin')}}</a>
+					{% endif %}
+					<a class="logout" href="logout"><img src="/themes/jewels/images/ico-logout-backend.png">{{tr('Logout')}}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-medium">
+		<ul class="voci-utente">
+			{% for button in buttons %}
+				<li>
+					<a href="{{button.url}}" class="shadow-effect">
+						<img src="{{button.icon_image}}">
+						<h6>{{button.get('name')}}</h6>
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+		<div class="space50"></div>
+		{{do_action('display_account_home')}}
+	</div>
+{% endblock %}

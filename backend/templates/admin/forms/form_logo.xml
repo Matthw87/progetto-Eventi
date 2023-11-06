@@ -1,0 +1,9 @@
+<xml>
+    <sheet>
+        <row>   
+            <col>
+                <field name="image"/>
+            </col>
+        </row>
+    </sheet>
+</xml>

@@ -1,0 +1,34 @@
+{% extends 'layouts/mail.htm' %}
+{% block content %}
+
+<font face="Gotham, Helvetica Neue, Helvetica, Arial, sans-serif" color="#022801" size="+2">
+	<strong>Gentile Amministratore,</strong>
+</font>
+<br><br><br>
+<font face="Gotham, Helvetica Neue, Helvetica, Arial, sans-serif" color="#b3b3b3">
+	<p>il seguente utente si è registrato al sito</p>
+
+	
+	<p style=" margin-top: 30px; ">
+		<ul>
+			<li>Nome: {{user.name}}</li>
+			<li>Cognome: {{user.surname}}</li>
+			<li>Città: {{user.city}}</li>
+			<li>Nazione: {{user.country}}</li>
+			<li>CAP: {{user.postalCode}}</li>
+			<li>Indirizzo: {{user.address}}</li>
+			<li>Azienda: {{user.company}}</li>
+			<li>Cod. Fiscale: {{user.fiscalCode}}</li>
+			<li>P.IVA: {{user.vatNumber}}</li>
+			<li>Email: {{user.email}}</li>
+			
+		
+		</ul>
+	</p>
+</font>
+
+
+
+{% endblock %}
+
+

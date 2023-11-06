@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Feedback Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/feedback_form.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/demos/js/feedback_form.js"></script>
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="feedbackForm" data-sm-init="true">
+            <div class="title">Share your toughts!</div>
+            <p>We valid your opinion which helps us to improve our services even more.</p>
+            <form name="sm-surveyForm-1" id="sm-surveyForm-1">
+                <div class="field">
+                    <label for="recommend">1. Are you a customer?</label>
+                    <div class="check">
+                        <input type="checkbox" id="recommend" name="recommend" checked="checked" />
+                        <label for="recommend"></label>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="servicesRatings">2. Our services rating</label>
+                    <fieldset class="stars" id="servicesRatings">
+                        <input type="radio" id="servicesRating-5" name="servicesRating" value="5" />
+                        <label for="servicesRating-5"></label>
+                        <input type="radio" id="servicesRating-4" name="servicesRating" value="4" />
+                        <label for="servicesRating-4"></label>
+                        <input type="radio" id="servicesRating-3" name="servicesRating" value="3" checked="checked" />
+                        <label for="servicesRating-3"></label>
+                        <input type="radio" id="servicesRating-2" name="servicesRating" value="2" />
+                        <label for="servicesRating-2"></label>
+                        <input type="radio" id="servicesRating-1" name="servicesRating" value="1" />
+                        <label for="servicesRating-1"></label>
+                    </fieldset>
+                </div>
+                <div class="field">
+                    <label for="supportRatings">3. Our support rating</label>
+                    <fieldset class="stars" id="supportRatings">
+                        <input type="radio" id="supportRating-5" name="supportRating" value="5" />
+                        <label for="supportRating-5"></label>
+                        <input type="radio" id="supportRating-4" name="supportRating" value="4" />
+                        <label for="supportRating-4"></label>
+                        <input type="radio" id="supportRating-3" name="supportRating" value="3" checked="checked" />
+                        <label for="supportRating-3"></label>
+                        <input type="radio" id="supportRating-2" name="supportRating" value="2" />
+                        <label for="supportRating-2"></label>
+                        <input type="radio" id="supportRating-1" name="supportRating" value="1" />
+                        <label for="supportRating-1"></label>
+                    </fieldset>
+                </div>
+                <div class="field">
+                    <label for="satisfactionRatings">4. Overall satisfaction</label>
+                    <fieldset class="stars" id="satisfactionRatings">
+                        <input type="radio" id="satisfactionRating-5" name="satisfactionRating" value="5" />
+                        <label for="satisfactionRating-5"></label>
+                        <input type="radio" id="satisfactionRating-4" name="satisfactionRating" value="4" />
+                        <label for="satisfactionRating-4"></label>
+                        <input type="radio" id="satisfactionRating-3" name="satisfactionRating" value="3" checked="checked" />
+                        <label for="satisfactionRating-3"></label>
+                        <input type="radio" id="satisfactionRating-2" name="satisfactionRating" value="2" />
+                        <label for="satisfactionRating-2"></label>
+                        <input type="radio" id="satisfactionRating-1" name="satisfactionRating" value="1" />
+                        <label for="satisfactionRating-1"></label>
+                    </fieldset>
+                </div>
+                <div class="field">
+                    <input type="text" name="name" class="name" placeholder="Your name" />
+                </div>
+                <div class="field">
+                    <input type="text" name="message" class="message" placeholder="Your message" />
+                </div>
+                <input type="submit" class="send cta" value="Submit survey" />
+                <div class="errorMsg"></div>
+            </form>
+        </div>
+
+        <script>
+            $('.feedbackForm').SlickModals({
+                restrict_cookieSet: true,
+                restrict_cookieName: 'sm-feedbackForm',
+                restrict_cookieDays: '14',
+                restrict_cookieSetClass: 'sm-feedbackFormHide',
+                popup_type: 'instant',
+                popup_animation: 'slideLeft',
+                popup_position: 'left',
+                popup_closeButtonPlace: 'inside',
+                popup_css: {
+                    'width': '380px',
+                    'padding': '40px',
+                    'margin': '20px',
+                    'border-radius': '6px',
+                    'box-shadow': '6px 6px 0 0 rgba(0,0,0,0.15)'
+                },
+                overlay_animation: 'zoomIn',
+                overlay_css: {
+                    'background': 'rgba(0, 0, 0, 0.3)'
+                },
+                mobile_breakpoint: '480px',
+                mobile_position: 'left',
+                mobile_css: {
+                    'width': '100%',
+                    'padding': '0',
+                    'margin': '0'
+                },
+                callback_afterVisible: function () {
+                    sm_FeedbackForm('.feedbackForm');
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

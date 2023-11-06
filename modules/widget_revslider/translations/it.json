@@ -1,0 +1,13 @@
+{
+    "messages":{
+        "check": "<b>ZipArchive</b> non è installato. Occorre installare questa estensione di php per poter caricare nuovi slider.",
+        "deleted": "Slider rimosso con sucesso",
+        "created": "Slider aggiunto con sucesso",
+        "confirm_delete_message": "Sicuro di voler eliminare lo slider <b>%s</b>?"
+    },
+    "form":{
+        "fields": {
+            "slider": "slider"
+        }
+    }
+}

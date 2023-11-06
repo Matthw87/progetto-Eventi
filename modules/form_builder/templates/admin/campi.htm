@@ -1,0 +1,36 @@
+<table class="table table-bordered table-striped">
+											
+	<thead>
+		<th>Name</th>
+		<th>Tipo</th>
+		<th>Obbligatorio</th>
+		<th></th>
+	</thead>
+	<tbody id="campi_form">
+		{% for k,v in campi %}
+		<tr>
+			<td>{{v.name}}</td>
+			<td>{{v.type}}</td>
+			<td>{% if v.mandatory %}<span class="label label-success">SI</span>{% else %}<span class="label label-danger">NO</span>{% endif %}</td>
+			<td class="text-center"> 
+					<div class="btn-group media-group">
+					  <a onclick="add_field_form({{id_box}},{{k}}); return false;" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i> {{tr('edit')}}</a>
+					  <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
+							<span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu media-menu text-left" role="menu">
+						<li><a onclick="confirm_delete_field({{id_box}},{{k}});return false;"><i class="fa fa-trash-o"></i> {{tr('delete')}}</a></li>
+					  </ul>
+				</div>
+			</td>
+															
+		</tr>
+		{% endfor %}
+		
+	</tbody>
+	<tfoot>
+		<td colspan="4" >
+		<button onclick="add_field_form({{id_box}},0)" class="pull-right btn btn-sm btn-success" type="button"><i class="fa fa-plus"></i> aggiungi campo</button>
+		</td>
+	</tfoot>
+</table>

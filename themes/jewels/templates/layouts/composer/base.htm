@@ -1,0 +1,130 @@
+{% extends 'layouts/page.htm' %}
+{% block html_tag %}
+{% if auth('cms_page') and disabled_editing_tab == false %}
+	style="margin-top:32px;"
+{% endif %}
+{% endblock %}
+
+{% block metatags_title %}{% if pagina.get('meta_title') %}{{pagina.get('meta_title')}}{% else %}{{pagina.get('title')}}{% endif %}{% endblock %}
+
+{% block title %}
+	{{pagina.get('title')}}
+{% endblock %}
+
+
+{% block metatags %}
+	<meta name="description" content="{{pagina.get('meta_description')}}">
+    {#<meta name="keyword" content="{{pagina.get('metaKeywords')}}">#}
+{% endblock %}
+
+{% block css %}
+	{{parent()}}
+		
+	{% if preview_page %}
+	<style id="page_composer_layout_css">
+		{{custom_css}}
+	</style>
+	<link rel="stylesheet" href="modules/pagecomposer/css/pagecomposer_editor_css.css">
+	{% endif %}
+{% endblock %}
+
+{% block javascript %}
+	{{parent()}}
+	{% if preview_page %}
+	<script src="modules/pagecomposer/media.php?type=js&file=js_head_tmp_{{id_page_composer}}.js" type="text/javascript"></script>
+	{% endif %}
+{% endblock %}
+
+
+{% block javascript_end %}
+	{{parent()}}
+	<script>
+		 AOS.init(
+		{
+			once: true,
+			delay: 0,
+			duration: 800
+		}
+		);
+	</script>
+		{% if preview_page %}
+		<script src="modules/pagecomposer/media.php?type=js&file=js_end_tmp_{{id_page_composer}}.js" type="text/javascript"></script>
+		{% endif %}
+
+{% endblock %}
+
+{% block page_init %}
+{% if auth('cms_page') and disabled_editing_tab == false %}
+<div class="barra-admin">
+	
+	<div class="voce-barra-admin">
+		<a href="backend/index.php?ctrl=Index">
+		<i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+		</a>
+	</div>
+	<div class="voce-barra-admin">
+		<a href="backend/index.php?ctrl=PageAdmin&action=add">
+		<img class="ico-btn" src="modules/pagecomposer/img/plus-b.png" style="height:16px;"> Nuovo
+		</a>
+	</div>
+	<div class="voce-barra-admin">
+		<a href="backend/index.php?ctrl=PageComposerAdmin&mod=pagecomposer&id={{id_pagecomposer}}">
+		<img class="ico-btn" src="modules/pagecomposer/img/ico-imp-b.png" style="height:16px;"> Modifica pagina
+		</a>
+	</div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block container %}
+	
+
+{% if preview_page %}
+<div class="fab-container-composer" style="z-index:99999">
+    <div class="css-composer fab-composer" tooltip="Modifica CSS" onclick="pagecomposer_editor_side_show()"></div>
+   <div class="js-composer fab-composer" tooltip="Modifica JS"></div>
+</div>
+
+<div id="mySidenav" class="pagecomposer-editor-css-container">
+  <!--<div style="text-align:center; width:100%; margin-top:-30px;margin-bottom:30px;">
+  <img class="center" src="/img/marionlogo.png">
+  </div>-->
+  <h2>Modifica</h2>
+
+  <!-- INIZIO -->
+  <div class="pagecomposer-tabset">
+	<!-- Tab 1 -->
+	<input type="radio" name="tabset" id="tab1" class="edit_tabs" value="css" aria-controls="css" checked>
+	<label for="tab1">CSS</label>
+	<!-- Tab 2 -->
+	<input type="radio" name="tabset" id="tab2" class="edit_tabs" value="js-head" aria-controls="js_head">
+	<label for="tab2">JS HEAD</label>
+	<!-- Tab 3 -->
+	<input type="radio" name="tabset" id="tab3" class="edit_tabs" value="js-end" aria-controls="js_end">
+	<label for="tab3">JS END</label>
+
+	<div class="tab-panels">
+		<section id="css" class="tab-panel">
+			<textarea class="form-control" style="width:100%; height:70%" id="pagecomposer-textarea-editor-css">{{custom_scss}}</textarea>
+		</section>
+
+		<section id="js_head" class="tab-panel">
+			<textarea class="form-control" style="width:100%; height:70%" id="pagecomposer-textarea-editor-js-head">{{custom_js_head}}</textarea>
+		</section>
+
+		<section id="js_end" class="tab-panel">
+			<textarea class="form-control" style="width:100%; height:70%" id="pagecomposer-textarea-editor-js-end">{{custom_js_end}}</textarea>
+		</section>
+	</div>  
+  </div>
+  <!-- FINE -->
+
+<div style="clear:both; margin-top:20px;" class="pagecomposer-editor-buttons">
+	<button style="float:right; margin-left:5px;" class="pagecomposer-editor-button" onclick="pagecomposer_save_css({{id_page_composer}}); return false;">Salva bozza</button>
+	<!--<button style="float:right;" class="pagecomposer-editor-button purple-white" onclick="pagecomposer_editor_side_hide();">chiudi</button>-->
+</div>
+<a href="javascript:void(0)" class="closebtn" onclick="pagecomposer_editor_side_hide()">&times;</a>
+</div>
+{% endif %}
+{% endblock %}

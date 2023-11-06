@@ -1,0 +1,119 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block edit_page_title %} {{tr('setting')|title}} {% endblock %} 
+
+
+
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Pagine: <b>sezione</b>, <b>cerca</b>,  <b>brands</b>, <b>tag</b>
+            </div>
+            <div class="panel-body" style="">
+                {{form.buildCol(dataform.enable_select_order_product,'col-md-6')}}
+                {{form.buildCol(dataform.parameters_select_order_product,'col-md-6')}}
+                
+                {{form.buildCol(dataform.type_view,'col-md-6')}}
+                {{form.buildCol(dataform.type_pager_section,'col-md-6')}}
+                {{form.buildCol(dataform.enable_select_number_product_page,'col-md-6')}}
+                {{form.buildCol(dataform.enable_select_view_product,'col-md-6')}}
+                
+
+                {% if isActivedModule('ecommerce') %}
+                    {{form.buildCol(dataform.enable_add_wishlist,'col-md-6')}}
+
+                    {{form.buildCol(dataform.enable_add_cart_button,'col-md-6')}}
+                    {{form.buildCol(dataform.enable_quantity_add_cart,'col-md-6')}}
+                   
+                {% endif %}
+
+                
+
+                
+                
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!---
+{if:isActivedModule(#ecommerce#)}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Slider prodotti
+            </div>
+            <div class="panel-body" style="">
+                <div class="form-group form-inline col-md-6" id="div_checkQuantityEshop">
+                    <label>Abilita aggiungi alla wishlist:</label>
+                    <div class="controls">
+                            <input type="checkbox" name="formdata[enable_add_wishlist_slider]" value="1" class="switch" data-on-color="success" data-off-color="danger"  data-on-text="SI" data-off-text="NO">			
+                    </div>
+                </div>
+                <div class="form-group form-inline col-md-6" id="div_checkQuantityEshop">
+                    <label>Abilita acquisto rapido:</label>
+                    <div class="controls">
+                            <input type="checkbox" name="formdata[enable_add_cart_button_slider]" value="1" class="switch" data-on-color="success" data-off-color="danger"  data-on-text="SI" data-off-text="NO">			
+                    </div>
+                </div>
+
+                <div class="form-group form-inline col-md-6" id="div_checkQuantityEshop">
+                    <label>Abilita scelta quantità acquisto rapido:</label>
+                    <div class="controls">
+                            <input type="checkbox" name="formdata[enable_quantity_add_cart_slider]" value="1" class="switch" data-on-color="success" data-off-color="danger"  data-on-text="SI" data-off-text="NO">			
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{end:}
+-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Scheda prodotto 
+            </div>
+            <div class="panel-body" style="">
+
+                {{form.buildCol(dataform.enable_social_link_card_product,'col-md-6')}}
+                {{form.buildCol(dataform.enable_request_info_card_product,'col-md-6')}}
+                {{form.buildCol(dataform.enable_alert_restock_card_product,'col-md-6')}}
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Gestione variazioni 
+            </div>
+            <div class="panel-body" style="">
+                {{form.buildCol(dataform.use_parent_ean,'col-md-6')}}
+                {{form.buildCol(dataform.use_parent_sku,'col-md-6')}}
+
+               
+
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+

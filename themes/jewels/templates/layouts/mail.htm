@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>{{nome_shop}}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<base href="http://{{getConfig('generale','baseurl')}}" />
+</head>
+<div style="display:none; white-space:nowrap; font:15px courier; color:#ffffff; line-height:0; width:600px !important; min-width:600px !important; max-width:600px !important;">
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</div>
+<body>
+    <table width="700" height="31" align="center" bgcolor="#FFFFFF" cellpadding="0" cellspacing="0">
+    	<tr align="center" valign="middle">
+    		<td>
+				<div class="logo">
+					<a href="/index.php"><img src="media/" height="31"></a>
+				</div>
+			</td>
+    	</tr>
+    </table>
+    <table width="700" height="400" align="center" bgcolor="#FFFFFF" cellpadding="20" cellspacing="0">
+    	<tr align="left" valign="top">
+    		<td>
+            	{% block content %}
+				{% endblock %}
+            </td>
+    	</tr>
+    </table>
+    <table width="700" height="100" align="center" bgcolor="#FFFFFF" cellpadding="0" cellspacing="0">
+    	<tr align="center" valign="middle">
+    		<td>
+            	 <font face="Gotham, Helvetica Neue, Helvetica, Arial, sans-serif" color="#111111" size="-1">	
+					&copy;{{"now"|date("Y")}} {{getConfig('azienda','nome_azienda')}}</strong> - {{tr('P.Iva')}} {{getConfig('azienda','partita_iva')}}  - {{tr('tutti i diritti riservati')}}  
+                    <br><br>
+                    <a href="https://www.3d0.it" target="_blank">
+						<img src="/themes/jewels/images/logo-3d0.png" alt="Logo 3d0" width="40px">
+                    </a>
+                 </font>
+            </td>
+    	</tr>
+    </table>
+</body>
+</html>
+
+

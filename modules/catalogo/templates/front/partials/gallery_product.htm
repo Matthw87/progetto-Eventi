@@ -1,0 +1,23 @@
+<div class="foto">
+	<a class="fancybox fancyone" href="{{prodotto.getUrlImage(0,'large')}}" rel="media-gallery" data-fancybox="gallery">
+		{% if prodotto.getUrlImageLabelPrice() %}
+			<img class="labelprice" src="{{prodotto.getUrlImageLabelPrice()}}" alt="labelprice">
+		{% endif %}
+		{% if prodotto.hasSpecialPrice() %}
+			<span class="percentuale">-{{prodotto.getDiscountPercentage()}}%</span>
+		{% endif %}
+		<img class="imgbig" src="{{prodotto.getUrlImage(0,'original')}}" alt="{{prodotto.get('name')}}">
+	</a>
+
+	<div class="immaginette">
+		{% for k,v in prodotto.images %}
+			{% if k > 0 %}
+				<div class="immaginetta">
+					<a class="fancybox" href="{{prodotto.getUrlImage(k,'original')}}" rel="media-gallery" data-fancybox="gallery">
+						<img src="{{prodotto.getUrlImage(k,'original')}}" class="netta" val="{{k}}" />
+					</a>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+</div>	

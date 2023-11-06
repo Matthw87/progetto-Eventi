@@ -1,0 +1,117 @@
+/* Slick Modals - Image Gallery */
+.imageGallery li {
+    list-style: none;
+}
+.imageGallery #galleryWrap {
+    opacity: 0;
+    transition: opacity .4s ease;
+}
+.imageGallery #galleryWrap.visible {
+    opacity: 1;
+}
+.imageGallery .nav {
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    border-right: 2px solid;
+    border-bottom: 2px solid;
+    border-color: #fff;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+.imageGallery #prevItem {
+    left: 0;
+    transform: rotate(135deg);
+}
+.imageGallery #nextItem {
+    right: 0;
+    transform: rotate(-45deg);
+}
+.imageGallery #galleryWrap:hover .nav {
+    opacity: 0.5;
+}
+.imageGallery #galleryWrap:hover .nav:hover {
+    opacity: 1;
+}
+.imageGallery #galleryWrap:hover #prevItem {
+    left: 40px;
+}
+.imageGallery #galleryWrap:hover #nextItem {
+    right: 40px;
+}
+.imageGallery #galleryWrap {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.imageGallery #galleryItems {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.4s ease;
+}
+.imageGallery #galleryItems li {
+    position: relative;
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.imageGallery #galleryDots {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+}
+.imageGallery #galleryDots li {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 4px;
+    opacity: 0.5;
+    transition: all 0.2s ease;
+}
+.imageGallery #galleryDots li.active {
+    transform: scale(1.4);
+    opacity: 1;
+}
+.imageGallery #galleryItems .content {
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 50%;
+    text-align: center;
+}
+.imageGallery #galleryItems .content .title {
+    font-size: 24px;
+    font-weight: 700;
+    padding-bottom: 6px;
+    color: #fff;
+}
+.imageGallery #galleryItems .content p {
+    font-size: 14px;
+    line-height: 22px;
+    color: #fff;
+}
+@media screen and (max-width: 960px) {
+    .imageGallery #galleryItems .content {
+        max-width: 80%;
+    }
+}
+@media screen and (max-width: 640px) {
+    .imageGallery #galleryItems .content {
+        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

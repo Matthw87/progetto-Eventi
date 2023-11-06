@@ -1,0 +1,27 @@
+<b>
+
+<span id="pagecomposer_name_element_{{v2['id']}}" class="pagecomposer_name_element" ondblclick="pagecomposer_edit_name_widget({{v2['id']}}); return false;">{% if v2.custom_name %}{{v2.custom_name}}{% else %}POPUP CONTAINER{% endif %}</span>
+<input type="text" class="pagecomposer_name_element_input" id_widget="{{v2['id']}}" id="pagecomposer_name_element_input_{{v2['id']}}" style="display:none" value="{% if v2.custom_name %}{{v2.custom_name}}{% else %}POPUP CONTAINER{% endif %}">
+
+
+</b>
+<br>
+<br>
+<div class="col-md-12 cont-columns ui-sortable">
+	 <div class="box-edit-100 sortable dd-nodrag cont-elements" style="padding:16px 16px;">
+
+		{% for v3 in v2['children'] %}	
+		<div class="col-md-12 element-child {{v3['class_edit']}} dd-nodrag tab-element" id="{{v3['id']}}">
+			
+				
+				{{page_composer_buttons(v3)}}
+				{{page_composer_element(v3)}}
+				
+			
+		</div>
+		{% endfor %}
+		{{page_composer_add_buttons(v2)}}
+	</div>
+	
+</div>
+

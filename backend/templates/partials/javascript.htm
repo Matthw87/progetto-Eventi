@@ -1,0 +1,20 @@
+<script>
+	var js_baseurl = "{{baseurl|escape('js')}}";
+	var js_activelocale = "{{activelocale|escape('js')}}";
+	var javascript_activelocale = "{{activelocale|escape('js')}}";
+</script>
+
+<script src="../assets/plugins/jquery.js"></script>
+<script src="../assets/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="assets/js/responsive.js"></script>
+<script src="assets/js/form_twig.js?v=1"></script>
+<script src="assets/js/functions.js"></script>
+<script src="../assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+{% for v in javascript_head %}
+	{% if v.options %}
+<script src="{{v.url}}" {% for i,j in v.options %}{{i}}="{{j}}" {% endfor %}></script>
+	{% else %}
+<script src="{{v.url}}"></script>
+	{% endif %}
+{% endfor %}

@@ -1,0 +1,63 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block edit_page_title %} {{tr('Translates')|title}} {% endblock %} 
+
+
+{% block before_content %}
+
+<div class="row">			
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form action="index.php" method="GET">
+                     {{dataform.buildCol(dataform.locale,'col-md-12')}}
+					 {{dataform.buildCol(dataform.moule,'col-md-12')}}
+					 {{dataform.buildCol(dataform.type,'col-md-12')}}
+					 
+                    <input type="hidden" name="mod" value="developer" >
+                    <input type="hidden" name="ctrl" value="Translate">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+{% import "macro/form.htm" as form %}
+<style>
+	.translates td{
+		padding: 5px !important;
+	}
+	input{
+		padding: 5px 7px !important;
+	}
+</style>
+
+<table class="table table-bordered translates">
+		<tbody>
+		
+			{% for k,row in messages %}
+					<tr>
+					
+					<td>
+						{{row['label']}}
+					</td>
+
+					<td>
+						<input name="formdata[messages][{{k}}][value]" value="{{row['value']}}" class="form-control">
+						<input name="formdata[messages][{{k}}][label]" type="hidden" value="{{row['label']}}" class="form-control">
+					</td>
+					</tr>
+			{% endfor %}
+
+		
+		</tbody>
+	
+</table>
+<input type="hidden" name="formdata[type]" value="frontend">
+<input type="hidden" name="formdata[module]" value="cart_onepage">
+<input type="hidden" name="formdata[locale]" value="it">
+
+{% endblock %}
+

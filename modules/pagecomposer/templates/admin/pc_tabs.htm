@@ -1,0 +1,27 @@
+<div class="tabcordion">
+	<ul id="tab_widget_{{v2['id']}}" class="nav nav-tabs tabs-list">
+		{% for k3,v3 in v2['children'] %}
+			<li class="{% if v3['position'] == 1 %}active{% endif %} ui-state-default tab-item" id="{{v3['id']}}">	
+				<a href="#tab_{{v3['id']}}" data-toggle="tab">Tab {{v3['position']}}</a>
+				<div class="btn-tab">
+					<div class="modifica-tab dd-nodrag" onclick="open_edit_page({{v3['id']}},'{{v3['url_edit']}}'); return false;"><img src="/modules/pagecomposer/img/ico-imp.png"/></div>
+					<div class="elimina-tab dd-nodrag" onclick="elimina_blocco_home({{v3['id']}}); return false;"><img src="/modules/pagecomposer/img/ico-cestino.png"/></div>				
+				</div>
+			</li>	
+		{% endfor %}
+		<li class="add_tab"><a href="#" onclick="addTab({{v2['id']}}); return false;"><i class="fa fa-plus"></i></a></li>
+	</ul>
+	<div id="tab_widget_content_{v2[id]}" class="tab-content">
+		{% for k3,v3 in v2['children'] %}	
+			<div class="tab-pane {% if v3['position'] == 1 %}active{% endif %} fade in cont-tabs" id="tab_{{v3['id']}}">
+				{% for k4,v4 in v3['children'] %}
+					<div class="col-md-12 element-child {{v4['class_edit']}} dd-nodrag tab-element {% if v4['type'] == 'tabs' %} element-tabs {% endif %}" id="{{v4['id']}}">			
+							{{page_composer_buttons(v4)}}
+							{{page_composer_element(v4)}}	
+					</div>
+				{% endfor %}	
+				{{page_composer_add_buttons(v3)}}
+			</div>
+		{% endfor %}
+	</div>
+</div>

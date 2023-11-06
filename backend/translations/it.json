@@ -1,0 +1,396 @@
+{
+    "form":{
+        "edit": "modifica",
+        "add": "aggiungi",
+        "save": "salva",
+        "delete": "elimina",
+        "update": "aggiorna"
+    },
+    "list":{
+        "back": "indietro",
+        "add": "aggiungi",
+        "edit": "modifica",
+        "duplicate": "duplica",
+        "delete": "elimina",
+        "confirm_delete_message":"Sicuro di volere eliminare questo elemento?",
+        "export": "esporta",
+        "import": "importa",
+        "next": "avanti",
+        "prev": "precedente",
+        "search": "cerca",
+        "select": "seleziona",
+        "filter": "filtra",
+        "mass_actions": "azioni di massa",
+        "found_items":"elementi trovati",
+        "advanced_page": "pagina avanzata",
+        "no_record": "Nessun record presente in archivio",
+        "view": "visualizza",
+        "per_page": "per pagina"
+    },
+    "users_management":{
+        "list":{
+            "title": "Utenti",
+            "active": "attivo",
+            "inactive": "inattivo",
+            "inactive_action": "disattiva",
+            "active_action": "attiva",
+            "user": "utente",
+            "confirm_delete_message": "Sicuro di voler eliminare l'utente <b>%s %s</b>?",
+            "bulk":{
+                "activation":"Sicuro di voler attivare gli account selezionati?",
+                "disactivation":"Sicuro di voler disattivare gli account selezionati?"
+            }
+        },
+        "form":{
+            "title": "Form utente",
+            "tabs":{
+                "info": "Informazioni",
+                "access": "Accesso"
+            },
+            "fields": {
+                "name": "nome",
+                "active": "attivo",
+                "phone": "telefono",
+                "cellular": "cellulare",
+                "surname": "cognome",
+                "city": "città",
+                "category": "categoria",
+                "postal_code": "codice postale",
+                "address": "indirizzo",
+                "country": "nazione",
+                "province": "provincia",
+                "reset_password": "reset password",
+                "password_confirm": "conferma password"
+            },
+            "messages":{
+                "inserted": "Utente inserito con successo",
+                "updated": "Utente aggiornato con successo",
+                "deleted": "Utente eliminato con successo"
+            }
+        },
+        "entity_errors":{
+            "username_duplicate": "l'username è già utilizzata da un'altro utente",
+            "email_duplicate": "l'email è già utilizzata da un'altro utente",
+            "user_pwd_mandatory": "password obbligatoria"
+        }
+    },
+    "user_categories_management":{
+        "list":{
+            "title": "Categorie utente",
+            "name": "nome",
+            "confirm_delete_message": "Sicuro di voler eliminare la categoria utente <b>%s</b>?"
+        },
+        "form":{
+            "title": "Form categoria utente",
+            "fields": {
+                "label": "etichetta",
+                "name": "nome",
+                "note": "note"
+            },
+            "messages":{
+                "inserted": "Categoria utente inserita con successo",
+                "updated": "Categoria utente aggiornata con successo",
+                "deleted": "Categoria utente eliminata con successo"
+            }
+        },
+        "errors":{
+            "locked_category": "La categoria <b>%s</b> non può essere eliminata"
+        }
+    },
+    "cms":{
+        "logo":{
+            "form":{
+                "title": "Carica il logo",
+                "fields":{
+                    "image": "Immagine"
+                },
+                "messages":{
+                    "updated": "Logo aggiornato con successo"
+                }
+            }
+        }
+    },
+    "homepages":{
+        "list":{
+            "title": "Homepages",
+            "name": "nome",
+            "confirm_delete_message": "Sicuro di voler eliminare la homepage <b>%s %s</b>?",
+            "buttons":{
+                "delete": "elimina",
+                "preview": "anteprima",
+                "setting": "impostazioni",
+                "active": "attiva",
+                "disable": "disattiva",
+                "edit": "modifica",
+                "confirm_delete_message": "Sicuro di voler eliminare l'homepage <b>%s</b>?",
+                "confirm_active_message": "Sicuro di voler attivare l'homepage <b>%s</b>?",
+                "confirm_disable_message": "Sicuro di voler disattivare l'homepage <b>%s</b>?"
+            },
+            "messages":{
+                "activated": "Homepage attivata con successo",
+                "disabled": "Homepage disattivata con successo"
+            }
+        },
+        "form":{
+            "title": "Form homepage",
+            "fields": {
+                "page": "pagina",
+                "name": "nome",
+                "timer": "timer",
+                "start_date": "data inizio",
+                "end_date": "data fine"
+            },
+            "messages":{
+                "inserted": "Homepage inserita con successo",
+                "updated": "Homepage aggiornata con successo",
+                "deleted": "Homepage eliminata con successo"
+            },
+            "errors":{
+                "error_date1": "La data di fine deve essere succesiva a quella di inizio",
+                "error_date2": "La data di fine deve essere succesiva alla data di oggi"
+            }
+        },
+        "errors":{
+        }
+    },
+    "modules":{
+        "list":{
+            "title":{
+                "modules": "moduli",
+                "themes": "temi"
+            },
+            "fields":{
+                "name": "nome",
+                "version": "versione",
+                "author": "autore",
+                "permission": "permesso",
+                "description": "descrizione",
+                "actions": "azioni"
+            },
+            "buttons":{
+                "enable": "abilita",
+                "disable": "disabilita",
+                "install": "installa",
+                "uninstall": "disinstalla",
+                "configure": "configura",
+                "search": "cerca",
+                "import_data": "importa dati demo"
+            },
+            "all": "TUTTI",
+            "theme_name": "nome tema",
+            "module_name": "nome modulo",
+            "no_modules": "Nessun record presente"
+        }
+    },
+    "linkMenuFrontend":{
+        "list":{
+            "title": "Voci di menu",
+            "name": "nome",
+            "confirm_delete_message": "Sicuro di voler eliminare la voce di menu <b>%s %s</b>?",
+            "buttons":{
+                "delete": "elimina",
+                "active": "attiva",
+                "disable": "disattiva",
+                "edit": "modifica",
+                "confirm_delete_message": "Sicuro di voler eliminare la voce di menu <b>%s</b>?",
+                "confirm_active_message": "Sicuro di voler attivare la voce di menu <b>%s</b>?",
+                "confirm_disable_message": "Sicuro di voler disattivare la voce di menu <b>%s</b>?"
+            },
+            "messages":{
+                "activated": "Voce di menu attivata con successo",
+                "disabled": "Voce di menu disattivata con successo"
+            }
+        },
+        "form":{
+            "title": "Voce di menu",
+            "fields": {
+                "parent": "Sottovoce di",
+                "title": "titolo",
+                "target_blank": "target blank",
+                "image": "immagine",
+                "visibility": "online?",
+                "order_view": "ordine di visualizzazione",
+                "url_static": "url statica?",
+                "type_url": "tipologia url",
+                "url": "url",
+                "static_url": "url statica"
+            },
+            "messages":{
+                "added": "Voce di menu inserita con successo",
+                "updated": "Voce di menu aggiornata con successo",
+                "deleted": "Voce di menu eliminata con successo"
+            }
+        },
+        "errors":{
+        }
+    },
+    "footers":{
+        "list":{
+            "title": "Footers",
+            "name": "nome",
+            "confirm_delete_message": "Sicuro di voler eliminare il footer <b>%s %s</b>?",
+            "buttons":{
+                "delete": "elimina",
+                "preview": "anteprima",
+                "setting": "impostazioni",
+                "active": "attiva",
+                "disable": "disattiva",
+                "edit": "modifica",
+                "confirm_delete_message": "Sicuro di voler eliminare il footer <b>%s</b>?",
+                "confirm_active_message": "Sicuro di voler attivare il footer <b>%s</b>?",
+                "confirm_disable_message": "Sicuro di voler disattivare il footer <b>%s</b>?"
+            },
+            "messages":{
+                "activated": "Footer attivato con successo",
+                "disabled": "Footer disattivato con successo"
+            }
+        },
+        "form":{
+            "title": "Form footer",
+            "fields": {
+                "page": "pagina",
+                "name": "nome",
+                "timer": "timer",
+                "start_date": "data inizio",
+                "end_date": "data fine"
+            },
+            "messages":{
+                "added": "Footer aggiunto con successo",
+                "updated": "Footer modificato con successo",
+                "deleted": "Footer eliminata con successo"
+            },
+            "errors":{
+                "error_date1": "La data di fine deve essere succesiva a quella di inizio",
+                "error_date2": "La data di fine deve essere succesiva alla data di oggi"
+            }
+        },
+        "errors":{
+        }
+    },
+    "profiles_management":{
+        "list":{
+            "title": "Profili",
+            "add_users_btn_text": "Aggiungi utenti",
+            "add_users": "Agggiungi utenti al profilo <b>%s</b>",
+            "back_to_users": "Torna alla lista",
+            "users_list": "Utenti dell profilo <b>%s</b>",
+            "name": "nome",
+            "users": "utenti",
+            "confirm_delete_message": "Sicuro di voler eliminare il profilo <b>%s</b>?",
+            "confirm_remove_user_message": "Sicuro di voler rimuovere l'utente <b>%s %s</b>?",
+            "removed_user": "Utente rimosso dal profilo <b>%s</b>",
+            "added_user": "<b>%s %s</b> aggiunto al profilo <b>%s</b>"
+        },
+        "form":{
+            "title": "Form profilo",
+            "fields": {
+                "label": "etichetta",
+                "permissions": "permessi"
+            },
+            "messages":{
+                "inserted": "Profilo inserito con successo",
+                "updated": "Profilo aggiornato con successo",
+                "deleted": "Profilo eliminato con successo"
+            }
+        },
+        "errors":{
+            "profile_admin":"Il profilo <b>%s</b> non può essere eliminato."
+        }
+    },
+    "pages":{
+        "page": "pagina",
+        "list":{
+            "title": "Pagine",
+            "online": "Online",
+            "routing": "Routing?",
+            "offline": "Offline",
+            "type": "tipologia",
+            "import": "importa",
+            "export": "esporta",
+            "visibility": "visibilità",
+            "advanced_page": "pagina avanzata",
+            "standard_page": "pagina standard",
+            "widget": "widget",
+            "confirm_delete_message": "Sicuro di voler eliminare la pagina <b>%s</b>?"
+
+        },
+        "import_form":{
+            "title": "Importazione pagina",
+            "fields": {
+                "file_zip": "File zip"
+            }
+        },
+        "form":{
+            "title": "Form pagina",
+            "tabs":{
+                "seo": "SEO",
+                "general": "Generale",
+                "layout": "Layout"
+            },
+            "fields": {
+                "title": "titolo",
+                "slug": "slug",
+                "slug_description": "La pagina sarà raggiungibile all'url: http://%s/p/<span style='color:red'>slug</span>",
+                "visibility": "online",
+                "enable_routing": "abilita routing",
+                "route": "rotta",
+                "route_description": "Per inserire una variabile nella rotta occorre delimitarla con le parentesi graffe. Esempio: /my/{x}/route/{y}",
+                "meta_title": "Meta title",
+                "meta_description": "Meta description",
+                "content": "contenuto",
+                "layout": "layout"
+            },
+            "messages":{
+                "inserted": "Pagina inserita con successo",
+                "updated": "Pagina aggiornata con successo",
+                "deleted": "Pagina eliminata con successo"
+            }
+        },
+        "errors":{
+        }
+    },
+    "general":{
+        "yes": "si",
+        "no": "no",
+        "select..": "seleziona..",
+        "error": "errore",
+        "confirm": "conferma",
+        "cancel": "annulla",
+        "confirm_delete_title":"conferma eliminazione",
+        "confirm_delete_message":"Sicuro di volere eliminare questo elemento?",
+        "confirm_operation_message":"Sicuro di volere confermare l'operazione?"
+    },
+    "reset-password":{
+        "admin_title": "Cambio password",
+        "password": "Password",
+        "password_confirmation": "Conferma password",
+        "password_not_match": "Le password non corrispondono",
+        "password_success": "Password modificata con successo",
+        "token_expired": "Token scaduto o non valido",
+        "user_not_exists": "Utente non presente in archivio",
+        "email_reset_pwd_message": "Email di recupero inviata all'indirizzo %s"
+    },
+    "change_email": {
+        "admin_title": "Cambio email",
+        "form":{
+            "fields": {
+                "email": "Email",
+                "email_confirmation": "Conferma email"
+            }
+        },
+        "buttons":{
+            "send" : "Invia email di conferma"
+        },
+        "messages": {
+            "success": "Email modificata con successo",
+            "email_sent": "Abbiamo inviato un link di attivazione al tuo indirizzo email",
+            "email_already_used": "Questo indirizzo email è già stato utilizzato!"
+        },
+        "email_content": "Clicca <a href='%s'>qui</a> per modificare la tua email",
+        "email_subject": "Modifica la tua email su %s"
+    },
+    "forgot-password": {
+        "email_content": "Clicca <a href='%s'>qui</a> per modificare la tua password",
+        "email_subject": "Reimposta la password su %s"
+    }
+}

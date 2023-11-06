@@ -1,0 +1,72 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block edit_page_title %} Editor template {% endblock %} 
+{% block content %}
+{% import "macro/form.htm" as form %}
+<div class="row">
+	<div class="editor_container col-md-12">
+		
+
+		 {% for j,h in struttura %}
+		<div class="row">
+			<div class="col-md-12" style="margin-bottom:10px;">
+			{% for i in h['items'] %}
+				
+				
+				<div class="col-md-{{h['col']}} center">
+						
+					
+						<select class="form-control" name="formdata[editor][{{j}}][{{i}}]">
+							<option value="0">seleziona..</option>
+							{% for item in campi %}
+							<option value="{{item.id}}" {% if item.id == i %}selected{% endif %}>{{item.get('campo')}}</option>
+							{% endfor %}
+						</select>
+					
+				</div>
+
+
+
+			{% endfor %}
+			</div>
+		</div>
+		{% endfor %}
+
+	</div>
+</div>
+<input type="hidden" name="id" id="id" value="{{id}}">
+
+
+
+<button type="button" onclick="add_riga(1)">
+	aggiungi riga 1 colonne
+</button>
+<button type="button" onclick="add_riga(2)">
+	aggiungi riga 2 colonne
+</button>
+<button type="button" onclick="add_riga(3)">
+	aggiungi riga 3 colonne
+</button>
+
+<script>
+	
+	var next = "{{tot|escape('js')}}";
+	function add_riga(num){
+		next = next+1;
+		$.ajax(
+			{
+			dataType: "json",
+			url: "index.php", 
+			data: {num:num,ctrl:'Editor',mod:'widget_developer',id:$('#id').val(),ajax:1,next:next},
+			success: function(result){
+				
+				$(".editor_container").append(result.html);
+			}}
+		  );
+	}
+</script>
+
+
+
+
+
+{% endblock %}

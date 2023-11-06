@@ -1,0 +1,35 @@
+/* Slick Modals - Simple Message */
+.simpleMsg * {
+    text-align: center;
+}
+.simpleMsg .top {
+    background: #d7d9cc;
+    padding: 30px;
+}
+.simpleMsg .title {
+    font-weight: 700;
+    font-size: 32px;
+    color: #333;
+}
+.simpleMsg p {
+    font-size: 14px;
+    color: #333;
+}
+.simpleMsg .bottom {
+    background: #fff;
+    width: 100%;
+    padding: 30px 0;
+}
+.simpleMsg .close {
+    display: inline-block;
+    background: #5f6251;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 32px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.simpleMsg .close:hover {
+    background: #333;
+}

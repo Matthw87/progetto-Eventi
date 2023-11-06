@@ -1,0 +1,45 @@
+<xml>
+    <sheet>
+        <row>
+            <col>
+                <field name="id_box" hidden="1"/>
+                <field name="image"/>
+            </col>
+        </row>
+        <row>
+             <col>
+                <field name="image_webp"/>
+            </col>
+        </row>
+        <row>
+             <col>
+                <field name="title"/>
+            </col>
+        </row>
+        <row>
+             <col>
+                <field name="label"/>
+            </col>
+        </row>
+        <row>
+             <col>
+                <field name="button_text"/>
+            </col>
+        </row>
+        <row>
+             <col>
+                <field name="url"/>
+            </col>
+        </row>
+        <row>
+             <col>
+                <field name="hover"/>
+            </col>
+        </row>
+        <row>
+             <col>
+                <field name="target_blank"/>
+            </col>
+        </row>
+    </sheet>
+</xml>

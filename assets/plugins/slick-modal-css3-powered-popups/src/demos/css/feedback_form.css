@@ -1,0 +1,132 @@
+/* Slick Modals - Feedback Form */
+.feedbackForm .title {
+    font-size: 20px;
+    font-weight: 700;
+}
+.feedbackForm p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #999;
+    padding: 10px 0 30px 0;
+}
+.feedbackForm .field {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 22px;
+}
+.feedbackForm input {
+    width: 100%;
+    font-size: 12px;
+    padding: 10px;
+    border: solid 1px #ccc;
+    outline: none;
+}
+.feedbackForm input:focus {
+    border-color: #333;
+}
+.feedbackForm input.send {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #61c7c8;
+    border: none;
+    outline: none;
+    margin: 0 0 10px 0;
+}
+.feedbackForm input.send:hover {
+    opacity: 0.7;
+}
+.feedbackForm label {
+    float: left;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.feedbackForm .errorMsg {
+    font-weight: 700;
+    font-size: 11px;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    color: red;
+}
+.feedbackForm .stars {
+    border: none;
+    outline: none;
+    position: relative;
+    float: right;
+}
+.feedbackForm .stars input {
+    display: none;
+}
+.feedbackForm .stars:not(:checked) > label {
+    float: right;
+    width: auto;
+    margin-top: -4px;
+    padding: 0 0 0 4px;
+    overflow: visible;
+    white-space: nowrap;
+    font-size: 20px;
+    line-height: 20px;
+    color: #ddd;
+    position: relative;
+}
+.feedbackForm .stars:not(:checked) > label:before {
+    content: "\2605";
+}
+.feedbackForm .stars > input:checked ~ label,
+.feedbackForm .stars:not(:checked) > label:hover,
+.feedbackForm .stars:not(:checked) > label:hover ~ label {
+    color: #459b9c;
+}
+.feedbackForm .check {
+    width: 70px;
+    line-height: 22px;
+    height: 22px;
+    background: #f0f0f0;
+    position: relative;
+    float: right;
+    margin-top: -4px;
+}
+.feedbackForm .check:after,
+.feedbackForm .check:before {
+    font-size: 10px;
+    text-align: center;
+    position: absolute;
+    z-index: 0;
+    width: 50%;
+}
+.feedbackForm .check:before {
+    content: 'Yes';
+    left: 0;
+    color: #222;
+}
+.feedbackForm .check:after {
+    content: 'No';
+    right: 0;
+    color: #999;
+}
+.feedbackForm .check input {
+    display: none;
+}
+.feedbackForm .check label {
+    display: block;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: #333;
+    content: "";
+}
+.feedbackForm .check label:hover {
+    background: #333;
+}
+.feedbackForm .check input:checked + label {
+    left: 50%;
+    background: #459b9c;
+}

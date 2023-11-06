@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Gdpr Settings</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <link href="../src/demos/css/gdpr_settings.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="gdprSettings" data-sm-init="true">
+            <div class="title">Your preferences</div>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <div class="check">
+                <input type="checkbox" id="gdpr-setting-1" name="gdpr-setting-1" checked />
+                <label for="gdpr-setting-1">Yes, you can use my lorem ipsum dot color.</label>
+            </div>
+            <div class="onOff">
+                <input type="checkbox" id="gdpr-setting-2" name="gdpr-setting-2" checked />
+                <label for="gdpr-setting-2">Website analytics</label>
+            </div>
+            <div class="onOff">
+                <input type="checkbox" id="gdpr-setting-3" name="gdpr-setting-3" checked />
+                <label for="gdpr-setting-3">Marketing automation</label>
+            </div>
+            <div class="onOff">
+                <input type="checkbox" id="gdpr-setting-4" name="gdpr-setting-4" checked />
+                <label for="gdpr-setting-4">Re-marketing &amp; promotions</label>
+            </div>
+            <div class="onOff">
+                <input type="checkbox" id="gdpr-setting-5" name="gdpr-setting-5" />
+                <label for="gdpr-setting-5">Conversion tracking</label>
+            </div>
+            <div class="onOff">
+                <input type="checkbox" id="gdpr-setting-6" name="gdpr-setting-6" />
+                <label for="gdpr-setting-6">User feedback &amp; surveys</label>
+            </div>
+            <div class="actions">
+                <input type="submit" value="Save" />
+                <a href="#">More information</a>
+            </div>
+        </div>
+
+        <script>
+            $('.gdprSettings').SlickModals({
+                popup_animation: 'slideRight',
+                popup_position: 'topRight',
+                popup_css: {
+                    'width': '520px',
+                    'height': 'auto',
+                    'background': '#fff',
+                    'padding': '60px',
+                    'margin' : '50px 20px'
+                },
+                mobile_breakpoint: '520px',
+                mobile_position: 'bottomCenter',
+                mobile_css: {
+                    'width': '100%',
+                    'height': 'auto',
+                    'background': '#fff',
+                    'padding': '30px',
+                    'margin' : '0'
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

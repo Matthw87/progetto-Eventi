@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Multiple Popups</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main CSS and JS files and adjust the path according to your location on the server) -->
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo blank multiple">
+
+        <div class="section popupTriggers">
+            <h1>Hey there!</h1>
+            <p>This is a demo. Click the button below to open a specific popup.</p>
+            <div class="open-sm-1 cta pink">Open Popup 1</div>
+            <div class="open-sm-2 cta pink">Open Popup 2</div>
+            <div class="open-sm-3 cta pink">Open Popup 3</div>
+            <div class="open-sm-4 cta pink">Open Popup 4</div>
+        </div>
+
+        <!-- START COPYING -->
+        <div class="sm-1 demoPopup" data-sm-init="true">
+            <h1>Popup 1</h1>
+            <p>This is a simple demo which you can use as a starting point for building your new awesome popup.</p>
+            <div class="cta green" data-sm-close="true">Ok, got it!</div>
+        </div>
+        <div class="sm-2 demoPopup" data-sm-init="true">
+            <h1>Popup 2</h1>
+            <p>This is a simple demo which you can use as a starting point for building your new awesome popup.</p>
+            <div class="cta green" data-sm-close="true">Ok, got it!</div>
+        </div>
+        <div class="sm-3 demoPopup" data-sm-init="true">
+            <h1>Popup 3</h1>
+            <p>This is a simple demo which you can use as a starting point for building your new awesome popup.</p>
+            <div class="cta green" data-sm-close="true">Ok, got it!</div>
+        </div>
+        <div class="sm-4 demoPopup" data-sm-init="true">
+            <h1>Popup 4</h1>
+            <p>This is a simple demo which you can use as a starting point for building your new awesome popup.</p>
+            <div class="cta green" data-sm-close="true">Ok, got it!</div>
+        </div>
+        <script>
+            $('.sm-1').SlickModals({
+                popup_reopenClass: 'open-sm-1',
+                popup_animation: 'slideRight',
+                popup_position: 'right',
+                popup_css: {
+                    'padding': '40px',
+                    'margin' : '30px'
+                }
+            });
+            $('.sm-2').SlickModals({
+                popup_reopenClass: 'open-sm-2',
+                popup_animation: 'flipInX',
+                popup_position: 'bottomCenter',
+                popup_css: {
+                    'padding': '40px',
+                    'margin' : '30px'
+                }
+            });
+            $('.sm-3').SlickModals({
+                popup_reopenClass: 'open-sm-3',
+                popup_animation: 'zoomIn',
+                popup_position: 'left',
+                popup_css: {
+                    'padding': '40px',
+                    'margin' : '30px'
+                }
+            });
+            $('.sm-4').SlickModals({
+                popup_reopenClass: 'open-sm-4',
+                popup_animation: 'bounceIn',
+                popup_position: 'topCenter',
+                popup_css: {
+                    'padding': '40px',
+                    'margin' : '30px'
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

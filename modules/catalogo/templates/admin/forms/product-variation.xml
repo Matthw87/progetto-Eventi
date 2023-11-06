@@ -1,0 +1,67 @@
+<xml>
+    <sheet>
+        <tabs>
+            <tab name="general" title="products.form.tabs.general">
+
+                
+                <row>   
+                    <col>
+                        <field name="id" hidden="true"/>
+                        <field name="parent_id" hidden="true"/>
+                        <field name="name"/>
+                    </col>
+                </row>
+
+ 
+                
+                 <row>   
+                    <col>
+                        <field name="sku"/>
+                    </col>
+                    <col>
+                        <field name="ean"/>
+                    </col>
+                    <col>
+                        <field name="upc"/>
+                    </col>
+                </row>
+
+                <row>
+                    <col>
+                        <field name="description"/>
+                    </col>
+                </row>
+                <row>
+                    <col>
+                        <field name="quantity"/>
+                    </col>
+                    <col>
+                        <field name="weight"/>
+                    </col>
+                    <col>
+                        <field name="online"/>
+                    </col>
+                </row>   
+            </tab>
+
+            <tab name="attributes" title="products.form.tabs.attributes">
+               
+            </tab>
+      
+           
+            <tab name="media" title="products.form.tabs.media">
+                <row>
+                    <col>
+                        <field name="images"/>
+                    </col>
+                </row>
+                <row>
+                    <col>
+                        <field name="attachments"/>
+                    </col>
+                </row>  
+            </tab>
+        </tabs>
+       
+    </sheet>
+</xml>

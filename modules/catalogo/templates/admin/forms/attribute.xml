@@ -1,0 +1,30 @@
+<xml>
+    <sheet>
+        <row>   
+            <col>
+                <field name="id" hidden="true"/>
+            </col>
+        </row>
+        <row>
+            <col>
+                <field name="name"/>
+            </col>
+        </row>   
+        <table class="table table-striped table-bordered">
+            <thead>
+                <th colspan="4">{{tr('attributes.form.values','catalogo')}}</th>
+            </thead>
+            <tbody id="rows">
+            </tbody>
+            <tfoot>
+                <td colspan="4" style="padding: 10px 5px 10px 5px;">
+                    <div style="width: 100%; display: flex; justify-content: space-between !important; align-items: flex-end !important;">
+                        <button class="btn btn-default" onclick="javascript:formEvent('delete_all')" type="button"><i class='fa fa-trash-o'> </i> {{tr('attributes.form.remove_all_values','catalogo')}}</button>                        
+                        <button class="btn btn-info" onclick="javascript:formEvent('add')" type="button"><i class='fa fa-plus'> </i> {{tr('attributes.form.add_value','catalogo')}}</button>
+                    </div>
+                    
+                </td>
+            </tfoot>
+       </table>
+    </sheet>
+</xml>

@@ -1,0 +1,10 @@
+<xml>
+    <sheet>
+        <row>
+            <col>
+                <field name="id_box" hidden="1"/>
+                <field name="slider_id"/>
+            </col>
+        </row>
+    </sheet>
+</xml>

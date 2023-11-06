@@ -1,0 +1,165 @@
+{% extends container_layout %}
+
+{% block css %}
+{{parent()}}
+<style>
+.simple-list-item {
+	border: 1px solid #C1C7D0;
+	background: #fff;
+	border-radius: 0px;
+	padding: 16px 32px 0;
+	margin: 0 0 16px;
+}
+
+.simple-list-item .panel-body {
+	color: #172B4D;
+	font-size: 24px;
+	font-weight: 500;
+	float: left;
+	max-width: 600px;
+	margin-bottom: 16px;
+}
+
+.simple-list-item .panel-footer {
+	background: transparent;
+	border: 0;
+	padding: 0;
+	float: right;
+}
+
+.simple-list-item .panel-footer a.btn {
+	margin-right: 8px;
+	margin-bottom: 16px;
+}
+
+.ico-btn {
+    height: 18px;
+    width: auto;
+	margin-right: 2px;
+	margin-top: -2px;
+}
+
+.simple-list-item-selected{
+	border:3px solid #4C9AFF;
+	background: #DEEBFF;
+}
+</style>
+{% endblock %}
+{% block messages %}
+{% if confirm_message_list %}
+<div class='alert alert-warning' style='width:100%; position:relative;color:#000000;'>
+	<a style='position:absolute; color:#000000; right:5px;top:0;cursor:pointer;' onclick='$(this).parent().remove()'><i class='fa fa-times'></i></a>
+	{{confirm_message_list|raw}}
+	<div class="clearboth"></div>
+	<div style="display: flex; justify-content: flex-end;">
+		<button  onclick="$(this).closest('.alert').remove()" class="btn btn-default btn-sm"><i class="fa fa-undo"></i> {{tr('general.cancel')}}</button>
+		<a href="{{url_confirm_action_list}}" class="btn btn-info btn-sm"><i class="fa fa-check"></i> {{tr('general.confirm')}}</a>
+	</div>
+</div>
+{% else %}
+{{parent()}}
+{% endif %}
+{% endblock %}
+{% block content %}
+{% if list %}
+	{% for v in list %}
+	<div class="col-md-12">		
+			<div class="simple-list-item panel {% if v.active == 1 %}simple-list-item-selected{% else %}panel-primary{% endif %}" id="item_{{v.id}}">
+				<div class="row">
+					<div class="panel-body">
+					{{v.label|raw}}
+					</div>
+					<div class="panel-footer">
+                        {% for action in v.actions %}
+                            <a  href="{{action.url}}" class="{% if action.class %}{{action.class}}{% else %}btn btn-default{% endif %}">
+                            {% if action.icon %}
+                            <i class="{{action.icon}}" aria-hidden="true" style="margin-right:2px;"></i> 
+                            {% endif %}
+                            {{action.text}}</a>
+                        {% endfor %}
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	{% endfor %}
+
+{% else %}
+	<div class="simple-list-item panel" id="home_{{v.id}}">
+		<div class="row">
+			<div class="panel-body">
+				{{tr('list.no_record')}}
+			</div>
+		</div>
+	</div>
+	
+{% endif %}
+
+<div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 form-group"> 
+{% if _paginator %}
+
+		{% if _paginator.numPages > 1 %}
+		<ul class="pagination">
+			{% if _paginator.prevUrl %}
+				<li><a href="{{ _paginator.prevUrl }}">&laquo; {{tr('list.prev')}}</a></li>
+			{% endif %}
+	
+			{% for page in _paginator.pages %}
+				{% if page.url %}
+					<li {{ page.isCurrent ? 'class="active"' : '' }}><a href="{{ page.url }}">{{ page.num }}</a></li>
+				{% else %}
+					<li class="disabled"><span>{{ page.num }}</span></li>
+				{% endif %}
+			{% endfor %}
+	
+			{% if _paginator.nextUrl %}
+				<li><a href="{{ _paginator.nextUrl }}">{{tr('list.next')}} &raquo;</a></li>
+			{% endif %}
+		</ul>
+		{% endif %}
+{% endif %}
+</div>
+{% if template_data.total_items > template_data.per_page_select[0] %}
+<div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 form-group">
+	<div class="pull-right visualizzapagina m-t-0">
+		{{tr('list.view')|capitalize}} 
+		<select class="form-control" onchange="document.location.href='{{_current_url_ordered_list}}&perPage='+$(this).val()">
+			{% for _l in template_data.per_page_select %}
+			<option value="{{_l}}" {% if _l == template_data.per_page %}selected{% endif %}>{{_l}}</option>
+			{% endfor %}
+		</select>
+		{{tr('list.per_page')}}
+	</div>
+</div>
+{% endif %}
+	
+<script>
+	
+
+	
+function active_home(id){
+	var js_ctrl = "{{ctrl|escape('js')}}";
+
+	$.ajax({
+	  type: "GET",
+		  url: "index.php",
+		  data: { action: "active",id:id,ajax:1,ctrl:js_ctrl},
+		  dataType: "json",
+		  success: function(data){
+				if(data.result == 'ok'){
+					$('.panel-home').removeClass('panel-primary').removeClass('panel-home-selected').addClass('panel-primary');
+					$('#home_'+id).removeClass('panel-primary').addClass('panel-home-selected');
+					//notify('Homepage attivata!','success');
+				}else{
+					//notify(data.errore,'error');
+				}
+		  },
+	 
+	});
+}
+</script>
+
+{% endblock %}
+
+

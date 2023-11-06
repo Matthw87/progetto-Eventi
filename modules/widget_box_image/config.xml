@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<module>
+	<info> 
+		<author>Ciro napolitano</author>
+		<name>Box Immagine con Url</name>
+		<permission>superadmin</permission>
+		<tag>widget_box_image</tag>
+		<kind>cms</kind>
+		<version>3.0.2</version>
+		<compatibility>
+			<min>2.6.0</min>
+		</compatibility>
+		<scope></scope> 
+		<description><![CDATA[Permette di aggiungere un box con immagine e url]]></description> 
+   </info>
+   <widgets>
+		<widget> 
+			<name>Box immagine con url</name>
+			<function>WidgetBoxImageComponent</function>
+			<url_conf>index.php?ctrl=Conf&amp;mod=widget_box_image</url_conf>
+			<repeatable>1</repeatable>
+		</widget>
+	</widgets>
+	<dependencies>
+        <dependence>pagecomposer</dependence>
+    </dependencies>
+</module>

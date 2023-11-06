@@ -1,0 +1,14 @@
+{% extends "@core/layouts/base_form_widget.htm" %}
+
+{% block content %}
+
+{% import "macro/form.htm" as form %}
+
+
+{{form.buildCol(dataform.valore,'col-md-12')}}
+{{form.buildCol(dataform.etichetta,'col-md-12')}}
+
+{{form.build(dataform.multilocale)}}
+{{form.build(dataform.campo)}}
+{% endblock %}
+

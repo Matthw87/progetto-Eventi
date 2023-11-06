@@ -1,0 +1,39 @@
+{
+    "form_validation":{
+        "errors":{
+            "invalid_field" : "Il campo %s non è valido",
+            "invalid_email" : "Il campo %s deve essere un'email valida",
+            "invalid_integer" : "Il campo %s deve essere numero intero",
+            "invalid_numeric" : "Il campo %s deve essere un numero",
+            "invalid_empty" : "Il campo %s non può essere vuoto",
+            "invalid_alpha" : "Il campo %s deve essere un alpha",
+            "invalid_alphanumeric" : "Il campo %s deve essere alphanumerico",
+            "invalid_float" : "Il campo %s deve essere un numero reale",
+            "invalid_phone" : "Il campo %s deve essere un numero telefonico valido",
+            "invalid_date" : "Il campo %s deve essere una data valida",
+            "invalid_time" : "Il campo %s deve essere un tempo nel formato (HH:MM)",
+            "invalid_negative_number" : "Il campo %s deve essere positivo",
+            "invalid_notzero_number" : "Il campo %s non può essere uguale a zero",
+            "invalid_positive_number" : "Il campo %s deve essere negativo",
+            "invalid_price" : "Il campo %s deve essere un prezzo valido (maggiore o uguale a 0)",
+            "invalid_fiscalcode" : "Il campo %s deve essere un codice fidcale valido",
+            "invalid_vatnumber" : "Il campo %s deve essere una partita iva valida",
+            "required_field" : "Il campo %s è richiesto",
+            "min_lenght" : "Il campo %s deve essere almeno %s caratteri",
+            "max_lenght" : "Il campo %s non deve essere superiore a %s caratteri",
+            "min_files" : "Il campo %s deve contenere almeno %s files",
+            "max_files" : "Il campo %s non deve contenere più di %s files",
+            "accepted_files" : "Il file caricato nel %s deve essere del seguenti tipi: %s",
+            "regex" : "Il campo %s non rispetta il pattern %s"
+        }
+    },
+    "password_validation_errors":{
+        "min_lenght": "La password deve avere almeno 6 caratteri",
+        "max_lenght": "La password non deve essere superiore a 10 caratteri",
+        "uppercase": "La password non deve contenere almeno una lettera maiuscola",
+        "lowercase": "La password non deve contenere almeno una lettera minusola",
+        "number": "La password non deve contenere almeno un numero",
+        "alpha": "La password non deve contenere almeno una lettera",
+        "special_character": "La password deve contenere almeno uno dei seguenti caratteri speciale: ?%-_|#*"
+    }
+}

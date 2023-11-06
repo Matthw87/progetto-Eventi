@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Login And Registration Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/login_registration_form.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="userForm" data-sm-init="true">
+            <div class="login change">
+                <div class="title">Have an account?</div>
+                <form id="loginForm" name="loginForm">
+                    <div class="row">
+                        <span class="icon user"></span>
+                        <input type="text" name="username" placeholder="Your username" />
+                    </div>
+                    <div class="row">
+                        <span class="icon lock"></span>
+                        <input type="password" name="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" />
+                    </div>
+                    <div class="styledCheck">
+                        <input type="checkbox" name="rememberMe" id="rememberMe" />
+                        <label for="rememberMe">Remember me</label>
+                    </div>
+                    <div class="forgotPass">Forgot your password?</div>
+                    <input type="submit" name="loginBtn" class="action" value="Login" />
+                </form>
+                <div class="clrfx"></div>
+                <div class="title">Don't have an account?</div>
+                <div class="info">Register and get Lorem ipsum premium access</div>
+                <div class="action2 switch">Register</div>
+            </div>
+            <div class="register change hidden">
+                <div class="title">Register now, it's simple!</div>
+                <div class="info">Register and get Lorem ipsum premium access to all our special services.</div>
+                <form id="registerForm" name="registerForm">
+                    <div class="row">
+                        <span class="icon user"></span>
+                        <input type="text" name="username" placeholder="Your username" />
+                    </div>
+                    <div class="row">
+                        <span class="icon email"></span>
+                        <input type="text" name="email" placeholder="your@email.com" />
+                    </div>
+                    <div class="row">
+                        <span class="icon lock"></span>
+                        <input type="password" name="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" />
+                    </div>
+                    <div class="row">
+                        <span class="icon lock"></span>
+                        <input type="password" name="password2" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" />
+                    </div>
+                    <div class="styledCheck">
+                        <input type="checkbox" name="newsSignup" id="newsSignup" />
+                        <label for="newsSignup">Signup for newsletter</label>
+                    </div>
+                    <input type="submit" name="registerBtn" class="action" value="Register" />
+                    <div class="back switch">&#9666; Back to login.</div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            $('.userForm').SlickModals({
+                popup_animation: 'zoomIn',
+                popup_css: {
+                    'width': '420px',
+                    'height': '490px',
+                    'background': 'transparent',
+                    'padding': '0',
+                    'margin': 'auto'
+                },
+                overlay_css: {
+                    'background': 'rgba(0, 0, 0, 0.4)'
+                },
+                mobile_breakpoint: '420px',
+                mobile_position: 'center',
+                mobile_css: {
+                    'width': '100%',
+                    'height': '100%',
+                    'padding': '0',
+                    'margin': '0',
+                    'background': '#44b7ab'
+                }
+            });
+            $('.userForm .switch').on('click', function () {
+                $('.userForm .change').toggleClass('hidden');
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

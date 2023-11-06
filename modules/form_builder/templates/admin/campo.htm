@@ -1,0 +1,39 @@
+{% import "macro/form.htm" as form %}
+<span id="form_field_error"></span>
+<form id="form_field">
+{{form.buildCol(dataform.name,'col-md-12')}}
+{{form.buildCol(dataform.type,'col-md-12')}}
+{{form.buildCol(dataform.label,'col-md-12')}}
+
+{{form.buildCol(dataform.mandatory,'col-md-12')}}
+
+{{form.buildCol(dataform.options,'col-md-12')}}
+{{form.build(dataform.id_box)}}
+{{form.build(dataform.indice)}}
+
+
+<button class="btn btn-default btn-sm" type="button" onclick="$('#other_fields').show();$('#form_campo').html('');"><i class="fa fa-undo"></i> ANNULLA</button>
+<button class="btn btn-success btn-sm" type="button" onclick="save_field_form({{id_box}});"><i class="fa fa-save"></i> SALVA</button>
+</form>
+
+<script>
+    var field_options = ["select","radio","multiselect","checkboxes"];
+    
+
+    var n = field_options.includes($('#type').val());
+    if( !n ){
+        $('#div_options').hide();
+    }
+
+    $('#type').on('change',function(){
+        var n = field_options.includes($(this).val());
+        
+        if( !n ){
+            $('#div_options').hide();
+        }else{
+            $('#div_options').show();
+
+        }
+    })
+</script>
+

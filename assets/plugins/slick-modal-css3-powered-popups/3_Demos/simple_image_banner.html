@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Simple Image Banner</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="simpleImageBanner" data-sm-init="true">
+            <a href="#" data-sm-close="true">
+                <img src="../src/demos/img/simple_image_banner.jpg" />
+            </a>
+        </div>
+
+        <script>
+            $(window).on('load', function () {
+                $('.simpleImageBanner').SlickModals({
+                    popup_type: 'instant',
+                    popup_animation: 'slideLeft',
+                    popup_closeButtonStyle: 'text label',
+                    popup_position: 'left',
+                    popup_css: {
+                        'width': '300px',
+                        'background': 'transparent',
+                        'padding': '0',
+                        'margin': '0',
+                        'box-shadow': '0 0 40px 0 rgba(0,0,0,0.4)'
+                    },
+                    page_animate: true,
+                    page_animation: 'moveRight',
+                    mobile_breakpoint: '480px',
+                    mobile_position: 'left',
+                    mobile_css: {
+                        'width': '300px',
+                        'background': 'transparent',
+                        'padding': '0',
+                        'margin': '0',
+                        'box-shadow': '0 0 40px 0 rgba(0,0,0,0.4)'
+                    }
+                });
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

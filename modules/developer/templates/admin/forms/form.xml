@@ -1,0 +1,15 @@
+<xml>
+    <sheet>
+        <row>   
+            <col>
+                <field name="codice" hidden="true"/>
+                <field name="nome"/>
+            </col>
+        </row>
+        <row>   
+            <col>
+                <field name="commenti"/>
+            </col>
+        </row>
+    </sheet>
+</xml>

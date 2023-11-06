@@ -1,0 +1,199 @@
+/* Slick Modals - Login And Registration Form */
+.userForm * {
+    box-sizing: border-box;
+    color: #fff;
+}
+.userForm {
+    overflow: auto;
+}
+.userForm .login,
+.userForm .register {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #44b7ab;
+    border-radius: 6px;
+    padding: 50px;
+    transition: all 0.2s ease;
+}
+.userForm > div.hidden {
+    transform: rotateY(90deg);
+    opacity: 0;
+    visibility: hidden;
+}
+.userForm > div .clrfx {
+    display: inline-block;
+    width: 100%;
+    clear: both;
+    content: '';
+    margin: 12px 0;
+}
+.userForm > div .title {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.userForm > div a {
+    color: #fff;
+}
+.userForm > div form {
+    display: inline-block;
+    width: 100%;
+    clear: both;
+}
+.userForm > div form .row {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+}
+.userForm > div form .row:first-of-type {
+    margin-top: 20px;
+}
+.userForm > div form .row .icon {
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 0;
+    content: '';
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    width: 18px;
+    height: 18px;
+}
+.userForm > div form .row .icon.user {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='512px' height='512px' viewBox='0 0 510 510' style='enable-background:new 0 0 510 510;' xml:space='preserve'><g><path d='M255,0C114.75,0,0,114.75,0,255s114.75,255,255,255s255-114.75,255-255S395.25,0,255,0z M255,76.5 c43.35,0,76.5,33.15,76.5,76.5s-33.15,76.5-76.5,76.5c-43.35,0-76.5-33.15-76.5-76.5S211.65,76.4,255,76.5z M255,438.6 c-63.76,0-119.85-33.149-153-81.6c0-51,102-79.05,153-79.05S408,306,408,357C374.85,405.45,318.75,438.6,255,438.6z' fill='#FFFFFF'/></g></svg>");
+}
+.userForm > div form .row .icon.email {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' viewBox='0 0 299.997 299.997' style='enable-background:new 0 0 299.997 299.997;' xml:space='preserve' width='512px' height='512px'><g><path d='M149.996,0C67.157,0,0.001,67.158,0.001,149.997c0,82.837,67.156,150,149.994,150s150-67.163,150-150 C299.996,67.158,232.835,0,149.996,0z M149.999,52.686l88.763,55.35H61.236L149.999,52.686z M239.868,196.423h-0.009 c0,8.878-7.195,16.072-16.072,16.072H76.211c-8.878,0-16.072-7.195-16.072-16.072v-84.865c0-0.939,0.096-1.852,0.252-2.749 l84.808,52.883c0.104,0.065,0.215,0.109,0.322,0.169c0.112,0.062,0.226,0.122,0.34,0.179c0.599,0.309,1.217,0.558,1.847,0.721 c0.065,0.018,0.13,0.026,0.195,0.041c0.692,0.163,1.393,0.265,2.093,0.265h0.005c0.005,0,0.01,0,0.01,0 c0.7,0,1.401-0.099,2.093-0.265c0.065-0.016,0.13-0.023,0.195-0.041c0.63-0.163,1.245-0.412,1.847-0.721 c0.114-0.057,0.228-0.117,0.34-0.179c0.106-0.06,0.218-0.104,0.322-0.169l84.808-52.883c0.156,0.897,0.252,1.808,0.252,2.749 V196.423z' fill='#FFFFFF'/></g></svg> ");
+}
+.userForm > div form .row .icon.lock {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' viewBox='0 0 299.995 299.995' style='enable-background:new 0 0 299.995 299.995;' xml:space='preserve' width='512px' height='512px'><g><path d='M149.997,161.485c-8.613,0-15.598,6.982-15.598,15.598c0,5.776,3.149,10.807,7.817,13.505v17.341h15.562v-17.341 c4.668-2.697,7.817-7.729,7.817-13.505C165.595,168.467,158.611,161.485,149.996,161.485z' fill='#FFFFFF'/><path d='M150.003,85.849c-13.111,0-23.775,10.665-23.775,23.775v25.319h47.548v-25.319 C173.775,96.516,163.111,85.849,150.003,85.849z' fill='#FFFFFF'/><path d='M149.995,0.001C67.156,0.001,0,68.159,0,149.998c0,82.837,67.156,149.997,149.995,149.997s150-67.161,150-149.997 C299.995,67.159,232.834,0.001,149.995,0.001z M196.085,227.118h-92.173c-9.734,0-17.626-7.892-17.626-17.629v-56.919 c0-8.491,6.007-15.581,14.003-17.25v-25.697c0-27.409,22.3-49.711,49.711-49.711c27.409,0,49.709,22.3,49.709,49.711v25.697 c7.993,1.673,14,8.759,14,17.25v56.919h0.002C213.711,219.225,205.819,227.118,196.085,227.118z' fill='#FFFFFF'/></g></svg>");
+}
+.userForm > div form .row input[type="text"],
+.userForm > div form .row input[type="password"] {
+    background: transparent;
+    background: none;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: solid 1px #bbb;
+    -webkit-box-shadow: 0 0 0 1000px #44b7ab inset;
+    font-size: 13px;
+    color: #fff;
+    padding: 8px 8px 8px 40px;
+}
+.userForm > div form .row input::-webkit-input-placeholder {
+    color: #fff;
+}
+.userForm > div form .row input:-moz-placeholder {
+    color: #fff;
+}
+.userForm > div form .row input::-ms-input-placeholder {
+    color: #fff;
+}
+.userForm > div form .row input::placeholder {
+    color: #fff;
+}
+.userForm > div form .styledCheck {
+    display: inline-block;
+    float: left;
+}
+.userForm > div form .styledCheck input {
+    display: none;
+}
+.userForm > div form .styledCheck label {
+    font-size: 11px;
+    line-height: 16px;
+    position: relative;
+    cursor: pointer;
+}
+.userForm > div form .styledCheck label:before {
+    display: inline-block;
+    content: "";
+    width: 16px;
+    height: 16px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 4px;
+    vertical-align: middle;
+    margin: -2px 10px 0 0;
+}
+.userForm > div form .styledCheck label:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    display: none;
+}
+.userForm > div form .styledCheck input:checked + label:after {
+    display: block;
+}
+.userForm > div form .forgotPass {
+    float: right;
+    display: inline-block;
+    font-size: 11px;
+    cursor: pointer;
+    margin-top: 6px;
+}
+.userForm > div form .forgotPass:hover {
+    text-decoration: underline;
+}
+.userForm > div .action,
+.userForm > div .action2 {
+    display: inline-block;
+    width: 100%;
+    line-height: 50px;
+    height: 50px;
+    margin: 30px 0 0 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+.userForm > div .action {
+    background: #444;
+}
+.userForm > div .action2 {
+    border: solid 2px #fff;
+}
+.userForm > div .action:hover,
+.userForm > div .action2:hover {
+    opacity: 0.7;
+}
+.userForm > div .info,
+.userForm > div .back {
+    display: inline-block;
+    width: 100%;
+    font-size: 14px;
+    opacity: 0.7;
+}
+.userForm > div .back {
+    cursor: pointer;
+    margin-top: 14px;
+}
+.userForm > div .back:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+@media screen and (max-width: 420px) {
+    .userForm .login,
+    .userForm .register {
+        padding: 30px;
+        border-radius: 0;
+    }
+    .userForm > div .action,
+    .userForm > div .action2 {
+        height: 40px;
+        line-height: 40px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,9 @@
+{% if select_order_by %}
+<select class="selordina" onchange="order_catalog(document.location.href,$(this).val()); return false;">
+	   {% for k,v in select_order_by %}
+				<option value="{{k}}" {% if selected_order == k %}selected{% endif %}>{{v}}</option>
+	  {% endfor %}
+</select>	
+{% endif %}
+
+

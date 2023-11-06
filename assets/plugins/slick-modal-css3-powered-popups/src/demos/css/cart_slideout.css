@@ -1,0 +1,153 @@
+/* Slick Modals - Cart Slide Out */
+.cartSlideOut * {
+    box-sizing: border-box;
+    color: #333;
+}
+.cartSlideOut {
+    overflow: auto;
+}
+.cartSlideOut .actions {
+    display: inline-block;
+    width: 100%;
+    padding: 28px 0;
+}
+.cartSlideOut .action {
+    font-weight: 700;
+    border: solid 1px #333;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+.cartSlideOut .action:hover {
+    background: #42abb5;
+    border-color: #42abb5;
+    color: #fff;
+}
+.cartSlideOut .actions .shop {
+    text-align: center;
+    font-size: 12px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+.cartSlideOut .actions .shop:hover {
+    opacity: 0.6;
+}
+.cartSlideOut .emptyCart {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    padding: 36px;
+    display: none;
+    color: #bbb;
+}
+.cartSlideOut .emptyCart .action {
+    margin-top: 20px;
+    color: #333;
+}
+.cartSlideOut .emptyCart .action:hover {
+    color: #fff;
+}
+.cartSlideOut .cartItems {
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+}
+.cartSlideOut .cartItems .item {
+    background: #fff;
+    float: left;
+    clear: both;
+    margin-bottom: 20px;
+    color: #333;
+    position: relative;
+    transition: all 0.3s ease;
+    max-height: 150px;
+}
+.cartSlideOut .cartItems .item.hidden {
+    max-height: 0;
+    margin: 0;
+}
+.cartSlideOut .cartItems .item img,
+.cartSlideOut .cartItems .item .data {
+    float: left;
+    width: 50%;
+}
+.cartSlideOut .cartItems .item .data {
+    padding-left: 30px;
+    transition: all 0.2s ease;
+}
+.cartSlideOut .cartItems .item .data:hover .remove {
+    opacity: 1;
+}
+.cartSlideOut .cartItems .item .data .title {
+    font-weight: 700;
+    font-size: 14px;
+    padding-bottom: 4px;
+}
+.cartSlideOut .cartItems .item .data > div span {
+    font-weight: 700;
+    text-align: right;
+    float: right;
+    color: #42abb5;
+}
+.cartSlideOut .cartItems .item .data .attribute {
+    float: left;
+    padding-right: 20px;
+    font-size: 12px;
+    padding-bottom: 4px;
+    color: #333;
+    opacity: 0.8;
+}
+.cartSlideOut .cartItems .item .data .attribute span {
+    padding-left: 4px;
+}
+.cartSlideOut .cartItems .item .data .qty {
+    display: inline-block;
+    width: 100%;
+    font-size: 12px;
+    margin-top: 14px;
+}
+.cartSlideOut .cartItems .item .data .qty span {
+    display: inline-block;
+    font-weight: normal;
+}
+.cartSlideOut .cartItems .item .data .price {
+    display: inline-block;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+.cartSlideOut .cartItems .item .data .remove {
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0;
+}
+.cartSlideOut .cartItems .item .data .remove:hover {
+    text-decoration: underline;
+}
+.cartSlideOut .total {
+    display: inline-block;
+    width: 100%;
+    font-size: 20px;
+    color: #999;
+    text-transform: uppercase;
+    padding: 20px 0 0 0;
+    border-top: solid 1px #eee;
+}
+.cartSlideOut .total span {
+    font-weight: 700;
+    color: #333;
+    float: right;
+    text-align: right;
+}
+.cartSlideOut .info {
+    font-size: 12px;
+    padding: 10px 0 0 0;
+}
+.cartSlideOut .info span {
+    font-weight: 700;
+}

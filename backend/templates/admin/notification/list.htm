@@ -1,0 +1,45 @@
+{% extends "@core/layouts/base.htm" %}
+{% block page_title %} {{tr('notifications')|title}} {% endblock %} 
+{% block buttons_right %}
+{% endblock %}
+
+{% block content %}
+{% if list %}
+
+	
+    <div class="row" >
+        {% for n in list %}
+        <div class="col-md-12" id="notification_{{n.id}}">
+            
+                <div class="panel panel-default {% if n.view_old == 0 %}bd-0 bd-l-red{% endif %}">
+                    <div class="panel-heading">
+                        <p> <i class="fa {{n.getIconHtml()}} p-r-10 f-18 c-{{n.getPriorityHtml()}}"></i><span style="text-align:right">{{n.getTimeFromNow()}}</span> </p>
+                    </div>
+                    <div class="panel-body">
+                        {{n.get('text')|raw}}
+                    </div>
+                    <div class="panel-footer" style="text-align:right;">
+                        {% if n.custom %}
+                        <a class="btn btn-sm btn-success" href="{{n.getDetailUrl()}}"><i class="fa fa-eye"></i> dettagli</a>
+                        {% endif %}
+                        <button class="btn btn-sm btn-danger" onclick="elimina_notifica({{n.id}});return false;"><i class="fa fa-trash-o"></i> elimina</button>
+                    </div>
+                </div>
+
+                
+        </div>
+        {% endfor %}
+
+        {% if links %}
+        <div class="m-t-30 align-center" >
+            {{links.all|raw}}
+        </div>
+        {% endif %}
+    </div>
+{% else %}
+	{{tr('no_record')}}
+{% endif %}
+
+{% endblock %}
+
+

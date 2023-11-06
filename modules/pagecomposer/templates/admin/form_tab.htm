@@ -1,0 +1,19 @@
+{% extends "@core/layouts/base_form_widget.htm" %}
+
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+
+
+
+
+{{form.buildCol(dataform.title,'col-md-12')}}
+{{form.buildCol(dataform.id_tab,'col-md-12')}}
+
+
+{{form.buildCol(dataform.class_tab,'col-md-12')}}
+{{form.buildCol(dataform.class_tab_content,'col-md-12')}}
+
+
+{% endblock %}
+

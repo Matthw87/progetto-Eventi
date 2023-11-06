@@ -1,0 +1,13 @@
+{% extends "@core/layouts/tab/base_form.htm" %}
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+
+
+{{form.buildCol(dataform.enable_social_link_card_product,'col-md-6')}}
+{{form.buildCol(dataform.enable_request_info_card_product,'col-md-6')}}
+{{form.buildCol(dataform.enable_alert_restock_card_product,'col-md-6')}}
+
+               
+
+{% endblock %}

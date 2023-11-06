@@ -1,0 +1,64 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block page_title %} Javascript  <small>{{tema}}</small> {% endblock %} 
+{% block buttons_right %}<a  href="index.php?action=list&ctrl=ModuleAdmin&theme=1" class="btn btn-principale m-t-10"> <i class="fa fa-arrow-left"></i> Indietro</a> {% endblock %}
+
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+
+<textarea id="js_box" name="code" id="code" >{{data}}</textarea>
+
+<script>
+
+	  
+    var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('js_box'), {
+		lineNumbers: true,
+		styleActiveLine: true,
+		matchBrackets: true,
+		theme:'panda-syntax',
+        mode: 'javascript'
+	  });
+   
+    myCodeMirror.setSize(null, 1000);
+
+	function salva(theme){
+		 
+		  $.ajax({
+			// definisco il tipo della chiamata
+			type: "POST",
+			// specifico la URL della risorsa da contattare
+			url: "index.php",
+			// passo dei dati alla risorsa remota
+			data: { ctrl:"ModuleAdmin",theme:theme,ajax:1,action: "js", code:myCodeMirror.getValue()},
+			// definisco il formato della risposta
+			dataType: "json",
+			// imposto un'azione per il caso di successo
+			success: function(data){
+				if( data.result == 'ok'){
+					alert('dati salvati con sucecsso');
+				}else{
+					alert(data.error);
+				}
+				
+			},
+			// ed una per il caso di fallimento
+			error: function(){
+				alert("Chiamata fallita!!!");
+			}
+   		 });
+
+	}
+ 
+
+</script>
+{% endblock %}
+
+
+{% block btn_form_save %}
+<div class="row row-pulsanti">			
+	 <div class="col-md-12 align-center">
+		<button type="button" onclick="salva('{{tema}}')"  class="btn btn-principale m-t-10"><i class="fa fa-check"></i> {% block btn_text_save_form %}{{tr('save')}}{% endblock %}</button>
+		
+	</div>
+</div>
+{% endblock %}

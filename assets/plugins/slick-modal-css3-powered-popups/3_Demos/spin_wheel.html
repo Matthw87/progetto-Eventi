@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Spin Wheel</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/spin_wheel.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/demos/js/spin_wheel.js"></script>
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="spinWheel" data-sm-init="true">
+            <div class="wheelWrap">
+                <div class="wheel" data-spin-circles="6" data-spin-speed="8s">
+                    <div class="area" data-wheel-bg="#16a085" data-wheel-prize="wins" data-wheel-message="You won a 30$ gift card!"><span>30$</span></div>
+                    <div class="area" data-wheel-bg="#277162" data-wheel-prize="lost" data-wheel-message="More luck next time!"><span></span></div>
+                    <div class="area" data-wheel-bg="#333333" data-wheel-prize="wins" data-wheel-message="You won a 25$ gift card!"><span>25$</span></div>
+                    <div class="area" data-wheel-bg="#16a085" data-wheel-prize="lost" data-wheel-message="More luck next time!"><span></span></div>
+                    <div class="area" data-wheel-bg="#277162" data-wheel-prize="wins" data-wheel-message="You won a 20$ gift card!"><span>20$</span></div>
+                    <div class="area" data-wheel-bg="#333333" data-wheel-prize="lost" data-wheel-message="More luck next time!"><span></span></div>
+                    <div class="area" data-wheel-bg="#16a085" data-wheel-prize="wins" data-wheel-message="You won a 15$ gift card!"><span>15$</span></div>
+                    <div class="area" data-wheel-bg="#277162" data-wheel-prize="lost" data-wheel-message="More luck next time!"><span></span></div>
+                    <div class="area" data-wheel-bg="#333333" data-wheel-prize="wins" data-wheel-message="You won a 10$ gift card!"><span>10$</span></div>
+                    <div class="area" data-wheel-bg="#16a085" data-wheel-prize="lost" data-wheel-message="More luck next time!"><span></span></div>
+                    <div class="area" data-wheel-bg="#277162" data-wheel-prize="wins" data-wheel-message="You won a 5$ gift card!"><span>5$</span></div>
+                    <div class="area" data-wheel-bg="#333333" data-wheel-prize="lost" data-wheel-message="More luck next time!"><span></span></div>
+                </div>
+                <div class="win">
+                    <div class="title">Congratulations!</div>
+                    <div class="prizeMsg">Prize message will appear here from the area data-wheel-message attribute</div>
+                    <a href="#">Start shopping!</a>
+                    <div class="small" data-sm-close="true">Or close the wheel game</div>
+                </div>
+                <div class="start" data-wheel-lost-text="Go again?">Go!</div>
+                <div class="marker"></div>
+            </div>
+        </div>
+
+        <script>
+            $(window).on('load', function () {
+                $('.spinWheel').SlickModals({
+                    popup_type: 'instant',
+                    popup_position: 'bottomRight',
+                    popup_closeButtonEnable: false,
+                    popup_css: {
+                        'width': '400px',
+                        'height': '400px',
+                        'background': 'transparent',
+                        'padding': '0',
+                        'margin': '30px'
+                    },
+                    page_animate: true,
+                    page_animation: 'blur',
+                    page_blurRadius: '2px',
+                    overlay_isVisible: false,
+                    content_animate: true,
+                    content_animation: 'slideRight',
+                    mobile_breakpoint: '540px',
+                    mobile_css: {
+                        'width': '400px',
+                        'height': '400px',
+                        'background': 'transparent',
+                        'padding': '0',
+                        'margin': '20px'
+                    },
+                    callback_afterVisible: function () {
+                        sm_spinWheel('.spinWheel');
+                    }
+                });
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

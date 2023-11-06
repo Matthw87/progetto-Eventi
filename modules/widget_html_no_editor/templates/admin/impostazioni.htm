@@ -1,0 +1,32 @@
+{% extends "@core/layouts/base_form_widget.htm" %}
+
+{% block content %}
+<style>
+	textarea{
+		width:100% !important;
+		min-height: 300px;
+	}
+</style>
+
+
+
+{% import "macro/form.htm" as form %}
+
+{{form.buildCol(dataform.content,'col-md-12')}}
+
+
+<script>
+  $('textarea').each(function(){
+	  
+	   CodeMirror.fromTextArea(document.getElementById($(this).attr('id')), {
+			lineNumbers: true,
+			styleActiveLine: true,
+			matchBrackets: true,
+			theme:'panda-syntax'
+		  });
+
+  });
+ 
+
+</script>
+{% endblock %}

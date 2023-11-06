@@ -1,0 +1,57 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block css %}
+{{parent()}}
+<style>
+	 #wrapper {
+		padding-left: 0px !important;
+	}
+	body{
+		margin-top:0px !important;
+	}
+	
+	.fixed-bottom{
+		position:fixed;
+		bottom:0;
+		left: 0;
+		width:100%;
+
+	}
+	.fixed-bottom > .btn{
+		border-radius:0;
+		width:100%;
+		height: 50px;
+		font-size: 20px;
+		color: #FFFFFF;
+		background: rgb(136, 160, 185) none repeat scroll 0% 0%;
+	}
+</style>
+{% endblock %}
+
+{% block javscript %}
+{{parent()}}
+<script>
+	var js_close_popup = "{{close_popup|escape('js')}}";
+	//alert(js_close_popup);
+	if( typeof js_close_popup != 'undefined' && js_close_popup != null ){
+		//alert(js_close_popup);
+	}
+</script>
+{% endblock %}
+
+{% block page_header %}{% endblock %} 
+{% block sidebar %}{% endblock %}
+{% block menu_top %}{% endblock %}
+{% block other_fields_form %}
+	<input type='hidden' name='id_box' value="{{id_box}}">
+{% endblock %}
+{% block btn_form_save %}
+	<div class="fixed-bottom">
+	<button class="btn">
+		{% if icon_submit_button %}
+		<i class="{{icon_submit_button}}"></i> 
+		{% else %}
+		<i class="fa fa-save"></i> 
+		{% endif %}
+		{% if text_submit_button %}{{text_submit_button}}{% else %}{{tr('form.save')|title}}{% endif %}</button>
+	</div>
+{% endblock %}

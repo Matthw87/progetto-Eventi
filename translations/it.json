@@ -1,0 +1,68 @@
+{
+    "login":{
+        "my_account" : "Il mio account",
+        "new_customer" : "nuovo cliente",
+        "are_you_a_registered_customer":"Sei un cliente registrato?",
+        "complete_your_order_faster":"Completa il tuo ordine più velocemente.",
+        "are_you_a_new_customer" : "Sei un nuovo cliente?",
+        "new_customer_message": "Se lo desideri, puoi registrarti adesso per effettuare più velocemente i prossimi acquisti.",
+        "did_you_forget_your_password": "Hai dimenticato la password?",
+        "register_now": "registrati adesso",
+        "sign_in": "accedi"
+    },
+    "activation":{
+        "activation": "Attivazione account",
+        "error": "Token non valido o scaduto.",
+        "success": "Account attivato con successo."
+    },
+    "forgot-password":{
+        "password_recovery": "Recupero password",
+        "insert_your_email": "Inserisci la tua email",
+        "send": "Invia",
+        "email_subject": "Recupero password su %s",
+        "email_content": "<strong>Gentile %s,</strong><br><p>abbiamo ricevuto la tua richiesta di recupero dei dati di accesso al sito<br>Per reimpostare la password clicca sul link sottostante.</p><p><a href='%s'>%s</a></p>"
+    },
+    "reset-password":{
+        "new_password": "Nuova password",
+        "password": "Password",
+        "password_confirmation": "Conferma password",
+        "send": "Invia"
+    },
+    "registration":{
+        "registration": "Registrazione",
+        "info_account": "Informazioni account",
+        "default_address": "Indirizzo predefinito",
+        "billing_data": "Dati di fatturazione",
+        "email": "Email",
+        "password": "Password",
+        "postal_code": "CAP",
+        "vat_number": "Partita IVA",
+        "fiscal_code": "Codice fiscale",
+        "name": "Nome",
+        "surname": "Cognome",
+        "pec": "PEC",
+        "sdi_code": "Codice SDI",
+        "cellular": "Cellulare",
+        "address": "Indirizzo",
+        "city": "Città",
+        "province": "Provincia",
+        "country": "Nazione",
+        "company": "Ragione sociale",
+        "send": "Invia",
+        "email_subject": "Conferma registrazione su %s",
+        "email_content": "<strong>Gentile %s,</strong><br><p>abbiamo ricevuto la tua richiesta di registrazione al sito.<br>Per attivare il suo account clicchi sul link sottostante.</p><p><a href='%s'>%s</a></p>"
+    },
+    "personal-data":{
+        "personal_data": "Dati personali",
+        "password": "Password",
+        "info_account": "Informazioni account",
+        "default_address": "Indirizzo predefinito",
+        "invoice_data": "Dati di fatturazione",
+        "save": "Salva",
+        "utente_aggiornato_con_successo": "Dati aggiornati con successo"
+    },
+    "select...": "seleziona...",
+    "back_login": "Torna al login",
+    "user_not_exists": "Utente non presente in archivio",
+    "username_or_password_not_valid": "Credenziali non valide"
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Overlay Menu</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/overlay_menu.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo ddMenu">
+
+        <!-- START COPYING -->
+        <div class="overlayMenu" data-sm-init="true">
+            <div class="company">[ Company name ]</div>
+            <a href="#">Menu item 1<span>Lorem ipsum dolor sit amet</span></a>
+            <a href="#">Menu item 2<span>Lorem ipsum dolor sit amet</span></a>
+            <a href="#">Menu item 3<span>Lorem ipsum dolor sit amet</span></a>
+            <a href="#">Menu item 4<span>Lorem ipsum dolor sit amet</span></a>
+            <a href="#">Menu item 5<span>Lorem ipsum dolor sit amet</span></a>
+            <a href="#">Menu item 6<span>Lorem ipsum dolor sit amet</span></a>
+        </div>
+
+        <script>
+            $('.overlayMenu').SlickModals({
+                popup_position: 'topLeft',
+                popup_closeButtonPlace: 'inside',
+                popup_css: {
+                    'width': '100%',
+                    'background': 'transparent',
+                    'padding': '120px 20px',
+                    'margin': '0',
+                    'text-align': 'center',
+                    'overflow': 'auto'
+                },
+                overlay_closesPopup: false,
+                overlay_css: {
+                    'background': 'rgba(61, 177, 172, 0.8)'
+                },
+                page_animate: true,
+                page_animation: 'blur',
+                page_blurRadius: '2px',
+                mobile_breakpoint: '800px',
+                mobile_position: 'topLeft',
+                mobile_css: {
+                    'width': '100%',
+                    'background': 'transparent',
+                    'padding': '50px 20px',
+                    'margin': '0'
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

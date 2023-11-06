@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Coupon Code</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/coupon_code.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/demos/js/coupon_code.js"></script>
+        <script src="../src/demos/js/countDown.js"></script>
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="couponCode" data-sm-init="true">
+            <div class="title">Your lucky day! <span>Hurry Up!</span></div>
+            <p>Quidam virtute percipitur eos ea, paulo suscipit et ius, et pri ponderum cotidieque referrentur.</p>
+            <div class="sm-couponCode" data-sm-couponCode-text="SpecialCode2019"></div>
+            <ul class="sm-countDown"
+                data-sm-countDown-endDate="2019-12-31 15:00:00"
+                data-sm-countDown-useServerTime="false"
+                data-sm-countDown-serverTimeFile="../src/plugin/getTime.php"
+                data-sm-countDown-endMsg="Ending message goes here.">
+                <li>
+                    <p><span class="days">00</span></p>
+                    <p><em class="textDays">days</em></p>
+                </li>
+                <li>
+                    <p><span class="hours">00</span></p>
+                    <p><em class="textHours">hours</em></p>
+                </li>
+                <li>
+                    <p><span class="minutes">00</span></p>
+                    <p><em class="textMinutes">minutes</em></p>
+                </li>
+                <li class="hide">
+                    <p><span class="seconds">00</span></p>
+                    <p><em class="textSeconds">seconds</em></p>
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            $('.couponCode').SlickModals({
+                popup_type: 'instant',
+                popup_animation: 'zoomIn',
+                popup_css: {
+                    'width': '460px',
+                    'background': '#fff',
+                    'padding': '36px'
+                },
+                mobile_breakpoint: '480px',
+                mobile_position: 'topCenter',
+                mobile_css: {
+                    'width': '100%',
+                    'background': '#fff',
+                    'padding': '20px',
+                    'margin': '0'
+                },
+                callback_afterVisible: function () {
+                    sm_couponCode('.couponCode');
+                    sm_countDown('.couponCode');
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

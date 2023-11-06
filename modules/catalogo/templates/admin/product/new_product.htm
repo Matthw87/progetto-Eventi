@@ -1,0 +1,19 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block edit_page_title %} {{tr('product','catalogo')|title}} {% endblock %} 
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+{{form.buildCol(dataform.type,'col-md-2')}}
+{{form.buildCol(dataform.attributeSet,'col-md-2')}}
+<input type="hidden" name="new" value="1">
+
+{% endblock %}
+
+
+{% block btn_form_save %}
+<div class="row">			
+	 <div class="col-md-12 m-t-20 m-b-40 align-center">
+		<button  class="btn btn-success m-t-10"><i class="fa fa-arrow-right"></i> {{tr('next')}}</button>
+	</div>
+</div>
+{% endblock %}

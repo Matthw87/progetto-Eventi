@@ -1,0 +1,30 @@
+{
+    "setting":{
+        "swagger_enabled_modules": "Moduli abilitati allo swagger",
+        "duration_token": "Durata token",
+        "duration_token_description": "Durata token in millisecondi"
+    },
+    "auth":{
+        "errors": {
+            "password_expired": "Password scaduta"
+        }
+    },
+    "api_key":{
+        "form":{
+            "title": "Api key",
+            "fields": {
+                "api_key": "Api key",
+                "enabled_modules": "Moduli abilitati",
+                "active": "attiva",
+                "duration_token": "Durata token"
+            }
+        },
+        "list": {
+            "title": "Api keys"
+        },
+        "messages": {
+            "updated": "Api key aggiornata con successo",
+            "created": "Api key creata con successo"
+        }
+    }
+}

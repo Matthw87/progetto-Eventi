@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it" {% block html_tag %}{% endblock %}>
+
+<head>
+	<base href="{{baseurl}}">
+	<title>{% block metatags_title %}{{setting['info']['nomesito']}}{% endblock %}</title>
+	{% block metatags %}	
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="{% block metatags_description %}{% endblock %}">
+	<meta name="author" content="3d0 SRL">
+	{% endblock %}
+
+	{% block css %}
+		{% include 'partials/css.htm' %}
+	{% endblock %}
+
+	{% block javascript %}
+		{% include 'partials/javascript.htm' %}
+	{% endblock %}
+
+	{{do_action('display_header')}}
+</head>
+<body>
+	{{do_action('display_before_body')}}
+	{% block page_init %}{% endblock %}
+	<div class="wrapper">
+		{{do_action('display_before_top')}}
+		<!--- TOP ---->
+		{% include 'partials/top.htm' %}
+		<!--- END TOP ---->
+		{{do_action('display_after_top')}}
+		{% block container %}
+		<div class="container">
+			<!--- CONTENT ---->
+			{% block content %}
+			
+			{% endblock %}
+			<!--- END CONTENT ---->
+		</div>
+		{% endblock %}
+
+		<!--- FOOTER ---->
+		{% include 'partials/footer.htm' %}
+		<!--- END FOOTER ---->
+		
+
+		<!-- ANCORA display_block_end_page -->
+		{{do_action('display_block_end_page')}}
+	</div>
+	{{do_action('display_end_body')}}
+</body>
+
+{% block javascript_end %}
+	{% include 'partials/javascript_end.htm' %}
+{% endblock %}
+</html>

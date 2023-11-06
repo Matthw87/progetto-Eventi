@@ -1,0 +1,13 @@
+.container-lang-input:before {
+	display: table;
+    content: " ";
+}
+
+.container-lang-input:after {
+	clear: both;
+}
+
+.content-lang-input {
+	float: left;
+	width: 100%;
+}

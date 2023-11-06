@@ -1,0 +1,38 @@
+<script>
+	let js_error_title_alert = "{{tr('error_title_alert')}}";
+	let js_success_title_alert = "{{tr('success_title_alert')}}";
+
+	let js_confirm_title_alert="{{tr('confirm_title_alert')}}";
+	let js_confirm_cancel_alert="{{tr('confirm_cancel_alert')}}";
+	let js_confirm_ok_alert="{{tr('confirm_ok_alert')}}";
+	let js_confirm_text_alert="{{tr('confirm_text_alert')}}";
+	let js_activelocale="{{activelocale|escape('js')}}";
+	let js_go_cart="{{tr('go_cart')}}";
+	let js_baseurl="{{baseurl|escape('js')}}";
+</script>
+
+<script src="https://use.typekit.net/bvo4wxh.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+{% if compressed_js_head %}
+	{% for v in compressed_js_head %}
+		{% if v.type == 'data' %}
+<script>
+{{v.data|raw}}
+</script>
+		{% else %}
+<script src="{{v.url}}"></script>
+		{% endif %}
+	{% endfor %}
+{% else %}
+
+	{% for v in javascript_head %}
+		{% if v.options %}
+<script src="{{v.url}}" {% for i,j in v.options %}{{i}}="{{j}}" {% endfor %}></script>
+		{% else %}
+<script src="{{v.url}}"></script>
+		{% endif %}
+	{% endfor %}
+
+{% endif %}
+

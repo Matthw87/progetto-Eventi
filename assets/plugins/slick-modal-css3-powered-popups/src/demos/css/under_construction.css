@@ -1,0 +1,77 @@
+/* Slick Modals - Under Construction */
+.underConstruction * {
+    color: #fff;
+    text-align: left;
+}
+.underConstruction .title {
+    font-size: 48px;
+    font-weight: 700;
+}
+.underConstruction p {
+    font-size: 14px;
+}
+.underConstruction .sm-countDown {
+    margin-top: 20px;
+}
+.underConstruction .sm-countDown li {
+    display: inline-block;
+    padding: 4px;
+    margin: 0 20px 0 0;
+    color: #fff;
+    font-size: 12px;
+}
+.underConstruction .sm-countDown li p {
+    color: #fff;
+    display: inline;
+}
+.underConstruction .sm-countDown li p span {
+    font-weight: 700;
+    font-size: 36px;
+}
+.underConstruction .progress {
+    display: inline-block;
+    width: 100%;
+    height: 3px;
+    position: relative;
+    background: rgba(255, 255, 255, .2);
+}
+.underConstruction .progress .current {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 68%;
+    height: 100%;
+    background: #fff;
+}
+.underConstruction .progress span {
+    position: absolute;
+    top: -12px;
+    right: -50px;
+    font-size: 12px;
+    background: #fff;
+    color: #777;
+    font-weight: 700;
+    padding: 6px;
+    border-radius: 4px;
+}
+.underConstruction .progress span:before {
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: -4px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 4px 5px 0;
+    border-color: transparent #fff transparent transparent;
+}
+@media screen and (max-width: 560px) {
+    .underConstruction .sm-countDown li p span {
+        font-size: 18px;
+    }
+    .underConstruction .progress span {
+        display: none;
+    }
+}

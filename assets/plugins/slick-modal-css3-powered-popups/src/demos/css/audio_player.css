@@ -1,0 +1,22 @@
+/* Slick Modals - Audio Player */
+.audioPlayer audio {
+    width: 100%;
+}
+.audioPlayer .close {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    padding-top: 10px;
+    opacity: .6;
+}
+.audioPlayer .close:hover {
+    opacity: 1;
+}
+.audioPlayer .close:after {
+    content: '×';
+    padding-left: 6px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+}

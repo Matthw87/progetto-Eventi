@@ -1,0 +1,98 @@
+.form-builder-row{
+	width: 100%;
+	display:block;
+	padding:0 20px;
+}
+
+.form-builder-row select, .form-builder-row input, .form-builder-row textarea {
+	border: 0;
+	background: #F4F4F4;
+}
+
+.form-builder-row.bordered select, .form-builder-row.bordered input, .form-builder-row.bordered textarea {
+	border: 1px solid #bdbdbd;
+	background: #fff;
+}
+
+.form-builder-col-100 {
+	display:block;
+	float:left;
+	width: 100%;
+	margin: 0 0 20px;
+}
+
+.form-builder-col-50 {
+	position: relative;
+	width: 48.5%;
+	float: left;
+	margin: 0 3% 20px 0;
+}
+
+.form-builder-col-33 {
+	position: relative;
+	width: 32%;
+	float: left;
+	margin: 0 2% 20px 0;
+}
+
+.form-builder-col-25 {
+	position: relative;
+	width: 23.5%;
+	float: left;
+	margin: 0 2% 20px 0;
+}
+
+.form-builder-col-50:nth-child(2n), .form-builder-col-33:nth-child(3n), .form-builder-col-25:nth-child(4n) {
+	margin: 0 0 20px;
+}
+
+.g-recaptcha {
+	float: left;
+	width: 100%;
+	margin: 0 0 20px;
+	padding: 0 20px;
+}
+
+.form_builder_error {
+    margin: 0 auto 20px;
+    width: calc(100% - 40px);
+    color: #a94442;
+    font-size: 18px;
+}
+
+.form_builder_success {
+    margin: 0 auto 20px;
+    width: calc(100% - 40px);
+    color: green;
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 1023px) {
+.form-builder-col-33, .form-builder-col-33:nth-child(3n), .form-builder-col-25, .form-builder-col-25:nth-child(4n) {
+	width: 49%;
+}
+
+.form-builder-col-33:nth-child(2n), .form-builder-col-25:nth-child(2n) {
+	margin: 0 0 32px;
+}
+}
+
+@media only screen and (max-width: 599px) {
+.form-builder-col-33, .form-builder-col-33:nth-child(3n), .form-builder-col-33:nth-child(2n), .form-builder-col-50, .form-builder-col-50:nth-child(2n), .form-builder-col-25, .form-builder-col-25:nth-child(4n), .form-builder-col-25:nth-child(2n) {
+	width: 100%;
+	margin: 0 0 32px;
+}
+}
+
+
+input.error_form_builder{
+	border: 1px solid red !important;
+}
+
+select.error_form_builder{
+	border: 1px solid red !important;
+}
+
+textarea.error_form_builder{
+	border: 1px solid red !important;
+}

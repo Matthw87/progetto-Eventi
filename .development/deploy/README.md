@@ -1,0 +1,1 @@
+docker build -t [progect]:[version] ./.development/deploy

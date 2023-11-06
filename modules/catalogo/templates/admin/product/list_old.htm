@@ -1,0 +1,279 @@
+{% extends "@core/layouts/base.htm" %}
+
+{% block page_title %} {{tr('products')|title}} {% endblock %} 
+
+{% block head %}
+{{parent()}}
+{{include('partials/javascript_form.htm')}}
+<style>
+.panel {
+    margin-top: 0;
+}
+tfoot {
+    display: table-header-group !important;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 10px 4px;
+    line-height: 1.428571429;
+    font-size: 12px;
+    font-weight: 600;
+}
+.btn {
+    height: auto;
+    line-height: 1.4;
+    padding: 2px 10px !important;
+    font-size: 13px;
+    border-radius: 4px;
+}
+.form-control {
+    border-radius: 4px;
+}
+.barra-fixed .btn {
+    padding: 0 24px !important;
+    height: 40px;
+    font-size:16px;
+    font-weight:700;
+    line-height:38px;
+    border-radius:8px;
+}
+input[type="checkbox"] {
+    margin-left: 5px;
+}
+#main-content .table .btn-group a {
+    margin-bottom: 0;
+    height: 28px;
+    padding: 0 10px !important;
+    line-height: 26px;
+}
+#main-content .table a.edit.btn.btn-sm.btn-default {
+    padding: 0 10px !important;
+    height: 28px;
+    line-height: 28px;
+    margin: 0;
+}
+.btn-group>.btn+.dropdown-toggle {
+    height: 28px;
+    line-height: 25px;
+    padding: 0 10px !important;
+}
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    height: 28px;
+    padding: 0 10px !important;
+    line-height: 26px;
+}
+.visualizzapagina .btn.dropdown-toggle.selectpicker.btn-default {
+    padding: 0 10px !important;
+    height: 28px;
+    line-height: 26px;
+    width: 60px;
+}
+.btn-group.bootstrap-select.form-control {
+    width: 120px;
+    margin: 0;
+}
+
+@media all and (min-width:600px) and (max-width:1024px) {
+.table > thead > tr > th.box-check, .table > tbody > tr > th.box-check, .table > tfoot > tr > th.box-check, .table > thead > tr > td.box-check, .table > tbody > tr > td.box-check, .table > tfoot > tr > td.box-check {
+    max-width: 30px !important;
+    min-width: 30px !important;
+}
+}
+</style>
+
+
+{% endblock %}
+{% block content %}
+	{% import "macro/form.htm" as form %}
+	
+	<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+				<table id="products-table" class="table table-tools table-hover">
+					<thead>
+						<tr class="trorders">
+							<th class="box-check"></th>
+							<th></th>
+							<th style="min-width:70px">
+								<strong>ID</strong>	 
+								<div class="freccette">
+									<a href="{{url_list}}&orderBy=id&orderByValue=ASC"><i class="fa fa-caret-up"></i></a>	
+									<a href="{{url_list}}&orderBy=id&orderByValue=DESC"><i class="fa fa-caret-down"></i></a>
+								</div>
+							</th>
+							<th>
+								<strong>Codice Articolo</strong>
+								<div class="freccette">
+									<a href="{{url_list}}&orderBy=sku&orderByValue=ASC"><i class="fa fa-caret-up"></i></a>	
+									<a href="{{url_list}}&orderBy=sku&orderByValue=DESC"><i class="fa fa-caret-down"></i></a>
+								</div>
+							</th>
+							<th>
+								<strong>Nome Articolo</strong>
+								<div class="freccette">
+									<a href="{{url_list}}&orderBy=name&orderByValue=ASC"><i class="fa fa-caret-up"></i></a>	
+									<a href="{{url_list}}&orderBy=name&orderByValue=DESC"><i class="fa fa-caret-down"></i></a>
+								</div>
+							</th>
+							<th>
+								<strong>Sezione</strong>
+								<div class="freccette">
+									<a href="{{url_list}}&orderBy=sectionName&orderByValue=ASC"><i class="fa fa-caret-up"></i></a>	
+									<a href="{{url_list}}&orderBy=sectionName&orderByValue=DESC"><i class="fa fa-caret-down"></i></a>
+								</div>
+							</th>
+							 <th class="text-center">
+								<strong>Visibilità</strong>
+								<div class="freccette">
+									<a href="{{url_list}}&orderBy=visibility&orderByValue=ASC"><i class="fa fa-caret-up"></i></a>	
+									<a href="{{url_list}}&orderBy=visibility&orderByValue=DESC"><i class="fa fa-caret-down"></i></a>
+								</div>
+							</th>
+							<th class="text-center">
+								<strong>Tipo</strong>
+								<div class="freccette">
+									<a href="{{url_list}}&orderBy=id&orderByValue=ASC"><i class="fa fa-caret-up"></i></a>	
+									<a href="{{url_list}}&orderBy=id&orderByValue=DESC"><i class="fa fa-caret-down"></i></a>
+								</div>
+							</th>
+							<th class="text-center">
+							</th>
+							<th class="text-center" style="width:150px;min-width:150px;">
+								<strong>Azioni</strong>
+							</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr class="warning formtr" id="row_search">
+							<td class="box-check"><input id="check_action_bulk" type="checkbox"></td>
+							<td></td>
+							<form method="GET" action="index.php">
+							<td> {{form.build(dataform.id)}} </td>
+							<td>{{form.build(dataform.sku)}}</td>
+							<td>{{form.build(dataform.name)}}</td>
+							<td>
+									{{form.build(dataform.section)}}
+							</td>
+							<td class="text-center">
+									{{form.build(dataform.visibility)}}
+							</td>
+							<td class="text-center"> 
+									{{form.build(dataform.type)}}
+							</td>
+							<td class="text-center"> - </td>
+							<td class="text-center"> 
+								<input type="hidden" name="action" value="list">
+								<input type="hidden" name="ctrl" value="{{ctrl}}">
+								<button class="btn btn-primary" style="font-size: 14px;padding: 0 10px;height:28px;"><i class="fa fa-filter"></i> Filtra</button>
+								{% if filtering %}
+								<a style="font-size: 14px;padding: 3px 10px;" class="btn btn-warning" href="{{url_list}}&reset=1"><i class="fa fa-eraser"></i> Reset</a>
+								{% endif %}
+							</td>
+							</form>
+						</tr>
+					</tfoot>
+					
+					<tbody>
+						{% if prodotti %}
+						{% for k,v in prodotti %}
+						  <tr class="visible_{{v.visibility}} visible_all">
+							<td class="box-check"><input class="check_action_bulk" type="checkbox" value="{{v.id}}"></td>
+							<td><img class="imgprodlist" src="{{v.getUrlImage(0,'thumbnail')}}" alt=""></td>
+							<td>{{v.id}}</td>
+							<td>{{v.sku}}</td>
+							<td>{{v.get('name')}}</td>
+							<td>{{sections[v.section]}}</td>
+							<td class="text-center">
+								{% if v.visibility == true %}
+									<span class="label label-success" id="status_{{v.id}}" style="cursor:pointer;" onclick="change_visibility({{v.id}},'product'); return false;">ONLINE</span>
+								{% else %}
+									<span class="label label-danger" id="status_{{v.id}}" style="cursor:pointer;" onclick="change_visibility({{v.id}},'product'); return false;">OFFLINE</span>
+								{% endif %}
+							</td>
+							<td class="text-center">
+								{% if v.isConfigurable() %}
+									configurabile
+								{% else %}
+									semplice
+								{% endif %}
+							</td>
+							<td class="text-center">
+								<a href="{{v.getUrl()}}" target="_blank" class="edit btn btn-sm btn-default"><i class="fa fa-link"></i></a> 
+							</td>
+							<td class="text-center" style="width:150px;min-width:150px;"> 
+								<div class="btn-group media-group">
+									  <a href="{{url_edit}}&id={{v.id}}" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i> modifica</a>
+									  <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
+											<span class="caret"></span>
+									  </button>
+									  <ul class="dropdown-menu media-menu text-left" role="menu">
+										<li><a href="{{url_duplicate}}&id={{v.id}}"><i class="fa fa-copy"></i> duplica</a></li>
+										<li><a href="{{url_confirm_delete}}&id={{v.id}}"><i class="fa fa-trash-o"></i> elimina</a></li>
+									  </ul>
+								</div>
+
+								
+							</td>
+						</tr>
+						{% endfor %}
+						{% else %}
+						<tr>
+							<td colspan="10" class="">Nessun prodotto in archivio</td>
+						<tr>
+						{% endif %}
+						
+					</tbody>
+				</table>
+			</div>
+			{% if prodotti %}
+				
+				<div class="col-xs-12 col-md-4 col-sm-4 col-lg-4 form-group">
+					<div class="btn-group media-group">
+					  <a href="" class="btn btn-default" data-toggle="dropdown"><i class="fa fa-list"></i> Azioni di massa</a>
+					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+					  </button>
+					   <ul class="dropdown-menu media-menu text-left" role="menu">
+							<li><a  href="#"  onclick="submit_bulk_action_products('{{url_confirm_delete}}'); return false;"><i class="fa fa-trash-o"></i> elimina</a></li>
+					   </ul>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 form-group">
+					{% if links %}
+						<span class="pull-right" flexy:if="links">
+						{{links.all|raw}}
+						</span>
+					{% endif %}
+				</div>
+		  
+				<div class="col-xs-12 col-md-5 col-sm-5 col-lg-5 form-group">
+				  <div class="pull-right visualizzapagina m-t-0">
+						Visualizza 
+						<select class="form-control" onchange="document.location.href='{{url_list}}&perPage='+$(this).val()">
+							{% if limit == 25 %}
+							<option value="25" selected>25</option>
+							{% else %}
+							<option value="25">25</option>
+							{% endif %}
+
+							{% if limit == 50 %}
+							<option value="50" selected>50</option>
+							{% else %}
+							<option value="50">50</option>
+							{% endif %}
+
+							{% if limit == 100 %}
+							<option value="100" selected>100</option>
+							{% else %}
+							<option value="100">100</option>
+							{% endif %}
+						</select>
+						per pagina
+					</div>
+				</div>
+				
+			{% endif %}
+		</div>
+		
+	</div>
+
+
+{% endblock %}

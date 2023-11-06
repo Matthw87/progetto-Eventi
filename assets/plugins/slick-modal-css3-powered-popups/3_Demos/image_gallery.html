@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Image Gallery</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/image_gallery.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/demos/js/image_gallery.js"></script>
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="imageGallery" data-sm-init="true">
+            <div id="galleryWrap">
+                <ul id="galleryItems">
+                    <li data-image-src="../src/demos/img/image_gallery_1.jpg">
+                        <div class="content">
+                            <div class="title">Lorem ipsum</div>
+                            <p>Lorem ipsum dolor sit amet, posse lorem bonorum ne eam, cum ut graece vituperatoribus est.</p>
+                        </div>
+                    </li>
+                    <li data-image-src="../src/demos/img/image_gallery_2.jpg">
+                        <div class="content">
+                            <div class="title">Lorem ipsum</div>
+                            <p>Lorem ipsum dolor sit amet, graecis necessitatibus mei ad, et eos nusquam deseruisse bonorum ne eam.</p>
+                        </div>
+                    </li>
+                    <li data-image-src="../src/demos/img/image_gallery_3.jpg">
+                        <div class="content">
+                            <div class="title">Lorem ipsum</div>
+                            <p>Lorem ipsum dolor sit amet, eum facete labores convenire id, est postea adolescens sadipscing an.</p>
+                        </div>
+                    </li>
+                </ul>
+                <div id="prevItem" class="nav"></div>
+                <div id="nextItem" class="nav"></div>
+                <ul id="galleryDots"></ul>
+            </div>
+        </div>
+
+        <script>
+            $('.imageGallery').SlickModals({
+                overlay_css: {
+                    'background': 'rgba(0,0,0,.3)'
+                },
+                popup_animation: 'zoomIn',
+                popup_css: {
+                    'width': '90%',
+                    'height' : '80%',
+                    'background': 'transparent',
+                    'padding': '0',
+                    'animation-duration': '0.6s'
+                },
+                mobile_breakpoint: '1024px',
+                mobile_position: 'center',
+                mobile_css: {
+                    'width': '100%',
+                    'height' : '80%',
+                    'padding': '0'
+                },
+                callback_afterVisible: function () {
+                    sm_imageGallery();
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

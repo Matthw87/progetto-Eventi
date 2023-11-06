@@ -1,0 +1,32 @@
+<h6>Il mio carrello</h6>
+{% if ordini_under %}
+	<div class="cont-undercart">
+		{% for riga in ordini_under %}
+		<div class="s-prodc" >
+			<img src="{{riga.img}}"/>
+			<div class="info">
+				<p class="brand_name">{{riga.getManufacturerName()}}</p>
+				<p class="product_name">{{riga.productname|raw}}</p>
+				<p class="other_info">{{tr('Quantità')}} {{riga.getQuantity()}}</p>
+				<span>{{currencyLabel|raw}} {{riga.getTotalPriceFormatted()}}</span>	
+			</div>
+			<a href="{{riga.link}}" title="{{riga.productname_title}}" class="link_product"></a>
+			<a href="#" onclick="deleteOrder('{{riga.id}}'); return false;" class="delete">Elimina articolo</a>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="footer-undercart">
+		<div class="totalunder">
+			<div class="left">{{tr('Totale')}}</div>
+			<div class="right">{{currencyLabel|raw}} {{cartTotalFormatted()}}</div>
+		</div>
+		<a href="cart.htm" class="btn-gocart">{{tr('Paga adesso')}}</a>
+		{{do_action('display_block_cart_preview')}}
+		<a href="index.php?mod=cart_onepage&ctrl=Cart&action=cart" class="btn-gocart btn-cart with-all"><span>{{tr('Visualizza carrello')}}</span></a>
+	</div>
+{% else %}
+	<div class="cont-undercart m-b-30">
+		<span class="cartempty">{{tr('Il carrello è vuoto')}}</span>
+	</div>
+{% endif %}
+

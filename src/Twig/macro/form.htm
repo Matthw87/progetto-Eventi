@@ -1,0 +1,674 @@
+{% macro extratag(data) %}
+	{% for k,v in data %}
+		{{k}}='{{v}}' 
+	{% endfor %}
+{% endmacro %}
+
+{% macro build(data) %}
+	{% import _self as extra %}
+	{% if data %}
+		{% if data.type == 'textarea' %}
+			
+			<textarea name="{{ data['name'] }}" placeholder="{{ data['placeholder']|e }}" class="form-control {{data.class}}" id="{{data.id}}" value='{{ data.value|e }}' {{extra.extratag(data.other)}}>{{ data.value|e }}</textarea>
+		{% elseif data.type == 'multiselect' %}
+			<select name="{{data['name']}}" type="multiselect" multiple="mulitple" id="{{data['id']}}" class="form-control {{data['class']}}" title="{{data['etichetta']}}" {{extra.extratag(data.other)}}>
+				{% for k,v in data['options'] %}
+				{% if k in data['value'] %}
+					<option selected="selected" value="{{k}}">{{v}}</option>
+				{% else %}
+					<option value="{{k}}">{{v}}</option>
+				{% endif %}
+				{% endfor %}
+		
+			</select>
+		{% elseif data.type == 'radio' %}
+			{% for k,v in data['options'] %}
+				<div class="radio">
+					<label for="{{data['id']}}_{{k}}" class="radio-inline">
+						<input type="{{ data['type'] }}" name="{{ data['name'] }}" class="{{data['class']}}" {% if data['value'] == k %} checked="checked" {% endif %} value="{{ k |e }}" id="{{data['id']}}_{{k}}" {{extra.extratag(data.other)}}/> 
+						<span>{{v|raw}}</span>
+					</label>
+				</div>
+			{% endfor %}
+			
+		{% elseif data.type == 'checkbox' %}
+			{% if data.switch == 1 %}
+				
+				<!-- SWITCH -->
+				<label class="label-switch">
+				  <input type="{{ data['type'] }}"
+				  	 name="{{ data['name'] }}" 
+					 id="{{ data.id }}" value="{% if data['true_value'] %}{{data['true_value']}}{% else %}1{% endif %}" 
+					 {% if data['value'] == 1 %} checked="checked" {% endif %} 
+				  	 {{extra.extratag(data.other)}}/>
+				  <span class="slider"
+				  data-on-text="{% if data['true_label'] %}{{data['true_label']}}{% else %}{{tr('general.yes')|upper}}{% endif %}" 
+				  data-off-text="{% if data['false_label'] %}{{data['false_label']}}{% else %}{{tr('general.no')|upper}}{% endif %}" 
+				  ></span>
+				</label>
+				<!--- SWITCH -->
+
+
+			{% else %}
+				{% for k,v in data['options'] %}
+					{% if k in data['value'] %}
+						<input type="{{ data['type'] }}" checked="checked" name="{{ data['name'] }}" class="{{data['class']}}" value="{{ k |e }}" id="{{data['id']}}" {{extra.extratag(data.other)}}/> {{v}}
+					{% else %}
+					<input type="{{ data['type'] }}" name="{{ data['name'] }}" class="{{data['class']}}" value="{{ k |e }}" id="{{data['id']}}" {{extra.extratag(data.other)}}/> {{v}}
+
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		{% elseif data.type == 'select' %}
+
+			<select name="{{data['name']}}" type="select" id="{{data['id']}}" class="form-control {{data['class']}}" {{extra.extratag(data.other)}}>
+				{% for k,v in data['options'] %}
+				{% if k == data['value'] %}
+					<option selected="selected" value="{{k}}">{{v}}</option>
+				{% else %}
+					<option value="{{k}}">{{v}}</option>
+				{% endif %}
+				{% endfor %}
+		
+			</select>
+
+		{% else %}
+			
+			<input type="{{ data['type'] }}" name="{{ data['name'] }}" class="form-control {{data['class']}} {% if data.id in error_fields %}error_form_field{% endif %}" value="{{ data['value']|e }}" placeholder="{{ data['placeholder']|e }}" id="{{data['id']}}" {{extra.extratag(data.other)}}/>
+			{% if data['date_type'] %}
+			<script>
+				{% if data['date_type'] == 'datetimepicker_date' %}
+
+					if ( $.fn.datetimepicker ) {
+						if( typeof javascript_activelocale != 'undefined' && javascript_activelocale != null ){
+							$("#{{data['id']}}").datetimepicker(
+								{
+								format: 'd/m/Y',
+								lang: javascript_activelocale,
+								timepicker:false,
+								allowBlank: true
+								}
+							);
+						}else{
+							
+							$("#{{data['id']}}").datetimepicker(
+								{
+								format: 'd/m/Y',
+								timepicker:false,
+								allowBlank: true
+								}
+							);
+							
+						}
+					}
+				{% endif %}
+
+				{% if data['date_type'] == 'datetimepicker' %}
+					/****  Datetimepicker ****/
+					if ( $.fn.datetimepicker ) {
+						if( typeof javascript_activelocale != 'undefined' && javascript_activelocale != null ){
+							$("#{{data['id']}}").datetimepicker(
+								{
+								format: 'd/m/Y H:i',
+								lang: javascript_activelocale,
+								allowBlank: true
+								}
+							);
+						}else{
+							$("#{{data['id']}}").datetimepicker(
+								{
+								format: 'd/m/Y H:i',
+								allowBlank: true
+								}
+							);
+						}
+					}
+				{% endif %}
+			</script>
+			{% endif %}
+		{% endif %}
+	{% endif %}
+	
+
+{% endmacro %}
+
+{% macro buildCol(data,class) %}
+	{% import _self as form %}
+
+	{% if data %}
+		{% if data.widget %}
+			{% if data.widget == 'buildMultiselect' %}
+				{{form.buildMultiselect(data,class)}}
+			{% endif %}
+			{% if data.widget == 'buildPalette' %}
+				{{form.buildPalette(data,class)}}
+			{% endif %}
+			{% if data.widget == 'buildFilemanager:image' %}
+				{{form.buildFilemanager(data,'image',class)}}
+			{% endif %}
+			{% if data.widget == 'buildFilemanager' %}
+				{{form.buildFilemanager(data,'',class)}}
+			{% endif %}
+
+			{% if data.widget == 'buildAutocomplete' %}
+				{{form.buildAutocomplete(data,'',class)}}
+			{% endif %}
+
+			{% if data.widget == 'buildUploadImage' %}
+				{{form.buildUploadImage(data,class)}}
+			{% endif %}
+
+			{% if data.widget == 'buildUploadImageSmall' %}
+				{{form.buildUploadImage(data,class,true)}}
+			{% endif %}
+
+			{% if data.widget == 'dropzone' %}
+				{{form.dropzone(data,class)}}
+			{% endif %}
+
+			
+		{% else %}
+			{% if data.locales %}
+			<div class="{{class}} container-lang-input form-group" id="div_{{data.id}}">
+				<div class="container-flag-form-multilang">
+					{% for loc in locales %}
+						{% if activelocale == loc %}
+						<img lang="{{loc}}" class="flag-form-multilang active" src="../img/flags/{{loc}}.png" onclick="form_twig_lang_view('{{data.id}}',$(this),'{{loc}}'); return false;"/>
+						{% else %}
+						<img lang="{{loc}}" class="flag-form-multilang" src="../img/flags/{{loc}}.png" onclick="form_twig_lang_view('{{data.id}}',$(this),'{{loc}}'); return false;"/>
+						{% endif %}
+					{% endfor %}
+					
+				</div>
+				{% for loc in locales %}
+					
+					{% if activelocale == loc %}
+						{{form.buildCol(data['locales'][loc])}}
+					{% else %}
+						{{form.buildCol(data['locales'][loc],"hidden")}}
+					{% endif %}
+					
+
+				{% endfor %}
+			</div>
+			{% else %}
+			
+			<div class="form-group {{class}}" id="div_{{data.id}}">
+				<label>{{data.etichetta|capitalize }} {% if data.obbligatorio %}<span class="asterisk">*</span>{% endif %}
+				{% if data.descrizione %}
+				<span  data-toggle="popover" id="description_{{data.id}}" title="{{data.etichetta|capitalize }}" data-content="{{data.descrizione}}" data-html='true'><img src="assets/images/question.svg" style="width:20px; cursor:pointer;"/></span>
+				
+				<script>
+					$('#description_'+"{{data.id|escape('js')}}").popover();
+				</script>
+				{% endif %}
+				</label>
+				
+				
+				<div class="controls">
+					
+					{{form.build(data)}}
+				</div>
+			</div>
+			{% endif %}
+		{% endif %}
+	{% endif %}
+{% endmacro %}
+
+{% macro buildAutocomplete(data,class) %}
+	<div class="form-group {{class}}" id="div_{{data.id}}">
+		<label>{{data.etichetta|capitalize }} {% if data.obbligatorio %}<span class="asterisk">*</span>{% endif %}
+		
+		<br/>
+		<small style="font-style: italic;">{{data.descrizione|raw}}</small>
+		</label>
+		
+		<div class="controls">
+			<input type="{{ data['type'] }}" name="{{ data['name_autocomplete'] }}"  class="form-control {{data['class']}} {% if data.id in error_fields %}error_form_field{% endif %}" placeholder="{{ data['placeholder']|e }}" id="{{data['id']}}_autocomplete" {{extra.extratag(data.other)}}/>
+			<input type="hidden" name="{{ data['name'] }}" id="{{data['id']}}" value="{{ data['value']|e }}"/>
+		</div>
+	</div>
+	
+	<script>
+		{% if data['options'] %}
+			let formatted_autocomplete_options = [];
+			const tmp_autocomplete_options = JSON.parse("{{data['options']|json_encode|escape('js')}}");
+			if( tmp_autocomplete_options ){
+				for( let k in tmp_autocomplete_options ){
+					formatted_autocomplete_options.push(
+						{
+							'key' : k,
+							'value': tmp_autocomplete_options[k]
+						}
+					);
+				}
+			}
+			$("#{{data['id']}}_autocomplete").autocomplete({
+				source:  formatted_autocomplete_options,
+				select: function (event, ui) {
+					$("#{{data['id']}}").val(ui.item.key);
+					$("#{{data['id']}}").trigger('change');
+				}
+			});
+		{% endif %}
+		
+	</script>
+	
+{% endmacro %}
+
+
+
+{% macro buildPalette(data,class) %}
+	
+	<div class="form-group {{class}}" id="div_{{data.id}}">
+		<label>{{data.etichetta|capitalize }} {% if data.obbligatorio %}<span class="asterisk">*</span>{% endif %}
+		
+		<br/>
+		<small style="font-style: italic;">{{data.descrizione|raw}}</small>
+		</label>
+		
+		<div class="controls">
+			
+			<input type="hidden" name="{{ data['name'] }}" value="{{ data['value']|e }}" placeholder="{{ data['placeholder']|e }}" id="{{data['id']}}"/>
+		</div>
+	</div>
+	
+	<script>
+		$("#{{data['id']}}").spectrum({
+			preferredFormat: "hex",
+			showInput: true,
+			color: "{{data['value']|escape('js')}}"
+		});
+	</script>
+{% endmacro %}
+
+{% macro buildMultiselect(data,class,options) %}
+	
+	<div class="form-group {{class}}" id="div_{{data.id}}">
+		<label>{{data.etichetta|capitalize }} {% if data.obbligatorio %}<span class="asterisk">*</span>{% endif %}
+			<br/>
+			{%if data.descrizione %}
+			<small style="font-style: italic;">{{data.descrizione|raw}}</small>
+			{% endif %}
+		</label>
+		
+		
+		<div class="controls">
+			
+			<select name="{{data['id']}}_multiselect" multiple="multiple" id="{{data['id']}}" class="no-picker" {{extra.extratag(data.other)}}>
+				{% for k,v in data['options'] %}
+				<option value="{{k}}">{{v}}</option>
+				{% endfor %}
+
+			</select>
+			<!--<input type="hidden" id="{{data['id']}}_order" name="formdata[{{data['id']}}_order]"/>-->
+			
+		</div>
+	</div>
+	<script>
+		$(function () {
+			 $("#{{data['id']}}").multiSelect({
+			  keepOrder: true,
+			  selectableHeader: `<div class='custom-header'><b>{{data['available_options_label']}}</b></div>`,
+			  selectionHeader: `<div class='custom-header'><b>{{data['selected_options_label']}}</b></div>`,
+
+			  afterSelect: function(value, text){
+				$(`<input type='hidden' name='{{data['name']}}' id='{{data['id']}}_multiselcet_order_${value}' value='${value}'/>`).appendTo("#div_{{data.id}}");
+
+
+				
+			  },
+			  afterDeselect: function(value, text){
+				$(`#{{data['id']}}_multiselcet_order_+${value}`).remove();
+				
+			
+			  },
+			  afterInit: function(value, text){
+				
+					var selezionati = JSON.parse("{{data['value']|json_encode|escape('js')}}");
+					
+					for( var key in selezionati ){
+						var valore = selezionati[key];
+						
+						$("#{{data['id']}}").multiSelect('select', valore);
+			
+					}
+					 
+			  }
+			 });
+		 });
+	</script>
+
+{% endmacro %}
+
+
+{% macro buildFileManager(data,type,class) %}
+	{% import _self as form %}
+	
+
+	{% if data %}
+		{% if data.locales %}
+			
+			
+			
+			<div class="container-lang-input col-md-12">
+				<div class="container-flag-form-multilang" style="float:right;">
+					
+					{% for loc in locales %}
+						{% if activelocale == loc %}
+						<img lang="{{loc}}" class="flag-form-multilang active" src="{{baseurl}}img/flags/{{loc}}.png" onclick="form_twig_lang_view_filemanager('{{data.id}}',$(this),'{{loc}}'); return false;"/>
+						{% else %}
+						<img lang="{{loc}}" class="flag-form-multilang" src="{{baseurl}}img/flags/{{loc}}.png" onclick="form_twig_lang_view_filemanager('{{data.id}}',$(this),'{{loc}}'); return false;"/>
+						{% endif %}
+						
+					{% endfor %}
+					 
+				</div>
+			
+			 
+			 {% for loc in locales %}
+				
+				{% if activelocale == loc %}
+					<div class="content-lang-input content-lang-input-{{loc}}">
+					{{form.buildFileManager(data['locales'][loc],type,class)}}
+					</div>
+				{% else %}
+					<div class="content-lang-input content-lang-input-{{loc}} hidden">
+					{{form.buildFileManager(data['locales'][loc],type,class)}}
+					</div>
+				{% endif %}
+				
+			 {% endfor %}
+			 
+			</div>
+
+		{% else %}
+			
+			{% set field = data.id %}
+
+			
+			{{form.build(data)}}
+			
+			<div class="form-group {{class}} p-l-0">
+			<label>{{data.etichetta|capitalize }} {% if data.obbligatorio %}<span class="asterisk">*</span>{% endif %}
+			
+			{% if data.descrizione %}
+			<span data-toggle="popover" id="description_{{data.id}}" title="{{data.etichetta|capitalize }}" data-content="{{data.descrizione}}" data-html='true'><img src="assets/images/question.svg" style="width:20px; cursor:pointer;"/></span>
+			<script>
+				$('#description_'+"{{data.id|escape('js')}}").popover();
+			</script>
+			{% endif %}	
+			</label>
+			<div class="controls">
+			{% if type == 'image' %}		
+				<div class="row">
+					<div class="col-md-12 filemanager_editor_form" >
+						<div class="preview_box_filemanager" id="filemanager_{{field}}" data-input="{{field}}">
+							<img id="img_filemanager_{{field}}"   class="preview_image_filemanager"/>
+							
+						</div>
+						<a style="display:none;" data-toggle="modal" data-keyboard="false" data-target="#filemanager_{{field}}" data-input="{{field}}" class="btn-filemanger-marion btn btn-default btn-sm" type="button"> </a>
+						<a style="display:none;" class="btn_remove_image_filemanager" id="img_filemanager_{{field}}_remove" type="button" onclick="$(this).closest('.filemanager_editor_form').find('.preview_box_filemanager').removeClass('no-image'); $(this).hide(); $('#img_filemanager_{{field}}').attr('src','');$('#{{field}}').val('');"><img src="../assets/images/cancel.svg"/></a>
+					</div>
+				</div>
+			{% else %}
+				<div class="row">
+					<div class="col-md-12 filemanager_editor_form" >
+						<div class="preview_box_filemanager"  id="filemanager_{{field}}" data-input="{{field}}">
+							<img id="img_filemanager_{{field}}" class="preview_image_filemanager"/>
+							
+						</div>
+						<a style="display:none;" data-toggle="modal" data-keyboard="false" data-target="#filemanager_{{field}}" data-input="{{field}}" class="btn-filemanger-marion btn btn-default btn-sm" type="button"> </a>
+						<a style="display:none;" class="btn_remove_image_filemanager" id="img_filemanager_{{field}}_remove" type="button" onclick="$(this).closest('.filemanager_editor_form').find('.preview_box_filemanager').removeClass('no-image');$(this).hide(); $('#img_filemanager_{{field}}').attr('src','');$('#{{field}}').val('');"><img src="../assets/images/cancel.svg"/></a>
+					</div>
+				</div>
+			{% endif %}
+			</div>
+			<div id="modal_filemanager_{{field}}" type="{{type}}"></div>
+			<script>
+			$('#filemanager_{{field}}').on('click', function(){
+				const type = $('#modal_filemanager_{{field}}').attr('type');
+				let fldr = "''";
+				let filemanager_type = '0';
+				if( type == 'image' ){
+					fldr = 'images';
+					filemanager_type = '1';
+				}
+				
+				$("#modal_filemanager_{{field}}").iziModal({
+					title: 'Filemanager',
+					fullscreen: true,
+					iframe: true,
+					widtht: 768,
+					iframeURL: "../modules/filemanager/filemanager/dialog.php?type={{type}}&field_id={{field}}&lang=it_IT&relative_url=1&fldr="+fldr+"&type="+filemanager_type
+				});
+				$("#modal_filemanager_{{field}}").iziModal('open');
+			})
+			</script>
+		
+			</div>
+		{% endif %}
+	{% endif %}
+	
+	
+{% endmacro %}
+
+{% macro dropzone(data,class) %}
+	{% import _self as form %}
+	<div class="{{class}}">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <label>
+						{% if data.tipo_file == 'img' %}
+						<i class="fa fa-picture-o" aria-hidden="true"> </i>
+						{% else %}
+						<i class="fa fa-paperclip" aria-hidden="true"> </i>
+						{% endif %}
+						{{data.etichetta | capitalize}}	
+						{% if data.obbligatorio %}<span class="asterisk">*</span>{% endif %}
+						{% if data.descrizione %}
+						<span data-toggle="popover" id="description_{{data.id}}" title="{{data.etichetta|capitalize }}" data-content="{{data.descrizione}}" data-html='true'><img src="assets/images/question.svg" style="width:20px; cursor:pointer;"/> </span>
+					</label>
+					<script>
+						$('#description_'+"{{data.id|escape('js')}}").popover();
+					</script>
+					{% endif %}	
+                </div>
+
+                <div class="panel-body">
+                    <div class="dropzone_container" id="dopzone_container_preview_{{data.id}}">
+                        <div id="dropzone_{{data.id}}" style="min-height: 120px;margin-top: 20px;">
+
+                        </div>
+                       
+						{% if data.tipo_file == 'img' %}
+							{% for v in data.value %}
+								<div class="col-md-3 box-img-upload" id="img_{{v}}" style="position: relative;">
+									<input type="hidden" name="{{data.name}}[]" value="{{v}}"/>
+									<div class="panel panel-primary" style="border: 1px solid #DFE1E6;margin: 10px 0 0;border-radius: 8px;overflow: hidden;">
+										<div class="panel-body cont-image-upload" style="background:url('{{baseurl}}img/{{v}}/or/img.png') no-repeat scroll center center / cover">
+										<!--<img src="{{baseurl}}img/{{v}}/or/img.png" class="image-upload">-->
+										</div>
+
+										<div class="panel-footer text-center">
+											<a type="button" href="index.php?action=download&ctrl=Media&id={{v}}&type=image" class="btn btn-default btn-sm"><i class="fa fa-download"> </i></a>
+											<button type="button" class="btn btn-default btn-sm" onclick="$('#img_{{v}}').remove();"><i class="fa fa-trash-o"> </i></button>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						{% else %}
+							{% for v in data.info %}
+								<div class="col-md-3 box-img-upload" id="img_{{v.id}}" style="position: relative;">
+									<input type="hidden" name="{{data.name}}[]" value="{{v.id}}"/>
+									<div class="panel panel-primary box-attach">
+										<div class="panel-body">
+											<img src="{{v.img}}"/>
+											{{v.filename}}
+										</div>
+
+										<div class="panel-footer text-center">
+											<a type="button" class="btn btn-default btn-sm" href="index.php?action=download&ctrl=Media&id={{v.id}}&type=attachment" ><i class="fa fa-download"> </i></a>
+											<button type="button" class="btn btn-default btn-sm" onclick="$('#img_{{v.id}}').remove();"><i class="fa fa-trash-o"> </i></button>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						{% endif %}
+                    </div>	
+                </div>
+            </div>	
+	</div>
+
+	
+	<script>
+		//$(document).ready(function(){
+		
+		//var accepted_files = {{ data.acceptedFiles| escape('js') }};
+		var type_file{{data.id}} = "{{data.tipo_file| escape('js')}}";
+		const resize_image_{{data.id}} = "{{data.resize_image| escape('js')}}";	
+		var acceptedFiles_{{data.id}} = "{{data.acceptedFiles| escape('js')}}" ;
+		var dropzone_{{data.id}} = $("div#dropzone_{{data.id}}").addClass('dropzone').dropzone({
+			url: "index.php?ctrl=Media&resize="+resize_image_{{data.id}}, 
+			//previewTemplate: document.getElementById('previews_{{data.id}}').innerHTML,
+			//autoProcessQueue: false,
+			acceptedFiles:acceptedFiles_{{data.id}},
+			success: function(file, response){
+				var data = jQuery.parseJSON(response)
+				if( data.result == 'ok'){
+
+					if( type_file{{data.id}} == 'img' ){
+						$('<div class="col-md-3 img_new" id="img_'+data.id+'"><input type="hidden" name="{{data.name}}[]" value="'+data.id+'"/> <div class="panel panel-primary box-attach"><div class="panel-body"><img src="'+data.url+'"/></div><div class="panel-footer text-center"><a type="button" class="btn btn-default btn-sm" href="index.php?action=download&ctrl=Media&id='+data.id+'&type=attachment"><i class="fa fa-download"></i></a><button  class="btn btn-sm btn-default" onclick="$(this).closest(\'.img_new\').remove();" type="button"><i class="fa fa-trash-o"></i></button></div></div></div>').appendTo('#dopzone_container_preview_{{data.id}}');
+					}else{
+						$('<div class="col-md-3 img_new" id="img_'+data.id+'"><input type="hidden" name="{{data.name}}[]" value="'+data.id+'"/> <div class="panel panel-primary box-attach"><div class="panel-body"><img src="'+data.img+'"/>'+data.name+'</div><div class="panel-footer text-center"><a type="button" class="btn btn-default btn-sm" href="index.php?action=download&ctrl=Media&id='+data.id+'&type=attachment" ><i class="fa fa-download"></i></a><button  class="btn btn-sm btn-default" onclick="$(this).closest(\'.img_new\').remove();" type="button"><i class="fa fa-trash-o"></i></button></div></div></div>').appendTo('#dopzone_container_preview_{{data.id}}');
+					}
+				
+				}
+			},
+			sending: function(file, xhr, formData){
+				formData.append("ajax", '1');
+				formData.append("name", "{{data.name}}");
+				formData.append("type", "{{data.tipo_file}}");
+                //formData.append("extensions", "{{data.extensions}}");
+                
+			},
+			complete: function(file){
+				 this.removeFile(file);
+			}
+	
+	 //});
+	 });
+	 $(function () {
+		 $("#dopzone_container_preview_{{data.id}}").sortable({
+				tolerance: 'pointer',
+				revert: 'invalid',
+				placeholder: 'col-md-2',
+				forceHelperSize: true
+		 
+		 });
+		 $(".sortable").disableSelection();
+	 });
+	
+	
+
+	</script>
+
+{% endmacro %}
+{% macro buildUploadImage(data,class,boxsmall=false) %}
+	{% import _self as form %}
+	
+
+	{% if data %}
+		{% if data.locales %}
+			
+			
+			
+			<div class="container-lang-input col-md-12">
+				<div class="container-flag-form-multilang" style="float:right;">
+					
+					<!--<select class='select-lang-input no-picker' id='{{data.id}}' onchange="form_twig_lang_view_filemanager('{{data.id}}',$(this)); return false;">
+					 {% for loc in locales %}
+						{% if activelocale == loc %}
+						<option value="{{loc}}" selected>{{loc}}</option>
+						{% else %}
+						<option value="{{loc}}">{{loc}}</option>
+						{% endif %}
+					 {% endfor %}
+					 </select>-->
+					{% for loc in locales %}
+						{% if activelocale == loc %}
+						<img lang="{{loc}}" class="flag-form-multilang active" src="/img/flags/{{loc}}.png" onclick="form_twig_lang_view_filemanager('{{data.id}}',$(this),'{{loc}}'); return false;"/>
+						{% else %}
+						<img lang="{{loc}}" class="flag-form-multilang" src="/img/flags/{{loc}}.png" onclick="form_twig_lang_view_filemanager('{{data.id}}',$(this),'{{loc}}'); return false;"/>
+						{% endif %}
+						
+					{% endfor %}
+					 
+				</div>
+			
+			 
+			 {% for loc in locales %}
+				
+				{% if activelocale == loc %}
+					<div class="content-lang-input content-lang-input-{{loc}}" lang="{{loc}}">
+					{{form.buildUploadImage(data['locales'][loc],class)}}
+					</div>
+				{% else %}
+					<div class="content-lang-input content-lang-input-{{loc}} hidden" lang="{{loc}}">
+					{{form.buildUploadImage(data['locales'][loc],class)}}
+					</div>
+				{% endif %}
+				
+			 {% endfor %}
+			 
+			</div>
+
+		{% else %}
+			
+			{% set field = data.id %}
+
+			
+			
+		
+			<div class="{{class}}">
+                            <label class="nome-img">{{data.etichetta}}
+							{% if data.obbligatorio %}<span class="asterisk">*</span>{% endif %}
+							{% if data.descrizione %}
+							<span  data-toggle="popover" id="description_{{data.id}}" title="{{data.etichetta|capitalize }}" data-content="{{data.descrizione}}" data-html='true'><img src="assets/images/question.svg" style="width:20px; cursor:pointer;"></span>
+							
+							<script>
+								$('#description_'+"{{data.id|escape('js')}}").popover();
+							</script>
+							{% endif %}
+							</label>
+                            <input type="file" id="{{field}}_file"/>
+                            <input type="hidden" name="{{ data['name'] }}" class="form-control {{data['class']}}" value="{{ data['value']|e }}" id="{{data['id']}}"/>
+                            <!--- CAMPO CHE CONTERRA' L'ID DELL' IMMAGINE -->
+                            <div id="wrapper-upload_{{field}}"></div> <!--- CONTENITORE DEL BOX PER L'UPLOAD -->
+                            <script>
+							const acceptedFiles_{{data.id}} = "{{data.acceptedFiles| escape('js')}}";
+							const resize_image_{{data.id}} = "{{data.resize_image| escape('js')}}";
+							
+                            $('#{{field}}_file').cironapo({
+                                    id_field_img:'{{data.id}}',
+                                    id_wrapper: 'wrapper-upload_{{field}}', 
+                                    box_small: "{{boxsmall|escape('js')}}",
+                                    resize:"thumbnail,small,medium,large",
+									extensions: acceptedFiles_{{data.id}}?acceptedFiles_{{data.id}}:'jpeg,jpg,png,gif,svg',
+									resize: resize_image_{{data.id}}?resize_image_{{data.id}}:null,
+                                    type_url_image: "th-nw",
+									baseurl : "{{baseurl|escape('js')}}"
+                            });
+                            </script>
+			</div>
+
+			
+			
+		{% endif %}
+	{% endif %}
+	
+	
+{% endmacro %}
+
+
+

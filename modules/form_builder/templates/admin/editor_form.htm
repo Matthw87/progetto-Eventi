@@ -1,0 +1,392 @@
+{% extends "@core/layouts/base_widget.htm" %}
+
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+<div class="row">
+			
+	<div class="col-md-12">
+
+
+		   <div class="tabcordion">
+				<ul id="tab_product" class="nav nav-tabs">
+					<li class="{% if tab == 'generale' %}active{% endif %}"><a href="#general" data-toggle="tab">Generale</a></li>
+					<li class="{% if tab == 'campi' %}active{% endif %}"><a href="#campi" data-toggle="tab">Campi</a></li>
+					<li class="{% if tab == 'email' %}active{% endif %}"><a href="#email" data-toggle="tab">Email</a></li>
+					
+					<li class="{% if tab == 'template' %}active{% endif %}"><a href="#template" data-toggle="tab" >Form html</a></li>
+
+					
+					
+				</ul>
+		
+				<div id="tab_product_content" class="tab-content">
+					<div class="tab-pane fade {% if tab == 'generale' %}active{% endif %} in" id="general">
+						<div class="row">
+							
+							<form action="index.php" method="POST">
+							{{form.buildCol(dataform_general.label,'col-md-12')}}
+							{{form.buildCol(dataform_general.recaptcha,'col-md-12')}}
+							<span class="recaptcha_fields" style="display:none">
+							{{form.buildCol(dataform_general.key_site_recaptcha,'col-md-12')}}
+							{{form.buildCol(dataform_general.key_secret_recaptcha,'col-md-12')}}
+							</span>
+							
+							{{form.buildCol(dataform_general.enable_redirect,'col-md-12')}}
+							{{form.buildCol(dataform_general.redirect_url,'col-md-12')}}
+
+
+							{{form.buildCol(dataform_general.action_submit,'col-md-12')}}
+
+
+							
+							<input type="hidden" name="ctrl" value="EditorForm">
+							<input type="hidden" name="mod" value="form_builder">
+							<input type="hidden" name="id_box" value="{{id_box}}">
+							<input type="hidden" name="tab" value="generale">
+							<div class="col-md-12">
+									<button class="btn btn-success btn-sm pull-right"><i class="fa fa-save"></i> Salva</button>
+							</div>
+							</form>
+								
+								
+						</div>
+					</div>
+
+					<div class="tab-pane fade {% if tab == 'campi' %}active{% endif %} in" id="campi">
+							<div class="row">
+
+								<div class="col-md-12" id="other_fields">
+										
+										<table class="table table-bordered table-striped">
+											
+											<thead>
+												<th>Name</th>
+												<th>Tipo</th>
+												<th>Obbligatorio</th>
+												<th></th>
+											</thead>
+											<tbody id="campi_form">
+												{% for k,v in campi %}
+												<tr>
+													<td>{{v.name}}</td>
+													<td>{{v.type}}</td>
+													<td>{% if v.mandatory %}<span class="label label-success">SI</span>{% else %}<span class="label label-danger">NO</span>{% endif %}</td>
+													
+													
+													<td class="text-center"> 
+															<div class="btn-group media-group">
+															  <a onclick="add_field_form({{id_box}},{{k}}); return false;" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i> {{tr('edit')}}</a>
+															  <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
+																	<span class="caret"></span>
+															  </button>
+															  <ul class="dropdown-menu media-menu text-left" role="menu">
+																<li><a onclick="confirm_delete_field({{id_box}},{{k}});return false;"><i class="fa fa-trash-o"></i> {{tr('delete')}}</a></li>
+															  </ul>
+														</div>
+													</td>
+																		
+													
+													
+													
+												</tr>
+												{% endfor %}
+												
+											</tbody>
+											<tfoot>
+												<td colspan="4" >
+												<button onclick="add_field_form({{id_box}},0)" class="pull-right btn btn-sm btn-success" type="button"><i class="fa fa-plus"></i> aggiungi campo</button>
+												</td>
+											</tfoot>
+										</table>
+										
+										<!--<div class="alert alert-warning" style="width:100%">Per poter aggiungere campi al form devi prima effettuare un salvataggio</div>-->
+										
+								</div>
+
+								<div class="col-md-12" id="form_campo">
+
+								</div>
+
+							</div>
+					</div>
+
+					<div class="tab-pane fade {% if tab == 'email' %}active{% endif %} in" id="email">
+						
+						<div class="row">
+
+							<form action="index.php" method="POST">
+							{{form.buildCol(dataform_email.use_field_form,'col-md-12')}}
+							{{form.buildCol(dataform_email.field_form_sender,'col-md-12')}}
+							{{form.buildCol(dataform_email.email_mittente,'col-md-12')}}
+							{{form.buildCol(dataform_email.email_destinatari,'col-md-12')}}
+							{{form.buildCol(dataform_email.subject,'col-md-12')}}
+							{{form.buildCol(dataform_email.success_message,'col-md-12')}}
+							{{form.buildCol(dataform_email.message,'col-md-12')}}
+							
+							<input type="hidden" name="ctrl" value="EditorForm">
+							<input type="hidden" name="mod" value="form_builder">
+							<input type="hidden" name="id_box" value="{{id_box}}">
+							<input type="hidden" name="tab" value="email">
+							<div class="col-md-12">
+									<button class="btn btn-success btn-sm pull-right"><i class="fa fa-save"></i> Salva</button>
+							</div>
+							</form>
+							
+							
+
+						</div>
+						
+						
+					</div>
+
+					<div class="tab-pane fade  {% if tab == 'template' %}active{% endif %} in" id="template">
+						<div class="row">
+								<form action="index.php" method="POST">
+								{{form.buildCol(dataform_template.html,'col-md-12')}}
+								<input type="hidden" name="ctrl" value="EditorForm">
+								<input type="hidden" name="mod" value="form_builder">
+								<input type="hidden" name="id_box" value="{{id_box}}">
+								<input type="hidden" name="tab" value="template">
+								<div class="col-md-12">
+										<button class="btn btn-success btn-sm pull-right"><i class="fa fa-save"></i> Salva</button>
+								</div>
+								</form>
+
+								<button onclick="aggiungi(1)">riga 1 colonna</button>
+								<button onclick="aggiungi(2)">riga 2 colonne</button>
+								<button onclick="aggiungi(3)">riga 3 colonne</button>
+								<button onclick="aggiungi(10)">recaptcha</button>
+								<button onclick="aggiungi(0)">reset</button>
+								
+
+								<!--<div>
+									<span id="campi_html">
+										{% for v in campi %}
+										
+										<a class="btn btn-default btn-sm" style="float:left;" data-html='' onclick="copyToClipboard({{v.codice}}); return false;"  type="button"><i class="fa fa-code"></i> {{v.campo}} </a><br>
+										<textarea id="val_{{v.codice}}" style="display:none">{{v.getHtml()}}</textarea>
+										{% endfor %}
+									</span>
+									<a class="btn btn-default btn-sm"  onclick="copyToClipboard('captcha'); return false;"  type="button"><i class="fa fa-code"></i> CAPTCHA </a> <br>
+
+									<textarea flexy:ignore id="val_captcha" style="display:none"><div class="g-recaptcha" data-sitekey="{{sitekey}}"></div></textarea>
+									
+								</div>-->
+
+
+								<!--
+								
+
+								<div class="form-builder-col100">
+									<label>Etichetta</label>
+									<div class="control">
+										[[name class='' id='' attr1='' attr2='']]
+									</div>
+								</div>
+
+								<div class="form-builder-col50">
+									<label>Etichetta</label>
+									<div class="control">
+										[[name class='' id='' attr1='' attr2='']]
+									</div>
+								</div>
+
+								<div class="form-builder-col33">
+									<label>Etichetta</label>
+									<div class="control">
+										[[name class='' id='' attr1='' attr2='']]
+									</div>
+								</div>
+
+								-->
+								
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+	</div>
+</div>
+
+<script>
+  var editor_html = [];
+  $('textarea').each(function(){
+	   if( $(this).attr('id').match(/html/) ||  $(this).attr('id').match(/message/) ){
+		   editor_html[$(this).attr('id')] = CodeMirror.fromTextArea(document.getElementById($(this).attr('id')), {
+				//lineNumbers: true,
+				mode: "htmlembedded",
+				indentUnit: 4,
+				indentWithTabs: true,
+				//name:'htmlembedded',
+				styleActiveLine: true,
+				matchBrackets: true,
+				fullscreen:true,
+				theme:'night',
+				extraKeys: {
+					"F11": function(cm) {
+					  cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+					},
+					"Esc": function(cm) {
+					  if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+					},
+				}
+			  });
+
+
+			
+	   }
+	
+
+  });
+
+  
+  $('#enable_redirect').on('change',function(){
+		if( $(this).prop('checked') == true ){
+			$('#div_redirect_url').show();
+			
+		}else{
+			$('#div_redirect_url').hide();
+
+		}
+  })
+
+	if( $('#enable_redirect').prop('checked') == true ){
+		$('#div_redirect_url').show();
+		
+	}else{
+		$('#div_redirect_url').hide();
+
+	}
+
+  $('#use_field_form').on('change',function(){
+		if( $(this).prop('checked') == true ){
+			$('#div_field_form_sender').show();
+			$('#div_email_mittente').hide();
+		}else{
+			$('#div_field_form_sender').hide();
+			$('#div_email_mittente').show();
+
+		}
+  })
+  if( $('#use_field_form').prop('checked') == true ){
+		$('#div_field_form_sender').show();
+		$('#div_email_mittente').hide();
+	}else{
+		$('#div_field_form_sender').hide();
+		$('#div_email_mittente').show();
+
+	}
+
+  $('#recaptcha').on('change',function(){
+		if( $(this).prop('checked') == true ){
+			$('.recaptcha_fields').show();
+		}else{
+			$('.recaptcha_fields').hide();
+
+		}
+  })
+
+  if( $('#recaptcha').prop('checked') == true ){
+		$('.recaptcha_fields').show();
+	}else{
+		$('.recaptcha_fields').hide();
+
+	}
+  
+  
+
+ 
+  function aggiungi(num) {
+	  if( num != 10 ){
+		var html = '<!------ RIGA ------>\r\n';
+	  }else{
+		var html = '<!------ RECAPTCHA ------>\r\n'; 
+	  }
+	  
+	  switch(num){
+		case 1:
+			html = html +'<div class="form-builder-row clearfix">\r\n'+
+			'	<div class="form-builder-col-100">\r\n'+
+			'		<label>Etichetta<!--<span class="form-builder-mandatory-field">*</span>--></label>\r\n'+
+			'		<div class="form-builder-control">\r\n'+
+			'			[[name class="" id="" attr1="" attr2=""]]\r\n'+
+			'		</div>\r\n'+
+			'	</div>\r\n'+
+			'</div>';
+			break;
+		case 2:
+			html = html +'<div class="form-builder-row clearfix">\r\n'+
+			'	<div class="form-builder-col-50">\r\n'+
+			'		<label>Etichetta<!--<span class="form-builder-mandatory-field">*</span>--></label>\r\n'+
+			'		<div class="form-builder-control">\r\n'+
+			'			[[name class="" id="" attr1="" attr2=""]]\r\n'+
+			'		</div>\r\n'+
+			'	</div>\r\n'+
+			'	<div class="form-builder-col-50">\r\n'+
+			'		<label>Etichetta<!--<span class="form-builder-mandatory-field">*</span>--></label>\r\n'+
+			'		<div class="form-builder-control">\r\n'+
+			'			[[name class="" id="" attr1="" attr2=""]]\r\n'+
+			'		</div>\r\n'+
+			'	</div>\r\n'+
+			'</div>'
+
+			break;
+		case 3:
+			html = html +'<div class="form-builder-row clearfix">\r\n'+
+			'	<div class="form-builder-col-33">\r\n'+
+			'		<label>Etichetta<!--<span class="form-builder-mandatory-field">*</span>--></label>\r\n'+
+			'		<div class="form-builder-control">\r\n'+
+			'			[[name class="" id="" attr1="" attr2=""]]\r\n'+
+			'		</div>\r\n'+
+			'	</div>\r\n'+
+			'	<div class="form-builder-col-33">\r\n'+
+			'		<label>Etichetta<!--<span class="form-builder-mandatory-field">*</span>--></label>\r\n'+
+			'		<div class="form-builder-control">\r\n'+
+			'			[[name class="" id="" attr1="" attr2=""]]\r\n'+
+			'		</div>\r\n'+
+			'	</div>\r\n'+
+			'	<div class="form-builder-col-33">\r\n'+
+			'		<label>Etichetta<!--<span class="form-builder-mandatory-field">*</span>--></label>\r\n'+
+			'		<div class="form-builder-control">\r\n'+
+			'			[[name class="" id="" attr1="" attr2=""]]\r\n'+
+			'		</div>\r\n'+
+			'	</div>\r\n'+
+			'</div>'
+			break;
+		case 10:
+			html = html +'[[recaptcha]]';
+			break;
+		default:
+			html = '';
+			break;
+	  }
+	   var textarea;
+	  $('textarea').each(function(){
+			 //console.log($(this));
+			 //console.log($(this).attr('id'));
+			 if( typeof $(this).attr('id') != 'undefined' && $(this).attr('id').match(/html/) ){
+				if( !$(this).closest('div').parent().hasClass('hidden') ){
+					textarea = $(this);
+				}
+			 }
+		 });
+	  if( num > 0 ){
+		if( num != 10 ){
+			html = html +'\r\n<!------ FINE RIGA ------>';
+		}else{
+			html = html +'\r\n<!------ FINE RECAPTCHA ------>';
+		}
+		editor_html[textarea.attr('id')].setValue(editor_html[textarea.attr('id')].getValue()+"\r\n"+html);
+	  }else{
+		editor_html[textarea.attr('id')].setValue('');
+	  }
+	  
+	}
+ 
+
+</script>
+
+
+{% endblock %}

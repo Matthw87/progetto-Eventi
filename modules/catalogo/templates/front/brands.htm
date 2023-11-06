@@ -1,0 +1,17 @@
+{% extends 'layouts/page.htm' %}
+{% block content %}
+<h4 class="txtc">{{tr('Brands','catalogo')}}</h4>
+<div class="space70"></div>
+<div class="container-medium">
+	<div class="row">
+		{% for brand in brands %}
+			<a href="{{brand.getUrl()}}">
+				<div class="col-brands">
+					<img src="{{brand.getUrlImage('medium')}}">
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+</div>
+<div class="space60"></div>
+{% endblock %}

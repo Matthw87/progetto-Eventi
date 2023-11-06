@@ -1,0 +1,20 @@
+<xml>
+    <sheet>
+        <row>
+            <col>
+                <field name="password"/>
+            </col>
+            <col>
+                
+            </col>
+        </row>
+        <row>
+            <col>
+                <field name="password_confirmation"/>
+            </col>
+            <col>
+                
+            </col>
+        </row>
+    </sheet>
+</xml>

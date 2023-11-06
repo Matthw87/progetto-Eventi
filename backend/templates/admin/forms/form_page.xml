@@ -1,0 +1,94 @@
+<xml>
+    <sheet>
+        <field name="id" hidden="true"/>
+        <field name="widget" hidden="true"/>
+        <field name="advanced" hidden="true"/>
+        <input name="type" value="{{type}}" type="hidden"/>
+        <kanbans class="kanban-page-form">
+            <kanban name="pages.form.tabs.general">
+                <row>   
+                    <col>
+                        <field name="title"/>
+                    </col>
+                </row>
+                <row>   
+                    <col>
+                        <field name="visibility"/>
+                    </col>
+                </row>
+                <row>   
+                    <col>
+                        <field name="enable_routing"/>
+                    </col>
+                </row>
+                <row>   
+                    <col>
+                        <field name="url"/>
+                    </col>
+                </row>
+                
+                <row>   
+                    <col>
+                        <field name="route"/>
+                    </col>
+                </row>
+                <row>   
+                    <col id="route-params">
+                    </col>
+                </row>
+                
+               
+                <row>   
+                        <col>
+                            <field name="content"/>
+                        </col>
+                    </row>
+            </kanban>
+            {% if dataform.advanced.value == 1 %}
+            <kanban name="pages.form.tabs.layout">
+                <div class="clearfix">
+                    <div class="col2">
+                        <p>FullPage</p>
+                        <img class="wireframe1" src="assets/images/full.png"/>
+                        <input type="radio" style="display:none" id="layout_2" name="formdata[layout]" value="2"/>
+                    </div>
+                    <div class="col2">
+                        <p>Top - Content</p>
+                        <img class="wireframe2" src="assets/images/top-content.png"/>
+                        <input type="radio" style="display:none" id="layout_1" name="formdata[layout]" value="1"/>
+                    </div>
+                    <div class="col2">
+                        <p>Sidebar dx</p>
+                        <img class="wireframe3" src="assets/images/sidebar-dx.png"/>
+                        <input type="radio" style="display:none" id="layout_5" name="formdata[layout]" value="5"/>
+                    </div>
+                    <div class="col2">
+                        <p>Sidebar sx</p>
+                        <img class="wireframe4" src="assets/images/sidebar-sx.png"/>
+                        <input type="radio" style="display:none" id="layout_4" name="formdata[layout]" value="4"/>
+                    </div>
+		        </div>
+            </kanban>
+            {% endif %}
+            {% if dataform.widget.value != 1 %}
+            <kanban name="pages.form.tabs.seo">
+                 <row>   
+                    <col>
+                        <field name="meta_title"/>
+                    </col>
+                </row>
+                <row>   
+                    <col>
+                        <field name="meta_description"/>
+                    </col>
+                </row>
+            </kanban>
+            {% endif %}
+        </kanbans>
+
+        <script>
+	        var js_layout = "{{dataform.layout.value|escape('js')}}";
+        </script>
+        
+    </sheet>
+</xml>

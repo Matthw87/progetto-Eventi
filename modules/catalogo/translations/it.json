@@ -1,0 +1,211 @@
+{
+    "sku_empty": "Codice articolo non specificato",
+    "sku_duplicate": "Codice articolo già presente",
+	"attributes_duplicate": "Combinazione attributi già presente",
+    "online": "online",
+    "offline": "offline",
+    "products":{
+        "list": {
+            "title": "Prodotti"
+        },
+        "form": {
+            "tabs":{
+                "general": "Generale",
+                "seo": "SEO",
+                "media": "Media",
+                "related_products": "Correlati",
+                "advanced_features": "Avanzate",
+                "combinations": "Varianti",
+                "attributes": "Attributi"
+            },
+            "title": "Prodotto",
+            "add_variation": "Aggiungi variante",
+            "edit_variation": "Modifica variante",
+            "combinations": "Combinazioni",
+            "remove_all_variations": "Rimuovi tutte le variazioni",
+            "fields": {
+                "sku": "Cod. articolo",
+                "template": "modello",
+                "weight": "peso",
+                "manufacturer": "Produttore",
+                "upc": "UPC",
+                "quantity": "Quantità",
+                "centralized_stock": "Magazzino centralizzato?",
+                "is_virtual": "E' un prodotto virtuale?",
+                "ean": "EAN",
+                "category": "categoria",
+                "main_category": "categoria pricipale",
+                "secondary_categories": "categorie secondarie",
+                "slug": "slug",
+                "order_view": "ordine visualizzazione",
+                "online": "online?",
+                "meta_title": "meta title",
+                "meta_description": "meta description",
+                "images": "immagini",
+                "attachments": "allegati",
+                "name": "nome",
+                "type": "tipologia",
+                "model": "modello",
+                "tags": "tags",
+                "description": "descrizione",
+                "simple": "semplice",
+                "configurable": "configurabile"
+            }
+        },
+        "messages": {
+            "add_variations": "Prodotto creato con successo. Ora puoi creare le varianti per il prodotto.",
+            "updated": "Prodotto aggiornato con successo",
+            "created": "Prodotto creato con successo",
+            "deleted": "Prodotto eliminato con successo",
+            "confirm_delete_message": "Sicuro di volere eliminare il prodotto <b>%s</b>?"
+        }
+    },
+    "categories":{
+        "list": {
+            "title": "Categorie"
+        },
+        "form": {
+            "tabs":{
+                "general": "Generale",
+                "media": "Media",
+                "seo": "SEO"
+            },
+            "title": "Categoria",
+            "fields": {
+                "parent": "Sottocategoria di",
+                "name": "nome",
+                "description": "desrizione",
+                "order_view": "ordine di visualizzazione",
+                "related_sections": "categorie correlate",
+                "online": "online",
+                "images": "immagini",
+                "attachments": "allegati",
+                "pretty_url": "slug",
+                "meta_title": "meta title",
+                "meta_description": "meta description"
+            }
+        },
+        "messages": {
+            "updated": "Categoria aggiornata con successo",
+            "created": "Categoria aggiunta con successo",
+            "deleted": "Categoria eliminata con successo",
+            "confirm_delete_message": "Sicuro di volere eliminare la categoria <b>%s</b>?"
+        }
+    },
+    "tags":{
+        "list": {
+            "title": "Tag prodotti",
+            "url": "Url"
+        },
+        "form": {
+            "title": "Tag prodotto",
+            "fields": {
+                "label": "etichetta",
+                "name": "nome"
+            }
+        },
+        "messages": {
+            "updated": "Tag prodotto aggiornato con successo",
+            "created": "Tag prodotto inserito con successo",
+            "deleted": "Tag prodotto eliminato con successo",
+            "confirm_delete_message": "Sicuro di volere eliminare il tag <b>%s</b>?"
+        }
+    },
+    "attribute_sets":{
+        "list": {
+            "title": "Modelli"
+        },
+        "form": {
+            "title": "Modello",
+            "attributes": "attributi",
+            "add_value": "Aggiungi attributo",
+            "remove_all_values": "Rimuovi tutti gli attributi",
+            "fields": {
+                "name": "nome",
+                "attribute": "attributo",
+                "type": "tipo di visualizzazione",
+                "show_image": "mostra immagine?",
+                "radio": "riquadri",
+                "select": "menu a tendina"
+                
+            }
+        },
+        "messages": {
+            "updated": "Modello aggiornato con successo",
+            "created": "Modello inserito con successo",
+            "deleted": "Modello eliminato con successo",
+            "confirm_delete_message": "Sicuro di volere eliminare il modello <b>%s</b>?"
+        }
+    },
+    "attributes":{
+        "list": {
+            "title": "Attributi"
+        },
+        "form": {
+            "title": "Attributo",
+            "values": "Valori",
+            "add_value": "Aggiungi valore",
+            "remove_all_values": "Rimuovi tutti i valori",
+            "fields": {
+                "label": "etichetta",
+                "name": "nome",
+                "value": "valore",
+                "order_view": "ordine di visualizzazione",
+                "image": "immagine allegata"
+
+            }
+        },
+        "messages": {
+            "updated": "Attributo aggiornato con successo",
+            "created": "Attributo inserito con successo",
+            "deleted": "Attributo eliminato con successo",
+            "confirm_delete_message": "Sicuro di volere eliminare l'attributo <b>%s</b>?"
+        }
+    },
+    "manufacturers":{
+        "list": {
+            "title": "Produttori",
+            "product_number": "%s prodotti"
+            
+        },
+        "form": {
+            "title": "Produttore",
+            "fields": {
+                "name": "nome",
+                "description": "descrizione",
+                "online": "online",
+                "image": "immagine"
+            }
+        },
+        "messages": {
+            "updated": "Produttore aggiornato con successo",
+            "created": "Produttore inserito con successo",
+            "deleted": "Produttore eliminato con successo",
+            "confirm_delete_message": "Sicuro di volere eliminare il produttore <b>%s</b>?"
+        },
+        "product_list": {
+            "title": "Prodotti di <b>%s</b>",
+            "add_products_to": "Associa prodotti a <b>%s</b>",
+            "add_products": "associa prodotti",
+            "add_product": "associa prodotto",
+            "close": "Termina associazione",
+            "remove": "rimuovi associazione"
+        }
+    },
+    "product_list": {
+        "no_products": "Nessun articolo presente",
+        "show_more": "Mostra altri",
+        "loading": "Caricamento in corso...",
+        "order_by": "Ordina per",
+        "order_by_param": {
+            "sku": "Codice articolo",
+            "name": "Nome articolo",
+            "low": "Prezzo basso-alto",
+            "hight": "Prezzo alto-basso"
+        },
+        "pager": {
+            "next": "Succ.",
+            "prev": "Prec."
+        }
+    }
+}

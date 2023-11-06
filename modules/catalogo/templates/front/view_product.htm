@@ -1,0 +1,184 @@
+{% extends 'layouts/page.htm' %}
+{% block metatags_title %}{% if prodotto.get('meta_title') %}prodotto.get('metmeta_titleaTitle'){% else %}{{prodotto.get('name')}}{% endif %}{% endblock %}
+{% block metatags_description %}{{prodotto.get('meta_description')}}{% endblock %}
+{% block metatags %}
+	{{parent()}}
+	<meta property="og:title" content="{{prodotto.get('name')}}">
+	<meta property="og:description" content="{{prodotto.get('name')}}">
+	<meta property="og:image" content="{{prodotto.getUrlImage(0,'thumbnail')}}">
+	<meta property="og:url" content="{{prodotto.getUrl()}}">
+	<meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+{% block javascript %}
+	{{parent()}}
+	<!-- GOOGLE TAG MANAGER --->
+	{{do_action('ganalitycs_display_script_view_product',prodotto)}}
+	<!-- GOOGLE TAG MANAGER --->
+{% endblock %}
+{% block content %}
+<div class="space40"></div>
+<div class="prod">
+	<div class="col-foto">
+		{% include '@catalogo/partials/gallery_product.htm' with {'prodotto': prodotto } %}
+		
+		<div class="space40"></div>
+		{% if enable_social_link_card_product %}
+			{% include '@catalogo/partials/product_social_share.htm' %}
+		{% endif %}
+		
+	</div>
+	<div class="info">
+		<div class="breadcumbs">
+
+			<!-- BREAD CRUMBS -->
+			{% include '@catalogo/partials/bread_crumbs.htm' %}
+			
+
+			{% if auth('base') %}
+				{% if prodotto.isInWhishlist() %}
+					<a href="javascript:add_to_wishlist({{prodotto.id}});" id="add_wish_{{prodotto.id}}" class="btn-wish" style="display:none"><img src="themes/jewels/images/ico_cuore_vuoto.png"></a>
+					<a href="javascript:remove_from_wishlist({{prodotto.id}});" id="remove_wish_{{prodotto.id}}" class="btn-wish"><img src="themes/jewels/images/ico_cuore_pieno.png"></a>
+				{% else %}
+					<a href="javascript:add_to_wishlist({{prodotto.id}});" id="add_wish_{{prodotto.id}}" class="btn-wish"><img src="themes/jewels/images/ico_cuore_vuoto.png"></a>
+					<a href="javascript:remove_from_wishlist({{prodotto.id}});" id="remove_wish_{{prodotto.id}}" class="btn-wish" style="display:none"><img src="themes/jewels/images/ico_cuore_pieno.png"></a>
+				{% endif %}
+			{% else %}
+				<!--<a href="javascript:add_to_wishlist({{prodotto.id}});" id="add_wish_{{prodotto.id}}" class="btn-wish"><img src="themes/jewels/images/ico_cuore_vuoto.png"></a>-->
+			{% endif %}
+		</div>
+		<form id="addCart">
+			<!--<div class="breadcontinue">
+				<a href="javascript: window.history.go(-1)" class="back"><i class="fa fa-arrow-left"></i>{{tr('Indietro')}}</a>
+			</div>-->
+			<div class="clear"></div>
+			{% if auth('catalog') %}
+				<span>
+					<a href="{{url_product_edit(prodotto.id)}}"><img src="themes/jewels/images/ico_mod.jpg"><b> {{tr('Modifica')}}</b></a>
+				</span>
+			{% endif %}
+			<div class="clear"></div>
+			<div class="produttore">{{prodotto.getManufacturerName()}}</div>
+			<h4 class="tit-prod">{{prodotto.get('name')}}</h4>
+			
+			<!--<div class="cod">{{tr('Codice prodotto')}}: {{prodotto.sku}}</div>-->
+			
+			<div class="price">
+				{% if prodotto.hasSpecialPrice() %}
+					<span class="scontato">{{currencyLabel|raw}} {{prodotto.getPriceFormatted()}}</span>
+					<span class="barrato">{{currencyLabel|raw}} {{prodotto.getDefaultPriceValueFormatted()}}</span>
+				{% else %}
+					<span>{{currencyLabel|raw}} {{prodotto.getPriceFormatted()}}</span>
+				{% endif %}
+			</div>
+			
+			<!--{% if prodotto.isAvailable() %}
+			<div class="btn-stock">
+				<span>{{tr('Disponibile','catalogo')}}</span><img src="themes/jewels/images/ico_stock.png">
+			</div>
+			{% else %}
+			<div class="btn-nostock">
+				<span>{{tr('Esaurito','catalogo')}}</span><img src="themes/jewels/images/ico_nostock.png">
+			</div>
+			{% endif %}-->
+			
+			<!--<span id="advanced_filter_card_product"></span>-->
+			{{do_action('display_product_extra',prodotto)}}
+			{% include '@catalogo/partials/product_attributes.htm' %}
+			
+
+			{{do_action('display_product_extra2',prodotto)}}
+			<div flexy:if="prodotto.isAvailable()" class="clearfix">
+				<div class="actionvp">
+					<div class="input-group text-center">
+						<span class="input-group-addon" style="cursor:pointer;" onclick="minus(); return false;"><img src="themes/jewels/images/ico_minus.png" width="13" height="2"></span>
+						<input class="form-control" id="quantity" name="formdata[quantity]" type="text" value="{{qnt}}">
+						<span class="input-group-addon" style="cursor:pointer;" onclick="plus(); return false;"><img src="themes/jewels/images/ico_plus.png" width="13" height="13"></span>
+					</div>
+					<a href="#" onclick='addToCart(); return false;' class="addcart"><span>{% if prodotto.recurrent_payment %}{{tr('Acquista','ecommerce')}}{% else %}{{tr('Aggiungi al carrello','ecommerce')}}{% endif %}</span></a>
+					
+					<!-- BLOCCO CHE PERMETTE DI AGGIUNGERE DEI BUTTONS --->
+					{{do_action('display_block_product_buttons',prodotto)}}
+
+					<!--<a href="/mail/info/product/{prodotto.id}.htm" class="richiedinfo"><i class="fa fa-info-circle"></i> Richiedi info</a>!-->
+				</div>
+			</div>
+			
+			<div class="tabbing clearfix">
+				<div class="s-tab active aperto">
+					<h6 class="tittab">{{tr('Dettagli','catalogo')}}<img src="themes/jewels/images/ico_arrow_up_accordion.png"></h6>
+					<div class="content">{{prodotto.get('description')|raw}}</div>
+				</div>
+				<div class="s-tab">
+					<h6 class="tittab">{{tr('Spedizione','catalogo')}}<img src="themes/jewels/images/ico_arrow_down_accordion.png"></h6>
+					<div class="content">
+						<p>Le spese di spedizione hanno un costo pari ad €7  in Italia.</p>
+						<p>Outlet Brand garantisce la consegna entro 3 / 5 giorni lavorativi per ordini effettuati dal Lunedì al Venerdì prima delle ore 16:00.</p>
+						<p>Per le isole la consegna potrebbe richiedere un giorno aggiuntivo.</p>
+						<p>Le consegne avvengono in orario d'ufficio dal lunedì al venerdì.</p>
+						<p>Il corriere farà 2 tentativi di consegna.</p>
+						<p>Tutti gli ordini sono processati in modo automatico e non siamo in grado di modificare i tempi di spedizione e di consegna.</p>
+					</div>
+				</div>
+			</div>
+
+			
+
+			<input type="hidden" name="formdata[product]" id="product_id" value="{{prodotto.id}}">
+		</form>
+	</div>
+	<div class="space120"></div>
+	{{do_action('display_product_footer',prodotto)}}
+	<div class="space120"></div>
+
+	{% set related = prodotto.getRelatedProducts() %}
+	{% if related %}
+	<div class="cont_prod_corr">
+		<h4>Ti potrebbero anche interessare</h4>
+		<div class="clear"></div>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				{% for product_row in related %}
+				<div class="s-prod swiper-slide">
+					<div class="cont_imgprodsez">
+						{% if product_row.hasSpecialPrice() %}
+							<span class="percentuale">-50%</span>
+						{% endif %}
+						<a href="#"><img class="imgprod imgtop" src="{{product_row.getUrlImage()}}"></a>
+					</div>
+					<div class="clear"></div>
+					<a href="#" class="info">
+						<div class="price">
+							{% if product_row.hasSpecialPrice() %}
+								<span class="scontato">{{currencyLabel|raw}} {{product_row.getPriceFormatted()}}</span>
+								<span class="barrato">{{currencyLabel|raw}} {{product_row.getDefaultPriceValueFormatted()}}</span>
+							{% else %}
+								<span>{{currencyLabel|raw}} {{product_row.getPriceFormatted()}}</span>
+							{% endif %}
+						</div>
+						<p>{{product_row.getManufacturerName()}}</p>
+						<p>{{product_row.get('name')}}</p>
+					</a>
+				</div>
+
+				{% endfor %}
+			</div>
+			<div class="swiper-button-prev swiper-button-prev"></div>
+			<div class="swiper-button-next swiper-button-next"></div>
+			<div class="swiper-scrollbar"></div>
+		</div>
+	</div>
+	{% endif %}
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<img src="themes/jewels/images/guida_alle_taglie.jpg">
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

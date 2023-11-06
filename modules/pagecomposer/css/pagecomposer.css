@@ -1,0 +1,336 @@
+.barra-admin {
+    background:#C75757;
+    height:32px;
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    padding:0 16px;
+	z-index: 9999;
+}
+
+.barra-admin a,
+.barra-admin a:hover {
+	color:#fff;
+    font-size:16px;
+}
+
+.voce-barra-admin {
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:16px;
+    line-height:32px;
+}
+
+.pagecomposer-contenitore {
+	width: calc(1216px + 32px);
+	margin: 0 auto;
+}
+
+.pagecomposer-contenitore.full-width {
+	width: 100%;
+}
+
+
+.pagecomposer-riga {
+	width: 100%;
+	/*float: left;*/
+}
+
+.pagecomposer-riga.riga-nofull, .pagecomposer-riga.cont-foo {
+	width: 1490px;
+	margin: 0 auto;
+}
+
+.cont-foo {
+	padding: 20px 0;
+}
+
+.pagecomposer-riga.riga-boxed, .pagecomposer-riga-icona.riga-boxed {
+	width: calc(1340px + 24px);
+	margin: 0 auto;
+}
+
+.pagecomposer-riga-icona-col-left {
+	width:5%;
+	float:left;
+	margin-right:1%;
+}
+
+.pagecomposer-riga-icona-col-right {
+	width:94%;
+	float:left;
+}
+
+.pagecomposer-riga-icona-col-right.margin-left-right {
+    width: calc(94% - 24px);
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+/*.pagecomposer-riga:first-child {
+	margin-top: 16px;
+}*/
+
+.pagecomposer-contenitore:before, .pagecomposer-contenitore:after,
+.pagecomposer-riga:before, .pagecomposer-riga:after {
+	display: table;
+	content: " ";
+}
+
+.pagecomposer-contenitore:after,
+.pagecomposer-riga:after {
+	clear: both;
+}
+
+.hide-riga {
+	display:none;
+}
+
+.box {
+	background: #ccc;
+	height: 50px;
+}
+
+.col-w-100, .col-w-50, .col-w-33, .col-w-25, .col-w-75, .col-w-66, .col-w-s-25, .col-w-s-33 {
+	float: left;
+	margin: 0 12px 80px;
+}
+
+.col-w-100.no-margin, .col-w-50.no-margin, .col-w-33.no-margin, .col-w-25.no-margin, .col-w-75.no-margin, .col-w-66.no-margin, .col-w-s-25.no-margin, .col-w-s-33.no-margin {
+	margin: 0;
+}
+
+.col-w-100.no-margin-bottom, .col-w-50.no-margin-bottom, .col-w-33.no-margin-bottom, .col-w-25.no-margin-bottom, .col-w-75.no-margin-bottom, .col-w-66.no-margin-bottom, .col-w-s-25.no-margin-bottom, .col-w-s-33.no-margin-bottom {
+	margin-bottom: 0;
+}
+
+.col-w-100.no-margin-top, .col-w-50.no-margin-top, .col-w-33.no-margin-top, .col-w-25.no-margin-top, .col-w-75.no-margin-top, .col-w-66.no-margin-top, .col-w-s-25.no-margin-top, .col-w-s-33.no-margin-top {
+	margin-top: 0;
+}
+
+.col-w-100 {
+	width: 100%;
+	margin: 0 0 80px;
+}
+
+.col-w-100.no-margin-left-right {
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
+}
+
+.pagecomposer-riga.riga-banner-home .col-w-100 {
+    margin: 0 0 40px;
+}
+
+.col-w-50 {
+	width: calc(50% - 24px);
+}
+
+.col-w-33, .col-w-s-33 {
+	width: calc(33.3333% - 24px);
+}
+
+.col-w-25, .col-w-s-25 {
+	width: calc(25% - 24px);
+}
+
+.col-w-75 {
+	width: calc(75% - 24px);
+}
+
+.col-w-66 {
+	width: calc(66.6666% - 24px);
+}
+
+/*accordion*/
+.faq-composer {
+	width: 100%;
+	border-radius: 8px;
+	background: #F2F3F6;
+	padding: 30px 34px;
+	margin: 0 0 8px;
+}
+
+.faq-composer .tit-faq {
+	width: 100%;
+	display: block;
+	clear: both;
+	cursor: pointer;
+	position: relative;
+	padding: 0 28px 0 0;
+}
+
+.faq-composer .tit-faq p {
+	font-size: 21px;
+	font-weight: 500;
+	line-height: 30px;
+	color: #1F3D89;
+	margin: 0;
+}
+
+.faq-composer .tit-faq img {
+	width: 16px;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.faq-composer .content-faq {
+	display: none;
+	padding-top: 24px;
+}
+
+@media only screen and (max-width: 1489px) {
+.pagecomposer-riga.riga-nofull, .pagecomposer-riga.riga-boxed, .pagecomposer-riga-icona.riga-boxed, .pagecomposer-riga.cont-foo {
+	width: 95%;
+}
+}
+
+@media only screen and (max-width: 1280px) {
+.pagecomposer-contenitore {
+	width: 100%;
+	padding: 0 16px;
+}
+
+.pagecomposer-contenitore.full-width {
+	padding: 0;
+}
+}
+
+@media only screen and (max-width: 1199px) {
+.col-w-25 {
+	width: calc(50% - 24px);
+}
+.col-w-25:nth-child(2n+3) {
+	clear: both;
+}
+}
+
+@media only screen and (max-width:1023px) {
+.col-w-100, .col-w-50, .col-w-33, .col-w-25, .col-w-75, .col-w-66, .col-w-s-25, .col-w-s-33 {
+    margin: 0 12px 40px;
+}
+
+.col-w-100 {
+    margin: 0 0 40px;
+}
+
+.pagecomposer-riga-icona {
+	padding: 0 12px;
+}
+}
+
+@media only screen and (max-width: 767px) {
+.riga {
+	margin: 0;
+}
+
+.pagecomposer-riga.riga-boxed, .pagecomposer-riga-icona.riga-boxed {
+    width: 100%;
+}
+
+.col-w-100, .col-w-50, .col-w-33, .col-w-25, .col-w-66, .col-w-75, .col-w-s-25, .col-w-s-33 {
+	width:100%;
+	margin: 0 0 32px;
+}
+
+.footer .col-w-100, .pagecomposer-top .col-w-100 {
+	width: 100%;
+	margin: 0;
+}
+
+/*accordion*/
+.faq-composer {
+    padding: 16px;
+}
+
+.faq-composer .tit-faq p {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.faq-composer .content-faq {
+    padding-top: 16px;
+}
+}
+
+@media only screen and (max-width: 599px) {
+.pagecomposer-riga-icona-col-left {
+    width: 9%;
+}
+
+.pagecomposer-riga-icona-col-right.margin-left-right {
+    width: calc(90% - 24px);
+}
+
+.pagecomposer-riga-icona-col-right {
+    width: 90%;
+}
+}
+
+.edit-page-composer{
+	border: 1px solid black;
+	border-style: dashed;
+}
+.edit-page-composer-btn{
+	position: absolute;
+	right:0;
+}
+
+/*.pagecomposer-popup {
+  display:none;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.25);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+ 
+}
+
+
+
+.pagecomposer-popup > .pagecomposer-popup-content {
+  width: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding: 2em;
+  background: #ffffff;
+  border: 1px solid #000000;
+}
+
+
+.pagecomposer-popup-close {
+  color: #000000;
+  line-height: 50px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 100px;
+  text-decoration: none;
+}
+*/
+
+
+.pagecomposer-contenitore.content-left-column {
+	width: 50%;
+	display:inline-block;
+}
+
+.pagecomposer-left{
+	width: 40%;
+	display:inline-block;
+	
+}

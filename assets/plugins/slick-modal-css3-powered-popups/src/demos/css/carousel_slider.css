@@ -1,0 +1,96 @@
+/* Slick Modals - Carousel Slider */
+.carouselSlider * {
+    text-align: center;
+}
+.carouselSlider {
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+.carouselSlider.visible {
+    opacity: 1;
+}
+.carouselSlider .title {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.carouselSlider .title span {
+    font-size: 22px;
+    padding: 10px;
+}
+.carouselSlider p {
+    font-size: 14px;
+    color: #999;
+    padding: 20px 0 30px 0;
+    line-height: 20px;
+}
+.carouselSlider .carouselWrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.carouselSlider .actions {
+    text-align: center;
+    margin-bottom: 20px;
+    display: block;
+}
+.carouselSlider .nav {
+    display: inline-block;
+    background: none;
+    border: solid 1px #333;
+    outline: none;
+    color: #333;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 10px;
+    line-height: 22px;
+    margin: 0 4px 20px 0;
+    user-select: none;
+}
+.carouselSlider .nav:hover {
+    background: #333;
+    color: #fff;
+}
+.carouselSlider .nav.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+.carouselSlider .carouselList {
+    position: relative;
+    display: inline-block;
+    left: 0;
+    overflow: hidden;
+    transition: all .3s ease;
+}
+.carouselSlider .carouselList li {
+    list-style: none;
+    float: left;
+    transition: opacity 0.2s ease;
+}
+.carouselSlider .carouselList:hover li {
+    opacity: 1;
+}
+.carouselSlider .carouselList:hover li:not(:hover) {
+    opacity: 0.5;
+}
+.carouselSlider .carouselList img {
+    margin-bottom: 10px;
+    width: 100%;
+}
+.carouselSlider .carouselList .name {
+    font-size: 14px;
+    color: #333;
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.carouselSlider .carouselList .price {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+}

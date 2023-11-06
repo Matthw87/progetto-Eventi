@@ -1,0 +1,15 @@
+<xml>
+    <sheet>
+        <row>   
+            <col>
+                <field name="id" hidden="true"/>
+                <field name="label"/>
+            </col>
+        </row>
+        <row>
+            <col>
+                <field name="name"/>
+            </col>
+        </row>   
+    </sheet>
+</xml>

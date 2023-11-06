@@ -1,0 +1,27 @@
+{% extends "@core/layouts/base.htm" %}
+{% block head %}
+{{parent()}}
+{{include('@core/partials/javascript_form.htm')}}
+{% endblock %}
+{% block page_title %} {{title}} {% endblock %} 
+{% block content %}
+<ul class="nav nav-tabs">
+  {% for k,v in titles %}
+  
+  <li class="{% if k == tabIndex %}active{% endif %}"><a href="index.php?ctrl={{ctrl}}&tabIndex={{k}}{%if module %}&mod={{module}}{% endif %}">{{v|capitalize}}</a></li>
+  
+  {% endfor %}
+  
+</ul>
+<div class="tab-content">
+	<div id="home" class="tab-pane fade in active">
+	
+		{{tab|raw}}
+	</div>
+
+
+
+
+</div>
+
+{% endblock %}

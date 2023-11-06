@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js sidebar-large lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js sidebar-large lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js sidebar-large lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js sidebar-large"> <!--<![endif]-->
+
+<head>
+
+
+{{include('@core/partials/css.htm')}}
+{{include('@core/partials/javascript.htm')}}
+<link href="../css/admin/animate-custom.css" rel="stylesheet">
+<script src="../assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<title>Reset password</title>
+
+ </head>
+
+
+</head>
+
+<body class="login fade-in" data-page="login">
+     <div class="container" id="login-block">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+                <div class="login-box clearfix animated flipInY">
+
+                    <div class="login-logo">
+                        <a href="#?login-theme-3">
+                            <img src="assets/images/marionlogo.png" alt="Company Logo">
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="login-form">
+                        <!-- BEGIN ERROR BOX -->
+                        <div id="box-message" class="alert hide"></div>
+                        <!-- END ERROR BOX -->
+						<h3>Reset password</h3>
+                       <form method="post" id="form">
+					   		<input type="hidden" name="formdata[token]" value="{{token}}" />
+                            <input type="password" placeholder="Password" name="formdata[password]" id="password" required="" class="input-field form-control password" />
+                            <input type="password" placeholder="Conferma password" name="formdata[password_confirmation]" id="password_confirmation" required="" class="input-field form-control password" />
+                           <button  id="submit-form"  class="btn btn-login ladda-button" data-style="expand-left"><span class="ladda-label">Resetta password</span></button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+	{{include('@core/partials/javascript_end.htm')}}
+	<script src="../assets/plugins/backstretch/backstretch.min.js"></script>
+	<script src="../assets/plugins/bootstrap-loading/lada.min.js"></script>
+	<script  type="text/javascript">
+		var js_redirect = "{{url_current | escape('js')}}";
+
+		$(function(){
+			$('#submit-form').click(function(e){
+
+		        e.preventDefault();
+				$('#box-message').addClass('hide').hide();
+				$('#box-message').removeClass('alert-danger alert-success');
+
+		        var l = Ladda.create(this);
+		        l.start();
+
+		        var formdata = $('#form').serialize();
+
+		        setTimeout(function () {
+					    $.ajax({
+						  type: "POST",
+						  url: "index.php",
+						  data: { action: "pwd_expired",ctrl:"Access",ajax:1,formdata : formdata},
+						  dataType: "json",
+						  success: function(data){
+						    	if(data.result == 'ok'){
+									$('#box-message').addClass('alert-success');
+									$('#box-message').html(data.message);
+									$('#box-message').removeClass('hide').show();
+									window.location.href = data.urlRedirect
+						    	}else{
+							    	l.stop();
+							    	$('#password').addClass('shake animated');
+							    	$('#password_confirmation').addClass('shake animated');
+							    	setTimeout(function () {
+							            $('#password').removeClass('shake animated');
+							    		$('#password_confirmation').removeClass('shake animated');
+							        }, 1000);
+
+									var errors = '<ul>';
+									$(data.errors).each(function(k, v) {
+										errors += '<li>' + v + '</li>';
+									});
+
+									$('#box-message').addClass('alert-danger');
+									$('#box-message').html(errors);
+									$('#box-message').removeClass('hide').show();
+						    	}
+						  },
+						  error: function(){
+						    alert("Chiamata fallita!!!");
+						  }
+						});
+				}, 1000);
+			});
+	});
+
+	</script>
+</body>
+
+</html>

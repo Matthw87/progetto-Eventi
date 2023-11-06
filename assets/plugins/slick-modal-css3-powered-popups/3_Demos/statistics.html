@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Statistics</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/statistics.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="stats" data-sm-init="true">
+            <div class="title">Lorem ipsum</div>
+            <div class="row">
+                <div class="data-title"><span>&#8226;</span>Title 1</div>
+                <div class="data">
+                    <span class="value-1">23%</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="data-title"><span>&#8226;</span>Title 2</div>
+                <div class="data">
+                    <span class="value-2">58%</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="data-title"><span>&#8226;</span>Title 3</div>
+                <div class="data">
+                    <span class="value-3">36%</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="data-title"><span>&#8226;</span>Title 4</div>
+                <div class="data">
+                    <span class="value-4">79%</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="data-title"><span>&#8226;</span>Title 5</div>
+                <div class="data">
+                    <span class="value-5">48%</span>
+                </div>
+            </div>
+            <div class="result">
+                <span>Average: <b>48%</b> lorem ipsum dot color.</span>
+            </div>
+        </div>
+
+        <script>
+            $('.stats').SlickModals({
+                popup_type: 'delayed',
+                popup_delayedTime: '1.2s',
+                popup_animation: 'slideRight',
+                popup_position: 'bottomLeft',
+                popup_closeButtonEnable: false,
+                popup_css: {
+                    'width': '520px',
+                    'background': 'transparent',
+                    'padding': '0',
+                    'margin': '50px',
+                    'animation-duration': '0.6s'
+                },
+                mobile_breakpoint: '640px',
+                mobile_position: 'bottomCenter',
+                mobile_css: {
+                    'width': '100%',
+                    'background': 'transparent',
+                    'padding': '20px',
+                    'margin': '0'
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

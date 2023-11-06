@@ -1,0 +1,44 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 10">
+<link rel=File-List href="file/filelist.xml">
+<link rel=Edit-Time-Data href="file/editdata.mso">
+<link rel=OLE-Object-Data href="_file/oledata.mso">
+
+</head>
+<body link=blue vlink=purple>
+
+<table border="1">
+	
+	<tr>
+		{% for v in _header_list %}
+			
+				{% if v.type == 'value' %}
+				<td>
+					<strong>{{v.value|raw}}</strong>
+				
+				</td>
+				{% endif %}
+		{% endfor %}
+	</tr>
+	{% for row in _list %}
+	<tr>
+		{% for v in row %}
+		
+		{% if v.type == 'value' %}
+			<td>
+			{{v.value|raw}}
+			</td>
+		{% endif %}
+		{% endfor %}
+		
+	</tr>
+	{% endfor %}
+</table>
+</body>
+</html>

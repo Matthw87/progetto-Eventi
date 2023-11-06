@@ -1,0 +1,71 @@
+<div id="loader" style="display:none;"></div>
+<!-- BEGIN TOP MENU -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sidebar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a id="menu-medium" class="sidebar-toggle tooltips">
+                <i class="fa fa-outdent"></i>
+            </a>
+            <a class="navbar-brand" href="index.html"></a>
+        </div>
+        <div class="navbar-center">Dashboard</div>
+        <div class="navbar-collapse collapse">
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <ul class="nav navbar-nav pull-right header-menu">
+              <!-- {notifications()}-->
+			    {{include('@core/partials/notifications.htm')}}
+
+                <!-- END MESSAGES DROPDOWN -->
+                <!-- BEGIN USER DROPDOWN -->
+                <li class="dropdown" id="user-header">
+                    <a href="#" class="dropdown-toggle c-white" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <!--<img src="/img/avatars/avatar2.png" alt="user avatar" width="30" class="p-r-5">-->
+                        <span class="username">{{userdata.name}} {{userdata.surname}}</span>
+                        <i class="fa fa-angle-down p-r-10"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="index.php?ctrl=UserAdmin&action=edit&id={{userdata.id}}">
+                                <i class="glyph-icon flaticon-account"></i> Il mio profilo
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.php?ctrl=SettingAdmin">
+                                <i class="glyph-icon flaticon-settings21"></i> Impostazioni
+                            </a>
+                        </li>
+                        <li class="dropdown-footer clearfix">
+                            <a href="javascript:;" class="toggle_fullscreen" title="Fullscreen">
+                                <i class="glyph-icon flaticon-fullscreen3"></i>
+                            </a>
+							<form id="form_lockscreen_top" method="POST" action="index.php?ctrl=NotificationAdmin&action=list" style="display:none">
+								<input  type="hidden" name="locked_return_location_top" value="{return_location}"/>
+								<input  type="hidden" name="locked_action_top" value="lockscreen"/>
+							</form>
+
+							<a href="#" onclick="lockscreen_new();" title="Lock Screen">
+                                <i class="glyph-icon flaticon-padlock23"></i>
+                            </a>
+                            <a href="index.php?ctrl=Access&action=logout" title="Logout">
+                                <i class="fa fa-power-off"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- END CHAT HEADER -->
+            </ul>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+    </div>
+</nav>
+<!-- END TOP MENU -->
+
+<!--{output(#lockscreen_new.htm#)}-->

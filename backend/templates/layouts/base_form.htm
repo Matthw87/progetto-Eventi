@@ -1,0 +1,518 @@
+{% extends "@core/layouts/base.htm" %}
+{% block head %}
+<script>
+var js_formdata = JSON.parse("{{ js_formdata | json_encode | escape('js') }}");
+</script>
+{{parent()}}
+{{include('@core/partials/javascript_form.htm')}}
+<script>
+function show_alert_confirm_delete(){
+	$('#confirm_delete_message').show();
+}
+
+function show_error_form(error){
+	$('#error_form_ajax').html(error).fadeIn();
+	setTimeout( function(){
+		$('#error_form_ajax').fadeOut();
+	}, 3000);
+}
+
+
+$(document).ready(function(){
+	let el = $('.validation_error').first();
+	if( el.length ){
+		if( el.closest('.tab-pane').length ){
+			const id = el.closest('.tab-pane').attr('id');
+			if( id ){
+				$("a[href='#"+id+"']").click();
+			}
+		}
+	}	
+
+	$('.validation_error').each( function(){
+		let el = $(this);
+		if( el.closest('.container-lang-input') ){
+			const split = el.attr('id').split("_");
+		
+			if( split.length > 1){
+				const lang = split[split.length-1];
+				if( !el.closest('.container-lang-input').attr('error_found') ){
+					el.closest('.container-lang-input').find('.container-flag-form-multilang').find('img').each(function(){
+						if( $(this).attr('lang') == lang ){
+							el.closest('.container-lang-input').attr('error_found',1);
+							$(this).trigger('click');
+						}
+					});
+				}
+
+			}
+		}
+		
+	})
+})
+
+</script>
+{% endblock %}
+{% block page_title %}{{title}}{% block edit_page_title %}  {% endblock %}<!--{% if (action == 'edit' or show_btn_edit==true)  %} <br><small>{{tr('form.edit')}}</small>{% elseif (action== 'add' or action == 'duplicate' or show_btn_add==true) %}<br><small>{{tr('form.add')}}</small> {% endif %}-->{% endblock %} 
+
+{% block before_content %}
+	{{parent()}}
+	<div class="alert alert-warning" style="width:100%; color: #000000; display:none;" id="confirm_delete_message">
+		{{confirm_delete_message|raw}}
+		<div class="clearboth"></div>
+		<div style="display: flex; justify-content: flex-end;">
+			<button onclick="$(this).closest('.alert').hide()" class="btn btn-default btn-sm"><i class="fa fa-undo"></i> {{tr('general.cancel')}}</button>
+			<a href="{{url_confirm_delete}}" class="btn btn-info btn-sm"><i class="fa fa-check"></i> {{tr('general.confirm')}}</a>
+		</div>
+	</div>
+{% endblock %}
+
+{% block content_container %}
+<form role='form' action='index.php' method='POST'  enctype="multipart/form-data" id="form">
+<div class="row">
+				
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+	</div>
+</div>
+{% block btn_form_save %}
+<div class="row row-pulsanti">			
+	 <div class="col-md-12 align-center">
+		<button type="submit" id="form_submit_button"  class="btn btn-principale m-t-10">
+			
+			{% if icon_submit_button %}
+			<i class="{{icon_submit_button}}"></i> 
+			{% else %}
+			<i class="fa fa-check"></i> 
+			{% endif %}
+			{% if text_submit_button %}
+			{{text_submit_button}}
+			{% else %}
+			{% block btn_text_save_form %}{{tr('form.save')}}{% endblock %}
+			{% endif %}
+			</button>
+		{% if action == 'edit' and hide_delete_button == null %}
+		
+		<a href="{% if confirm_delete_message %}javascript:show_alert_confirm_delete(){% else %}{{url_confirm_delete}}{% endif %}"  class="btn btn-danger m-t-10"><i class="fa fa-trash-o"></i> {{tr('form.delete')}}</a>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}
+<input type='hidden' name='formID' value="{{formID}}">
+<input type='hidden' name='action' value="{{action}}" id="action">
+<input type='hidden' name='ctrl' value="{{ctrl}}">
+<input type='hidden' name='id' value="{{id}}">
+<input type='hidden' name='mod' value="{{module}}">
+<input type='hidden' name='pageID' value="{{pageID}}">
+<input type='hidden' name='form_instance_id' value="{{form_instance_id}}">
+{% block other_fields_form %}
+
+{% endblock %}
+</form>
+
+
+<!-- ERRORI DEL FORM -->
+<div class="alert alert-danger" id="error_form_ajax" style="position: fixed; top: 50px; right: 20px; width: auto; display:none;">
+  errore
+</div>
+
+{% endblock %}
+{% block end_body %}
+{{parent()}}
+<script>
+var js_form_instance_id = "{{ form_instance_id | escape('js') }}";
+var js_field_listeners = "{{ field_listeners | escape('js') }}";
+var js_field_change_listeners = "{{ field_change_listeners | escape('js') }}";
+var js_hidden_elements = "{{ hidden_elements | escape('js') }}";
+var js_showed_elements = "{{ showed_elements | escape('js') }}";
+var js_disabled_fields = "{{ disabled_fields | escape('js') }}";
+var js_enabled_fields = "{{ enabled_fields | escape('js') }}";
+var js_events = "{{ events | escape('js') }}";
+
+
+
+if( typeof js_field_listeners != 'undefined' && js_field_listeners != null && js_field_listeners != '' ){
+	js_field_listeners = JSON.parse(js_field_listeners);
+	if( js_field_listeners.length > 0){
+		js_field_listeners.forEach(function(field){
+			onChangeListener(field);
+		})
+	}
+}
+if( typeof js_field_change_listeners != 'undefined' && js_field_change_listeners != null && js_field_change_listeners != '' ){
+	
+	js_field_change_listeners = JSON.parse(js_field_change_listeners);
+	if( js_field_change_listeners.length > 0 ){
+		js_field_change_listeners.forEach(function(field){
+			onChangeRegexListener(field);
+		})
+	}
+	
+}
+
+if( typeof js_hidden_elements != 'undefined' && js_hidden_elements != null && js_hidden_elements != '' ){
+	js_hidden_elements = JSON.parse(js_hidden_elements);
+	if( js_hidden_elements.length > 0 ){
+		js_hidden_elements.forEach(function(field){
+			$(`#${field}`).hide();
+		})
+	}
+	
+}
+
+if( typeof js_showed_elements != 'undefined' && js_showed_elements != null && js_showed_elements != '' ){
+	js_showed_elements = JSON.parse(js_showed_elements);
+	if( js_showed_elements.length > 0 ){
+		js_showed_elements.forEach(function(field){
+			$(`#${field}`).show();
+		})
+	}
+	
+}
+
+if( typeof js_disabled_fields != 'undefined' && js_disabled_fields != null && js_disabled_fields != '' ){
+	js_disabled_fields = JSON.parse(js_disabled_fields);
+	if( js_disabled_fields.length > 0 ){
+		js_disabled_fields.forEach(function(field){
+			$(`#${field}`).attr('disabled','disabled');
+		})
+	}
+}
+
+if( typeof js_enabled_fields != 'undefined' && js_enabled_fields != null && js_enabled_fields != '' ){
+	js_enabled_fields = JSON.parse(js_enabled_fields);
+	if( js_enabled_fields.length > 0 ){
+		js_enabled_fields.forEach(function(field){
+			$(`#${field}`).removeAttr('disabled');
+		})
+	}
+	
+}
+
+if( typeof js_events != 'undefined' && js_events != null && js_events != '' ){
+	js_events = JSON.parse(js_events);
+	
+	if( js_events.length > 0){
+		js_events.forEach((event)=>{
+			if( event.event == 'close_popup_form' ){
+				parent.closePopup();
+				parent.formEvent('close_popup',event.params);
+			}else{
+				if( event.parent_form ){
+					if( event.params ){
+						parent.formEvent(event.event,event.params);
+					}else{
+						parent.formEvent(event.event);
+					}
+					
+				}else{
+					if( event.params ){
+						formEvent(event.event,event.params);
+					}else{
+						formEvent(event.event);
+					}
+				}
+			}
+			
+			
+		})
+	}
+	
+	
+}
+
+function onChangeListener(field){
+	if( $(`#${field}`).length > 0 ){
+		$(`#${field}`).on('change',function(){
+			$('#form_submit_button').attr('disabled','disabled');
+			
+			const value = $(this).val();
+			const formdata = $(this).closest('form').serialize();
+			let url = `{{url_change_field|escape('js')}}&field=${field}&value=${value}`;
+			if( $(this).is(':checkbox') ){
+				checked = $(`#${field}`).prop('checked')?1:0;
+				url += `&checked=${checked}`;
+			}
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: { formdata: formdata, form_instance_id: js_form_instance_id},
+				dataType: "json",
+				success: function(response){
+					if( response ){
+						const data = response.data;
+						reloadData(data);
+						
+					}
+					$('#form_submit_button').removeAttr('disabled');
+				},
+				error: function(error){
+					if( error && error.responseJSON ){
+						show_error_form(error.responseJSON.error.msg);
+					}
+					$('#form_submit_button').removeAttr('disabled');
+				}
+			});
+			/*fetch(`{{url_change_field|escape('js')}}&field=${field}&value=${value}`, {
+				method: 'POST',
+				credentials:'include',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({formdata: formdata})
+			}).then((response) => response.json())
+				.then((response_data) => {
+				if( response_data ){
+					const data = response_data.data;
+					reloadData(data);
+					
+				}
+			});*/
+		})
+	}
+}
+function onChangeRegexListener(field){
+	if( $(`#${field}`).length > 0 ){
+		$(`#${field}`).on('change',function(){
+			$('#form_submit_button').attr('disabled','disabled');
+			const value = $(this).val();
+			const formdata = $(this).closest('form').serialize();
+			$.ajax({
+				type: "POST",
+				url: `{{url_change_field|escape('js')}}&field=${field}&value=${value}`,
+				data: { regex: 1,  formdata: formdata, form_instance_id: js_form_instance_id},
+				dataType: "json",
+				success: function(response){
+					if( response ){
+						const data = response.data;
+						reloadData(data);
+						
+					}
+					$('#form_submit_button').removeAttr('disabled');
+				},
+				error: function(error){
+					if( error && error.responseJSON ){
+						show_error_form(error.responseJSON.msg);
+					}
+					$('#form_submit_button').removeAttr('disabled');
+				}
+			});
+			/*fetch(`{{url_change_field|escape('js')}}&field=${field}&value=${value}`, {
+				method: 'POST',
+				credentials:'include',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({formdata: formdata})
+			}).then((response) => response.json())
+				.then((response_data) => {
+				if( response_data ){
+					const data = response_data.data;
+					reloadData(data);
+					
+				}
+			});*/
+		})
+	}
+}
+
+async function reloadData(data) {
+	
+	
+	if( typeof data.override_fields != 'undefined'){
+		for( let _field in data.override_fields){
+			
+
+			loadCssAssets(data.override_fields[_field]['css']);
+			loadJsAssets(data.override_fields[_field]['js']);
+			setTimeout( function(){
+				$(`#div_${_field}`).replaceWith(data.override_fields[_field]['html']);
+				setTimeout( function(){
+					if( typeof data.field_listeners != 'undefined' && data.field_listeners != null && data.field_listeners.length > 0){
+						if( data.field_listeners.includes(_field) ){
+							onChangeListener(_field);
+						}
+						$(`#${_field}`).trigger('change');
+					}
+					
+					if( typeof data.field_change_listeners != 'undefined' && data.field_change_listeners != null && data.field_change_listeners.length > 0){
+						data.field_change_listeners.forEach(function(field){
+							onChangeRegexListener(field);
+						})
+					}
+				},100)
+				
+				
+			},100)
+			
+		}
+	}
+
+	if( data.focused_field ){
+		setTimeout( function(){
+			//console.log(data.focused_field);
+			$(`#${data.focused_field}`).focus();
+		},100);
+	}
+
+	if( typeof data.hidden_elements != 'undefined'){
+		data.hidden_elements.forEach((el)=>{
+			$(`#${el}`).hide();
+		})
+	}
+	if( typeof data.showed_elements != 'undefined'){
+		data.showed_elements.forEach((el)=>{
+			$(`#${el}`).show();
+		})
+	}
+
+	if( typeof data.disabled_fields != 'undefined'){
+		data.disabled_fields.forEach((el)=>{
+			$(`#${el}`).attr('disabled','disabled');
+		})
+	}
+	if( typeof data.enabled_fields != 'undefined'){
+		data.enabled_fields.forEach((el)=>{
+			$(`#${el}`).removeAttr('disabled');
+		})
+	}
+
+	if( typeof data.fragments != 'undefined'){
+		data.fragments.forEach((fragment)=>{
+			if( fragment.action == 'append' ){
+				loadCssAssets(fragment.css);
+				loadJsAssets(fragment.js);
+				setTimeout( function(){
+					$(`#${fragment.wrapper_id}`).append(fragment.html);
+				},100)
+				
+				
+			}
+			if( fragment.action == 'replace' ){
+				loadCssAssets(fragment.css);
+				loadJsAssets(fragment.js);
+				setTimeout( function(){
+					//console.log($(`[fragment-id=${fragment.wrapper_id}]`));
+					$(`[fragment-id=${fragment.wrapper_id}]`).replaceWith(fragment.html);
+				},100)
+				
+				
+			}
+
+			if( fragment.action == 'delete' ){
+				$(`[fragment-id=${fragment.fragment_id}]`).remove();
+			}
+			
+		})
+	}
+
+	if( typeof data.events != 'undefined'){
+		data.events.forEach((event)=>{
+			if( event.parent_form ){
+				if( event.params ){
+					parent.formEvent(event.event,event.params);
+				}else{
+					parent.formEvent(event.event);
+				}
+				
+			}else{
+				if( event.params ){
+					formEvent(event.event,event.params);
+				}else{
+					formEvent(event.event);
+				}
+			}
+			
+		})
+	}
+	
+}
+
+function formEvent(event,...params){
+	$('#form_submit_button').attr('disabled','disabled');
+	const formdata = $('#form').serialize();
+	$.ajax({
+		type: "POST",
+		url: `{{url_form_event|escape('js')}}&event=${event}`,
+		data: { params: params, formdata: formdata, form_instance_id: js_form_instance_id},
+		dataType: "json",
+		success: function(response){
+			if( response ){
+				const data = response.data;
+				reloadData(data);
+				
+			}
+			$('#form_submit_button').removeAttr('disabled');
+		},
+		error: function(error){
+			if( error && error.responseJSON ){
+				show_error_form(error.responseJSON.error.msg);
+			}
+			$('#form_submit_button').removeAttr('disabled');
+		}
+	});
+}
+
+function loadJsAssets(js){
+	const body = document.getElementsByTagName('body')[0];
+	if( js.length > 0 ){
+		js.forEach( js_row =>{
+			if( js_row.lib_name && document.getElementById('lib_js_'+js_row.lib_name)  ){
+					
+
+			}else{
+				let script = document.createElement("script");
+				if( js_row.lib_name ){
+					script.id = 'lib_js_'+js_row.lib_name;
+				}
+				if( js_row['type'] == 'url' ){
+					script.src = js_row.url;
+				}
+				if( js_row['type'] == 'content' ){
+					script.text = js_row.content;
+				}
+				
+				body.append(script);
+			}
+			
+		});
+	}
+}
+
+function loadCssAssets(css){
+	const head = document.getElementsByTagName('head')[0];
+	if( css.length > 0 ){
+		css.forEach( css =>{
+			if( css.lib_name && document.getElementById('lib_css_'+css.lib_name)  ){
+					
+
+			}else{
+				let style;
+				
+				
+				if( css['type'] == 'url' ){
+					style = document.createElement("link");
+					style.rel='stylesheet';
+					style.href = css.url;
+				}
+				if( css['type'] == 'content' ){
+					style = document.createElement("style");
+					style.text = css.content;
+				}
+				if( css.lib_name ){
+					style.id = 'lib_css_'+css.lib_name;
+				}
+				head.append(style);
+			}
+		
+		});
+	}
+}
+</script>
+{% endblock %}

@@ -1,0 +1,14 @@
+{
+    "form": {
+        "fields":{
+            "button_text": "testo button",
+            "url": "url",
+            "title": "titolo",
+            "label": "etichetta",
+            "target_blank": "target blank",
+            "hover": "hover",
+            "image": "immagine",
+            "image_webp": "immagine webp"
+        }
+    }
+}

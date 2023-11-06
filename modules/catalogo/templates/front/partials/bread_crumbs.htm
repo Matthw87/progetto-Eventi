@@ -1,0 +1,3 @@
+{% for v in breadCrumbs_list %}
+	<a {% if v.last %}class="final"{% endif %} href="{{v.url}}">{{v.name}}</a>
+{% endfor %}

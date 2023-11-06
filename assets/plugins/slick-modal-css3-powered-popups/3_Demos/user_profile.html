@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - User Profile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/user_profile.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo userSettings">
+
+        <!-- START COPYING -->
+        <div class="userProfile" data-sm-init="true">
+            <div class="top">
+                <div class="left">
+                    <img class="pic" src="../src/demos/img/user_profile.png" />
+                </div>
+                <div class="right">
+                    <div class="name">John Doe</div>
+                    <div class="desc">Lorem ipsum dot color due vent si amet.</div>
+                    <a href="#">Edit username</a>
+                    <a href="#">Change password</a>
+                </div>
+            </div>
+            <form id="profileSettings">
+                <div class="title">My preferences</div>
+                <div class="field">
+                    <div class="subtitle">Hide my profile from search</div>
+                    <div class="chk">
+                        <input type="checkbox" name="option-1" id="option-1" checked />
+                        <label for="option-1" data-off="off" data-on="on"></label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="subtitle">Enable PM messaging</div>
+                    <div class="chk">
+                        <input type="checkbox" name="option-2" id="option-2" />
+                        <label for="option-2" data-off="off" data-on="on"></label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="subtitle">Share your info with others</div>
+                    <div class="chk">
+                        <input type="checkbox" name="option-3" id="option-3" />
+                        <label for="option-3" data-off="off" data-on="on"></label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="subtitle">Subscribe to newsletter</div>
+                    <div class="chk">
+                        <input type="checkbox" name="option-4" id="option-4" />
+                        <label for="option-4" data-off="off" data-on="on"></label>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <script>
+            $('.userProfile').SlickModals({
+                popup_animation: 'slideBottom',
+                popup_position: 'bottomRight',
+                popup_closeButtonStyle: 'text label',
+                popup_closeButtonText: 'Save and Close',
+                popup_css: {
+                    'width': '380px',
+                    'background': '#fff',
+                    'padding': '30px',
+                    'margin': '30px'
+                },
+                overlay_css: {
+                    'background': 'rgba(0, 0, 0, .3)'
+                },
+                mobile_breakpoint: '480px',
+                mobile_position: 'bottomCenter',
+                mobile_css: {
+                    'width': '100%',
+                    'background': '#fff',
+                    'padding': '30px',
+                    'margin': '0'
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

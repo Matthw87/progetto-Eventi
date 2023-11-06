@@ -1,0 +1,144 @@
+/* Slick Modals - Spin Wheel */
+.spinWheel * {
+    box-sizing: border-box;
+}
+.spinWheel {
+    position: relative;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+.spinWheel.visible {
+    opacity: 1;
+}
+.spinWheel .wheelWrap {
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+    position: relative;
+}
+.spinWheel .wheelWrap .wheel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: solid 12px #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    overflow: hidden;
+    transition: all 8s cubic-bezier(0, .99, .45, .99);
+    z-index: 1;
+}
+.spinWheel .wheelWrap .wheel .area {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    transform-origin: 0 100%;
+    overflow: hidden;
+}
+.spinWheel .wheelWrap .wheel .area span {
+    position: absolute;
+    left: -100%;
+    width: 200%;
+    height: 200%;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    padding-top: 20px;
+}
+.spinWheel .wheelWrap .start {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    background: #12b6d0;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 50%;
+    margin: -50px 0 0 -50px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 2;
+}
+.spinWheel .wheelWrap .start:hover {
+    background: #139cb2;
+}
+.spinWheel .wheelWrap .start:active {
+    transform: scale(.97);
+}
+.spinWheel .wheelWrap .marker {
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    width: 4px;
+    height: 30px;
+    margin: 0 0 0 -20px;
+    background: #12b6d0;
+    box-shadow: -2px 2px 2px 0 rgba(0, 0, 0, .3);
+    transform: rotate(-4deg);
+    z-index: 2;
+}
+.spinWheel .wheelWrap .win * {
+    color: #fff;
+}
+.spinWheel .wheelWrap .win {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #12b6d0;
+    border-radius: 50%;
+    text-align: center;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.2);
+    transition: all .25s ease;
+}
+.spinWheel .wheelWrap .win.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+.spinWheel .wheelWrap .win .title {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 100px 0 10px 0;
+}
+.spinWheel .wheelWrap .win .prizeMsg {
+    font-size: 28px;
+    padding-bottom: 20px;
+}
+.spinWheel .wheelWrap .win a {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: solid 1px #fff;
+    padding: 10px 20px;
+    transition: all .2s ease;
+}
+.spinWheel .wheelWrap .win a:hover {
+    background: #fff;
+    color: #12b6d0;
+}
+.spinWheel .wheelWrap .win .small {
+    font-size: 12px;
+    text-decoration: underline;
+    padding: 20px 0 0 0;
+}
+.spinWheel .wheelWrap .win .small:hover {
+    opacity: .7;
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<module>
+	<info> 
+		<author>Ciro Napolitano</author>
+		<name>Widget Html</name>
+		<permission>superadmin</permission>
+		<tag>widget_html</tag>
+		<kind>cms</kind>
+		<version>2.0.0</version>
+		<compatibility>
+			<min>2.0.0</min>
+		</compatibility>
+		<scope></scope> 
+		<description><![CDATA[Modulo che permette di visualizzare un widget html]]></description> 
+   </info>
+  <widgets>
+		<widget> 
+			<name>Box Html</name>
+			<function>WidgetHtmlComponent</function>
+			<repeatable>1</repeatable>
+			<url_conf>index.php?ctrl=Conf&amp;mod=widget_html</url_conf>
+		</widget>
+	</widgets>
+	<dependencies>
+        <dependence>pagecomposer</dependence>
+  </dependencies>
+</module>

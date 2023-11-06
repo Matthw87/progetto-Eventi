@@ -1,0 +1,4 @@
+{% for riga in prodotti %}
+	<!--{card_product_list(riga,type_img,class_row)}-->
+	{% include '@catalogo/partials/product_list.htm' with {'product_row': riga,'img_type_product_list':type_img,'class_row_product':class_row} %}
+{% endfor %}

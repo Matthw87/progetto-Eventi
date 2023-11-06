@@ -1,0 +1,25 @@
+<xml>
+    <sheet>
+        <row>
+            <col>
+                <field name="id" hidden="true"/>
+                <field name="api_key"/>
+            </col>
+        </row>
+        <row>
+            <col>
+                <field name="enabled_modules"/>
+            </col>
+        </row>
+        <row>
+            <col>
+                <field name="active"/>
+            </col>
+        </row>
+        <row>
+            <col>
+                <field name="token_duration"/>
+            </col>
+        </row>
+    </sheet>
+</xml>

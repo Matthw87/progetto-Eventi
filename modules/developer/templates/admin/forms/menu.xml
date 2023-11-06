@@ -1,0 +1,63 @@
+<xml>
+    <sheet>
+        <row>   
+            <col>
+                <field name="id" hidden="true"/>
+                <field name="parent"/>
+            </col>
+            <col>
+                <field name="permission"/>
+            </col>
+        </row>
+        <row>   
+            <col>
+                <field name="name"/>
+            </col>
+        </row>
+        <row>   
+            <col>
+                <field name="url"/>
+            </col>
+        </row>
+        <row>   
+            <col>
+                <field name="tag"/>
+            </col>
+            <col>
+                <field name="priority"/>
+            </col>
+            <col>
+                <field name="active"/>
+            </col>
+            <col>
+                <field name="target_blank"/>
+            </col>
+        </row>
+        <row>   
+            <col>
+                <field name="icon"/>
+            </col>
+            <col>
+                <field name="icon_image"/>
+            </col>
+        </row>
+        <row>   
+            <col>
+                <field name="show_label"/>
+            </col>
+            <col>
+                <field name="label_static"/>
+            </col>
+        </row>
+         <row>   
+            <col>
+                <field name="label_text"/>
+            </col>
+        </row>
+        <row>   
+            <col>
+                <field name="label_function"/>
+            </col>
+        </row>
+    </sheet>
+</xml>

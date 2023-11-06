@@ -1,0 +1,82 @@
+{% if hover == 'hover16' %}
+<div class="cont-box-img">
+	{% if url %}
+		{% if target_blank %}
+		<a href="{{url}}" target="_blank" class="{{hover}}">
+		{% else %}
+		<a href="{{url}}" class="{{hover}}">
+		{% endif %}
+		<figure>
+		<img src="{{image}}"/>
+		<div class="box-testo-img">
+			{% if label %}
+			<span class="label">{{label}}</span>
+			{% endif %}
+			{% if titolo %}
+			<h3>{{titolo}}</h3>
+			{% endif %}
+			{% if testo_bottone %}
+			<span class="btn-box-img">{{testo_bottone}}</span>
+			{% endif %}
+		</div>
+		</figure>
+		</a>
+	{% else %}
+		<figure >
+		<img src="{{image}}"/>
+		<div class="box-testo-img">	
+			{% if label %}
+			<span class="label">{{label}}</span>
+			{% endif %}
+			{% if titolo %}
+			<h3>{{titolo}}</h3>
+			{% endif %}
+			{% if testo_bottone %}
+			<span class="btn-box-img">{{testo_bottone}}</span>
+			{% endif %}
+		</div>
+		</figure>
+	{% endif %}
+</div>
+{% else %}
+<div class="cont-box-img {{hover}}">
+{% if url %}
+	{% if target_blank %}
+	<a href="{{url}}" target="_blank" class="{{hover}}">
+	{% else %}
+	<a href="{{url}}" class="{{hover}}">
+	{% endif %}
+	<figure>
+	<img src="{{image}}"/>
+	<div class="box-testo-img">	
+		{% if label %}
+		<span class="label">{{label}}</span>
+		{% endif %}
+		{% if titolo %}
+		<h3>{{titolo}}</h3>
+		{% endif %}
+		{% if testo_bottone %}
+		<span class="btn-box-img">{{testo_bottone}}</span>
+		{% endif %}
+	</div>
+	</figure>
+	</a>
+{% else %}
+	<figure >
+	<img src="{{image}}"/>
+	<div class="box-testo-img">	
+		{% if label %}
+		<span class="label">{{label}}</span>
+		{% endif %}
+		{% if titolo %}
+		<h3>{{titolo}}</h3>
+		{% endif %}
+		{% if testo_bottone %}
+		<span class="btn-box-img" >{{testo_bottone}}</span>
+		{% endif %}
+	</div>
+	</figure>
+{% endif %}
+</div>
+{% endif %}
+

@@ -1,0 +1,277 @@
+{% extends "@core/layouts/base_form_widget.htm" %}
+
+{% block javascript %}
+{{parent()}}
+<script>
+	$(document).ready(function(){
+		
+			$('#popup_type').on('change',function(){
+				if( $(this).val() == 'delayed' ){
+					$('#div_popup_delayed_time').show();
+				}else{
+					$('#div_popup_delayed_time').hide();
+				}
+			})
+
+			if( $('#popup_type').val() != 'delayed'){
+				$('#div_popup_delayed_time').hide();
+			}
+
+			$('#enable_close_button_popup').on('change',function(){
+				
+				if( $(this).val() != 0 ){
+					$('#div_close_button_style').show();
+					$('#div_close_button_align').show();
+					$('#div_close_button_place').show();
+					$('#div_close_button_text').show();
+
+				}else{
+					$('#div_close_button_style').hide();
+					$('#div_close_button_align').hide();
+					$('#div_close_button_place').hide();
+					$('#div_close_button_text').hide();
+
+				}
+			})
+
+			if( $('#popup_type').val() == 0){
+				$('#div_close_button_style').hide();
+				$('#div_close_button_align').hide();
+				$('#div_close_button_place').hide();
+				$('#div_close_button_text').hide();
+			}
+
+			$('#overlay_visibility').on('change',function(){
+
+				if( $(this).val() != 0 ){
+					$('#div_overlay_close_popup').show();
+					$('#div_overlay_animation').show();
+					$('#div_overlay_css').show();
+					
+
+				}else{
+					$('#div_overlay_close_popup').hide();
+					$('#div_overlay_animation').hide();
+					$('#div_overlay_css').hide();
+				}
+			})
+
+			if( $('#overlay_visibility').val() == 0){
+				$('#div_overlay_close_popup').hide();
+				$('#div_overlay_animation').hide();
+				$('#div_overlay_css').hide();
+			}
+
+			
+
+			$('#redirect_close').on('change',function(){
+				
+				if( $(this).val() != 0 ){
+					$('#div_redirect_on_close_url').show();
+					
+
+				}else{
+					$('#div_redirect_on_close_url').hide();
+
+				}
+			})
+
+			if( $('#redirect_close').val() == 0){
+				$('#div_redirect_on_close_url').hide();
+			}
+
+
+			$('#show_mobile').on('change',function(){
+
+				if( $(this).val() != 0 ){
+					$('#div_mobile_breakpoint').show();
+					$('#div_popup_position_mobile').show();
+					$('#div_mobile_css').show();
+					
+
+				}else{
+					$('#div_mobile_breakpoint').hide();
+					$('#div_popup_position_mobile').hide();
+					$('#div_mobile_css').hide();
+				}
+			})
+
+			if( $('#show_mobile').val() == 0){
+				$('#div_mobile_breakpoint').hide();
+				$('#div_popup_position_mobile').hide();
+				$('#div_mobile_css').hide();
+			}
+
+			$('#restrict_cookieSet').on('change',function(){
+
+				if( $(this).val() != 0 ){
+					$('#div_restrict_cookieName').show();
+					$('#div_restrict_cookieDays').show();
+				}else{
+					$('#div_restrict_cookieName').hide();
+					$('#div_restrict_cookieDays').hide();
+					
+					
+				}
+			})
+
+			if( $('#restrict_cookieSet').val() == 0){
+				$('#div_restrict_cookieName').hide();
+				$('#div_restrict_cookieDays').hide();
+			}
+
+			
+
+			$('#restrict_dateRange').on('change',function(){
+
+				if( $(this).val() != 0 ){
+					$('#div_restrict_dateRangeStart').show();
+					$('#div_restrict_dateRangeEnd').show();
+				}else{
+					$('#div_restrict_dateRangeStart').hide();
+					$('#div_restrict_dateRangeEnd').hide();
+					
+					
+				}
+			})
+
+			if( $('#restrict_dateRange').val() == 0){
+				$('#div_restrict_dateRangeStart').hide();
+				$('#div_restrict_dateRangeEnd').hide();
+			}
+
+			
+
+			
+	})
+</script>
+{% endblock %}
+
+{% block css %}
+{{parent()}}
+<style>
+.panel {
+    margin: 0 0 50px;
+}
+
+h3 {
+	font-weight: 700;
+	margin: 24px 0 16px;
+	width: 100%;
+	float: left;
+}
+
+input.form-control {
+	margin-bottom: 10px;
+	width: 100% !important;
+}
+
+.btn-group.bootstrap-select.form-control {
+    width: 100% !important;
+	background: #FAFBFC !important;
+}
+
+.btn-group.bootstrap-select.form-control .btn {
+	background: #FAFBFC !important;
+}
+
+textarea.form-control {
+    width: 100% !important;
+	min-height: 100px;
+}
+</style>
+{% endblock %} 
+
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+<div class="tabcordion">
+	<ul id="myTab" class="nav nav-tabs">
+		<li class="active"><a href="#aspetto" data-toggle="tab">Aspetto</a></li>
+		<li class=""><a href="#accesso" data-toggle="tab">Accesso</a></li>
+		<li class=""><a href="#chiusura" data-toggle="tab">Chiusura</a></li>
+		<li class=""><a href="#overlay" data-toggle="tab">Overlay</a></li>
+		<li class=""><a href="#mobile" data-toggle="tab">Mobile</a></li>
+		<li class=""><a href="#altro" data-toggle="tab">Altro</a></li>
+	</ul>
+
+	<div id="myTabContent" class="tab-content">
+			
+			
+			<div class="tab-pane active in" id="aspetto">
+				<div class="row">
+				{{form.buildCol(dataform.popup_type,'col-md-12')}}
+				{{form.buildCol(dataform.popup_delayed_time,'col-md-12')}}
+
+
+				{{form.buildCol(dataform.open_hash,'col-md-6')}}
+
+
+				{{form.buildCol(dataform.popup_position,'col-md-12')}}
+				{{form.buildCol(dataform.popup_animation,'col-md-6')}}
+				{{form.buildCol(dataform.popup_css,'col-md-12')}}
+				</div>
+			</div>
+
+			<div class="tab-pane in" id="accesso">
+				<div class="row">
+				{{form.buildCol(dataform.restrict_cookieSet,'col-md-12')}}
+
+				
+				{{form.buildCol(dataform.restrict_cookieName,'col-md-12')}}
+				{{form.buildCol(dataform.restrict_cookieDays,'col-md-12')}}
+
+				{{form.buildCol(dataform.restrict_dateRange,'col-md-12')}}
+				{{form.buildCol(dataform.restrict_dateRangeStart,'col-md-6')}}
+				{{form.buildCol(dataform.restrict_dateRangeEnd,'col-md-6')}}
+
+				
+				</div>
+			</div>
+
+			<div class="tab-pane in" id="chiusura">
+				<div class="row">
+				{{form.buildCol(dataform.auto_close,'col-md-6')}}
+				<div class="clearfix"></div>
+				{{form.buildCol(dataform.redirect_close,'col-md-6')}}
+				{{form.buildCol(dataform.redirect_on_close_url,'col-md-6')}}
+				<div class="clearfix"></div>
+				{{form.buildCol(dataform.enable_close_button_popup,'col-md-6')}}
+
+				<div class="clearfix"></div>
+				{{form.buildCol(dataform.close_button_style,'col-md-6')}}
+				{{form.buildCol(dataform.close_button_align,'col-md-6')}}
+				{{form.buildCol(dataform.close_button_place,'col-md-6')}}
+				{{form.buildCol(dataform.close_button_text,'col-md-6')}}
+				</div>
+			</div>
+
+			<div class="tab-pane in" id="overlay">
+				<div class="row">
+				{{form.buildCol(dataform.overlay_visibility,'col-md-6')}}
+				{{form.buildCol(dataform.overlay_close_popup,'col-md-6')}}
+				{{form.buildCol(dataform.overlay_animation,'col-md-6')}}
+				{{form.buildCol(dataform.overlay_css,'col-md-12')}}
+				</div>
+			</div>
+
+			<div class="tab-pane in" id="mobile">
+				<div class="row">
+				{{form.buildCol(dataform.show_mobile,'col-md-6')}}
+				{{form.buildCol(dataform.mobile_breakpoint,'col-md-6')}}
+				{{form.buildCol(dataform.popup_position_mobile,'col-md-6')}}
+				{{form.buildCol(dataform.mobile_css,'col-md-12')}}
+				</div>
+			</div>
+			<div class="tab-pane in" id="altro">
+				<div class="row">
+				{{form.buildCol(dataform.popup_reopenClass,'col-md-6')}}
+				{{form.buildCol(dataform.popup_reopenClassTrigger,'col-md-6')}}
+				</div>
+			</div>
+
+</div>
+
+
+{% endblock %}
+

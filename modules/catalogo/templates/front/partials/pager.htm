@@ -1,0 +1,23 @@
+{% if _paginator %}
+    <div class="pager-container">
+            {% if _paginator.numPages > 1 %}
+            <ul class="pagination">
+                {% if _paginator.prevUrl %}
+                    <li><a href="{{ _paginator.prevUrl }}">&laquo; {{tr('product_list.pager.prev','catalogo')}}</a></li>
+                {% endif %}
+        
+                {% for page in _paginator.pages %}
+                    {% if page.url %}
+                        <li {{ page.isCurrent ? 'class="active"' : '' }}><a href="{{ page.url }}">{{ page.num }}</a></li>
+                    {% else %}
+                        <li class="disabled"><span>{{ page.num }}</span></li>
+                    {% endif %}
+                {% endfor %}
+        
+                {% if _paginator.nextUrl %}
+                    <li><a href="{{ _paginator.nextUrl }}">{{tr('product_list.pager.next','catalogo')}} &raquo;</a></li>
+                {% endif %}
+            </ul>
+            {% endif %}
+    </div>
+{% endif %}

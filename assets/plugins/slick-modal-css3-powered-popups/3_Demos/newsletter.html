@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Newsletter Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/newsletter.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="newsletterForm" data-sm-init="true">
+            <form name="sm-newsletterForm" id="sm-newsletterForm">
+                <div class="title">Get fresh daily news!</div>
+                <p>Sign up to our <b>awesome newsletter</b> and receive fresh daily news for free.</p>
+                <input type="email" placeholder="Your email" />
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+
+        <script>
+            $('.newsletterForm').SlickModals({
+                restrict_cookieSet: true,
+                restrict_cookieName: 'sm-newsletterForm',
+                restrict_cookieDays: '14',
+                restrict_cookieSetClass: 'sm-newsletterFormHide',
+                popup_type: 'instant',
+                popup_animation: 'rotateIn',
+                popup_closeButtonStyle: 'text label',
+                popup_css: {
+                    'width': '540px',
+                    'background': '#489cd7',
+                    'padding': '60px'
+                },
+                overlay_css: {
+                    'background': 'rgba(255, 255, 255, 0.4)'
+                },
+                mobile_breakpoint: '540px',
+                mobile_position: 'bottomCenter',
+                mobile_css: {
+                    'width': '100%',
+                    'padding': '30px',
+                    'background': '#489cd7',
+                    'margin': '0'
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

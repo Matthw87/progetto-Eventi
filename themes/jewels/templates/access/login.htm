@@ -1,0 +1,42 @@
+{% extends 'layouts/page.htm' %}
+{% block content %}
+    <div class="container-small container-login">
+		<h4 class="txtc">{{tr('login.my_account')}}</h4>
+		<div class="space30"></div>
+		<div class="cont-log-reg">
+			<div class="tab only_mob">
+				<div class="col50 active user">{{tr('login.sign_in')}}</div>
+				<div class="col50 guest">{{tr('login.new_customer')}}</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 logindata" id="logindata">
+				<h6 class="only_desk">{{tr('login.are_you_a_registered_customer')}}</h6>
+				<p>{{tr('login.complete_your_order_faster')}}</p>
+				<span class="space10"></span>
+				<form class="form" action="" method="POST">
+					<span class="errore">{{messages|raw}}</span>
+					<div class="controls">
+						<label>{{tr('Email')}}*</label>
+						<input type="text" name="email">
+					</div>
+					<div class="controls">
+						<label>{{tr('Password')}}*</label>
+						<input type="password" name="password">
+					</div>
+					<button type="submit" class="btn-default">{{tr('Accedi')}}</button>
+					<input type="hidden" name="ctrl" value="Access">
+					<input type="hidden" name="action" value="{{tr('login.sign_in')}}">
+				</form>
+				<div class="space10"></div>
+				<a href="forgot-password" class="lostpwd">{{tr('login.did_you_forget_your_password')}}</a>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 nologindata">
+				<h6 class="only_desk">{{tr('login.are_you_a_new_customer')}}</h6>
+				<p>{{tr('login.new_customer_message')}}</p>
+				<div class="space20"></div>
+				<a href="signup" class="btn-default btn-registrati">{{tr('login.register_now')}}</a>
+				{{do_action('display_login')}}
+			</div>
+		</div>
+		<div class="space60"></div>
+	</div>
+{% endblock %}

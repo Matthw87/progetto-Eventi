@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js sidebar-large lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js sidebar-large lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js sidebar-large lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js sidebar-large"><!--<![endif]-->
+    <head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block head %}
+			{% block css %}
+				{{include('@core/partials/css.htm')}}
+			{% endblock %}
+
+			{% block javascript %}
+			<script>
+				var js_error_title_alert="{{gettext.strings.error_title_alert|escape('js')}}"
+				var js_success_title_alert="{{gettext.strings.success_title_alert|escape('js')}}"
+				var js_confirm_title_alert="{{gettext.strings.confirm_title_alert|escape('js')}}"
+				var js_confirm_cancel_alert="{{gettext.strings.confirm_cancel_alert|escape('js')}}"
+				var js_confirm_ok_alert="{{gettext.strings.confirm_ok_alert|escape('js')}}"
+				var js_confirm_text_alert="{{gettext.strings.confirm_text_alert|escape('js')}}"
+				var js_activelocale="{{activelocale|escape('js')}}"
+				var javascript_activelocale = js_activelocale;
+				//var js_sidebarThemeAdmin="{{userdata.sidebarThemeAdmin|escape('js')}}"
+			</script>
+			{{include('@core/partials/javascript.htm')}}
+			{% endblock %}
+
+
+			
+            <title>{% block title %}{% endblock %}</title>
+        {% endblock %}
+    </head>
+    <body data-page="dashboard">
+		{{include('@core/partials/loader.htm')}}
+		{% block menu_top %}
+		{{include('@core/partials/menu_top.htm')}}
+		{% endblock %}
+		<div id="wrapper">
+			{% block sidebar %}	
+			{{include('@core/partials/sidebar.htm')}}
+			{% endblock %}
+			<div id="main-content" class="dashboard">
+				{% block content %}
+				
+				{% endblock %}
+       
+			</div>
+		</div>
+		{{include('@core/partials/javascript_end.htm')}}
+
+		{% block end_body %}
+
+		{% endblock %}
+    </body>
+</html>
+

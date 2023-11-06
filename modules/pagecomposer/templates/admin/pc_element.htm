@@ -1,0 +1,14 @@
+<!--<span class="nome-widget" ondblclick="open_edit_page({{v2['id']}},'{{v2['url_edit']}}'); return false;">-->
+<span class="nome-widget">
+
+{% if v2['img_logo'] %}																			
+
+<img class="img-box" src="{{v2['img_logo']}}">  
+<span id="pagecomposer_name_element_{{v2['id']}}" class="pagecomposer_name_element" ondblclick="pagecomposer_edit_name_widget({{v2['id']}}); return false;">{% if v2.custom_name %}{{v2.custom_name}}{% else %}{{v2['title']}}{% endif %}</span>
+<input type="text" class="pagecomposer_name_element_input" id_widget="{{v2['id']}}" id="pagecomposer_name_element_input_{{v2['id']}}" style="display:none" value="{% if v2.custom_name %}{{v2.custom_name}}{% else %}{{v2['title']}}{% endif %}">
+{% else %}
+ <span id="pagecomposer_name_element_{{v2['id']}}" class="pagecomposer_name_element" ondblclick="pagecomposer_edit_name_widget({{v2['id']}}); return false;">{% if v2.custom_name %}{{v2.custom_name}}{% else %}{{v2['title']}}{% endif %}</span>
+<input type="text" class="pagecomposer_name_element_input" id_widget="{{v2['id']}}" id="pagecomposer_name_element_input_{{v2['id']}}" style="display:none" value="{% if v2.custom_name %}{{v2.custom_name}}{% else %}{{v2['title']}}{% endif %}">
+{% endif %}
+
+</span>

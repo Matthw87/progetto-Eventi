@@ -1,0 +1,13 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block edit_page_title %} {{tr('module')|title}} {% endblock %} 
+{% block content %}
+	{% import "macro/form.htm" as form %}
+	
+	<div class="form-group col-md-12" id="">
+		<label>File  :</label>
+		<div class="controls">
+			<input type="file" class="form-control " name="file">
+		</div>
+	</div>
+{% endblock %}
+

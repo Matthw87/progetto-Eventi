@@ -1,0 +1,561 @@
+{% extends container_layout %}
+{% block javascript %}
+{{parent()}}
+<script>
+var _current_url_script = "{{_current_url_list|escape('js')}}";
+var _bulk_items = [];
+var _bulk_action = '';
+
+function confirm_bulk_action(message,action,url,custom_fields){
+	$('#btn-confirm-bulk-action').attr('onClick',"send_bulk_action('"+action+"','"+url+"','"+custom_fields+"'); return false;");
+	$('#bulk_action_area_content').html('<p id="confirm_bulk_action_message"></p>').find('#confirm_bulk_action_message').html(message);
+	$('#bulk_action_area').show();
+}
+
+function get_bulk_action_form(_function,action,url,custom_fields){
+	var other_fields = JSON.parse(custom_fields);
+	var data = {
+		action: 'bulk_form',
+		bulk_function:_function
+	};
+	if( typeof other_fields === 'object' ){
+		for( var k in other_fields ){
+			data[k] = other_fields[k]; 
+		}
+	}
+	$.ajax({
+		  type: "GET",
+			  url: url,
+			  dataType: "json",
+			  data : data,
+			  success: function(data){
+					if(data.result == 'ok'){
+						$('#btn-confirm-bulk-action').attr('onClick',"send_bulk_action('"+action+"','"+url+"'); return false;");
+						$('#bulk_action_area_content').html('<form id="bulk_action_form"></form>').find('#bulk_action_form').html(data.html).show();
+						$('#bulk_action_area').show();
+					}else{
+						
+					}
+					
+			  },
+			 
+		});
+}
+
+$(document).ready(function(){
+
+	if ($('.search_date').length && $.fn.datepicker) {
+		if( typeof javascript_activelocale != 'undefined' && javascript_activelocale != null ){
+		    $('.search_date').each(function () {
+		        $(this).datepicker({
+		            format: 'dd/mm/yyyy',
+		            language: 'it'
+		        });
+		    });
+	    }else{
+		    $('.search_date').each(function () {
+		        $(this).datepicker({
+		            format: 'dd/mm/yyyy',
+		        });
+		    });
+		    
+	    }
+	}
+
+
+
+
+	$('#bulk_action_all').on('change',function(){
+		
+		if( $(this).prop('checked') == true ){
+			$('.bulk_action_items').prop('checked',true);
+		}else{
+			$('.bulk_action_items').prop('checked',false);
+		}
+	})
+});
+
+function cancel_action_bulk(){
+	$('#bulk_action_area').hide();
+	_bulk_action = '';
+}
+
+function send_bulk_action(action,url,custom_fields){
+	if( custom_fields ){
+		var other_fields = JSON.parse(custom_fields);
+	}else{
+		var other_fields = '';
+	}
+	
+
+	var fd = {};
+	var cont = 0;
+	var check = false;
+	$('.bulk_action_items').each(function(i){
+		if( $(this).prop('checked') ){
+			check = true;
+			fd[cont] = $(this).val();
+			cont = cont+1;
+		}
+	})
+	var formdata = '';
+	if( $('#bulk_action_form').length > 0 ){
+		formdata = $('#bulk_action_form').serialize();
+		
+	}
+	var url_bulk = url+"&bulk_action_list="+action+"&bulk_ids="+JSON.stringify(fd)+"&bulk_formdata="+formdata;
+
+	if( typeof other_fields === 'object' ){
+		for( var k in other_fields ){
+			url_bulk = url_bulk+"&"+k+"="+other_fields[k]; 
+		}
+	}
+
+	
+	document.location.href=url_bulk;
+
+}
+</script>
+{% endblock %}
+
+{% block css %}
+{{parent()}}
+<style>
+tfoot {
+    display: table-header-group !important;
+	
+}
+.export-container{
+	
+	padding-bottom:3px;
+}
+.btn-export{
+		padding:3px !important;
+		padding-left:8px !important;
+		padding-right:8px !important;
+		border-radius:0px !important;
+		margin-right: 2px;
+		margin-left: 0px;
+		height: 40px;
+}
+.btn-export-excel > i{
+	background: #68d668;
+}
+.btn-export-pdf > i{
+	background: #ce6868;
+}
+.visualizzapagina .btn.dropdown-toggle.selectpicker.btn-default {
+    padding: 0 10px !important;
+    height: 28px;
+    line-height: 26px;
+    width: 60px;
+}
+
+.ico-btn {
+    height: 18px;
+    width: auto;
+	margin-right: 2px;
+	margin-top: -2px;
+}
+ul.pagination > .disabled > span, ul.pagination > .disabled > a, ul.pagination > .disabled > a i, ul.pagination > .disabled > a:hover, ul.pagination > .disabled > a:focus {
+    opacity: 1 !important;
+}
+
+ul.pagination{
+	margin:0px;
+}
+
+.pagination .disabled > span{
+
+	color:black !important;
+}
+
+
+/*SMALL LIST*/
+.panel {
+    margin-top: 0;
+}
+tfoot {
+    display: table-header-group !important;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 10px 4px;
+    line-height: 1.428571429;
+    font-size: 12px;
+    font-weight: 600;
+}
+.btn {
+    height: auto;
+    line-height: 1.4;
+    padding: 2px 10px !important;
+    font-size: 13px;
+    border-radius: 4px;
+}
+.form-control {
+    border-radius: 4px;
+}
+.barra-fixed .btn {
+    padding: 0 24px !important;
+    height: 40px;
+    font-size:16px;
+    font-weight:700;
+    line-height:38px;
+    border-radius:8px;
+}
+input[type="checkbox"] {
+    margin-left: 5px;
+}
+#main-content .table .btn-group a {
+    margin-bottom: 0;
+    height: 28px;
+    padding: 0 10px !important;
+    line-height: 26px;
+}
+#main-content .table a.edit.btn.btn-sm.btn-default {
+    padding: 0 10px !important;
+    height: 28px;
+    line-height: 28px;
+    margin: 0;
+}
+.btn-group>.btn+.dropdown-toggle {
+    height: 28px;
+    line-height: 25px;
+    padding: 0 10px !important;
+}
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    height: 28px;
+    padding: 0 10px !important;
+    line-height: 26px;
+}
+.visualizzapagina .btn.dropdown-toggle.selectpicker.btn-default {
+    padding: 0 10px !important;
+    height: 28px;
+    line-height: 26px;
+    width: 60px;
+}
+.btn-group.bootstrap-select.form-control {
+    width: 120px;
+    margin: 0;
+}
+
+@media all and (min-width:600px) and (max-width:1024px) {
+.table > thead > tr > th.box-check, .table > tbody > tr > th.box-check, .table > tfoot > tr > th.box-check, .table > thead > tr > td.box-check, .table > tbody > tr > td.box-check, .table > tfoot > tr > td.box-check {
+    max-width: 30px !important;
+    min-width: 30px !important;
+}
+}
+</style>
+{% endblock %}
+{% block messages %}
+{% if confirm_message_list %}
+<div class='alert alert-warning' style='width:100%; position:relative;color:#000000;'>
+	<a style='position:absolute; color:#000000; right:5px;top:0;cursor:pointer;' onclick='$(this).parent().remove()'><i class='fa fa-times'></i></a>
+	{{confirm_message_list|raw}}
+	<div class="clearboth"></div>
+	<div style="display: flex; justify-content: flex-end;">
+		<button  onclick="$(this).closest('.alert').remove()" class="btn btn-default btn-sm"><i class="fa fa-undo"></i> {{tr('general.cancel')}}</button>
+		<a href="{{url_confirm_action_list}}" class="btn btn-info btn-sm"><i class="fa fa-check"></i> {{tr('general.confirm')}}</a>
+	</div>
+</div>
+{% else %}
+{{parent()}}
+{% endif %}
+{% endblock %}
+{% block content %}
+	{% if _bulk_actions_enabled %}
+	<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+				<div class="form-group">
+					<div class="btn-group media-group">
+					  <a href="" class="btn btn-default" data-toggle="dropdown"><i class="fa fa-list"></i> {{tr('list.mass_actions')|capitalize}}</a>
+					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+					  </button>
+					   <ul class="dropdown-menu media-menu text-left" role="menu">
+							{% for k,v in _bulk_actions %}
+							<li>
+							{% if v.ajax_content %}
+								<a onclick="_bulk_action = '{{k}}'; get_bulk_action_form('{{v.ajax_content}}','{{k}}','{{_list_url}}','{{v.custom_fields|json_encode()}}'); return false;">
+									{% if v.icon_type == 'icon' %}
+										<i class="{{v.icon}}"></i> 
+									{% else %}
+										<img src="{{v.img}}"> 
+									{% endif %}
+									{{v.text}}</a></li>
+							{% else %}
+								{% if v.confirm %}
+								<a onclick="_bulk_action = '{{k}}'; confirm_bulk_action('{{v.confirm_message}}','{{k}}','{{_list_url}}','{{v.custom_fields|json_encode()}}'); return false;">
+									{% if v.icon_type == 'icon' %}
+										<i class="{{v.icon}}"></i> 
+									{% else %}
+										<img src="{{v.img}}"> 
+									{% endif %}
+									{{v.text}}</a></li>
+								{% else %}
+									<a onclick="_bulk_action = '{{k}}'; send_bulk_action('{{k}}','{{_list_url}}','{{v.custom_fields|json_encode()}}'); return false;">
+									{% if v.icon_type == 'icon' %}
+										<i class="{{v.icon}}"></i> 
+									{% else %}
+										<img src="{{v.img}}"> 
+									{% endif %}
+									{{v.text}}</a></li>
+								{% endif %}
+							{% endif %}
+								
+							{% endfor %}
+					   </ul>
+					</div>
+				</div>
+				
+				<div class="well clearfix" style="display:none" id="bulk_action_area">
+					<div id="bulk_action_area_content" class="col-md-12">
+
+					</div>
+					<!--<p id="confirm_bulk_action_message"></p>-->
+					
+					<div class="col-md-12 pull-right">
+					
+						
+						<a class="btn btn-info pull-right" id="btn-confirm-bulk-action"> <i class="fa fa-check"></i> {{tr('general.confirm')}}</a>
+						<a class="btn btn-default pull-right" onclick="cancel_action_bulk(); return false;"><i class="fa fa-undo"></i> {{tr('general.cancel')}}</a>
+					</div>
+				</div>
+
+			</div>
+	</div>
+	{% endif %}
+	<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+					<div class="col-md-9 p-l-0">
+						<p><strong>{{tr('list.found_items')|capitalize}}: {{_total_list}}</strong></p>
+
+					</div>
+					<div class="col-md-3 p-r-0">
+						{% if _export_list %}
+						
+						<div class="export-container pull-right">
+						{% if _export_excel_list %}
+						<a href="{{_current_url_list}}&export=1&type_export=excel"class="btn btn-default btn-sm btn-export btn-export-excel"><i class="fa fa-file-excel-o"></i> EXCEL</a>
+						{% endif %}
+						{% if _export_csv_list %}
+						<a href="{{_current_url_list}}&export=1&type_export=csv"class="btn btn-default btn-sm btn-export btn-export-csv"><i class="fa fa-file"></i> CSV</a>
+						{% endif %}
+						{% if _export_pdf_list %}
+						<a href="{{_current_url_list}}&export=1&type_export=pdf"class="btn btn-default btn-sm btn-export btn-export-pdf"><i class="fa fa-file-pdf-o"></i> PDF</a>
+						{% endif %}
+						</div>
+						
+						{% endif %}
+						
+					</div>
+					
+					<table id="sezioni-table" class="table table-tools table-hover">
+						<thead>
+							<tr>
+								{% for v in _header_list %}
+									
+										{% if v.type == 'value' %}
+										<th>
+											<strong>{{v.value|raw}}</strong>
+											
+										
+										{% if v.sortable  %}
+											<div class="freccette">
+												
+												<a href="{{_current_url_ordered_list}}&orderBy={{v.sort_id}}&orderType=ASC" ><i class="fa fa-caret-up" {% if _order_by_list == v.sort_id and _order_type_list == 'ASC' %}style="color:#0052CC"{% endif %}></i></a>	
+												<a href="{{_current_url_ordered_list}}&orderBy={{v.sort_id}}&orderType=DESC" ><i class="fa fa-caret-down" {% if _order_by_list == v.sort_id and _order_type_list == 'DESC' %}style="color:#0052CC"{% endif %}></i></a>
+											</div>
+										{% endif %}
+										</th>
+										{% endif %}
+										
+										
+										{% if v.type == 'actions' %}
+										<th style="text-align:right">
+											<strong>{{v.value|raw}}</strong>
+										</th>
+										{% endif %}
+										
+									
+
+								{% endfor %}
+								
+								
+							</tr>
+						</thead>
+						{% if _search_enabled %}
+						<tfoot>
+						<tr class="warning formtr" id="row_search">
+							
+							<form method="GET" action="index.php">
+							{% for v in _header_list %}
+									{% if v.type == 'value' %}
+									<th>
+										{% if v.searchable  %}
+											{% if v.search_type == 'select' %}
+												<select type="select" id="saerch_{{v.search_name}}" name="{{v.search_name}}" class="no-picker">
+												{% for k1,v1 in v.search_options %}
+													<option value="{{k1}}" {% if k1 == v.search_value %}selected="selected"{% endif %}>{{v1}}</option>
+												{% endfor %}
+												</select>
+											{% else %}
+												{% if v.search_type == 'range' %}
+												<input type="text" id="saerch_{{v.search_name1}}" name="{{v.search_name1}}" value="{{v.search_value1}}" {% if v.search_type_value1 %}class="search_{{v.search_type_value1}}"{% endif %}><br><br>
+												<input type="text" id="saerch_{{v.search_name2}}" name="{{v.search_name2}}" value="{{v.search_value2}}" {% if v.search_type_value1 %}class="search_{{v.search_type_value2}}"{% endif %}>
+												{% else %}
+												<input type="text" id="saerch_{{v.search_name}}" name="{{v.search_name}}" value="{{v.search_value}}" {% if v.search_type_value %}class="search_{{v.search_type_value}}"{% endif %}>
+												{% endif %}
+											{% endif %}
+										{% endif %}
+										
+									</th>
+									{% endif %}
+									{% if v.type == 'actions' %}
+										<th style="text-align:right">
+										{#
+										{% if module %}
+											<input type="hidden" name="mod" value="{{module}}">
+										{% endif %}
+										#}
+										<input type="hidden" name="submitted_search" value="1">
+										{% for k,v in _list_parameters %}
+											<input type="hidden" name="{{k}}" value="{{v}}">
+										{% endfor %}
+										
+										
+										<button class="btn btn-primary" style="font-size: 14px;padding: 0 10px;height:28px;"><i class="fa fa-filter"></i> {{tr('list.filter')|capitalize}}</button>
+										{% if _search_submitted %}
+										<a style="font-size: 14px;padding: 3px 10px;" class="btn btn-warning" href="{{_list_url}}&reset=1"><i class="fa fa-eraser"></i> Reset</a>
+										{% endif %}
+
+									</th>
+										
+									{% endif %}
+								{% endfor %}
+								
+								
+							</form>
+						</tr>
+						</tfoot>
+						{% endif %}
+						<tbody>
+							{% if _list|length == 0 %}
+							<tr><td colspan="{{_header_list|length}}">{{tr('Nessun record presente in archivio')}}</td></tr>
+							{% endif %}
+							{% for row in _list %}
+							<tr>
+								{% for v in row %}
+								
+								{% if v.type == 'value' %}
+									<td>
+									{{v.value|raw}}
+									</td>
+								{% endif %}
+								{% if v.type == 'actions' %}
+									<td style="text-align:right">
+									{% if v.actions and v.actions|length > 1 %}
+									<div class="btn-group media-group">
+										{% for k1,v1 in v.actions %}
+											{% if k1 == 0 %}
+											 <a href="{{v1.url}}" class="btn btn-default btn-sm">
+											 {% if v1.icon_type == 'icon' %}
+											<i class="{{v1.icon}}"></i> 
+											{% else %}
+											<img class="ico-btn" src="{{v1.img}}"> 
+									 		{% endif %}
+											 {{v1.text|raw}}</a>
+											{% endif %}
+											
+										{% endfor %}
+										<button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
+											<span class="caret"></span>
+									    </button>
+										<ul class="dropdown-menu media-menu text-left" role="menu">
+										
+										{% for k1,v1 in v.actions %}
+											{% if k1 > 0 %}
+											
+											
+												<li>
+												<a href="{{v1.url}}" {% if v1.target_blank %}target="_blank"{% endif %}>
+												 {% if v1.icon_type == 'icon' %}
+												<i class="{{v1.icon}}"></i> 
+												{% else %}
+												<img class="ico-btn" src="{{v1.img}}"> 
+												{% endif %}
+												{{v1.text|raw}}</a>
+												</li>
+												
+											  
+											{% endif %}
+											
+										{% endfor %}
+										</ul>
+									</div>
+									{% endif %}
+
+									{% if v.actions and v.actions|length == 1 %}
+										{% for k1,v1 in v.actions %}
+											<a href="{{v1.url}}" class="btn btn-default" {% if v1.target_blank %}target="_blank"{% endif %}>
+											 {% if v1.icon_type == 'icon' %}
+											<i class="{{v1.icon}}"></i> 
+											{% else %}
+											<img class="ico-btn" src="{{v1.img}}"> 
+											{% endif %}
+											{{v1.text|raw}}</a>
+										{% endfor %}
+
+									{% endif %}
+									</td>
+								{% endif %}
+								{% endfor %}
+								
+							</tr>
+							{% endfor %}
+							
+						</tbody>
+					</table>
+				
+			</div>
+			<div class="col-xs-12 col-md-3 col-sm-3 col-lg-3 form-group"> 
+			{% if _paginator %}
+				
+					{% if _paginator.numPages > 1 %}
+					<ul class="pagination">
+						{% if _paginator.prevUrl %}
+							<li><a href="{{ _paginator.prevUrl }}">&laquo; {{tr('list.prev')}}</a></li>
+						{% endif %}
+				
+						{% for page in _paginator.pages %}
+							{% if page.url %}
+								<li {{ page.isCurrent ? 'class="active"' : '' }}><a href="{{ page.url }}">{{ page.num }}</a></li>
+							{% else %}
+								<li class="disabled"><span>{{ page.num }}</span></li>
+							{% endif %}
+						{% endfor %}
+				
+						{% if _paginator.nextUrl %}
+							<li><a href="{{ _paginator.nextUrl }}">{{tr('list.next')}} &raquo;</a></li>
+						{% endif %}
+					</ul>
+					{% endif %}
+			{% endif %}
+			</div>
+			{% if template_data.total_items > template_data.per_page_select[0] %}
+			<div class="col-xs-12 col-md-9 col-sm-9 col-lg-9 form-group">
+				<div class="pull-right visualizzapagina m-t-0">
+					{{tr('list.view')|capitalize}} 
+					<select class="form-control" onchange="document.location.href='{{_current_url_ordered_list}}&perPage='+$(this).val()">
+						{% for _l in template_data.per_page_select %}
+						<option value="{{_l}}" {% if _l == template_data.per_page %}selected{% endif %}>{{_l}}</option>
+						{% endfor %}
+					</select>
+					{{tr('list.per_page')}}
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+
+{% endblock %}

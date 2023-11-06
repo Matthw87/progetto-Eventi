@@ -1,0 +1,22 @@
+.wa-icon {
+	cursor:pointer;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.2);
+    background: #7AD06D;
+    text-align: center;
+    line-height: 44px;
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 9;
+}
+
+.wa-icon a, .wa-icon a:hover, .wa-icon a:focus, .wa-icon a:active {
+    color: #fff;
+    font-size: 24px;
+    line-height: 46px;
+}

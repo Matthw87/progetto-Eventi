@@ -1,0 +1,25 @@
+<xml>
+    <sheet>
+        <row>   
+            <col>
+                <field name="id" hidden="true"/>
+                <field name="name"/>
+            </col>
+        </row>
+        <row>
+            <col>
+                <field name="description"/>
+            </col>
+        </row>
+        <row>
+            <col>
+                <field name="image_id"/>
+            </col>
+        </row>
+        <row>
+            <col>
+                <field name="online"/>
+            </col>
+        </row>   
+    </sheet>
+</xml>

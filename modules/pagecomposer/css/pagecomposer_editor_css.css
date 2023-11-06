@@ -1,0 +1,295 @@
+.pagecomposer-editor-css-container { 
+	height: 100%; /* 100% Full-height */
+	width: 0; /* 0 width - change this with JavaScript */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Stay on top */
+	top: 0; /* Stay at the top */
+	right: 0;
+	background-color: #dcdee5;
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 60px; /* Place content 60px from the top */
+	transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+	z-index:99;
+	-webkit-box-shadow: -3px 0px 8px 0px rgba(0,0,0,0.16);
+	-moz-box-shadow: -3px 0px 8px 0px rgba(0,0,0,0.16);
+	box-shadow: -3px 0px 8px 0px rgba(0,0,0,0.16);
+}
+
+.pagecomposer-editor-css-container .tab-panels {
+    padding-top: 20px;
+    background: #fff;
+}
+
+.pagecomposer-editor-css-container input[type=checkbox], .pagecomposer-editor-css-container input[type=radio] {
+    -webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+/* The navigation menu links */
+.pagecomposer-editor-css-container a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+ 
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.pagecomposer-editor-css-container p,.pagecomposer-editor-css-container a{
+  color: #6B778C;
+}
+
+/* Position and style the close button (top right corner) */
+.pagecomposer-editor-css-container .closebtn {
+	position: absolute;
+    top: 50px;
+    right: 25px;
+    font-size: 46px;
+    margin-left: 50px;
+}
+.pagecomposer-editor-css-container > textarea {
+  border: 1px solid black;
+  background: green;
+  color: white;
+  padding: 10px;
+  width: 500px;
+  height: 300px;
+}
+
+.pagecomposer-editor-css-container h2 {
+    font-size: 36px;
+    font-weight: 500;
+    color: #172B4D;
+    margin: 0 0 32px;
+    line-height: 36px;
+    text-align: left;
+    text-transform: inherit;
+}
+
+button.pagecomposer-editor-button {
+	position: relative;
+	z-index: 3;
+	background: #0052CC;
+
+	color: #fff;
+	font-size: 16px;
+	font-weight: 700;
+	padding: 0 24px;
+	height: 47px;
+	line-height: 47px;
+	-webkit-box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.16);
+	-moz-box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.16);
+	box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.16);
+	border-radius: 0px;
+	border: 0;
+}
+button.pagecomposer-editor-button a {
+  text-decoration: none;
+}
+button.pagecomposer-editor-button:hover {
+  color: white;
+  background: #1172c4;
+  border-color: white;
+  transition: all 0.2s linear;
+}
+button.pagecomposer-editor-button:active {
+  border-radius: 22px;
+}
+button.white-blue {
+  font-weight: 700;
+  color: #00aeef;
+  border-color: white;
+  background: white;
+}
+button.white-blue:hover {
+  color: white;
+  background: #00aeef;
+  border-color: white;
+}
+button.white-green {
+  font-weight: 700;
+  color: #7dc21e;
+  border-color: white;
+  background: white;
+}
+button.white-green:hover {
+  color: white;
+  background: #7dc21e;
+  border-color: white;
+}
+button.green-white {
+  font-weight: 700;
+  color: #7dc21e;
+  border-color: #7dc21e;
+  background: transparent;
+}
+button.green-white:hover {
+  color: white;
+  background: #7dc21e;
+  border-color: #7dc21e;
+}
+button.purple-white {
+  font-weight: 700;
+  color: #664e96;
+  border-color: #664e96;
+  background: transparent;
+}
+button.purple-white:hover {
+  color: white;
+  background: #664e96;
+  border-color: #664e96;
+}
+button.white-purple {
+  font-weight: 700;
+  color: #664e96;
+  border-color: white;
+  background: white;
+}
+button.white-purple:hover {
+  color: white;
+  background: #664e96;
+  border-color: white;
+}
+
+
+.fab-container-composer {
+  margin: 1em;
+  position: fixed;
+  bottom: -72px;
+  right: 0;
+}
+
+.fab-composer {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+  position: relative;
+  cursor: pointer;
+  transition: .3s;
+}
+.fab-composer:before {
+  content: attr(tooltip);
+  background: #595959;
+  padding: 4px 8px;
+  border-radius: 2px;
+  position: absolute;
+  top: 16px;
+  right: 100%;
+  color: white;
+  font: 400 15px Roboto;
+  opacity: 0;
+  visibility: hidden;
+  white-space: nowrap;
+  transition: .3s;
+}
+.fab-composer:hover {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2), 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+.fab-composer:hover:before {
+  right: 110%;
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+.css-composer {
+  margin-bottom: 1em;
+}
+.css-composer:after {
+  background: #00aeef url("/modules/pagecomposer/img/ico-azioni.png") center no-repeat;
+  position: absolute;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: .3s;
+}
+.css-composer:hover:after {
+  background-image: url("/modules/pagecomposer/img/ico-azioni.png");
+  transform: rotate(90deg);
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .pagecomposer-editor-css-container {padding-top: 15px;}
+  .pagecomposer-editor-css-container a {font-size: 18px;}
+} 
+
+/*
+.pagecomposer-tabset > input[type="radio"] {
+  position: absolute;
+  left: -200vw;
+}*/
+
+.pagecomposer-tabset .tab-panel {
+  display: none;
+}
+
+.pagecomposer-tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+.pagecomposer-tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+.pagecomposer-tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+.pagecomposer-tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+.pagecomposer-tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+.pagecomposer-tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+  display: block;
+}
+
+.pagecomposer-tabset > label {
+
+
+	color:#172B4D;
+	position: relative;
+	display: inline-block;
+	padding: 10px 16px;
+	background: #BCC1C9;
+	border-bottom: 0;
+	cursor: pointer;
+	margin: 0;
+	margin-left: -5px;
+	font-weight: 400;
+}
+
+.pagecomposer-tabset > label:nth-child(2) {
+	margin-left: -3px;
+}
+
+/*.pagecomposer-tabset > label::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  bottom: 10px;
+  width: 22px;
+  height: 4px;
+  background: #8d8d8d;
+}*/
+
+.pagecomposer-tabset > label:hover,
+.pagecomposer-tabset > input:focus + label {
+}
+
+.pagecomposer-tabset > label:hover::after,
+.pagecomposer-tabset > input:focus + label::after,
+.pagecomposer-tabset > input:checked + label::after {
+}
+
+.pagecomposer-tabset > input:checked + label {
+	background: #fff;
+}
+
+.tab-panel {
+}
+
+
+.pagecomposer-tabset {
+  /*max-width: 65em;*/
+}
+
+section .CodeMirror{
+  height: 500px !important;
+}

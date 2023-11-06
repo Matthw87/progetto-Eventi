@@ -1,0 +1,12 @@
+{% if switch_locale_flags|length > 1 %}
+	<div class="lingua-corrente">
+		<span class="{{switch_locale_current_icon}}"/></span>
+		<i class="fa fa-angle-down" aria-hidden="true"></i>
+	</div>
+
+	<div class="box-lingue clearfix">
+		{% for loc,locale_flag in switch_locale_flags %}
+		<a href="{{locale_flag['url']}}"><span class="{{locale_flag['icon']}}"/></span></a>
+		{% endfor %}
+	</div>
+{% endif %}

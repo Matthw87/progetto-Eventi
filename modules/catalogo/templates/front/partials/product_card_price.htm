@@ -1,0 +1,8 @@
+<div class="price">
+	{% if prodotto.hasSpecialPrice() %}
+		<span class="scontato">{{currencyLabel|raw}} {{prodotto.getPriceFormatted()}}</span>
+		<span class="barrato">{{currencyLabel|raw}} {{prodotto.getDefaultPriceValueFormatted()}}</span>
+	{% else %}
+		<span>{{currencyLabel|raw}} {{prodotto.getPriceFormatted()}}</span>
+	{% endif %}
+</div>

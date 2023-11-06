@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<module>
+	<info> 
+		<author>Ciro Napolitano</author>
+		<name>Filemanager</name>
+		<permission>superadmin</permission>
+		<tag>filemanager</tag>
+		<kind>cms</kind>
+		<version>2.0.0</version>
+		<compatibility>
+			<min>2.0.0</min>
+		</compatibility>
+		<scope>admin</scope> 
+		<description>Modulo che integra nel sito un filemanager per l'upload di file</description> 
+   </info>
+   <admin>
+	  <menu>
+		<items>
+			<item>
+				<locale>
+					<name>
+						<it>Filemanager</it>
+						<en>Filemanager</en>
+					</name>
+				</locale>
+				<tag>filemanager</tag> 
+				<parent>cms</parent>
+				<permission>cms</permission> 
+				<priority>100</priority> 
+				<url>index.php?ctrl=FMResponsiveAdmin&amp;mod=filemanager</url>
+			</item>
+		</items>
+		</menu>
+	</admin>
+</module>

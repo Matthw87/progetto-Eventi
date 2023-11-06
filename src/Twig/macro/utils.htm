@@ -1,0 +1,15 @@
+{% macro modalInfo(id,title,content) %}
+	{% include 'layouts/modal/modal.htm' with {'id': id,'title':title,'content': content} %}
+{% endmacro %}
+
+{% macro btnModalInfo(id,type='medium') %}
+	{% if type == 'small' %}
+	<span data-toggle="modal" data-target="#{{id}}"><img src="images/question.svg" style="width:20px; cursor:pointer;"></span>
+	{% endif %}
+	{% if type == 'medium' %}
+	<span data-toggle="modal" data-target="#{{id}}"><img src="images/question.svg" style="width:30px; cursor:pointer;"></span>
+	{% endif %}
+	{% if type == 'large' %}
+	<span data-toggle="modal" data-target="#{{id}}"><img src="images/question.svg" style="width:40px; cursor:pointer;"></span>
+	{% endif %}
+{% endmacro %}

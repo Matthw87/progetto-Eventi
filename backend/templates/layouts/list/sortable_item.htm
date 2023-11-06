@@ -1,0 +1,38 @@
+{% macro sortable_item(item) %}
+    <li class="dd-item" data-id="{{item.id}}">				
+		<div class="dd-handle">
+            <i class="{{item.icon}}"></i> 
+            {{item.content|raw}}
+            {% if item.actions %}
+            <div class="btn-group media-group dd-nodrag edit_button">
+                    <a href="{{item.actions[0].url}}" class="btn btn-default btn-sm">
+                        {% if item.actions[0].icon %}
+                        <i class="{{item.actions[0].icon}}"></i>  
+                        {% endif %}
+                        {{item.actions[0].text}}</a>
+                    {% if item.actions|length > 1 %}
+                    <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                     <ul class="dropdown-menu media-menu text-left" role="menu">
+						
+                        {% for k,action in item.actions %}
+                            {% if k > 0 %}
+                            <li><a href="{{action.url}}"><i class="{{action.icon}}"></i> {{action.text}}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                     {% endif %}
+                    
+            </div> 
+            {% endif %}
+        </div>
+        {% if item.children %}
+			<ol class="dd-list">
+                {% for child in item.children %}
+                   {{_self.sortable_item(child)}}
+                {% endfor %}
+            </ol>
+        {% endif %}
+</li>
+{% endmacro %}

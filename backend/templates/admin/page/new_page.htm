@@ -1,0 +1,62 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block edit_page_title %} {{tr('page')|title}} {% endblock %} 
+{% block buttons_right %}<a href="index.php?ctrl=Page&action=import" class="btn btn-info m-t-10"><i class="fa fa-upload"></i>Importa</a>{{parent()}}{% endblock %}
+{% block javascript %}
+{{parent()}}
+<script>
+	$(document).ready(function(){
+		$('.col3').click(function(){
+			var el = $(this);
+			$('.col3').removeClass('active');
+			$('.col3').find('span').html('Scegli');
+			
+			el.find('input').prop('checked',true);
+
+			el.addClass("active");
+			el.find('span').html('<i class="fa fa-check"></i> selezionato');
+		});
+	});
+</script>
+{% endblock %}
+
+{% block content %}
+
+{% import "macro/form.htm" as form %}
+<!--
+<div class="form-group" id="div_tipo">
+	<label>Cosa vuoi aggiungere? </label>
+	<div class="controls">
+		<select type="select" class="form-control" name="type">
+			<option value="content">WIDGET</option>
+			<option value="page">PAGINA</option>
+			<option value="page_adv">PAGINA AVANZATA (COMPOSER)</option>
+		</select>
+	</div>
+</div>
+-->
+<div class="clearfix">
+	<div class="col3 click">
+		<img src="assets/images/ico-widget.png">
+		<h2>Widget</h2>
+		<p>Contenuto dinamico</p>
+		<span class="btn btn-principale">Scegli</span>
+		<input type="radio" id="content" name="type" value="content">
+	</div>
+	<div class="col3 click">
+		<img src="assets/images/ico-pag-base.png">
+		<h2 class="no-p">Pagina base</h2>
+		<span class="btn btn-principale">Scegli</span>
+		<input type="radio" id="page" name="type" value="page">
+	</div>
+	<div class="col3 click">
+		<img src="assets/images/ico-pag-comp.png">
+		<h2>Composer</h2>
+		<p>Pagina avanzata</p>
+		<span class="btn btn-principale">Scegli</span>
+		<input type="radio" id="page_adv" name="type" value="page_adv">
+	</div>
+</div>
+
+{% endblock %}
+
+ {% block btn_text_save_form %}{{tr('next')}}{% endblock %}

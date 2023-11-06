@@ -1,0 +1,65 @@
+{
+    "form_deleted": "form eliminato con successo!",
+    "form_field_deleted": "campo eliminato con successo!",
+    "form_added": "form aggiunto con successo!",
+    "form_updated": "form aggiornato con successo!",
+    "backend_button_deleted": "Backend button eliminato con successo!",
+    "backend_button_added": "Backend button aggiunto con successo!",
+    "backend_button_updated": "Backend button aggiornato con successo!",
+    "show_fields": "visualizza campi",
+    "form_field": "Form campo",
+    "confirm_delete_backend_button": "Sicuro di voler eliminare il backend button <b>%s</b>?",
+    "confirm_delete_form": "Sicuro di voler eliminare il form <b>%s</b>?",
+    "confirm_delete_form_field": "Sicuro di voler eliminare il campo <b>%s</b>?",
+    "confirm_delete_permission": "Sicuro di voler eliminare il permesso <b>%s</b>?",
+    "permission_added": "Permesso aggiunto con successo!",
+    "permission_updated": "Permesso aggiornato con successo!",
+    "permission": "Permesso",
+    "permissions": "Permessi",
+    "hooks":{
+        "name": "Nome",
+        "description": "Descrizione",
+        "module": "Modulo",
+        "type": "Tipologia",
+        "functions": "Funzioni",
+        "function": "Funzione"
+    },
+    "menu":{
+        "list": {
+            "title": "Menu backend"
+        }
+    },
+    "menu_admin":{
+        "list": {
+            "title": "Menu admin"
+        },
+        "description": "Descrizione",
+        "module": "Modulo",
+        "offline": "offline",
+        "type": "Tipologia",
+        "functions": "Funzioni",
+        "function": "Funzione",
+        "form": {
+            "fields": {
+                "name": "Nome",
+                "parent": "Padre",
+                "permission": "Permesso",
+                "url": "Url",
+                "tag": "Tag",
+                "priority": "Priorità",
+                "active": "Attivo",
+                "target_blank": "Aprire in un'altra finestra?",
+                "icon": "Icona",
+                "icon_img": "Immagine icona",
+                "show_label": "Mostrare etichetta?",
+                "label_static": "Etichetta statica?",
+                "label_text": "Testo etichetta",
+                "label_function": "Funzione etichetta"
+            }
+        },
+        "messages": {
+            "updated": "Voce di menu aggiornata con successo",
+            "added": "Voce di menu aggiunta con successo"
+        }
+    }
+}

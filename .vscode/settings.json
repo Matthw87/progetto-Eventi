@@ -1,0 +1,13 @@
+{
+    "git.ignoreLimitWarning": true,
+    "files.associations": {
+        "*.htm": "twig",
+        "*.xml": "twig",
+    },
+    "emmet.includeLanguages": {
+        "twig": "htm"
+    },
+    "php.suggest.basic": false,
+    "svn.ignoreMissingSvnWarning": true,
+}
+

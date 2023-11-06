@@ -1,0 +1,25 @@
+<div class="colsx-backend">
+	<ul class="menu-backend">
+		{% for item in menu_forntend_items %}
+		<li class="{% if current_frontend == item.tag %}active{% endif %}">
+			<a href="{{item.url}}">
+				<div class="cont-ico"><img src="{{item.icon_image}}"></div>
+				{{item.get('name')}}
+			</a>
+		</li>
+		{% endfor %}
+		{% if auth('admin') %}
+			<li>
+				<a href="backend/index.php?ctrl=Index">
+					<div class="cont-ico"><img src="/themes/jewels/images/ico-area-admin-menu-backend.png"></div>
+					{{tr('Area Admin')}}
+				</a>
+			</li>
+		{% endif %}
+	</ul>
+	<div class="foo-menu-backend">
+		<a href="/p/contatti.htm" class="btn-default">
+			<img src="/themes/jewels/images/ico-contattaci-backend.png">Contattaci
+		</a>
+	</div>
+</div>

@@ -1,0 +1,90 @@
+/* Slick Modals - Notification Banner */
+.notificationBanner * {
+    color: #fff;
+    box-sizing: border-box;
+}
+.notificationBanner .wrap {
+    float: left;
+    width: 100%;
+    background: url("../img/notification_banner.jpg") no-repeat;
+    padding: 20px;
+}
+.notificationBanner .title {
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 4px 4px 0 rgba(0, 0, 0, .2);
+}
+.notificationBanner .left {
+    float: left;
+    text-align: left;
+}
+.notificationBanner .right {
+    float: right;
+}
+.notificationBanner p {
+    font-size: 14px;
+    padding: 0;
+}
+.notificationBanner p span {
+    font-weight: 700;
+    font-size: 22px;
+}
+.notificationBanner .sm-countDown li {
+    display: inline-block;
+    padding: 5px;
+    margin: 0 20px 0 0;
+    font-size: 12px;
+    vertical-align: middle;
+}
+.notificationBanner .sm-countDown li p {
+    display: inline;
+    text-shadow: 4px 4px 0 rgba(0, 0, 0, .2);
+}
+.notificationBanner .sm-countDown li p span {
+    font-weight: 700;
+    font-size: 32px;
+}
+.notificationBanner .sm-countDown li.last a {
+    font-size: 14px;
+    font-weight: 700;
+    background: #f78f8f;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+.notificationBanner .sm-countDown li.last a:hover {
+    background: #000;
+}
+@media screen and (max-width: 1024px) {
+    .notificationBanner .sm-countDown li p span {
+        font-size: 20px
+    }
+}
+@media screen and (max-width: 800px) {
+    .notificationBanner .sm-countDown li:not(.last) {
+        display: none;
+    }
+}
+@media screen and (max-width: 480px) {
+    .notificationBanner .wrap {
+        padding: 10px;
+    }
+    .notificationBanner ul {
+        float: none;
+        width: 100%;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    .notificationBanner li.last,
+    .notificationBanner li.last a {
+        width: 100%;
+        display: inline-block;
+        margin: 0 0 30px 0;
+    }
+    .notificationBanner li.last {
+        padding: 0;
+    }
+    .notificationBanner li.last a {
+        padding: 6px 10px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<module>
+    <info> 
+        <author>Ciro Napolitano</author>
+        <name>API</name>
+        <permission>superadmin</permission>
+        <tag>api</tag>
+        <kind>cms</kind>
+        <version>1.0.0</version>
+         <compatibility>
+            <min>2.6.0</min>
+        </compatibility>
+        <autoload>1</autoload>
+        <scope></scope> 
+        <description><![CDATA[Integra le API nella piattaforma]]></description> 
+    </info>
+    <hooks>
+        <hook>
+            <name>action_override_api_swagger</name>
+            <description>Permette di effettuare l'override di uno swagger</description>
+            <type>action</type>
+        </hook>
+    </hooks>
+    <linkSetting>
+        index.php?mod=api&amp;ctrl=Configuration
+    </linkSetting>
+</module>

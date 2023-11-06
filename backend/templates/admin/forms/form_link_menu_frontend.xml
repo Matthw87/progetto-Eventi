@@ -1,0 +1,50 @@
+<xml>
+    <sheet>
+        <row>   
+            <col>
+                <field name="id" hidden="true"/>
+                <field name="parent"/>
+            </col>
+        </row>
+        <row>   
+            <col>
+                <field name="title"/>
+            </col>
+        </row>
+        <row>   
+            <col>
+                <field name="static_url"/>
+            </col>
+        </row>
+        <row>   
+            <col>
+                <field name="url"/>
+            </col>
+        </row>
+        <row>   
+            <col>
+                <field name="url_type"/>
+            </col>
+            <col>
+                <field name="id_url_page"/>
+            </col>
+        </row>
+        <row>   
+            <col>
+                <field name="orderView"/>
+            </col>
+            <col>
+                <field name="visibility"/>
+            </col>
+             <col>
+                <field name="target_blank"/>
+            </col>
+        </row>
+         <row>   
+            <col>
+                <field name="image"/>
+            </col>
+        </row>
+        
+    </sheet>
+</xml>

@@ -1,0 +1,155 @@
+<xml>
+    <sheet>
+        <tabs>
+            <tab name="general" title="products.form.tabs.general">
+                {% if action == 'add' %}
+                <row>   
+                    <col>
+                        <field name="type"/>
+                    </col>
+                     <col>
+                        <field name="product_template_id"/>
+                    </col>
+                </row>
+                {% endif %}
+                
+                <row>   
+                    <col>
+                        <field name="id" hidden="true"/>
+                        <field name="name"/>
+                    </col>
+                </row>
+
+                <row>   
+                    <col>
+                        <field name="product_category_id"/>
+                    </col>
+                     <col>
+                        <field name="secondary_categories"/>
+                    </col>
+                    
+                </row>
+                
+                 <row>   
+                    <col>
+                        <field name="sku"/>
+                    </col>
+                    <col>
+                        <field name="product_manufacturer_id"/>
+                    </col>
+                </row>
+                 <row>   
+                    <col>
+                        <field name="ean"/>
+                    </col>
+                    <col>
+                        <field name="upc"/>
+                    </col>
+                </row>
+                <row>
+                    <col>
+                        <field name="description"/>
+                    </col>
+                </row>
+                <row>
+                    <col>
+                        <field name="image"/>
+                    </col>
+                </row>
+                <row>
+                    <col>
+                        <field name="online"/>
+                    </col>
+                    <col>
+                        <field name="order_view"/>
+                    </col>
+                     <col>
+                        <field name="tags"/>
+                    </col>
+                </row>
+                 <row>
+                    <col>
+                        <field name="quantity"/>
+                    </col>
+                    <col>
+                        <field name="weight"/>
+                    </col>
+                </row>   
+            </tab>
+            <tab name="combinations" title="products.form.tabs.combinations" if="product and product.isConfigurable()">
+                <div id="add_variation">
+                     <button  class="btn btn-info pull-right m-b-10" onclick="javascript:openPopup('{{tr('products.form.add_variation','catalogo')}}','{{url_add_variation}}')" type="button"><i class='fa fa-plus'> </i> {{tr('products.form.add_variation','catalogo')}}</button>
+                </div>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <th colspan="8">{{tr('products.form.combinations','catalogo')}}</th>
+                    </thead>
+                    <tbody id="rows">
+                    </tbody>
+                    <tfoot>
+                        <td colspan="6" style="padding: 10px 5px 10px 5px;">
+                            <div style="width: 100%; display: flex; justify-content: space-between !important; align-items: flex-end !important;">
+                                <button class="btn btn-default" onclick="javascript:formEvent('delete_all_variation',{{product.id}})" type="button"><i class='fa fa-trash-o'> </i> {{tr('products.form.remove_all_variations','catalogo')}}</button>                        
+                            </div>
+                            
+                        </td>
+                    </tfoot>
+            </table>
+            </tab>
+           
+            <tab name="media" title="products.form.tabs.media">
+                <row>
+                    <col>
+                        <field name="images"/>
+                    </col>
+                </row>
+                <row>
+                    <col>
+                        <field name="attachments"/>
+                    </col>
+                </row>  
+            </tab>
+            <tab name="seo" title="products.form.tabs.seo">
+                <row>
+                    <col>
+                        <field name="slug"/>
+                    </col>
+                </row>
+                <row>
+                    <col>
+                        <field name="meta_title"/>
+                    </col>
+                </row> 
+                 <row>
+                    <col>
+                        <field name="meta_description"/>
+                    </col>
+                </row> 
+            </tab>
+            <tab name="related_products" title="products.form.tabs.related_products">
+                <row>   
+                     <col>
+                        <field name="related_category"/>
+                    </col>
+                    
+                </row>
+                 <div id="wrapper-related-products">
+                </div>
+            
+            </tab>
+         
+            <tab name="advanced_features" title="products.form.tabs.advanced_features">
+                <row>
+                    <col>
+                        <field name="centralized_stock"/>
+                    </col>
+                     <col>
+                        <field name="is_virtual"/>
+                    </col>
+                </row>
+            
+            </tab>
+        </tabs>
+       
+    </sheet>
+</xml>

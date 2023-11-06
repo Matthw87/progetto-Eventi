@@ -1,0 +1,155 @@
+/* Slick Modals - Events Calendar */
+.eventsCalendar {
+    color: #333;
+}
+.eventsCalendar .calendar .ui-datepicker-header {
+    position: relative;
+    background: #40b9c0;
+    color: #fff;
+    padding: 36px;
+}
+.eventsCalendar .calendar .ui-datepicker-header .ui-datepicker-title {
+    display: inline-block;
+}
+.eventsCalendar .calendar .ui-datepicker-header .ui-datepicker-title .ui-datepicker-month {
+    font-size: 36px;
+    margin-left: 14px;
+    color: #fff;
+}
+.eventsCalendar .calendar .ui-datepicker-header .ui-datepicker-title .ui-datepicker-year {
+    font-size: 12px;
+    vertical-align: top;
+    margin-left: 3px;
+    color: #fff;
+}
+.eventsCalendar .calendar .ui-datepicker-header .ui-corner-all {
+    position: absolute;
+    top: 38px;
+}
+.eventsCalendar .calendar .ui-datepicker-header .ui-corner-all.ui-datepicker-prev {
+    right: 70px;
+}
+.eventsCalendar .calendar .ui-datepicker-header .ui-corner-all.ui-datepicker-next {
+    right: 50px;
+}
+.eventsCalendar .calendar .ui-datepicker-header .ui-corner-all .ui-icon {
+    display: inline-block;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+    height: 18px;
+    width: 18px;
+    font-size: 0px;
+    text-indent: 100%;
+    cursor: pointer;
+    opacity: 0.3;
+}
+.eventsCalendar .calendar .ui-datepicker-header .ui-corner-all .ui-icon:hover {
+    opacity: 1;
+}
+.eventsCalendar .calendar .ui-datepicker-header .ui-corner-all .ui-icon.ui-icon-circle-triangle-w {
+    transform: rotate(135deg);
+}
+.eventsCalendar .calendar .ui-datepicker-header .ui-corner-all .ui-icon.ui-icon-circle-triangle-e {
+    transform: rotate(-45deg);
+}
+.eventsCalendar .calendar .ui-datepicker-calendar {
+    display: inline-block;
+    width: 100%;
+    padding: 24px 36px;
+}
+.eventsCalendar .calendar .ui-datepicker-calendar thead,
+.eventsCalendar .calendar .ui-datepicker-calendar tbody {
+    width: 100%;
+    display: inline-table;
+    text-align: center;
+    font-size: 14px;
+}
+.eventsCalendar .calendar .ui-datepicker-calendar thead {
+    border-bottom: solid 1px #eee;
+}
+.eventsCalendar .calendar .ui-datepicker-calendar tbody {
+    margin-top: 20px;
+}
+.eventsCalendar .calendar .ui-datepicker-calendar th,
+.eventsCalendar .calendar .ui-datepicker-calendar td {
+    width: calc(100% / 7);
+    height: 38px;
+    line-height: 38px;
+    position: relative;
+}
+.eventsCalendar .calendar .ui-datepicker-calendar thead tr th span {
+    font-weight: 700;
+}
+.eventsCalendar .calendar .ui-datepicker-calendar tbody tr td a {
+    color: #333;
+    text-decoration: none;
+    position: relative;
+    width: 100%;
+    display: inline-block;
+}
+.eventsCalendar .calendar .ui-datepicker-calendar tbody tr td.ui-datepicker-other-month {
+    opacity: 0.3;
+}
+.eventsCalendar .calendar .ui-datepicker-calendar tbody tr td.ui-datepicker-today a {
+    color: #fff;
+}
+.eventsCalendar .calendar .ui-datepicker-calendar tbody tr td.ui-datepicker-today a:before,
+.eventsCalendar .calendar .ui-datepicker-calendar tbody tr td.highlight a:before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    margin-left: -15px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    z-index: -1;
+}
+.eventsCalendar .calendar .ui-datepicker-calendar tbody tr td.ui-datepicker-today a:before {
+    background: #40b9c0;
+    border-color: #40b9c0;
+}
+.eventsCalendar .calendar .ui-datepicker-calendar tbody tr td.highlight a:before {
+    border: solid 2px #cecece;
+}
+.eventsCalendar .calendar .ui-datepicker-calendar tbody tr td.highlight:hover a:before,
+.eventsCalendar .calendar .ui-datepicker-calendar tbody tr td.highlight a.ui-state-active:before {
+    border-color: #333;
+}
+.eventsCalendar .events {
+    display: none;
+    width: 100%;
+    position: relative;
+    padding: 24px 36px 36px 36px;
+    border-top: solid 1px #eee;
+}
+.eventsCalendar .events .date {
+    font-size: 11px;
+    opacity: 0.7;
+}
+.eventsCalendar .events .title {
+    display: inline-block;
+    max-width: 70%;
+    font-size: 14px;
+    font-weight: 700;
+    padding-bottom: 4px;
+}
+.eventsCalendar .events .closeEvent {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.3;
+}
+.eventsCalendar .events .closeEvent:hover {
+    opacity: 1;
+}
+.eventsCalendar .events .summary {
+    font-size: 12px;
+    line-height: 20px;
+    padding-top: 12px;
+}

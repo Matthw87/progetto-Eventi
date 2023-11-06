@@ -1,0 +1,39 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- release/*
+variables:
+  MODULE_NAME: ${{replace(variables['build.repository.name'],'module_','')}}
+  RELEASE_NUMBER: ${{replace(variables['build.sourcebranchname'],'release\/','')}}
+  DEPLOY_PATH: 'public_html/api/storage/app/modules'
+  REMOTE_SERVER: 'Repository 3d0'
+pool:
+  vmImage: ubuntu-latest
+steps:
+- script: |
+    rm -r -f .git
+    rm -f module-pipelines.yml
+    tar -C $(pwd) -czvf $(RELEASE_NUMBER).tar.gz .
+    mv $(RELEASE_NUMBER).tar.gz $(Build.ArtifactStagingDirectory)
+    cp config.xml $(Build.ArtifactStagingDirectory)/$(RELEASE_NUMBER).xml
+  displayName: 'Creazione file per esportazione' 
+
+- task: CopyFilesOverSSH@0
+  displayName: 'Sposto il modulo sul server remoto'
+  inputs:
+    sshEndpoint: $(REMOTE_SERVER)
+    sourceFolder: '$(Build.ArtifactStagingDirectory)'
+    contents: '$(RELEASE_NUMBER).tar.gz'
+    targetFolder: "$(DEPLOY_PATH)/$(MODULE_NAME)"
+    readyTimeout: '20000'
+- task: CopyFilesOverSSH@0
+  displayName: 'Sposto il manifest sul server remoto'
+  inputs:
+    sshEndpoint: $(REMOTE_SERVER)
+    sourceFolder: '$(Build.ArtifactStagingDirectory)'
+    contents: '$(RELEASE_NUMBER).xml'
+    targetFolder: "$(DEPLOY_PATH)/$(MODULE_NAME)/info"
+    readyTimeout: '20000'

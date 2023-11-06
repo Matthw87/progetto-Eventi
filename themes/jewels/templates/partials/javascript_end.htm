@@ -1,0 +1,24 @@
+{% if compressed_js_end %}
+	{% for v in compressed_js_end %}
+		{% if v.type == 'data' %}
+<script>
+{{v.data|raw}}
+</script>
+		{% else %}
+<script src="{{v.url}}"></script>
+		{% endif %}
+	{% endfor %}
+{% else %}
+
+	{% for v in javascript_end %}
+		{% if v.options %}
+<script src="{{v.url}}" {% for i,j in v.options %}{{i}}="{{j}}" {% endfor %}></script>
+		{% else %}
+<script src="{{v.url}}"></script>
+		{% endif %}
+	{% endfor %}
+
+{% endif %}
+
+
+

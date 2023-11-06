@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<module>
+	<info> 
+		<author>Ciro Napolitano</author>
+		<name>Developer</name>
+		<permission>superadmin</permission>
+		<tag>developer</tag>
+		<kind>cms</kind>
+		<scope></scope> 
+		<version>2.0.0</version>
+		<compatibility>
+			<min>2.0.0</min>
+		</compatibility>
+		<description><![CDATA[Modulo che integra permette di modificare il cms.]]></description> 
+   </info>
+   <admin>
+	  <menu>
+		<items>
+			<item>
+				<locale>
+					<name>
+						<it>Developer</it>
+						<en>Developer</en>
+					</name>
+				</locale>
+				<tag>developer</tag> 
+				<icon>fa fa-bug</icon> 
+				<permission>superadmin</permission> 
+				<priority>3</priority> 
+			</item>
+			<item>
+				<locale>
+					<name>
+						<it>Permessi</it>
+						<en>Permissions</en>
+					</name>
+				</locale>
+				<parent>developer</parent>
+				<tag>developer_permissions</tag> 
+				<permission>superadmin</permission> 
+				<url>index.php?ctrl=Permission&amp;mod=developer&amp;action=list</url>
+				<priority>3</priority>  
+			</item>
+			<item>
+				<locale>
+					<name>
+						<it>Forms</it>
+						<en>Forms</en>
+					</name>
+				</locale>
+				<parent>developer</parent>
+				<tag>developer_forms</tag> 
+				<permission>superadmin</permission> 
+				<url>index.php?ctrl=Form&amp;mod=developer&amp;action=list</url>
+				<priority>3</priority>  
+			</item>
+			<item>
+				<locale>
+					<name>
+						<it>Menu Admin</it>
+						<en>Admin Menu</en>
+					</name>
+				</locale>
+				<parent>developer</parent>
+				<tag>developer_menu</tag> 
+				<permission>superadmin</permission> 
+				<url>index.php?ctrl=MenuAdmin&amp;mod=developer&amp;action=list</url>
+				<priority>3</priority>  
+			</item>
+			<item>
+				<locale>
+					<name>
+						<it>Menu Backend</it>
+						<en>Backend Menu</en>
+					</name>
+				</locale>
+				<parent>developer</parent>
+				<tag>developer_menu_backend</tag> 
+				<permission>superadmin</permission> 
+				<url>index.php?ctrl=MenuBackend&amp;mod=developer&amp;action=list</url>
+				<priority>3</priority>  
+			</item>
+			<item>
+				<locale>
+					<name>
+						<it>Buttons Backend</it>
+						<en>Buttons Backend</en>
+					</name>
+				</locale>
+				<parent>developer</parent>
+				<tag>developer_button_backend</tag> 
+				<permission>superadmin</permission> 
+				<url>index.php?ctrl=ButtonBackend&amp;mod=developer&amp;action=list</url>
+				<priority>3</priority>  
+			</item>
+			<item>
+				<locale>
+					<name>
+						<it>Hooks</it>
+						<en>Hooks</en>
+					</name>
+				</locale>
+				<parent>developer</parent>
+				<tag>developer_hooks</tag> 
+				<permission>superadmin</permission> 
+				<url>index.php?ctrl=Hook&amp;mod=developer&amp;action=list</url>
+				<priority>3</priority>  
+			</item>
+		</items>
+	   </menu>
+   </admin>
+</module>

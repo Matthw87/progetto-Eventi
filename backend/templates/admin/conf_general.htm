@@ -1,0 +1,15 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block edit_page_title %} {{tr('setting')|title}} {% endblock %} 
+
+
+
+{% block content %}
+{% import "macro/form.htm" as form %}
+{{form.buildCol(dataform.baseurl,'col-md-12')}}
+{{form.buildCol(dataform.nomesito,'col-md-12')}}
+{{form.buildCol(dataform.mail,'col-md-12')}}
+{{form.buildCol(dataform.redirect_admin_side,'col-md-12')}}
+{{form.buildCol(dataform.supportati,'col-md-12')}}
+{{form.buildCol(dataform.default,'col-md-12')}}
+
+{% endblock %}

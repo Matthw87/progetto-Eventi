@@ -1,0 +1,143 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block url_list %}{{url_list}}&id_form={{dataform.form.value}}{% endblock %} 
+{% block edit_page_title %} {{tr('form_field','developer')|title}} {% endblock %} 
+{% block content %}
+
+{% import "macro/form.htm" as form %}
+
+
+
+
+
+
+
+
+
+
+<div class="tabcordion">
+	<ul id="myTab" class="nav nav-tabs {class_widget}">
+		<li class="active"><a href="#general" data-toggle="tab">{{tr('general')|title}}</a></li>
+		
+		<li><a href="#controls" data-toggle="tab">{{tr('controls')|title}}</a></li>
+	
+		
+		
+	</ul>
+	<div id="myTabContent" class="tab-content">
+			
+			<!-- GENERAL --->
+			<div class="tab-pane fade active in" id="general">
+				<div class="row">
+				
+					<div class="col-md-12">	
+
+						{{form.build(dataform.codice)}}
+						{{form.build(dataform.form)}}
+						{{form.build(dataform.type)}}
+						{{form.buildCol(dataform.campo,'col-md-12')}}
+						{{form.buildCol(dataform.gettext,'col-md-12')}}
+						{{form.buildCol(dataform.etichetta,'col-md-12')}}
+						{{form.buildCol(dataform.attivo,'col-md-4')}}
+					
+						
+
+						
+					</div>
+				</div>
+			</div>
+
+			<!-- CONTROLS --->
+			<div class="tab-pane fade  in" id="controls">
+				<div class="row">
+				
+					<div class="col-md-12">	
+						
+						{{form.buildCol(dataform.ordine,'col-md-6')}}
+						{{form.buildCol(dataform.obbligatorio,'col-md-6')}}
+						<div class="clearfix"></div>
+						
+
+						{{form.buildCol(dataform.tipo_file,'col-md-12')}}
+						{{form.buildCol(dataform.number_files,'col-md-12')}}
+
+
+						{{form.buildCol(dataform.ext_image,'col-md-12')}}
+						{{form.buildCol(dataform.ext_attach,'col-md-12')}}
+						{{form.buildCol(dataform.resize_image,'col-md-12')}}
+						
+						
+						{{form.buildCol(dataform.dimension_resize_default,'col-md-12')}}
+
+						
+						
+
+						<span id="custom_dimension">
+						<div class="col-xs-6" id="div_thumbnail_x">
+							<label>Dimensione x del formato &quot;thumbnail&quot; :</label>
+							<div class="controls">
+								<input type="text" class="form-control " name="formdata[dimension_image][thumbnail_x]" value="{{dimension_image.thumbnail_x}}">
+							</div>
+						</div>
+
+						<div class=" col-xs-6" id="div_thumbnail_y">
+							<label>Dimensione y del formato &quot;thumbnail&quot; :</label>
+							<div class="controls">
+								<input type="text" class="form-control " name="formdata[dimension_image][thumbnail_y]" value="{{dimension_image.thumbnail_y}}">
+							</div>
+						</div>
+
+						<div class="form-group col-xs-6" id="div_small_x">
+							<label>Dimensione x del formato &quot;small&quot; :</label>
+							<div class="controls">
+								<input type="text" class="form-control " name="formdata[dimension_image][small_x]" value="{{dimension_image.small_x}}">
+							</div>
+						</div>
+
+						<div class="form-group col-xs-6" id="div_small_y">
+							<label>Dimensione y del formato &quot;small&quot; :</label>
+							<div class="controls">
+								<input type="text" class="form-control " name="formdata[dimension_image][small_y]" value="{{dimension_image.small_y}}">
+							</div>
+						</div>
+
+						<div class="form-group col-xs-6" id="div_medium_x">
+							<label>Dimensione x del formato &quot;medium&quot; :</label>
+							<div class="controls">
+								<input type="text" class="form-control " name="formdata[dimension_image][medium_x]" value="{{dimension_image.medium_x}}">
+							</div>
+						</div>
+
+						<div class="form-group col-xs-6" id="div_medium_y">
+							<label>Dimensione y del formato &quot;medium&quot; :</label>
+							<div class="controls">
+								<input type="text" class="form-control " name="formdata[dimension_image][medium_y]" value="{{dimension_image.medium_y}}">
+							</div>
+						</div>
+
+						<div class="form-group col-xs-6" id="div_large_x">
+							<label>Dimensione x del formato &quot;large&quot; :</label>
+							<div class="controls">
+								<input type="text" class="form-control " name="formdata[dimension_image][large_x]" value="{{dimension_image.large_x}}">
+							</div>
+						</div>
+
+						<div class="form-group col-xs-6" id="div_large_y">
+							<label>Dimensione y del formato &quot;large&quot; :</label>
+							<div class="controls">
+								<input type="text" class="form-control " name="formdata[dimension_image][large_y]" value="{{dimension_image.large_y}}">
+							</div>
+						</div>
+						</span>
+
+
+						
+
+					</div>
+				</div>
+			</div>
+
+			
+	</div>
+</div>
+{% endblock %}
+

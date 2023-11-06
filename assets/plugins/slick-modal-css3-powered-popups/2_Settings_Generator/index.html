@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Settings Generator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/generator.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/generator.js"></script>
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="generator">
+
+        <div class="main">
+
+            <form id="generator" class="section">
+
+                <h2>Settings Generator <span>BETA</span></h2>
+                <p>Select the settings and when finished, copy the generated snippet to your page. <span class="moreInfo_cta">Install steps &raquo;</span></p>
+                <p class="moreInfo_content">
+                    1. <b>Upload the plugin files</b> (slickmodal.min.css and jquery.slickmodal.min.js) from <span class="code">/src/plugin</span> folder to your web server.<br />
+                    2. <b>Copy the generated snippet</b> to your website right before closing the <span class="code">&lt;/body&gt;</span> tag.<br />
+                    3. <b>Edit the content</b> of the popup wrapper and insert your inner HTML elements
+                </p>
+
+                <div class="left">
+
+                    <h3>Main</h3>
+                    <div class="fields">
+
+                        <div class="field">
+                            <label for="field-popup_scriptPath">Script path</label>
+                            <input id="field-popup_scriptPath" type="text" placeholder="path/jquery.slickmodal.min.js" />
+                            <div class="tip">Upload plugin script path on your web server.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="field-popup_selector">Popup ID or Class name</label>
+                            <input id="field-popup_selector" type="text" placeholder="#selector or .selector" />
+                            <div class="tip">Type in popup wrapper selector ID or Class name</div>
+                        </div>
+
+                    </div>
+
+                    <h3>Restrictions</h3>
+                    <div class="fields">
+
+                        <div class="field">
+                            <label for="field-restrict_hideOnUrls">Hide on urls</label>
+                            <input id="field-restrict_hideOnUrls" type="text" placeholder="some/path-1, some/path-2" />
+                            <div class="tip">Insert URL path or Regex pattern for path matching.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-restrict_cookieSet">Set a cookie?</label>
+                            <select id="field-restrict_cookieSet">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                            </select>
+                            <div class="tip">When cookie is set popup will stay hidden.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="restrict_cookieSet">
+                            <label for="field-restrict_cookieName">Cookie name</label>
+                            <input id="field-restrict_cookieName" type="text" placeholder="hidePopup-1" />
+                            <div class="tip">Unique cookie name for each popup instance.</div>
+                        </div>
+
+                        <div class="field styledSelect disabled" data-depends="restrict_cookieSet">
+                            <label for="field-restrict_cookieScope">Cookie scope</label>
+                            <select id="field-restrict_cookieScope">
+                                <option value="domain" selected>Entire domain</option>
+                                <option value="page">Current page</option>
+                            </select>
+                            <div class="tip">Sets the cookie scope to domain or page.</div>
+                        </div>
+
+                        <div class="field disabled disabled" data-depends="restrict_cookieSet">
+                            <label for="field-restrict_cookieDays">Cookie expiration</label>
+                            <input id="field-restrict_cookieDays" type="range" min="1" max="365" value="30" />
+                            <div class="tip">Sets the expiration days for the cookie.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="restrict_cookieSet">
+                            <label for="field-restrict_cookieSetClass">Cookie setter class</label>
+                            <input id="field-restrict_cookieSetClass" type="text" placeholder="setSmCookie-1" />
+                            <div class="tip">Class of an element which can set this cookie.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-restrict_dateRange">Enable date range?</label>
+                            <select id="field-restrict_dateRange">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                            </select>
+                            <div class="tip">Enables date range restriction for the popup.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="restrict_dateRange">
+                            <label for="field-restrict_dateRangeStart">Starting date</label>
+                            <input id="field-restrict_dateRangeStart" type="text" placeholder="Y-M-D, H:M:S" />
+                            <div class="tip">Sets the starting date for the date range.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="restrict_dateRange">
+                            <label for="field-restrict_dateRangeEnd">Ending date</label>
+                            <input id="field-restrict_dateRangeEnd" type="text" placeholder="Y-M-D, H:M:S" />
+                            <div class="tip">Sets the ending date for the date range.</div>
+                        </div>
+
+                        <div class="field styledSelect disabled" data-depends="restrict_dateRange">
+                            <label for="field-restrict_dateRangeServerTime">Enable server time?</label>
+                            <select id="field-restrict_dateRangeServerTime">
+                                <option value="true" selected>True</option>
+                                <option value="false">False</option>
+                            </select>
+                            <div class="tip">Enables server side date timestamp.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="restrict_dateRange">
+                            <label for="field-restrict_dateRangeServerTimeFile">Server time file location</label>
+                            <input id="field-restrict_dateRangeServerTimeFile" type="text" placeholder="folder/getTime.php" />
+                            <div class="tip">File location for the server side timestamp.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="restrict_dateRange">
+                            <label for="field-restrict_dateRangeServerTimeZone">Server timezone</label>
+                            <input id="field-restrict_dateRangeServerTimeZone" type="text" placeholder="Europe/London" />
+                            <div class="tip">Time zone for the server side timestamp.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="field-restrict_showAfterVisits">Show after visits</label>
+                            <input id="field-restrict_showAfterVisits" type="range" min="1" max="100" value="1" />
+                            <div class="tip">Hides the popup for the defined number of visits.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-restrict_showAfterVisitsResetWhenShown">Hide after shown?</label>
+                            <select id="field-restrict_showAfterVisitsResetWhenShown">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                            </select>
+                            <div class="tip">Hides the popup again after it's been shown.</div>
+                        </div>
+
+                    </div>
+
+                    <h3>Popup</h3>
+                    <div class="fields">
+
+                        <div class="field styledSelect">
+                            <label for="field-popup_type">Popup type</label>
+                            <select id="field-popup_type">
+                                <option value="none" selected>None</option>
+                                <option value="delayed">Delayed</option>
+                                <option value="scrolled">Scrolled</option>
+                                <option value="exit">Exit</option>
+                            </select>
+                            <div class="tip">Select the type for the popup instance.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="popup_type">
+                            <label for="field-popup_delayedTime">Delay time in seconds</label>
+                            <input id="field-popup_delayedTime" type="range" min="0" max="120" step="1" value="2" />
+                            <div class="tip">Delay time in seconds for delayed popup type.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="popup_type">
+                            <label for="field-popup_scrollDistance">Scroll distance in px</label>
+                            <input id="field-popup_scrollDistance" type="range" min="20" max="1000" step="1" />
+                            <div class="tip">Scroll distance in pixels for scrolled popup type.</div>
+                        </div>
+
+                        <div class="field styledSelect disabled" data-depends="popup_type">
+                            <label for="field-popup_scrollHideOnUp">Hide on scroll up?</label>
+                            <select id="field-popup_scrollHideOnUp">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                            </select>
+                            <div class="tip">This option will hide the popup when scrolling up.</div>
+                        </div>
+
+                        <div class="field styledSelect disabled" data-depends="popup_type">
+                            <label for="field-popup_exitShowAlways">Show always on exit?</label>
+                            <select id="field-popup_exitShowAlways">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                            </select>
+                            <div class="tip">This option will show the popup always for exit type.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-popup_autoClose">Auto close popup?</label>
+                            <select id="field-popup_autoClose">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                            </select>
+                            <div class="tip">Auto closes the popup instance after defined time.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="popup_autoClose">
+                            <label for="field-popup_autoCloseAfter">Auto close after</label>
+                            <input id="field-popup_autoCloseAfter" type="range" min="0" max="120" value="5" />
+                            <div class="tip">Sets the auto closing delay time in seconds.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="field-popup_openWithHash">Open with hash</label>
+                            <input id="field-popup_openWithHash" type="text" placeholder="#myHash" />
+                            <div class="tip">Type in the URL hash which will open the popup.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-popup_redirectOnClose">Redirect visitor on close?</label>
+                            <select id="field-popup_redirectOnClose">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                            </select>
+                            <div class="tip">This option redirects the visitor after popup close.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="popup_redirectOnClose">
+                            <label for="field-popup_redirectOnCloseUrl">Redirect URL</label>
+                            <input id="field-popup_redirectOnCloseUrl" type="text" placeholder="https://example.com" />
+                            <div class="tip">Type in a valid URL for redirecting the visitor.</div>
+                        </div>
+
+                        <div class="field styledSelect disabled" data-depends="popup_redirectOnClose">
+                            <label for="field-popup_redirectOnCloseTarget">Redirect target</label>
+                            <select id="field-popup_redirectOnCloseTarget">
+                                <option value="_blank" selected>New tab</option>
+                                <option value="_self">Same tab</option>
+                            </select>
+                            <div class="tip">Target for opening the redirected URL.</div>
+                        </div>
+
+                        <div class="field styledSelect disabled" data-depends="popup_redirectOnClose">
+                            <label for="field-popup_redirectOnCloseTriggers">Redirect triggers</label>
+                            <select id="field-popup_redirectOnCloseTriggers">
+                                <option value="overlay">Overlay</option>
+                                <option value="button">Button</option>
+                                <option value="overlay button" selected>Overlay and Button</option>
+                                <option value="close">On popup close</option>
+                                <option value="overlay button close">All</option>
+                            </select>
+                            <div class="tip">Sets the triggers which will redirect the visitor.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-popup_position">Popup position</label>
+                            <select id="field-popup_position" class="populate-positions"></select>
+                            <div class="tip">Sets the position of the popup for desktop devices.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-popup_animation">Popup animation</label>
+                            <select id="field-popup_animation" class="populate-animations"></select>
+                            <div class="tip">Sets the popup animation effect.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-popup_closeButtonEnable">Enable popup close button?</label>
+                            <select id="field-popup_closeButtonEnable">
+                                <option value="true" selected>True</option>
+                                <option value="false">False</option>
+                            </select>
+                            <div class="tip">Enables the popup closing button.</div>
+                        </div>
+
+                        <div class="field styledSelect" data-depends="popup_closeButtonEnable">
+                            <label for="field-popup_closeButtonStyle">Close button style</label>
+                            <select id="field-popup_closeButtonStyle">
+                                <option value="cancel simple" selected>Cancel Simple</option>
+                                <option value="cancel circle">Cancel Circle</option>
+                                <option value="cancel square">Cancel Square</option>
+                                <option value="text simple">Text Simple</option>
+                                <option value="text label">Text Label</option>
+                            </select>
+                            <div class="tip">Sets the style of the closing button.</div>
+                        </div>
+
+                        <div class="field styledSelect" data-depends="popup_closeButtonEnable">
+                            <label for="field-popup_closeButtonAlign">Close button align</label>
+                            <select id="field-popup_closeButtonAlign">
+                                <option value="right" selected>Right</option>
+                                <option value="left">Left</option>
+                            </select>
+                            <div class="tip">Aligns the button relative to the popup.</div>
+                        </div>
+
+                        <div class="field styledSelect" data-depends="popup_closeButtonEnable">
+                            <label for="field-popup_closeButtonPlace">Close button place</label>
+                            <select id="field-popup_closeButtonPlace">
+                                <option value="inside">Inside</option>
+                                <option value="outside" selected>Outside</option>
+                            </select>
+                            <div class="tip">Places the button relative to the popup.</div>
+                        </div>
+
+                        <div class="field" data-depends="popup_closeButtonEnable">
+                            <label for="field-popup_closeButtonText">Close button text</label>
+                            <input id="field-popup_closeButtonText" type="text" placeholder="Close" />
+                            <div class="tip">Sets the button text when using 'text' style.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="field-popup_reopenClass">Reopen class</label>
+                            <input id="field-popup_reopenClass" type="text" placeholder="reopenSM-1" />
+                            <div class="tip">Class of the element which can open the popup.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-popup_reopenClassTrigger">Reopen class trigger</label>
+                            <select id="field-popup_reopenClassTrigger">
+                                <option value="click" selected>Click</option>
+                                <option value="hover">Hover</option>
+                            </select>
+                            <div class="tip">Defines the trigger for the reopening element.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-popup_reopenStickyButtonEnable">Enable sticky button?</label>
+                            <select id="field-popup_reopenStickyButtonEnable">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                            </select>
+                            <div class="tip">Enables sticky button which reopens the popup.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="popup_reopenStickyButtonEnable">
+                            <label for="field-popup_reopenStickyButtonText">Sticky button text</label>
+                            <input id="field-popup_reopenStickyButtonText" type="text" placeholder="Open popup" />
+                            <div class="tip">Custom text for the sticky reopen button.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-popup_enableESC">Enable ESC key?</label>
+                            <select id="field-popup_enableESC">
+                                <option value="true" selected>True</option>
+                                <option value="false">False</option>
+                            </select>
+                            <div class="tip">Closes the popup on pressing the ESC key.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="field-popup_bodyClass">Body class</label>
+                            <input id="field-popup_bodyClass" type="text" placeholder="myBodyClass" />
+                            <div class="tip">Sets custom body class when popup is opened.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="field-popup_wrapperClass">Popup wrapper class</label>
+                            <input id="field-popup_wrapperClass" type="text" placeholder="myPopupClass" />
+                            <div class="tip">Sets custom wrapper class when popup is opened.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-popup_draggableEnable">Enable draggable popup?</label>
+                            <select id="field-popup_draggableEnable">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                            </select>
+                            <div class="tip">Enables draggable feature for the popup window.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-popup_allowMultipleInstances">Allow multiple instances?</label>
+                            <select id="field-popup_allowMultipleInstances">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                            </select>
+                            <div class="tip">Allows popup to be opened even if another popup is already active.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="field-popup_css">Popup CSS</label>
+                            <textarea id="field-popup_css" class="code" placeholder="'width': '480px', 'background': '#fff', 'animation-duration': '2s'"></textarea>
+                            <div class="tip">Sets the custom CSS styles for the popup.</div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="right">
+
+                    <h3>Overlay</h3>
+                    <div class="fields">
+
+                        <div class="field styledSelect">
+                            <label for="field-overlay_isVisible">Is overlay visible?</label>
+                            <select id="field-overlay_isVisible">
+                                <option value="true" selected>True</option>
+                                <option value="false">False</option>
+                            </select>
+                            <div class="tip">Shows or hides the popup overlay.</div>
+                        </div>
+
+                        <div class="field styledSelect" data-depends="overlay_isVisible">
+                            <label for="field-overlay_closesPopup">Can overlay close the popup?</label>
+                            <select id="field-overlay_closesPopup">
+                                <option value="true" selected>True</option>
+                                <option value="false">False</option>
+                            </select>
+                            <div class="tip">Defines if the overlay can close the popup.</div>
+                        </div>
+
+                        <div class="field styledSelect" data-depends="overlay_isVisible">
+                            <label for="field-overlay_animation">Overlay animation</label>
+                            <select id="field-overlay_animation" class="populate-animations"></select>
+                            <div class="tip">Sets the overlay animation effect.</div>
+                        </div>
+
+                        <div class="field" data-depends="overlay_isVisible">
+                            <label for="field-overlay_css">Overlay CSS</label>
+                            <textarea id="field-overlay_css" class="code" placeholder="'background': '#555', 'animation-duration': '0.4s', 'animation-delay': '1s'"></textarea>
+                            <div class="tip">Sets the custom CSS styles for the overlay.</div>
+                        </div>
+
+                    </div>
+
+                    <h3>Inner content</h3>
+                    <div class="fields">
+
+                        <div class="field">
+                            <label for="field-content_loadViaAjax">Ajax HTML content location</label>
+                            <input id="field-content_loadViaAjax" type="text" placeholder="/folder/content.html" />
+                            <div class="tip">Sets the path for the HTML Ajax content.</div>
+                        </div>
+
+                        <div class="field styledSelect">
+                            <label for="field-content_animate">Should content be animated?</label>
+                            <select id="field-content_animate">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                            </select>
+                            <div class="tip">Enables the animation for the inner content wrapper.</div>
+                        </div>
+
+                        <div class="field styledSelect disabled" data-depends="content_animate">
+                            <label for="field-content_animation">Content animation</label>
+                            <select id="field-content_animation" class="populate-animations"></select>
+                            <div class="tip">Sets the inner content animation effect.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="field-content_css">Content CSS</label>
+                            <textarea id="field-content_css" class="code" placeholder="'background': '#ccc', 'animation-duration': '2s', 'animation-delay': '0.4s'"></textarea>
+                            <div class="tip">Sets the custom CSS styles for the content wrapper.</div>
+                        </div>
+
+                    </div>
+
+                    <h3>Page</h3>
+                    <div class="fields">
+
+                        <div class="field styledSelect">
+                            <label for="field-page_animate">Should page be animated?</label>
+                            <select id="field-page_animate">
+                                <option value="true">True</option>
+                                <option value="false" selected>False</option>
+                            </select>
+                            <div class="tip">Enables the animation effect for the page.</div>
+                        </div>
+
+                        <div class="field styledSelect disabled" data-depends="page_animate">
+                            <label for="field-page_animation">Page animation</label>
+                            <select id="field-page_animation">
+                                <option value="none" selected>None</option>
+                                <option value="blur">Blur</option>
+                                <option value="scale">Scale</option>
+                                <option value="moveUp">MoveUp</option>
+                                <option value="moveRight">MoveRight</option>
+                                <option value="moveBottom">MoveBottom</option>
+                                <option value="moveLeft">MoveLeft</option>
+                            </select>
+                            <div class="tip">Sets the animation effect for the page.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="page_animate">
+                            <label for="field-page_animationDuration">Animation duration</label>
+                            <input id="field-page_animationDuration" type="range" min="0" max="10" step="0.1" value="0.4" />
+                            <div class="tip">Sets the animation effect duration for the page.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="page_animate">
+                            <label for="field-page_blurRadius">Page blur radius</label>
+                            <input id="field-page_blurRadius" type="range" min="0" max="10" value="2" />
+                            <div class="tip">Sets the page blur radius.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="page_animate">
+                            <label for="field-page_scaleValue">Page scale value</label>
+                            <input id="field-page_scaleValue" type="range" min="0.1" max="2" step="0.1" value="0.9" />
+                            <div class="tip">Sets the page scale value.</div>
+                        </div>
+
+                        <div class="field disabled" data-depends="page_animate">
+                            <label for="field-page_moveDistance">Page move distance</label>
+                            <input id="field-page_moveDistance" type="range" min="1" max="99" value="30" />
+                            <div class="tip">Sets the page move distance.</div>
+                        </div>
+
+                    </div>
+
+                    <h3>Mobile</h3>
+                    <div class="fields">
+
+                        <div class="field styledSelect">
+                            <label for="field-mobile_show">Show on mobile?</label>
+                            <select id="field-mobile_show">
+                                <option value="true" selected>True</option>
+                                <option value="false">False</option>
+                            </select>
+                            <div class="tip">Enables the popup on smaller devices.</div>
+                        </div>
+
+                        <div class="field" data-depends="mobile_show">
+                            <label for="field-mobile_breakpoint">Mobile breakpoint</label>
+                            <input id="field-mobile_breakpoint" type="range" min="360" max="800" value="480" />
+                            <div class="tip">Sets the breakpoint for smaller devices.</div>
+                        </div>
+
+                        <div class="field styledSelect" data-depends="mobile_show">
+                            <label for="field-mobile_position">Popup position</label>
+                            <select id="field-mobile_position" class="populate-positions"></select>
+                            <div class="tip">Sets the position of the popup for smaller devices.</div>
+                        </div>
+
+                        <div class="field" data-depends="mobile_show">
+                            <label for="field-mobile_css">Mobile CSS</label>
+                            <textarea id="field-mobile_css" class="code" placeholder="'animation-duration': '0.2s', 'width': '100%'"></textarea>
+                            <div class="tip">Sets the custom CSS styles for smaller devices.</div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="notes">
+                    <p class="note">All settings have a default value defined within the plugin core. They will disappear from the generated code if the default value is selected.</p>
+                    <p class="note">For help you can also check the input placeholders which show an example or hover over a setting field to see the tip.</p>
+                    <p class="note">CSS must be properly formatted - please see the placeholder structure for detailed example.</p>
+                    <p class="note">You can always additionally edit all the values when pasting the code to your page and add/remove options manually.</p>
+                    <p class="note">Only popup types, auto close, popup/overlay/content effects and their CSS can be previewed.</p>
+                    <p class="note">As the generator is currently in BETA state please report any bugs you encounter during the usage.</p>
+                </div>
+            </form>
+
+        </div>
+
+        <div id="results">
+
+            <div class="console">
+
+                <span class="html top">
+                    <span class="row"><span class="com">&lt;!-- Plugin file path --&gt;</span></span>
+                    <span class="row"><span class="br">&lt;</span><span class="el">script</span> <span class="sel">src="<span class="popup_scriptPath"><span class="c-yellow">path</span></span>/jquery.slickmodal.min.js"</span><span class="br">&gt;</span><span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span></span><br />
+                    <span class="row"></span>
+                    <span class="row"><span class="com">&lt;!-- Popup HTML wrapper --&gt;</span></span>
+                    <span class="row"><span class="br">&lt;</span><span class="el">div</span> <span class="sel"><span class="attr-html c-yellow">class</span>="<span class="popup_selector"><span class="c-yellow">myPopup</span></span>" <span class="sel">data-sm-init="true"</span></span><span class="br">&gt;</span></span>
+                    <span class="row"><span class="com lvl1">&lt;!-- popup inner content --&gt;</span></span>
+                    <span class="row"><span class="br">&lt;</span><span class="el">/div</span><span class="br">&gt;</span></span><br />
+                    <span class="row"></span>
+                    <span class="row"><span class="com">&lt;!-- Plugin invoke &amp; settings --&gt;</span></span>
+                    <span class="row"><span class="br">&lt;</span><span class="el">script</span><span class="br">&gt;</span></span>
+                    <span class="row lvl1"><span class="el">jQuery</span><span class="sel">('<span class="attr-js c-yellow">.</span><span class="popup_selector"><span class="c-yellow">myPopup</span></span>')</span>.<span class="mtd">SlickModals</span><span class="hasSettings c-white">({</span><span class="noSettings c-white">();</span></span>
+                </span>
+
+                <span class="setting row restrict_hideOnUrls">restrict_hideOnUrls: [<span class="sel"></span>]<b class="endComma">,</b></span>
+                <span class="setting row restrict_cookieSet" data-depends="restrict_cookieSet">restrict_cookieSet: <span class="bool">false</span><b class="endComma">,</b></span>
+                <span class="setting row restrict_cookieName" data-depends="restrict_cookieSet">restrict_cookieName: '<span class="sel">slickModal-1</span>'<b class="endComma">,</b></span>
+                <span class="setting row restrict_cookieScope" data-depends="restrict_cookieSet">restrict_cookieScope: '<span class="sel">domain</span>'<b class="endComma">,</b></span>
+                <span class="setting row restrict_cookieDays" data-depends="restrict_cookieSet">restrict_cookieDays: '<span class="sel">30</span>'<b class="endComma">,</b></span>
+                <span class="setting row restrict_cookieSetClass" data-depends="restrict_cookieSet">restrict_cookieSetClass: '<span class="sel">setSmCookie-1</span>'<b class="endComma">,</b></span>
+                <span class="setting row restrict_dateRange" data-depends="restrict_dateRange">restrict_dateRange: <span class="bool">false</span><b class="endComma">,</b></span>
+                <span class="setting row restrict_dateRangeStart" data-depends="restrict_dateRange">restrict_dateRangeStart: '<span class="sel"></span>'<b class="endComma">,</b></span>
+                <span class="setting row restrict_dateRangeEnd" data-depends="restrict_dateRange">restrict_dateRangeEnd: '<span class="sel"></span>'<b class="endComma">,</b></span>
+                <span class="setting row restrict_dateRangeServerTime" data-depends="restrict_dateRange">restrict_dateRangeServerTime: <span class="bool">true</span><b class="endComma">,</b></span>
+                <span class="setting row restrict_dateRangeServerTimeFile" data-depends="restrict_dateRange">restrict_dateRangeServerTimeFile: '<span class="sel"></span>'<b class="endComma">,</b></span>
+                <span class="setting row restrict_dateRangeServerTimeZone" data-depends="restrict_dateRange">restrict_dateRangeServerTimeZone: '<span class="sel">Europe/London</span>'<b class="endComma">,</b></span>
+                <span class="setting row restrict_showAfterVisits">restrict_showAfterVisits: <span class="bool">1</span><b class="endComma">,</b></span>
+                <span class="setting row restrict_showAfterVisitsResetWhenShown">restrict_showAfterVisitsResetWhenShown: <span class="bool">false</span><b class="endComma">,</b></span>
+                <span class="setting row popup_type" data-depends="popup_type">popup_type: '<span class="sel">none</span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_delayedTime" data-depends="popup_type">popup_delayedTime: '<span class="sel">1</span>s'<b class="endComma">,</b></span>
+                <span class="setting row popup_scrollDistance" data-depends="popup_type">popup_scrollDistance: '<span class="sel">400</span>px'<b class="endComma">,</b></span>
+                <span class="setting row popup_scrollHideOnUp" data-depends="popup_type">popup_scrollHideOnUp: <span class="bool">false</span><b class="endComma">,</b></span>
+                <span class="setting row popup_exitShowAlways" data-depends="popup_type">popup_exitShowAlways: <span class="bool">false</span><b class="endComma">,</b></span>
+                <span class="setting row popup_autoClose" data-depends="popup_autoClose">popup_autoClose: <span class="bool">false</span><b class="endComma">,</b></span>
+                <span class="setting row popup_autoCloseAfter" data-depends="popup_autoClose">popup_autoCloseAfter: '<span class="sel">5s</span>s'<b class="endComma">,</b></span>
+                <span class="setting row popup_openWithHash">popup_openWithHash: '<span class="sel">false</span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_redirectOnClose" data-depends="popup_redirectOnClose">popup_redirectOnClose: <span class="bool">false</span><b class="endComma">,</b></span>
+                <span class="setting row popup_redirectOnCloseUrl" data-depends="popup_redirectOnClose">popup_redirectOnCloseUrl: '<span class="sel"></span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_redirectOnCloseTarget" data-depends="popup_redirectOnClose">popup_redirectOnCloseTarget: <span class="sel">_blank</span><b class="endComma">,</b></span>
+                <span class="setting row popup_redirectOnCloseTriggers" data-depends="popup_redirectOnClose">popup_redirectOnCloseTriggers: '<span class="sel">overlay button</span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_position">popup_position: '<span class="sel">center</span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_animation">popup_animation: '<span class="sel">fadeIn</span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_closeButtonEnable" data-depends="popup_closeButtonEnable">popup_closeButtonEnable: <span class="bool">true</span><b class="endComma">,</b></span>
+                <span class="setting row popup_closeButtonStyle" data-depends="popup_closeButtonEnable">popup_closeButtonStyle: '<span class="sel">cancel simple</span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_closeButtonAlign" data-depends="popup_closeButtonEnable">popup_closeButtonAlign: '<span class="sel">right</span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_closeButtonPlace" data-depends="popup_closeButtonEnable">popup_closeButtonPlace: '<span class="sel">outside</span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_closeButtonText" data-depends="popup_closeButtonEnable">popup_closeButtonText: '<span class="sel">Close</span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_reopenClass">popup_reopenClass: '<span class="sel">open-sm</span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_reopenClassTrigger">popup_reopenClassTrigger: '<span class="sel">click</span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_reopenStickyButtonEnable">popup_reopenStickyButtonEnable: <span class="bool">false</span><b class="endComma">,</b></span>
+                <span class="setting row popup_reopenStickyButtonText" data-depends="popup_reopenStickyButtonEnable">popup_reopenStickyButtonText: '<span class="sel"></span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_enableESC">popup_enableESC: <span class="bool">true</span><b class="endComma">,</b></span>
+                <span class="setting row popup_bodyClass">popup_bodyClass: '<span class="sel"></span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_wrapperClass">popup_wrapperClass: '<span class="sel"></span>'<b class="endComma">,</b></span>
+                <span class="setting row popup_draggableEnable">popup_draggableEnable: <span class="bool"></span><b class="endComma">,</b></span>
+                <span class="setting row popup_allowMultipleInstances">popup_allowMultipleInstances: <span class="bool"></span><b class="endComma">,</b></span>
+                <span class="setting row popup_css">popup_css: <span class="sel"></span><b class="endComma">,</b></span>
+                <span class="setting row overlay_isVisible" data-depends="overlay_isVisible">overlay_isVisible: <span class="bool">true</span><b class="endComma">,</b></span>
+                <span class="setting row overlay_closesPopup" data-depends="overlay_isVisible">overlay_closesPopup: <span class="bool">true</span><b class="endComma">,</b></span>
+                <span class="setting row overlay_animation" data-depends="overlay_isVisible">overlay_animation: '<span class="sel">fadeIn</span>'<b class="endComma">,</b></span>
+                <span class="setting row overlay_css">overlay_css: <span class="sel"></span><b class="endComma">,</b></span>
+                <span class="setting row content_loadViaAjax">content_loadViaAjax: '<span class="sel">false</span>'<b class="endComma">,</b></span>
+                <span class="setting row content_animate" data-depends="content_animate">content_animate: <span class="bool">false</span><b class="endComma">,</b></span>
+                <span class="setting row content_animation" data-depends="content_animate">content_animation: '<span class="sel">zoomIn</span>'<b class="endComma">,</b></span>
+                <span class="setting row content_css">content_css: <span class="sel"></span><b class="endComma">,</b></span>
+                <span class="setting row page_animate" data-depends="page_animate">page_animate: <span class="bool">false</span><b class="endComma">,</b></span>
+                <span class="setting row page_animation" data-depends="page_animate">page_animation: '<span class="sel">scale</span>'<b class="endComma">,</b></span>
+                <span class="setting row page_animationDuration" data-depends="page_animate">page_animationDuration: '<span class="sel">.4s</span>s'<b class="endComma">,</b></span>
+                <span class="setting row page_blurRadius" data-depends="page_animate">page_blurRadius: '<span class="sel">1px</span>px'<b class="endComma">,</b></span>
+                <span class="setting row page_scaleValue" data-depends="page_animate">page_scaleValue: '<span class="sel">.9</span>'<b class="endComma">,</b></span>
+                <span class="setting row page_moveDistance" data-depends="page_animate">page_moveDistance: '<span class="sel">30%</span>%'<b class="endComma">,</b></span>
+                <span class="setting row mobile_show" data-depends="mobile_show">mobile_show: <span class="bool">true</span><b class="endComma">,</b></span>
+                <span class="setting row mobile_breakpoint" data-depends="mobile_show">mobile_breakpoint: '<span class="sel">480px</span>px'<b class="endComma">,</b></span>
+                <span class="setting row mobile_position" data-depends="mobile_show">mobile_position: '<span class="sel">bottomCenter</span>'<b class="endComma">,</b></span>
+                <span class="setting row mobile_css">mobile_css: <span class="sel"></span><b class="endComma">,</b></span>
+
+                <span class="html bottom">
+                    <span class="row hasSettings lvl1"><span class="c-white">});</span></span>
+                    <span class="row"><span class="br">&lt;/</span><span class="el">script</span><span class="br">&gt;</span></span>
+                </span>
+            </div>
+
+            <div class="actions">
+                <div class="copyCode cta pink">Select &amp; Copy</div>
+                <div class="openPreview">Preview Popup</div>
+            </div>
+
+        </div>
+
+        <div id="preview" data-sm-init="true" class="demoPopup">
+            <h1>Looking good!</h1>
+            <p>This is just a demo preview of the settings you have made with the generator so far.</p>
+            <div class="cta green" data-sm-close="true">Close the preview</div>
+        </div>
+
+    </body>
+</html>

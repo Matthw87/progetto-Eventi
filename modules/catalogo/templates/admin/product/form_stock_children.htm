@@ -1,0 +1,62 @@
+{% for key_child,child in form_veloce_stock %}
+<tr  id="child_{{key_child}}">
+	<td><input class="check_stock_bulk" type="checkbox"></td>
+	{% if child.name %}
+	<input type="hidden" name="formdata[stock_children][{{key_child}}][attributes]"  value="{{child.attributes|serialize}}">
+	{% else %}
+	<input type="hidden" name="formdata[stock_children][{{key_child}}][name]"  value="{{child.name}}">
+	{% endif %}
+	<td>
+		{% set data_img ={ 'id': key_child,'value':child.image?child.image:'',name:'formdata[stock_children]['~key_child~'][image]'} %}
+		{{form.buildUploadImage(data_img,'',true)}}
+		
+	
+	</td>
+	<td class="text-center">
+		{% if child.name %}
+			<strong>{{child.name}}:</strong>
+		{% else %}
+		{% for k1,v1 in child.attributes %}
+		<span><strong>{{k1}}:</strong> {{v1}} </span>
+		{% endfor %}
+		{% endif %}
+	</td>
+	<td class="text-center">
+			<input type="text" class="form-control" name="formdata[stock_children][{{key_child}}][sku]" value="{{child.sku}}">
+	</td>
+	<td class="text-center">
+			<input type="text" class="form-control" name="formdata[stock_children][{{key_child}}][ean]" value="{{child.ean}}">
+	</td>
+	<td class="text-center">
+			<input type="text" class="form-control" name="formdata[stock_children][{{key_child}}][upc]" value="{{child.upc}}">
+	</td>
+	<td class="text-center">
+			<input type="text" class="form-control solointeri qnt_child" name="formdata[stock_children][{{key_child}}][stock]" value="{{child.stock}}">
+	</td>
+	<td class="text-center">
+			<input type="text" class="form-control solointeri weight_child" name="formdata[stock_children][{{key_child}}][weight]" value="{{child.weight}}">
+	</td>
+	
+	<td class="text-center">
+			<span class="label {% if child.visibility == true %}label-success{% else %}label-danger{% endif %}" id="status_{{child.id}}" style="cursor:pointer;" onclick="change_visibility({{child.id}}); return false;">{% if child.visibility == true %}ONLINE{% else %}OFFLINE{% endif %}</span>
+			
+			
+			
+	</td>
+	<td class="text-center" style="width:150px;"> 
+		<div class="btn-group media-group">
+			  <a href="{{script_url}}&action=edit&&id={{key_child}}" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i> modifica</a>
+			  <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
+					<span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu media-menu text-left" role="menu">
+				
+				<li><a href="{{url_confirm_delete}}&id={{key_child}}"><i class="fa fa-trash-o"></i> elimina</a></li>
+			  </ul>
+		</div>
+
+		
+	</td>
+
+</tr>
+{% endfor %}

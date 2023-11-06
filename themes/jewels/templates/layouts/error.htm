@@ -1,0 +1,17 @@
+{% extends "layouts/page.htm" %}
+{% block metatags_title %} ERROR {% endblock %} 
+{% block content %}
+	 <div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12 table-responsive">
+			<p>ERRORE</p>
+
+			<div class="row">
+				<div class="col-md-12 pull-right">
+					
+					{{message|raw}}
+				</div>
+			</div>
+		</div>
+		 
+	</div>
+{% endblock %}

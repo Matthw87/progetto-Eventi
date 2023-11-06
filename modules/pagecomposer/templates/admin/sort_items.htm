@@ -1,0 +1,37 @@
+{% extends "@core/layouts/base_widget.htm" %}
+{% block content %}
+<script>
+	var js_id_box = "{{id_box|escape('js')}}";
+</script>
+<style>
+.panel {
+    margin-top:0px !important;
+	margin-bottom: 0px; !important
+}
+.dd-handle {
+	margin-bottom: 10px !important;
+}
+.nestable{
+	padding: 0px !important;
+}
+</style>
+{% if items %}
+<div class="dd" id="nestable" style="padding:20px;">
+	<ol class="dd-list">
+			{% for v in items %}
+			<li class="dd-item" data-id="{{v['id']}}">										
+				<div class="dd-handle">
+				{% if v['img_logo']  %}
+					<img class="img-box" src="{{v['img_logo']}}">
+				{% endif %}
+				{{v['title']}}{%if v['custom_name'] %}<label class="label label-info">{{v['custom_name']}}</label>{% endif %}
+				</div>
+			</li>
+			{% endfor %}
+	</ol>
+
+</div> 
+{% else %}
+ Non ci sono widget da ordinare
+{% endif %}
+{% endblock %}

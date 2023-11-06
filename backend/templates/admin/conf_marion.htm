@@ -1,0 +1,10 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block edit_page_title %} {{tr('setting')|title}} {% endblock %} 
+
+
+
+{% block content %}
+{% import "macro/form.htm" as form %}
+{{form.buildCol(dataform.color_theme)}}
+{{form.buildCol(dataform.locale)}}
+{% endblock %}

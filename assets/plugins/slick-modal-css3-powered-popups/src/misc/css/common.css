@@ -1,0 +1,262 @@
+/*
+   Reset and basics
+   ------------------------------ */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700');
+:root {
+    --white: #fff;
+    --black: #333;
+    --silver: #bbb;
+    --gray: #999;
+    --light: #eee;
+    --blue: #4f98d7;
+    --red: #ff5d5d;
+    --pink: #f78f8f;
+    --green: #3dc197;
+    --yellow: #f3ed34;
+    --gold: #dddd13;
+}
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 100%;
+    color: var(--black);
+    vertical-align: baseline;
+    line-height: normal;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    height: 100%;
+    background: var(--light);
+}
+
+/*
+   Layout
+   ------------------------------ */
+.main {
+    display: block;
+    max-width: 1140px;
+}
+.section {
+    display: inline-block;
+    width: 100%;
+    padding: 60px;
+    background: var(--white);
+}
+.notes {
+    display: inline-block;
+    width: 100%;
+    margin: 10px 0;
+    counter-reset: note;
+}
+.clear {
+    display: inline-block;
+    width: 100%;
+    content: '';
+}
+
+/*
+   Elements
+   ------------------------------ */
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+h2 {
+    font-size: 28px;
+    color: var(--blue);
+    padding: 0 0 20px 0;
+}
+h3 {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 30px 0 0 0;
+}
+ul,
+ol {
+    padding: 14px 0;
+}
+ul li,
+ol li,
+p {
+    font-size: 14px;
+    line-height: 24px;
+}
+ul li,
+ol li {
+    padding: 4px 0;
+    margin-left: 32px;
+}
+p {
+    padding: 14px 0;
+}
+p.note,
+p.small {
+    font-size: 12px;
+    line-height: 20px;
+}
+p.large {
+    font-size: 18px;
+    line-height: 28px;
+}
+p.note {
+    margin: 0;
+    padding: 6px 0;
+}
+p.note:before {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-weight: 700;
+    line-height: 18px;
+    padding: 0 6px;
+    margin-right: 6px;
+    counter-increment: note;
+    content: 'Note ' counter(note);
+}
+i {
+    font-style: italic;
+}
+b {
+    font-weight: 700;
+}
+body:not(.demo) a {
+    color: var(--blue);
+    text-decoration: none;
+    border-bottom: dashed 1px var(--blue);
+    cursor: pointer;
+}
+pre,
+.console {
+    background: var(--black);
+    color: var(--white);
+    margin: 20px 0;
+    width: 100%;
+    line-height: 24px;
+    overflow-x: auto;
+}
+pre {
+    padding: 20px 20px 20px 0;
+}
+
+pre,
+pre span,
+.code,
+.console,
+.console span {
+    font-family: "Consolas", Courier, monospace;
+}
+pre,
+pre span,
+.console,
+.console span {
+    font-size: 14px;
+}
+.com {
+    color: var(--gray);
+    font-style: italic;
+}
+.br {
+    color: var(--silver);
+}
+.el {
+    color: var(--red);
+}
+.sel,
+.c-yellow {
+    color: var(--yellow);
+}
+.mtd {
+    color: var(--blue);
+}
+.bool {
+    color: var(--red);
+}
+.setting,
+.array,
+.c-white {
+    color: var(--white);
+}
+.endComma {
+    font-style: normal;
+    font-weight: normal;
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--white);
+}
+.hideComma .endComma {
+    display: none;
+}
+.code {
+    display: inline-block;
+    background: var(--light);
+    padding: 2px 4px;
+}
+.code span {
+    font-style: italic;
+    font-size: 11px;
+    color: var(--red);
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-left: 20px;
+}
+.code span:before {
+    content: '@type {';
+}
+.code span:after {
+    content: '}';
+}
+.cta {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+.pink {
+    background: var(--pink);
+}
+.green {
+    background: var(--green);
+}
+.cta:hover {
+    background: var(--black);
+}
+::selection {
+    color: var(--white);
+    background: var(--green);
+}
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background: var(--light);
+}
+::-webkit-scrollbar-track {
+    background: var(--light);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--gray);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--blue);
+}
+
+/*
+   Responsive
+   ------------------------------ */
+
+@media (max-width: 1024px) {
+    .section {
+        padding: 30px;
+    }
+}

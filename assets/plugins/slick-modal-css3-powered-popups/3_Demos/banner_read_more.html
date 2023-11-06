@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Banner Read More</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/banner_read_more.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="banner_readMore" data-sm-init="true">
+            <img src="../src/demos/img/banner_read_more.jpg" />
+            <div class="content">
+                <a href="#" class="title">Lorem ipsum dolor sit</a>
+                <p>Est omnium aperiri te. Ei duo inani no nec conceptam, aperiri nostrud no nec nisl alte laboramus an namerum ...</p>
+                <a href="#">Read more &xrarr;</a>
+            </div>
+        </div>
+
+        <script>
+            $('.banner_readMore').SlickModals({
+                overlay_isVisible: false,
+                popup_type: 'delayed',
+                popup_delayedTime: '1s',
+                popup_animation: 'slideRight',
+                popup_position: 'bottomRight',
+                popup_closeButtonStyle: 'text label',
+                popup_css: {
+                    'width': '480px',
+                    'background': '#fff',
+                    'padding': '30px',
+                    'margin': '40px'
+                },
+                mobile_breakpoint: '480px',
+                mobile_position: 'bottomCenter',
+                mobile_css: {
+                    'width': '100%',
+                    'padding': '20px',
+                    'margin': '0'
+                },
+                popup_bodyClass: 'banner_readMore_visible'
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

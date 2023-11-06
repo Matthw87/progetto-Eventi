@@ -1,0 +1,15 @@
+{% extends 'layouts/page.htm' %}
+{% block content %}
+{% include 'partials/colsx_backend.htm' %}
+
+<div class="container-small">
+	<h4 class="titl-backend">
+		{% block backend_header %}
+			<!--TESTATA PAGINA -->
+		{% endblock %}
+	</h4>
+	{% block backend_content %}
+		<!--CONTENTUTO PAGINA -->
+	{% endblock %}
+</div>
+{% endblock %}

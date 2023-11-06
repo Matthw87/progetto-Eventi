@@ -1,0 +1,37 @@
+/* Slick Modals - Alert 3 */
+.alert-3 * {
+    text-align: center;
+    color: #333;
+}
+.alert-3 .title {
+    font-size: 28px;
+    padding: 46px 20px 0 20px;
+}
+.alert-3 p {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 20px 20px 40px 20px;
+    opacity: 0.7;
+}
+.alert-3 .action {
+    float: left;
+    width: 50%;
+    font-size: 14px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+.alert-3 .action.yes {
+    background: #45bba1;
+}
+.alert-3 .action.no {
+    background: #333;
+}
+.alert-3 .action.yes:hover {
+    background: #369d86;
+}
+.alert-3 .action.no:hover {
+    background: #666;
+}

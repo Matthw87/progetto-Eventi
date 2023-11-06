@@ -1,0 +1,30 @@
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{metatags_description}}">
+<meta name="author" content="3d0 SRL">
+<!--FAVICON-->
+<link rel="icon" type="image/png" href="img/favicon/favicon.png">
+
+{% if compressed_css %}
+    <style>
+    {{compressed_css|raw}}
+    </style>
+{% endif %}
+
+{% for v in css %}
+    {% if v.options %}
+<link rel="stylesheet" href="{{v.url}}"  {% for i,j in v.options %}{{i}}="{{j}}" {% endfor %}>
+    {% else %}
+<link rel="stylesheet" href="{{v.url}}">
+    {% endif %}
+{% endfor %}
+
+<link href="themes/jewels/css/bootstrap-social.css" rel="stylesheet">
+<link rel="stylesheet" href="themes/jewels/css/font-awesome.css">
+
+<!--<link rel="stylesheet" href="themes/jewels/css/demo.css">
+<link rel="stylesheet" href="themes/jewels/css/style.css">
+<link rel="stylesheet" href="themes/jewels/css/style_eshop.css">
+<link rel="stylesheet" href="themes/jewels/css/style_lokea.css">
+<link rel="stylesheet" href="themes/jewels/css/responsive_lokea.css">-->

@@ -1,0 +1,61 @@
+version: "3.9"
+networks:
+  marion:
+    driver: bridge
+services:
+  web:
+    image: webdevops/php-apache-dev:${PHP_VERSION}
+    environment:
+      LOG_STDOUT: ./logs
+    ports:
+      - ${APACHE_PORT_EXPOSED}:80
+    volumes:
+      - nfsmount:/app
+    environment:
+      FPM_PROCESS_MAX: 40
+      FPM_PM_MAX_CHILDREN: 60
+      FPM_MAX_REQUESTS: 80
+      PHP_MEMORY_LIMIT: 2048M
+    networks:
+      - marion
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+  db:
+    image: mysql:5.7.31
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOTPASS}          
+    ports:
+      - ${DB_PORT}:3306
+    restart: always
+    volumes:
+      - mariondb:/var/lib/mysql
+    networks:
+      - marion
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - ${PHPMYADMIN_PORT_EXPOSED}:80
+    environment:
+        PMA_HOST: ${DB_HOST}
+        MYSQL_USER: ${DB_USER}
+        MYSQL_PASSWORD: ${DB_PASS}
+        MYSQL_ROOT_PASSWORD: ${DB_ROOTPASS}
+        UPLOAD_LIMIT: 3000000000
+    depends_on:
+      - db
+    networks:
+      - marion
+volumes:
+  mariondb:
+    driver: local
+  nfsmount:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
+      device: ":${PWD}"

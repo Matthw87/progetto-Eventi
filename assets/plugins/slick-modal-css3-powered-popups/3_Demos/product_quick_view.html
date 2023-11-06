@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Product Quick View</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/demos/css/product_quick_view.css" rel="stylesheet" type="text/css" />
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/demos/js/product_quick_view.js"></script>
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="productQuickView" data-sm-init="true">
+            <div class="left">
+                <img src="../src/demos/img/product_quick_view.jpg" />
+            </div>
+            <div class="right">
+                <div class="stock true">In stock</div>
+                <div class="name">Lorem Ipsum Dolor</div>
+                <p>Mel cu elitr percipit, dolore doming scripserit quo no, id maiorum albucius eos.</p>
+                <div class="price new">$ 160.00</div>
+                <div class="price old">Old price: $ 180.00</div>
+                <div class="options radio">
+                    <input type="radio" name="productOptions1" id="product-option-1" checked="checked" />
+                    <label for="product-option-1">Option 1</label>
+                    <input type="radio" name="productOptions1" id="product-option-2" />
+                    <label for="product-option-2">Option 2</label>
+                    <input type="radio" name="productOptions1" id="product-option-3" />
+                    <label for="product-option-3">Option 3</label>
+                </div>
+                <div class="toCart"><span>Add to cart</span></div>
+                <div class="info">Delivery time in 1 - 3 working days.</div>
+            </div>
+        </div>
+
+        <script>
+            $('.productQuickView').SlickModals({
+                popup_type: 'delayed',
+                popup_delayedTime: '1s',
+                popup_animation: 'flowIn',
+                popup_closeButtonPlace: 'inside',
+                popup_css: {
+                    'width': '800px',
+                    'background': '#fff',
+                    'padding': '40px',
+                    'margin': 'auto'
+                },
+                overlay_css: {
+                    'background': 'rgba(0, 0, 0, 0.4)'
+                },
+                mobile_breakpoint: '800px',
+                mobile_position: 'center',
+                mobile_css: {
+                    'width': '100%',
+                    'height': 'auto',
+                    'padding': '30px',
+                    'margin': '0'
+                },
+                callback_afterInit: function () {
+                    sm_productQuickView('.productQuickView');
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

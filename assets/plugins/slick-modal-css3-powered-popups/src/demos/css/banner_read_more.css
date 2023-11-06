@@ -1,0 +1,36 @@
+/* Slick Modals - Banner Read More */
+body.banner_readMore_visible .sm-popup {
+    border-bottom: solid 6px #d97c7c;
+}
+.banner_readMore img {
+    width: 30%;
+    float: left;
+}
+.banner_readMore .content {
+    width: 60%;
+    float: right;
+    margin-left: 10%;
+}
+.banner_readMore .content a:hover {
+    color: #333;
+}
+.banner_readMore .content .title {
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333;
+}
+.banner_readMore .content p {
+    font-size: 12px;
+    line-height: 18px;
+    color: #999;
+    padding: 10px 0;
+}
+.banner_readMore .content a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    color: #b64c4c;
+}

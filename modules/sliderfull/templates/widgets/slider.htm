@@ -1,0 +1,62 @@
+<div class="carousel slide desktop_sliderfull" data-ride="carousel" id="sliderfull_desktop_{{id_box}}">
+	
+	<div class="carousel-inner">
+		{% for k,v in slides %}
+			
+			<div class="item {% if k == 0 %}active{% endif %}">
+				
+				{% if v.get('link_slide') %}
+				<a href="{{v.get('link_slide')}}"> 
+                {% endif %}
+					<div class="boxtestoslide">	
+						{% if v.get('title') %}
+						<div class="txt">
+							{% if v.get('subtitle') %}
+								<p class="testoslide" style="color:{{v.color_text}}">{{v.get('subtitle')}}</p>
+							{% endif %}
+							<h2 class="titoloslide" style="color:{{v.color_text}}">{{v.get('title')}}</h2>
+							<div class="btn-box-img">Scopri di pi&ugrave;</div>
+						</div>
+						{% endif %}
+						<img class="slide-image" src="{{v.getUrlImage()}}" alt=""/>
+					</div>
+				{% if v.get('link_slide') %}
+				</a>
+                {% endif %}
+				
+			</div>
+		
+
+		{% endfor %}
+	</div>		
+	{% if only_one == false %}
+		 <div class="slider-arrows {{slider.arrows_direction}}">
+			<a class="arrow-left" href="#sliderfull_desktop_{{id_box}}" role="button" data-slide="prev">
+				<svg id="Raggruppa_103" data-name="Raggruppa 103" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="16" viewBox="0 0 32 16">
+					<defs>
+						<clipPath id="clip-path">
+						<rect id="Rettangolo_205" data-name="Rettangolo 205" width="32" height="16" fill="none"/>
+						</clipPath>
+					</defs>
+					<g id="Raggruppa_102" data-name="Raggruppa 102" clip-path="url(#clip-path)">
+						<path id="Tracciato_90" data-name="Tracciato 90" d="M3.281,15.519,16,4.574,28.714,15.518a2.2,2.2,0,0,0,2.75,0,1.467,1.467,0,0,0,.536-1.1,1.443,1.443,0,0,0-.539-1.1L16,0,.536,13.31a1.4,1.4,0,0,0,0,2.209,2.2,2.2,0,0,0,2.743,0" fill="#fff"/>
+					</g>
+				</svg>
+			</a>
+			<a class="arrow-right" href="#sliderfull_desktop_{{id_box}}" role="button" data-slide="next">
+				<svg id="Raggruppa_101" data-name="Raggruppa 101" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="16" viewBox="0 0 32 16">
+					<defs>
+						<clipPath id="clip-path">
+						<rect id="Rettangolo_204" data-name="Rettangolo 204" width="32" height="16" fill="none"/>
+						</clipPath>
+					</defs>
+					<g id="Raggruppa_100" data-name="Raggruppa 100" clip-path="url(#clip-path)">
+						<path id="Tracciato_89" data-name="Tracciato 89" d="M28.719.481,16,11.426,3.286.482A2.108,2.108,0,0,0,1.911,0,2.116,2.116,0,0,0,.536.482,1.467,1.467,0,0,0,0,1.585,1.443,1.443,0,0,0,.539,2.69L16,16,31.464,2.69A1.438,1.438,0,0,0,32,1.585a1.435,1.435,0,0,0-.538-1.1,2.2,2.2,0,0,0-2.743,0" fill="#fff"/>
+					</g>
+				</svg>
+
+			</a>
+		 </div>
+	{% endif %}
+</div>
+

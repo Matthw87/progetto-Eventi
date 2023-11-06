@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<module>
+	<info> 
+		<author>Ciro Napolitano</author>
+		<name>Slider Full</name>
+		<permission>admin</permission>
+		<tag>sliderfull</tag>
+		<kind>cms</kind>
+		<scope></scope> 
+		<version>2.1.2</version>
+		<compatibility>
+			<min>2.0.0</min>
+		</compatibility>
+		<autoload>1</autoload>
+		<description><![CDATA[Modulo che implementa lo slider  nel sito]]></description> 
+   </info>
+   <admin>
+	  <menu>
+		<items>
+			<item>
+				<locale>
+					<name>
+						<it>SliderFull</it>
+						<en>SliderFull</en>
+					</name>
+				</locale>
+				<tag>sliderfull</tag> 
+				<parent>cms</parent>
+				<permission>cms</permission> 
+				<priority>100</priority> 
+				<url>index.php?ctrl=Slider&amp;mod=sliderfull&amp;action=list</url>
+			</item>
+		</items>
+		</menu>
+	</admin>
+	  <widgets>
+	   <widget> 
+			<name>Slider Full</name>
+			<function>WidgetSliderfull</function>
+			<url_conf>index.php?ctrl=Conf&amp;mod=sliderfull</url_conf>
+			<repeatable>1</repeatable>
+		</widget>
+  </widgets>
+  <dependencies>
+        <dependence>pagecomposer</dependence>
+  </dependencies>
+</module>

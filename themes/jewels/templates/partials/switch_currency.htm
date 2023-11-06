@@ -1,0 +1,12 @@
+<div class="valuta-corrente">
+	<span class="valore">{{switch_currency_current}}</span>
+	<i class="fa fa-angle-down" aria-hidden="true"></i>
+</div>
+
+<div class="box-valute">
+
+	{% for curr,url in switch_currencies %}
+	<a href="{{url}}"><span>{{curr}}</span></a>
+	{% endfor %}
+	
+</div>

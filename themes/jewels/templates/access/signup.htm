@@ -1,0 +1,77 @@
+{% extends 'layouts/page.htm' %}
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+
+
+	<div class="container-small">
+		<h4 class="txtc">{{tr('registration.registration')}}</h4>
+		<form class="form" method="POST">
+			<span class="errore">{{messages|raw}}</span>
+			<h6 class="m-t-0">{{tr('registration.info_account')}}</h6>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">	
+					{{form.buildCol(dataform.email)}}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.password)}}
+				</div>
+
+				{{form.build(dataform.id)}}
+				
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.name)}}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.surname)}}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.fiscal_code)}}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.cellular)}}
+				</div>
+			</div>
+			<h6>{{tr('registration.default_address')}}</h6>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.address)}}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.city)}}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.postal_code)}}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.province)}}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.country)}}
+				</div>
+			</div>
+			<h6>{{tr('registration.billing_data')}}</h6>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.company)}}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.vat_number)}}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.sdi_code)}}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					{{form.buildCol(dataform.pec)}}
+				</div>
+			</div>
+			<div class="space30"></div>
+			<span id="fields_form_anchor"></span>
+			<input type='hidden' name='formID'>
+			<input type='hidden' name='ctrl' value="Access">
+			<input type='hidden' name='action' value="signup">
+			<button class="btn-default">{{tr('registration.send')}}</button>
+			<div class="space60"></div>
+		</form>
+	</div>
+{% endblock %}

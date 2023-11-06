@@ -1,0 +1,95 @@
+<nav id="sidebar">
+        <div id="main-menu">
+            <ul class="sidebar-nav">
+				 {% for v in menu_admin_items %}
+				 {% if auth(v.permission) %}
+				 {% if okArray(v.children) %}
+				 <li class="{{current_menu_admin(current_admin,v.tag)}}">
+
+					 <a href="{% if v.url %}{{v.url}}{% else %}#{% endif %}">
+						{% if v.icon %}<i class="{{v.icon}}"></i>{% endif %}
+						{% if v.icon_image %}<img class="icon-img-sidebar" src="{{v.icon_image}}">{% endif %}
+						<span class="sidebar-text">{{v.get('name')}}</span>
+
+						<span class="fa arrow"></span><span class="label label-danger pull-right m-r-20 w-300"></span>
+						{% if v.showLabel %}
+						<span  class="label label-{{v.labelType}} pull-right m-r-20 w-300">{v.labelText}</span>
+						{% endif %}
+						</a>
+
+						<ul class="submenu collapse">
+							{% for v1 in v.children %}
+							  	{% if auth(v1.permission) %}
+									{% if v1.targetBlank %}
+									<li class="{{current_menu_admin(current_admin_child,v1.tag)}}">
+										<a href="{v1.url}" target="_blank">
+											{% if v1.icon %}<i class="{{v1.icon}}"></i>{% endif %}
+											{% if v1.icon_image %}<img class="icon-img-sidebar" src="{{v1.icon_image}}">{% endif %}
+											<span class="sidebar-text">{{v1.get('name')}}
+											{% if v1.showLabel %}
+											<span class="label label-{{v1.labelType}} pull-right">{{v1.labelText}}</span>
+											{% endif %}
+										</span></a>
+									</li>
+									{% else %}
+									<li class="{{current_menu_admin(current_admin_child,v1.tag)}}">
+										<a href="{{v1.url}}">
+											{% if v1.icon %}<i class="{{v1.icon}}"></i>{% endif %}
+											{% if v1.icon_image %}<img class="icon-img-sidebar" src="{{v1.icon_image}}">{% endif %}
+											<span class="sidebar-text">{{v1.get('name')}}
+											{% if v1.showLabel %}
+											<span class="label label-{{v1.labelType}} pull-right">{{v1.labelText}}</span>
+											{% endif %}
+										</span></a>
+									</li>
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+						</ul>
+				 </li>
+				 {% else %}
+
+				 <li class="{{current_menu_admin(current_admin,v.tag)}}">
+					 {% if v.targetBlank %}
+					<a href="{{v.url}}" target="_blank">
+						{% if v.icon %}<i class="{{v.icon}}"></i>{% endif %}
+						{% if v.icon_image %}<img class="icon-img-sidebar" src="{{v.icon_image}}">{% endif %}
+						<span class="sidebar-text">{{v.get('name')}}
+							{% if v.showLabel %}
+							<span  class="label label-{{v.labelType}} pull-right m-r-20 w-300">{v.labelText}</span>
+							{% endif %}
+						</span>
+					</a>
+					{% else %}
+					<a href="{{v.url}}">
+						{% if v.icon %}<i class="{{v.icon}}"></i>{% endif %}
+						{% if v.icon_image %}<img class="icon-img-sidebar" src="{{v.icon_image}}">{% endif %}
+						<span class="sidebar-text">{{v.get('name')}}
+							{% if v.showLabel %}
+							<span  class="label label-{{v.labelType}} pull-right m-r-20 w-300">{v.labelText}</span>
+							{% endif %}
+						</span>
+					</a>
+
+					{% endif %}
+				 </li>
+				 {% endif %}
+				 {% endif %}
+				{% endfor %}
+            </ul>
+        </div>
+        <div class="footer-widget">
+            <div class="sidebar-footer clearfix">
+                <a class="pull-left" href="/admin/admin.php?action=conf" data-rel="tooltip" data-placement="top" data-original-title="Settings"><i class="glyph-icon flaticon-settings21"></i></a>
+                <a class="pull-left toggle_fullscreen" href="#" data-rel="tooltip" data-placement="top" data-original-title="Fullscreen"><i class="glyph-icon flaticon-fullscreen3"></i></a>
+				<form id="form_lockscreen" method="POST" action="/admin/admin.php">
+					<input  type="hidden" name="locked_return_location" value="{return_location}"/>
+					<input  type="hidden" name="locked_action" value="lockscreen"/>
+				</form>
+                <a class="pull-left" href="#" onclick="$('#form_lockscreen').submit();" >
+					<i class="glyph-icon flaticon-padlock23"></i>
+				</a>
+                <a class="pull-left" href="index.php?ctrl=Access&action=logout" data-rel="tooltip" data-placement="top" data-original-title="Logout"><i class="fa fa-power-off"></i></a>
+            </div>
+        </div>
+    </nav>

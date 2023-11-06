@@ -1,0 +1,82 @@
+<div class="s-prod {{class_row_product}} product_card" id="riga_{{product_row.id}}">
+	<div class="cont_imgprodsez">
+		<a href="{{product_row.getUrl()}}">
+			<!--{% if product_row.images[1] %}
+			<img class="imgprod" src="{{product_row.getUrlImage(1,img_type_product_list)}}" id="img_prod_{{product_row.id}}">
+			{% else %}
+			<img class="imgprod" src="{{product_row.getUrlImage(0,img_type_product_list)}}" id="img_prod_{{product_row.id}}">
+			{% endif %}-->
+			
+			
+			<img class="imgprod imgtop" data-src="{{product_row.getUrlImage(0,'original')}}" id="img_prod_{{product_row.id}}" src="/themes/jewels/images/Gif-loader.gif"/>
+			{% if isActiveModule('ecommerce') %}
+				{% if product_row.getUrlImageLabelPrice() %}
+					<img class="labelprice-min" src="{{product_row.getUrlImageLabelPrice()}}" alt="labelprice"/>
+				{% endif %}
+				{% if product_row.hasSpecialPrice() %}
+					<span class="percentuale">-{{product_row.getDiscountPercentage()}}%</span>
+				{% endif %}
+			{% endif %}
+		</a>
+		
+		
+		<div class="cont_btn">
+			<!--- aggiungi al carrello - quantità - wishlist -->
+			{% if enable_quantity_add_cart == 1 %}
+				
+				<div class="input-group {{class_qty}}">
+					<form id="addCart_{{product_row.id}}">
+						<input type="hidden" name="formdata{{product_row.id}}[product]" value="{{product_row.id}}" />
+						<span class="input-group-addon" onclick="minus_add_cart($(this)); return false;"><img src="themes/jewels/images/ico_minus.png" width="13" height="2"/></span>
+						<input type="text" value="1" class="qnt_add_cart" name="formdata{{product_row.id}}[quantity]" />
+						<span class="input-group-addon" onclick="plus_add_cart($(this)); return false;"><img src="themes/jewels/images/ico_plus.png" width="13" height="13"/></span>
+					</form>
+				</div>
+			{% else %}
+				<form id="addCart_{{product_row.id}}">
+					<input type="hidden" name="formdata{{product_row.id}}[product]" value="{{product_row.id}}"/>
+					<input type="hidden" value="1" name="formdata{{product_row.id}}[quantity]" class="qnt_add_cart"/>
+				</form>
+
+			{% endif %}
+			{% if enable_add_cart_button == 1 %}
+				{% if product_row.hasChildren() %}
+					<a href="#" onclick="openProductCard({{product_row.id}},$(this)); return false;" class="{{class_add_cart}}">{{tr('Aggiungi al carrello')}}</a>
+				{% else %}
+					<a href="#" onclick="addToCart({{product_row.id}}); return false;" class="{{class_add_cart}}">{{tr('Aggiungi al carrello')}}</a>
+				{% endif %}
+			{% endif %}
+		</div>
+		{% if enable_wishlist == 1 %}
+		
+			{% if auth('base') %}
+				{% if product_row.isInWhishlist() %}
+					<a href="javascript:add_to_wishlist({{product_row.id}});" id="add_wish_{{product_row.id}}" class="{{class_add_wish}} add_wish_{{product_row.id}}" style="display:none;"><img src="themes/jewels/images/ico_cuore_vuoto.png"/></a>
+					<a href="javascript:remove_from_wishlist({{product_row.id}});" id="remove_wish_{{product_row.id}}" class="{{class_add_wish}} remove_wish_{{product_row.id}}"><img src="themes/jewels/images/ico_cuore_pieno.png" width="18"/></a>
+				{% else %}
+					<a href="javascript:add_to_wishlist({{product_row.id}});" id="add_wish_{{product_row.id}}" class="{{class_add_wish}} add_wish_{{product_row.id}}"><img src="themes/jewels/images/ico_cuore_vuoto.png"/></a>
+					<a href="javascript:remove_from_wishlist({{product_row.id}});" id="remove_wish_{{product_row.id}}" class="{{class_add_wish}} remove_wish_{{product_row.id}}" style="display:none;"><img src="themes/jewels/images/ico_cuore_pieno.png" width="18"/></a>
+				{% endif %}
+
+			{% else %}
+				<!--<a href="javascript:add_to_wishlist({{product_row.id}});" id="add_wish_{{product_row.id}}" class="{{class_add_wish}}"><img src="/themes/jewels/images/ico_cuore_vuoto.png"></a>-->
+			{% endif %}
+		{% endif %}
+
+	</div>
+	
+	<div class="info">
+		<p>{{product_row.getManufacturerName()}}</p>
+		<p>{{product_row.get('name')}}</p>
+		{% if isActiveModule('ecommerce') %}
+		<div class="price">
+			{% if product_row.hasSpecialPrice() %}
+				<span class="scontato">{{currencyLabel|raw}} {{product_row.getPriceFormatted()}}</span>
+				<span class="barrato">{{currencyLabel|raw}} {{product_row.getDefaultPriceValueFormatted()}}</span>
+			{% else %}
+				<span>{{currencyLabel|raw}} {{product_row.getPriceFormatted()}}</span>
+			{% endif %}
+		</div>
+		{% endif %}
+	</div>
+</div>

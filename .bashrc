@@ -1,0 +1,1 @@
+alias marion="sh marion"

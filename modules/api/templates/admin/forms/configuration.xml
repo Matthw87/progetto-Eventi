@@ -1,0 +1,9 @@
+<xml>
+    <sheet>
+        <row>
+            <col>
+                <field name="swagger_enabled_modules"/>
+            </col>
+        </row>
+    </sheet>
+</xml>

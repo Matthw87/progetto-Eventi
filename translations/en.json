@@ -1,0 +1,68 @@
+{
+    "login":{
+        "my_account" : "My account",
+        "new_customer" : "new customer",
+        "are_you_a_registered_customer":"Are you a registered customer?",
+        "complete_your_order_faster":"Complete your order faster.",
+        "are_you_a_new_customer" : "Are you a new customer?",
+        "new_customer_message": "If you wish, you can register now to make your next purchases faster.",
+        "did_you_forget_your_password": "Did you forget your password?",
+        "register_now": "register now",
+        "sign_in": "sign in"
+    },
+    "activation":{
+        "activation": "Activation account",
+        "error": "Token not valid or expired.",
+        "success": "Account activated successfully."
+    },
+    "forgot-password":{
+        "password_recovery": "Password recovery",
+        "insert_your_email": "Insert your email",
+        "send": "Send",
+        "email_subject": "Password recovery on %s",
+        "email_content": "<strong>Gentile %s,</strong><br><p>abbiamo ricevuto la tua richiesta di recupero dei dati di accesso al sito<br>Per reimpostare la password clicca sul link sottostante.</p><p><a href='%s'>%s</a></p>"
+    },
+    "reset-password":{
+        "new_password": "New password",
+        "password": "Password",
+        "password_confirmation": "Password confirmation",
+        "send": "Send"
+    },
+    "registration":{
+        "registration": "Registration",
+        "info_account": "Information account",
+        "default_address": "Main address",
+        "billing_data": "Billing data",
+        "email": "Email",
+        "password": "Password",
+        "postal_code": "Postal code",
+        "vat_number": "Vat number",
+        "fiscal_code": "Fiscal code",
+        "name": "First Name",
+        "surname": "Last Name",
+        "pec": "PEC",
+        "sdi_code": "SDI code",
+        "cellular": "Mobile phone",
+        "address": "Address",
+        "city": "City",
+        "province": "Province",
+        "country": "Country",
+        "company": "Company",
+        "send": "Send"
+    },
+    "personal-data":{
+        "personal_data": "Personal data",
+        "password": "Password",
+        "info_account": "Account information",
+        "default_address": "Default address",
+        "invoice_data": "Invoice data",
+        "save": "Save",
+        "utente_aggiornato_con_successo": "Data saved successfully!"
+    },
+    "select...": "select...",
+    "back_login": "Back to login",
+    "user_not_exists": "User not exists",
+    "username_or_password_not_valid": "Bad credentials"
+    
+    
+}

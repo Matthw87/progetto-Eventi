@@ -1,0 +1,43 @@
+body{
+	margin-top:0;
+}
+
+.col100 {
+	width: 100%;
+}
+
+.form-control {
+    display: inline-block;
+    width: 100% !important; 
+}
+
+#main-content {
+    padding: 20px;
+    background-color: #dfe5e9;
+    overflow-x: hidden;
+}
+
+.nav-tabs {
+    border-bottom: 0;
+    border-left: 0;
+}
+
+.tab-content {
+    background-color: #FFF;
+    padding: 25px 25px 10px;
+	border: 1px solid #ddd;
+}
+
+.bootstrap-select.btn-group:not(.input-group-btn) {
+    margin-bottom: 0;
+}
+
+button.btn.dropdown-toggle.selectpicker.btn-default {
+    background: transparent;
+	padding-left: 10px;
+}
+
+button.btn.btn-success {
+    float: right;
+    margin-right: 15px;
+}

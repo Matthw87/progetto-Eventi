@@ -1,0 +1,25 @@
+{% extends 'layouts/page.htm' %}
+{% block metatags_title %}{% if pagina.get('metaTitle') %}{{pagina.get('metaTitle')}}{% else %}{{pagina.get('title')}}{% endif %}{% endblock %}
+{% block metatags_description %}{{pagina.get('metaDescription')}}{% endblock %}
+{% block title %}
+	{{pagina.get('title')}}
+{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<h3></h3>
+		{% if auth('cms_page') %}
+		<div class="cont_mod">
+			<a href="{{url_edit}}" class="mod centrato"><img src="/themes/jewels/images/ico_mod.jpg"> {{tr('Modifica')}}</a>
+		</div>
+		{% endif %}
+		<div class="titl">{{pagina.get('title')}}</div>
+		<div class="space40"></div>
+		<div class="text">
+			{{pagina.getContent()|raw}}
+		</div>
+	
+	
+	</div>
+</div>    
+{% endblock %}

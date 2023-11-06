@@ -1,0 +1,50 @@
+/*
+   Demo
+   ------------------------------ */
+body.multiple .popupTriggers,
+#demoContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 460px;
+    max-height: 320px;
+    text-align: center;
+    margin: auto;
+}
+body.multiple .popupTriggers {
+    max-height: 380px;
+}
+small.bottomNotice {
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12px;
+    opacity: .9;
+}
+.demoPopup {
+    text-align: center;
+}
+.demoPopup a {
+    display: block;
+    margin-top: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+ul,
+ol,
+ul li,
+ol li {
+    padding: 0;
+    margin: 0;
+}
+body.demo.social #demoContainer,
+body.demo.social small.bottomNotice,
+body.demo.multiple #demoContainer,
+body.hideDemoElements #demoContainer,
+body.hideDemoElements small.bottomNotice {
+    display: none;
+}

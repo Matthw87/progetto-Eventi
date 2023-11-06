@@ -1,0 +1,159 @@
+{% extends container_layout %}
+
+{% block css %}
+{{parent()}}
+<style>	
+	.edit_button{
+		position: absolute;
+		right: 2px;
+		top: 7px;
+	}
+	.dd-handle {
+		display: block;
+		height: 53px !important;
+		margin: 5px 0;
+		padding: 5px 10px;
+		color: #6f7b8a;
+		text-decoration: none;
+		font-weight: 600;
+		border: 1px solid #DFE1E6;
+		background: #DFE1E6;
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	}
+
+	.dd-handle:hover {
+		background-color: #c3c7d0;
+	}
+</style>
+<style>
+.simple-list-item {
+	border: 1px solid #C1C7D0;
+	background: #fff;
+	border-radius: 0px;
+	padding: 16px 32px 0;
+	margin: 0 0 16px;
+}
+
+.simple-list-item .panel-body {
+	color: #172B4D;
+	font-size: 24px;
+	font-weight: 500;
+	float: left;
+	max-width: 600px;
+	margin-bottom: 16px;
+}
+
+.simple-list-item .panel-footer {
+	background: transparent;
+	border: 0;
+	padding: 0;
+	float: right;
+}
+
+.simple-list-item .panel-footer a.btn {
+	margin-right: 8px;
+	margin-bottom: 16px;
+}
+
+.ico-btn {
+    height: 18px;
+    width: auto;
+	margin-right: 2px;
+	margin-top: -2px;
+}
+
+.simple-list-item-selected{
+	border:3px solid #4C9AFF;
+	background: #DEEBFF;
+}
+</style>
+{% endblock %}
+{% block messages %}
+{% if confirm_message_list %}
+<div class='alert alert-warning' style='width:100%; position:relative;color:#000000;'>
+	<a style='position:absolute; color:#000000; right:5px;top:0;cursor:pointer;' onclick='$(this).parent().remove()'><i class='fa fa-times'></i></a>
+	{{confirm_message_list|raw}}
+	<div class="clearboth"></div>
+	<div style="display: flex; justify-content: flex-end;">
+		<button  onclick="$(this).closest('.alert').remove()" class="btn btn-default btn-sm"><i class="fa fa-undo"></i> {{tr('general.cancel')}}</button>
+		<a href="{{url_confirm_action_list}}" class="btn btn-info btn-sm"><i class="fa fa-check"></i> {{tr('general.confirm')}}</a>
+	</div>
+</div>
+{% else %}
+{{parent()}}
+{% endif %}
+{% endblock %}
+{% block content %}	
+    {% import '@core/layouts/list/sortable_item.htm' as list %}
+	{% if items %}
+	<div class="row">
+		<div class="col-md-12">
+			<div class="dd" id="nestable">
+				
+				
+				
+				<ol class="dd-list">
+					{% for v in items %}
+					{{list.sortable_item(v)}}
+					{% endfor %}
+					
+				</ol>
+			</div>
+		</div>
+	</div>
+	{% else %}
+	<div class="simple-list-item panel" id="home_{{v.id}}">
+		<div class="row">
+			<div class="panel-body">
+				{{tr('list.no_record')}}
+			</div>
+		</div>
+	</div>
+	{% endif %}
+    <script src="../assets/plugins/jquery-nestable/jquery.nestable.js"></script>
+    <script>
+    const url_change_list = "{{changeCallbackUrl|escape('js')}}";
+	const max_depth = "{{max_depth|escape('js')}}";
+
+    var updateOutput = function(e)
+    {
+        
+        
+        var list   = e.length ? e : $(e.target),
+        output = list.data('output');
+        if (window.JSON) {
+            
+                    $.ajax({
+                        // definisco il tipo della chiamata
+                        type: "GET",
+                        // specifico la URL della risorsa da contattare
+                        url: url_change_list,
+                        // passo dei dati alla risorsa remota
+                        data: { changed: 1,  ids : list.nestable('serialize')},
+                        // definisco il formato della risposta
+                        dataType: "json",
+                        // imposto un'azione per il caso di successo
+                        success: function(data){
+                            
+                        },
+                        // ed una per il caso di fallimento
+                        error: function(){
+                        alert("Chiamata fallita!!!");
+                        }
+                    });
+
+
+                
+            } else {
+                output.val('JSON browser support required for this demo.');
+            }
+    };
+    // activate Nestable for list 1
+    $('#nestable').nestable({
+        maxDepth: max_depth,
+    }).on('change', updateOutput);
+    </script>
+{% endblock %}

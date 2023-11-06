@@ -1,0 +1,110 @@
+/* Slick Modals - Countdown banner */
+.countDownBanner * {
+    color: #fff;
+}
+.countDownBanner {
+    background: url("../img/countdown_banner.jpg") 0 0 no-repeat;
+    width: 100%;
+    height: 100%;
+    text-align: right;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.countDownBanner .title {
+    text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+    font-size: 38px;
+    margin: 140px 34px 0 0;
+    font-weight: 700;
+}
+.countDownBanner .intro {
+    color: #222;
+    margin-right: 34px;
+}
+.countDownBanner .sm-countDown {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+.countDownBanner .sm-countDown li {
+    display: inline-block;
+    padding: 5px;
+    margin: 0 20px 0 0;
+    font-size: 12px;
+}
+.countDownBanner .sm-countDown li.hide {
+    display: none;
+}
+.countDownBanner .sm-countDown li p {
+    display: inline;
+    text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+}
+.countDownBanner .sm-countDown li p span {
+    font-weight: 700;
+    font-size: 32px;
+}
+.countDownBanner .sm-countDown li:nth-child(3) {
+    margin-right: 0;
+}
+.countDownBanner .price {
+    position: absolute;
+    top: 20px;
+    right: 34px;
+    color: #e97777;
+    text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+    font-size: 68px;
+    font-weight: 700;
+}
+.countDownBanner .price span {
+    font-size: 30px;
+}
+.countDownBanner .location {
+    position: absolute;
+    top: 110px;
+    right: 34px;
+    color: #fff;
+    font-size: 14px;
+}
+.countDownBanner .close {
+    position: absolute;
+    left: 0;
+    bottom: 16px;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+.countDownBanner .close span {
+    font-weight: 700;
+}
+@media screen and (max-width: 400px) {
+    .countDownBanner {
+        text-align: center;
+    }
+    .countDownBanner .price,
+    .countDownBanner .location {
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    .countDownBanner .title {
+        margin: 150px 0 0 0;
+    }
+    .countDownBanner .sm-countDown {
+        margin-top: 20px;
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+    }
+    .countDownBanner .sm-countDown li {
+        margin: 0;
+    }
+    .countDownBanner .sm-countDown li p span {
+        font-size: 24px;
+    }
+}

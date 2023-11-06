@@ -1,0 +1,42 @@
+{% extends "@core/layouts/base_form_widget.htm" %}
+{% block javascript %}
+{{parent()}}
+<script>
+	var js_tabs_type = "{{dataform.tabs_type.value|escape('js')}}";
+
+	$(document).ready(function(){
+		
+		if( typeof js_tabs_type != 'undefined' && js_tabs_type != null && js_tabs_type == 'vertical' ){
+			$('#form-elements-vertical').show();
+		}
+	
+		$('#tabs_type').on('change',function(){
+			if( $(this).val() == 'vertical' ){
+				$('#form-elements-vertical').show();
+			}else{
+				$('#form-elements-vertical').hide();
+			}
+		});
+	});
+</script>
+{% endblock %}
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+
+
+
+
+{{form.buildCol(dataform.tabs_type,'col-md-12')}}
+<span id="form-elements-vertical" style="display:none">
+{{form.buildCol(dataform.menu_position,'col-md-12')}}
+
+
+{{form.buildCol(dataform.menu_dimension,'col-md-12')}}
+{{form.buildCol(dataform.content_dimension,'col-md-12')}}
+
+</span>
+
+
+{% endblock %}
+

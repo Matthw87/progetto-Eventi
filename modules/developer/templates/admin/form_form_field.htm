@@ -1,0 +1,33 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block edit_page_title %} {{tr('form_field')|title}} {% endblock %} 
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+
+{{form.build(dataform.codice)}}
+{{form.buildCol(dataform.type,'col-md-6')}}
+{{form.buildCol(dataform.tipo,'col-md-6')}}
+{{form.buildCol(dataform.obbligatorio,'col-md-3')}}
+{{form.buildCol(dataform.attivo,'col-md-3')}}
+{{form.buildCol(dataform.ordine,'col-md-12')}}
+
+{{form.buildCol(dataform.valuezero,'col-md-12')}}
+{{form.buildCol(dataform.tipo_valori,'col-md-12')}}
+{{form.buildCol(dataform.function_template,'col-md-12')}}
+{{form.buildCol(dataform.multilocale,'col-md-12')}}
+
+{{form.buildCol(dataform.checklunghezza,'col-md-12')}}
+{{form.buildCol(dataform.class,'col-md-12')}}
+{{form.buildCol(dataform.tipo_textarea,'col-md-12')}}
+
+{{form.buildCol(dataform.tipo_data,'col-md-12')}}
+{{form.buildCol(dataform.tipo_timestamp,'col-md-12')}}
+{{form.buildCol(dataform.tipo_file,'col-md-12')}}
+{{form.buildCol(dataform.tipo_time,'col-md-12')}}
+{{form.buildCol(dataform.gettext,'col-md-12')}}
+{{form.buildCol(dataform.default_value,'col-md-12')}}
+{{form.buildCol(dataform.lunghezzamin,'col-md-12')}}
+{{form.buildCol(dataform.lunghezzamax,'col-md-12')}}
+{{form.buildCol(dataform.unique_value,'col-md-12')}}
+{% endblock %}
+

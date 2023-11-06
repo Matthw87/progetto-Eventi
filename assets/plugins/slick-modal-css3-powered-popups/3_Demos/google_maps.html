@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slick Modals - Google Maps</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Commons (DON'T COPY these elements as they are used for demo purposes only) -->
+        <link href="../src/misc/css/common.css" rel="stylesheet" type="text/css" />
+        <link href="../src/misc/css/demo.css" rel="stylesheet" type="text/css" />
+        <script src="../src/misc/js/jquery.js"></script>
+        <script src="../src/misc/js/demo.js"></script>
+
+        <!-- Slick Modal assets (Use these elements as they contain plugin main and the demo files) -->
+        <link href="../src/plugin/css/slickmodal.min.css" rel="stylesheet" type="text/css" />
+        <script src="../src/plugin/js/jquery.slickmodal.min.js"></script>
+
+    </head>
+    <body class="demo">
+
+        <!-- START COPYING -->
+        <div class="gMaps" data-sm-init="true" style="width: 100%; height: 100%; border: 0">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d52025471.788979165!2d-27.15149075424709!3d37.262348760118975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ssi!4v1502793884795" width="600" height="450" frameborder="0" style="width: 100%; height: 100%; border: 0" allowfullscreen></iframe>
+        </div>
+
+        <script>
+            $('.gMaps').SlickModals({
+                popup_animation: 'fadeIn',
+                popup_position: 'center',
+                popup_css: {
+                    'width': '80%',
+                    'height': '80%',
+                    'padding': '0',
+                    'margin' : 'auto'
+                },
+                mobile_breakpoint: '480px',
+                mobile_position: 'center',
+                mobile_css: {
+                    'width': '90%',
+                    'height': '90%',
+                    'padding': '0',
+                    'margin' : 'auto'
+                }
+            });
+        </script>
+        <!-- END COPYING -->
+
+    </body>
+</html>

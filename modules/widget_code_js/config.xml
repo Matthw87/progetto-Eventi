@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<module>
+	<info> 
+		<author>Ciro Napolitano</author>
+		<name>Code JS</name>
+		<permission>superadmin</permission>
+		<tag>widget_code_js</tag>
+		<kind>cms</kind>
+		<version>2.0.2</version>
+		<compatibility>
+			<min>2.0.0</min>
+		</compatibility>
+		<scope></scope> 
+		<description><![CDATA[Permette di inserire del codice js nella pagina]]></description> 
+   </info>
+   <widgets>
+		<widget> 
+			<name>codice JS</name>
+			<function>WidgetCodeJSComponent</function>
+			<url_conf>index.php?ctrl=Conf&amp;mod=widget_code_js</url_conf>
+			<repeatable>1</repeatable>
+		</widget>
+	</widgets>
+	<dependencies>
+        <dependence>pagecomposer</dependence>
+    </dependencies>
+</module>

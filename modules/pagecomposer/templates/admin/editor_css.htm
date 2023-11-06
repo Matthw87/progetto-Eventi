@@ -1,0 +1,210 @@
+{% extends "@core/layouts/base_form_widget.htm" %}
+{% block content %}
+{% import "macro/form.htm" as form %}
+
+<script>
+	var js_animate_css="{{dati_box['animate_css']|escape('js')}}";
+	var js_background_repeat="{{dati_box['background_repeat']|escape('js')}}";
+	var js_background_position="{{dati_box['background_position']|escape('js')}}";
+	var js_background_size="{{dati_box['background_size']|escape('js')}}";
+	var js_background_attachment="{{dati_box['background_attachment']|escape('js')}}";
+</script>
+
+
+
+
+			<!--<form id="form-editor-css{{dati_box['id']}}">-->
+													
+					  <div class="tabcordion">
+							<ul id="tab_product_data" class="nav nav-tabs">
+								 <li class="active"><a href="#general" data-toggle="tab">GENERALI</a></li>
+								 <li class="" ><a href="#bkg" data-toggle="tab">BACKGROUND</a></li>
+							</ul>
+
+							<div id="tab_product_data_content" class="tab-content" style="border:1px solid #D3D3D3;">
+								<div class="tab-pane fade active in" id="general">
+									<div class="form-group col100">
+										<label>ID :</label>
+										<div class="controls">
+											<input type="text" name="formdata[id_html]" id="id_html" class="form-control" value="{{dati_box['id_html']}}">
+										</div>
+									</div>
+
+									<div class="form-group col100">
+										<label>Classe :</label>
+										<div class="controls">
+											<input type="text" name="formdata[class_html]" class="form-control" value="{{dati_box['class_html']}}">
+										</div>
+									</div>
+
+									<div class="form-group col100">
+										<label>Animazione allo scroll della pagina</label>
+										<div class="controls">
+											<select name="formdata[animate_css]" id="animate_css" class="no-picker" >
+												<option value=''>Seleziona....</option>
+												<optgroup label="Fade Animations">
+												  <option value="fade">fade</option>
+												  <option value="fade-up">fade-up</option>
+												  
+												  <option value="fade-down">fade-down</option>
+												  <option value="fade-left">fade-left</option>
+												  <option value="fade-right">fade-right</option>
+												  <option value="fade-up-right">fade-up-right</option>
+												  <option value="fade-up-left">fade-up-left</option>
+												  <option value="fade-down-right">fade-down-right</option>
+												  <option value="fade-down-right">fade-down-left</option>
+												</optgroup>
+
+												<optgroup label="Flip Animations">
+												  <option value="flip-up">flip-up</option>
+												  <option value="flip-down">flip-down</option>
+												  <option value="flip-left">flip-left</option>
+												  <option value="flip-right">flip-right</option>
+												</optgroup>
+
+												<optgroup label="Slide Animations">
+												  <option value="slide-up">slide-up</option>
+												  <option value="slide-down">slide-down</option>
+												  <option value="slide-left">slide-left</option>
+												  <option value="slide-right">slide-right</option>
+												</optgroup>
+
+												<optgroup label="Zoom Animations">
+												  <option value="zoom-in">zoom-in</option>
+												  <option value="zoom-in-up">zoom-in-up</option>
+												  
+												  <option value="zoom-in-down">zoom-in-down</option>
+												  <option value="zoom-in-left">zoom-in-left</option>
+												  <option value="zoom-in-right">zoom-in-right</option>
+												  <option value="zoom-out">zoom-out</option>
+												  <option value="zoom-out-up">zoom-out-up</option>
+												  <option value="zoom-out-down">zoom-out-down</option>
+												  <option value="zoom-out-left">zoom-out-left</option>
+												  <option value="zoom-out-right">zoom-out-right</option>
+												</optgroup>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="tab-pane fade  in" id="bkg">
+									{{form.buildFileManager(input_url,'image','col-md-12')}}
+									{{form.buildFileManager(input_url_webp,'image','col-md-12')}}
+
+									<div class="form-group col100">	
+										<label>Background-repeat :</label>
+										<div class="controls">
+												<select name="formdata[background_repeat]" id="background_repeat" class="no-picker">
+														<option value=''>Seleziona....</option>
+														<option value="repeat"> repeat</option>
+														<option value="repeat-x"> repeat-x</option>
+														<option value="repeat-y"> repeat-y</option>
+														<option value="no-repeat"> no-repeat</option>
+														<option value="space"> space</option>
+														<option value="round"> round</option>
+														<option value="initial"> initial</option>
+														<option value="inherit"> inherit</option>
+												</select>
+										</div>
+									</div>
+
+									<div class="form-group col100">	
+										<label>Background-position :</label>
+										<div class="controls">
+												<select name="formdata[background_position]" id="background_position" class="no-picker">
+														<option value=''>Seleziona....</option>
+														<option value="left top"> left top</option>
+														<option value="left center"> left center</option>
+														<option value="left bottom"> left bottom</option>
+														<option value="right top"> right top</option>
+														<option value="right center"> right center</option>
+														<option value="right bottom"> right bottom</option>
+														<option value="center top"> center top</option>
+														<option value="center center"> center center</option>
+														<option value="center bottom"> center bottom</option>
+												</select>
+										</div>
+									</div>
+
+									<div class="form-group col100">	
+										<label>Background-size :</label>
+										<div class="controls">
+												<select name="formdata[background_size]" id="background_size" class="no-picker">
+														<option value=''>Seleziona....</option>
+														<option value="auto"> auto</option>
+														<option value="cover"> cover</option>
+														<option value="contain"> contain</option>
+												</select>
+										</div>
+									</div>
+
+									<div class="form-group col100">	
+										<label>Background-attachment :</label>
+										<div class="controls">
+												<select name="formdata[background_attachment]" id="background_attachment" class="no-picker">
+														<option value=''>Seleziona....</option>
+														<option value="scroll"> scroll</option>
+														<option value="fixed"> fixed</option>
+												</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				
+			<input type="hidden" name="formdata[id_box]" id="id_box" value="{{dati_box['id']}}"/>
+			<!--</form>-->
+			</div>
+		
+		
+	
+	<div class="">
+
+	<!--<button type="button" class="btn btn-success pull-right" ><i class="fa fa-save"></i> SALVA</button>-->
+
+
+
+
+
+
+
+<script>
+
+	$(document).ready(function(){
+		
+		
+		if( typeof js_animate_css != 'undefined' && js_animate_css != null ){
+			
+			$('#animate_css').val(js_animate_css);
+		}
+
+		if( typeof js_background_repeat != 'undefined' && js_background_repeat != null ){
+			$('#background_repeat').val(js_background_repeat);
+		}
+		if( typeof js_background_position != 'undefined' && js_background_position != null ){
+			$('#background_position').val(js_background_position);
+		}
+		if( typeof js_background_size != 'undefined' && js_background_size != null ){
+			$('#background_size').val(js_background_size);
+		}
+		if( typeof js_background_attachment != 'undefined' && js_background_attachment != null ){
+			$('#background_attachment').val(js_background_attachment);
+		}
+	});
+	function save_editor(id){
+	
+		var formdata = $('#form').serialize();
+		//console.log(formdata);
+		parent.editor_css_save(formdata);
+	}
+</script>
+
+
+{% endblock %}
+
+{% block btn_form_save %}
+	<div class="fixed-bottom">
+	<button class="btn" type="button" onclick="save_editor({{dati_box['id']}});"><i class="fa fa-save"></i> {{tr('save')|title}}</button>
+	</div>
+{% endblock %}
+

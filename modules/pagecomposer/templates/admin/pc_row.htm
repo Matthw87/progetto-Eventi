@@ -1,0 +1,42 @@
+<div class="row {{v2.class_edit}}" style="">
+	<div class="col-md-12 cont-elements">
+		{% for k3,v3 in v2['children'] %}
+				<div class="col-md-12 element-child cont-div-row {{v3['class_edit']}} {% if v3['type'] == 'tabs'  %} element-tabs {% endif %} {% if v3['type'] == 'row' %} element-structure {% endif %} {% if v2['type'] == 'popup_container'  %} element-popup {% endif %} {% if v3['type'] == 'accordion_container'  %} element-accordion {% endif %} dd-nodrag" id="{{v3['id']}}">
+					{{page_composer_buttons(v3)}}
+					{% for k4,v4 in v3['children'] %}
+						<!--<div class="row">-->
+							<div class="col-md-12 element-child {{v4['class_edit']}} {% if v4['type'] == 'tabs' %} element-tabs {% endif %} {% if v4['type'] == 'row' %} element-structure {% endif %} {% if v4['type'] == 'popup_container'  %} element-popup {% endif %} {% if v4['type'] == 'accordion_container'  %} element-accordion {% endif %} dd-nodrag" id="{{v4['id']}}">	
+								{{page_composer_buttons(v4)}}
+								{{page_composer_element(v4)}}		
+							</div>
+						<!--</div>-->			
+					{% endfor %}			
+					
+					{{page_composer_add_buttons(v3,k3)}}		
+				</div>	
+		{% endfor %}
+
+		{% if hasSpaceRowComposer(v2) %}
+			{% if v2['type'] == 'row' %}
+				<div class="dd-nodrag box-columns">
+					{% if isAvailableColumnComposer(v2,'25') %}
+						<button onclick="add_column('colonna','col-25','',{{v2['id']}}); return false;"><i class="fa fa-plus"></i> COL-25</button> 
+					{% endif %}
+					
+					{% if isAvailableColumnComposer(v2,'33') %}
+					<button onclick="add_column('colonna','col-33','',{{v2['id']}}); return false;"><i class="fa fa-plus"></i> COL-33</button> 
+					{% endif %}
+					{% if isAvailableColumnComposer(v2,'50') %}
+					<button onclick="add_column('colonna','col-50','',{{v2['id']}}); return false;"><i class="fa fa-plus"></i> COL-50</button> 
+					{% endif %}
+					{% if isAvailableColumnComposer(v2,'75') %}
+					<button onclick="add_column('colonna','col-75','',{{v2['id']}}); return false;"><i class="fa fa-plus"></i> COL-75</button> 
+					{% endif %}
+					{% if isAvailableColumnComposer(v2,'100') %}
+					<button onclick="add_column('colonna','col-100','',{{v2['id']}}); return false;"><i class="fa fa-plus"></i> COL-100</button>
+					{% endif %}
+				</div>
+			{% endif %}
+		{% endif %}
+	</div>
+</div>

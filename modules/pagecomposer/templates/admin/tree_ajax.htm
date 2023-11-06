@@ -1,0 +1,55 @@
+<div class="dd" id="nestable">
+	<ol class="dd-list">
+		{% for v in items %}
+		<li class="dd-item block_{{v['id']}}" data-id="{{v['id']}}">
+			<div class="dd-handle {{v['class_parent']}} {{v['class_edit']}}">
+				{{page_composer_buttons(v)}}
+				<div class="row">
+					<div class="col-md-12 cont-columns">
+						{% for k1,v1 in v['children'] %}
+						<div class="{{v1['class_edit']}} sortable dd-nodrag cont-elements" id="{{v1['id']}}" parent="{{v1['parent']}}" style="padding:0 16px;">
+								{{page_composer_buttons(v1)}}
+								{% for v2 in v1['children'] %}	
+									<div class="col-md-12 element-child {{v2['class_edit']}} {% if v2['type'] == 'tabs'  %} element-tabs {% endif %} {% if v2['type'] == 'row' %} element-structure {% endif %} {% if v2['type'] == 'popup_container'  %} element-popup {% endif %} {% if v2['type'] == 'accordion_container'  %} element-accordion {% endif %} dd-nodrag" id="{{v2['id']}}">
+										{{page_composer_buttons(v2)}}	
+										{{page_composer_element(v2)}}
+									</div>
+								{% endfor %}
+								{{page_composer_add_buttons(v1)}}	
+						</div>
+						{% endfor %}
+						
+						
+
+						{% if hasSpaceRowComposer(v) %}
+							<div class="{{classStartSpaceComposer(v)}}">
+							{% if v['type'] == 'row' %}
+								<div class="dd-nodrag box-columns">
+									<span>Aggiungi una tra queste colonne</span>
+									{% if isAvailableColumnComposer(v,'25') %}
+										<button onclick="add_column('colonna','col-25','',{{v['id']}}); return false;">col 25</button> 
+									{% endif %}
+									{% if isAvailableColumnComposer(v,'33') %}
+									<button onclick="add_column('colonna','col-33','',{{v['id']}}); return false;">col 33</button> 
+									{% endif %}
+									{% if isAvailableColumnComposer(v,'50') %}
+									<button onclick="add_column('colonna','col-50','',{{v['id']}}); return false;">col 50</button> 
+									{% endif %}
+									{% if isAvailableColumnComposer(v,'75') %}
+									<button onclick="add_column('colonna','col-75','',{{v['id']}}); return false;">col 75</button> 
+									{% endif %}
+									{% if isAvailableColumnComposer(v,'100') %}
+									<button onclick="add_column('colonna','col-100','',{{v['id']}}); return false;">col 100</button>
+									{% endif %}
+								</div>
+							{% endif %}
+							</div>
+					{% endif %}	
+					</div>
+					
+				</div>
+			</div>
+		</li>
+		{% endfor %}
+	<ol>
+</div>

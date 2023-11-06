@@ -1,0 +1,303 @@
+{% extends "@core/layouts/base.htm" %}
+
+{% block javascript %}
+{{parent()}}
+<style>
+.barra-fixed {
+	position: fixed;
+	width: 100%;
+	top: 41px;
+	margin: 0 !important;
+	left: 0;
+	z-index: 10;
+	background: #f4f5f7;
+	padding: 16px 0 16px 250px;	
+}
+
+.barra-fixed.active {
+	background: #fff;
+	-webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.25);
+	box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.25);
+}
+
+.barra-fixed .pull-left {
+    padding-left: 24px;
+}
+
+.barra-fixed .pull-right {
+    padding-right: 24px;
+}
+</style>
+
+<script>
+var js_id_home="{{id_page| escape('js')}}";
+var js_block="{{block| escape('js')}}";
+
+$(document).ready(function(){
+	$('.fascia-close').click(function(){
+		$('.sidebar-composer').removeClass('visible');
+	});
+
+	$('.col-3').click(function(){
+		var el = $(this);
+		$('.col-3').removeClass('active');
+		el.addClass("active");
+	});
+
+	$(window).bind('scroll', function () {
+		if ($(window).scrollTop() > 20)  {
+			$('.barra-fixed').addClass('active');
+		} else {
+			$('.barra-fixed').removeClass('active');
+		}
+	});
+});
+</script>
+{% endblock %} 
+
+{% block css %}
+{{parent()}}
+<style>
+.pull-right .btn.m-r-10 {
+	margin-right: 5px !important;
+}
+</style>
+{% endblock %} 
+
+
+{% block buttons_right %}
+	
+	<div class="btn-imp-esp btn btn-secondario m-r-10 m-t-10">
+		<img class="ico-btn" src="../modules/pagecomposer/img/ico-impo.png"/> Importa/Esporta
+		<div class="group-btn-imp-esp">
+			<a class="" onclick="import_row(0); return false;">Importa</a>
+			<a  onclick="export_row(0); return false;" class="">Esporta</a>
+		</div>
+	</div>	
+	
+
+	{% if bozza %}
+	<a onclick="confirm_reset_edit_page(); return false;" target="_blank" class="btn btn-warning m-r-10 m-t-10"><img class="ico-btn" src="../modules/pagecomposer/img/ico-reset.png"/>  Reset Modifiche</a>
+	<a  id="btn_save_modify" onclick="confirm_save_edit_home(); return false;" target="_blank" class="btn btn-success m-r-10 m-t-10"><img class="ico-btn" src="../modules/pagecomposer/img/ico-conf.png"/>  Conferma modifiche</a>
+	{% else %}
+	<a  id="btn_save_modify" style="display:none" onclick="confirm_save_edit_home(); return false;" target="_blank" class="btn btn-success m-r-10 m-t-10"><img class="ico-btn" src="../modules/pagecomposer/img/ico-conf.png"/>  Conferma modifiche</a>
+	{% endif %}
+	{% if enable_preview %}
+	<a  href="/pagecomposer/preview/{{id_page}}" target="_blank" class="btn btn-primary m-r-10 m-t-10"><img class="ico-btn" src="../modules/pagecomposer/img/ico-ant.png"/>  Anteprima</a>
+	{% endif %}
+	<a  onclick="$('.sidebar-composer').addClass('visible');" class="btn btn-principale m-t-10"><img class="ico-btn" src="../modules/pagecomposer/img/ico-azioni.png"/>  Azioni</a>
+{% endblock %}
+
+
+
+{% block page_title %} {% if titolo %}{{titolo}}{% else %}Page Composer{% endif %} {% endblock %} 
+
+{% block content %}
+
+{% if items %}
+<div class="row">
+	<div class="col-md-12" id="composizione_home_list">
+		<div class="dd" id="nestable">
+			<ol class="dd-list">
+				{% for v in items %}
+				<li class="dd-item block_{{v['id']}}" data-id="{{v['id']}}">
+					<div class="dd-handle {{v['class_parent']}} {{v['class_edit']}}">
+						{{page_composer_buttons(v)}}
+						<div class="row">
+							<div class="col-md-12 cont-columns">
+								{% for k1,v1 in v['children'] %}
+								<div class="{{v1['class_edit']}} sortable dd-nodrag cont-elements" id="{{v1['id']}}" parent="{{v1['parent']}}" style="padding:0 16px;">
+										{{page_composer_buttons(v1)}}
+										{% for v2 in v1['children'] %}	
+											<div class="col-md-12 element-child {{v2['class_edit']}} {% if v2['type'] == 'tabs'  %} element-tabs {% endif %} {% if v2['type'] == 'row' %} element-structure {% endif %} {% if v2['type'] == 'popup_container'  %} element-popup {% endif %} {% if v2['type'] == 'accordion_container'  %} element-accordion {% endif %} dd-nodrag" id="{{v2['id']}}">
+												{{page_composer_buttons(v2)}}	
+												{{page_composer_element(v2)}}
+											</div>
+										{% endfor %}
+										{{page_composer_add_buttons(v1)}}	
+								</div>
+								{% endfor %}
+								
+								
+
+								{% if hasSpaceRowComposer(v) %}
+									<div class="{{classStartSpaceComposer(v)}}">
+									{% if v['type'] == 'row' %}
+										<div class="dd-nodrag box-columns">
+											<span>Aggiungi una tra queste colonne</span>
+											{% if isAvailableColumnComposer(v,'25') %}
+												<button onclick="add_column('colonna','col-25','',{{v['id']}}); return false;">col 25</button> 
+											{% endif %}
+											{% if isAvailableColumnComposer(v,'33') %}
+											<button onclick="add_column('colonna','col-33','',{{v['id']}}); return false;">col 33</button> 
+											{% endif %}
+											{% if isAvailableColumnComposer(v,'50') %}
+											<button onclick="add_column('colonna','col-50','',{{v['id']}}); return false;">col 50</button> 
+											{% endif %}
+											{% if isAvailableColumnComposer(v,'75') %}
+											<button onclick="add_column('colonna','col-75','',{{v['id']}}); return false;">col 75</button> 
+											{% endif %}
+											{% if isAvailableColumnComposer(v,'100') %}
+											<button onclick="add_column('colonna','col-100','',{{v['id']}}); return false;">col 100</button>
+											{% endif %}
+										</div>
+									{% endif %}
+									</div>
+							{% endif %}	
+							</div>
+							
+						</div>
+					</div>
+				</li>
+				{% endfor %}
+			<ol>
+		</div>
+	</div>
+</div>
+{% else %}
+	{% if block %}
+		<div class="row">
+			<div class="col-md-12 inizia-layout" id="composizione_home_list">
+				<!--Aggiungi una riga cliccando <a onclick="$('.sidebar-composer').addClass('visible');">qui</a>.-->
+				<img src="../modules/pagecomposer/img/inizia-layout.png"/>
+				<!--<p>Seleziona un'area della tua pagina dalla colonna a destra ed inizia a comporre il layout che preferisci.</p>-->
+				<p>Clicca il pulsante "Azioni" e comincia a comporre il tuo layout</p>
+			</div>
+		</div>
+	{% else %}
+		<div class="row">
+			<div class="col-md-12 inizia-modifiche">
+				<img src="../modules/pagecomposer/img/inizia-modifiche.png"/>
+				<p>Seleziona un blocco ed inizia a modificare.</p>
+			</div>
+		</div>
+	{% endif %}
+{% endif %}
+
+
+<div class="row sidebar-composer {% if block == '' %}visible{% endif %}" id="box_widgtes">
+	<div class="fascia-close">Nascondi <img src="../modules/pagecomposer/img/close.png"/></div>
+	<div class="box-layout-content">
+		<h4>Area selezionata</h4>
+		<div class="clearfix">
+			<div class="img-layout">
+				{% if layout in ['top_content', 'fullpage', 'sidebar_left','sidebar_right'] %}
+				{% if layout  == 'top_content' %}
+					
+						<div class="box-top-cont">
+							<a href="{{script_url}}&action=edit&id={{id_page}}&block=top">
+								<div class="box-top {% if block == 'top' %}active{% endif %}"></div>
+							</a>
+							<a href="{{script_url}}&action=edit&id={{id_page}}&block=content">
+								<div class="box-cont {% if block == 'content' %}active{% endif %}"></div>
+							</a>
+						</div>
+		
+					
+						
+
+				{% endif %}
+
+				{% if layout  == 'fullpage' %}
+					
+						<div class="box-top-cont">
+							<div class="box-full active"></div>
+						</div>
+
+				{% endif %}
+
+				{% if layout  == 'sidebar_left' %}
+					
+						<div class="box-sidebar">
+							<a href="{{script_url}}&action=edit&id={{id_page}}&block=top">
+								<div class="box-top {% if block == 'top' %}active{% endif %}"></div>
+							</a>
+							<div>
+								<a href="{{script_url}}&action=edit&id={{id_page}}&block=left">
+									<div class="box-sx {% if block == 'left' %}active{% endif %}"></div>	
+								</a>
+								<a href="{{script_url}}&action=edit&id={{id_page}}&block=content">
+									<div class="box-dx {% if block == 'content' %}active{% endif %}"></div>
+								</a>
+								
+							</div>
+						</div>
+
+
+				{% endif %}
+
+				{% if layout  == 'sidebar_right' %}
+					
+						<div class="box-sidebar">
+							<a href="{{script_url}}&action=edit&id={{id_page}}&block=top">
+								<div class="box-top {% if block == 'top' %}active{% endif %}"></div>
+							</a>
+							<div>
+								<a href="{{script_url}}&action=edit&id={{id_page}}&block=content">
+									<div class="box-dx {% if block == 'content' %}active{% endif %}"></div>
+								</a>
+								<a href="{{script_url}}&action=edit&id={{id_page}}&block=right">
+									<div class="box-sx {% if block == 'right' %}active{% endif %}"></div>	
+								</a>
+							</div>
+						</div>
+
+				{% endif %}
+				{% else %}
+						<!--ciao-->
+						{{do_action('pagecomposer_layout_blocks',script_url,id_page,block)}}
+				{% endif %}
+				
+			</div>
+			<span class="nome-layout">{{layout_name}}</span>
+		</div>
+	</div>
+	{% if blocco %}
+	<div class="box-layout-riga">
+		<h4>Aggiungi riga</h4>
+		<div class="clearfix">
+			{% for v in widgets %}
+			<div class="col-3 img-righe" onclick="add_block_home($(this),'{{v['title']}}','{{v['type']}}','{{v['module']}}',{{v['id']}},{{v['repeat']}}); return false;">
+				<img class="ico-colonne" src="{{v['icon']}}" img_active="{{v['icon-active']}}" img_default="{{v['icon']}}">
+				<!--<h3>
+				{{v['title']}}
+				</h3>-->
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<!--<div class="box-layout-riga">
+		<h4>Aggiungi Libreria JS</h4>
+		<div class="clearfix">
+			<div class="col-3 img-righe">
+				
+			</div>
+			
+		</div>
+	</div>-->
+	{% endif %}
+	<div class="dati-mod">
+		<h4>Ultimi salvataggi</h4>
+		{% for v in last_logs %}
+		<p>
+			<strong>{{v.name}} {{v.surname}}</strong><br>
+			{{v.timestamp}}
+		</p>
+		{% endfor %}
+		
+		<!--<a href="#">Vedi tutte <i class="fa fa-angle-right" aria-hidden="true"></i></a>-->
+	</div>
+</div>
+<!--
+<div class="clearfix">
+	 <div class="pull-right">	
+		<a  onclick="$('#box_widgtes').toggle()" class="btn btn-info m-t-10"><i class="fa fa-plus p-r-10"></i> Aggiungi blocco</a>
+	</div>
+</div>
+-->
+
+
+{% include '@pagecomposer/admin/popup_editor.htm' %}
+<button class="btn btn-principale btn-copy" onclick="cancel_copy()" style="display:none" id="btn-cancel-copy" type="button">termina operazione</button>
+{% endblock %}

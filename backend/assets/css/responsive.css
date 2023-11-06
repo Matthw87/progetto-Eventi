@@ -1,0 +1,155 @@
+@media all and (min-width:600px) and (max-width:1024px)
+{
+
+#sidebar {
+    z-index: 999999;
+}	
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+    background: url('../../../img/marionlogo.png') no-repeat center;
+    width: 120px;
+    margin-left: 0px !important;
+}
+
+.tabbing {
+    display: block;
+    width: 240px !important;
+    margin: 0px auto;
+    height: 30px !important;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    /*padding: 10px 4px;*/
+    line-height: 1.428571429;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    max-width: 150px !important;
+    word-wrap: break-word;
+    font-size: 12px;
+    min-width: 120px;
+    word-break: break-all;
+}
+
+.force-table-responsive > .table > thead > tr > th, .force-table-responsive > .table > tbody > tr > th, .force-table-responsive > .table > tfoot > tr > th, .force-table-responsive > .table > thead > tr > td, .force-table-responsive > .table > tbody > tr > td, .force-table-responsive > .table > tfoot > tr > td {
+    white-space: unset;
+}
+
+.form-control {
+    display: inline-block;
+    width: auto !important;
+}
+
+.visualizzapagina .btn.dropdown-toggle.selectpicker.btn-default {
+    padding: 5px 30px;
+}
+
+.media-menu .pull-right.c-gray.w-600 {
+    display: block;
+    clear: both;
+    float: none !important;
+    margin-top: 4px;
+    font-size: 16px;
+}
+
+.media-manager .glyphicon {
+    margin-right: 10px;
+    display: none;
+}
+
+.mfp-iframe-holder .mfp-content {
+    line-height: 0;
+    width: 100%;
+    max-width: 640px !important;
+}
+
+.table-responsive .filter-checkbox .btn-group.bootstrap-select {
+    margin-top: 11px;
+}
+
+.sidebar-thin #sidebar ul.submenu a {
+    color: white;
+}
+
+.sidebar-thin #sidebar li.active::after {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 9px 9px 9px 0;
+    border-color: rgba(0, 162,217, 0) #00A2D9 rgba(226, 226,226, 0)rgba(226, 226,226, 0);
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -9px;
+    right: 0;
+    z-index: 5;
+    display: none !important;
+}	
+
+.sidebar-large #sidebar li.active::after, .sidebar-medium #sidebar li.active::after {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 9px 9px 9px 0;
+    border-color: rgba(0, 162,217, 0) #00A2D9 rgba(226, 226,226, 0)rgba(226, 226,226, 0);
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -9px;
+    right: 0;
+    display: none !important;
+}
+
+.force-table-responsive, .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 0;
+}
+
+.sidebar-nav > li.current > a::after {
+    width: 0;
+    height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-right: 9px solid #DFE5E9;
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -9px;
+    right: 0;
+    z-index: 5;
+    display: none;
+}
+
+.navbar {
+    min-height: 40px;
+    margin-bottom: 20px;
+    border: none;
+    margin-bottom: 0;
+    z-index: 9999999999999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

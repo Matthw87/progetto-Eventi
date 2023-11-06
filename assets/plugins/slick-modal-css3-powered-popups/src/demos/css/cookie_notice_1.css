@@ -1,0 +1,31 @@
+/* Slick Modals - Cookie Notice 1 */
+.cookieNotice-1 .title {
+    font-weight: 700;
+    font-size: 22px;
+    padding: 30px 36px 10px 36px;
+}
+.cookieNotice-1 p {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 0 36px 30px 36px;
+}
+.cookieNotice-1 .close {
+    display: inline-block;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    background: #333;
+    opacity: 0.3;
+}
+.cookieNotice-1 .close:hover {
+    opacity: 1;
+}
+.cookieNotice-1 a {
+    color: #f78f8f;
+    text-decoration: none;
+    border-bottom: dashed 1px #f78f8f;
+}

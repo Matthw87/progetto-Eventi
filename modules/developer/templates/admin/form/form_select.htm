@@ -1,0 +1,75 @@
+{% extends "@core/layouts/base_form.htm" %}
+{% block url_list %}{{url_list}}&id_form={{dataform.form.value}}{% endblock %} 
+{% block edit_page_title %} {{tr('form_field','developer')|title}} {% endblock %} 
+{% block content %}
+
+{% import "macro/form.htm" as form %}
+
+
+
+
+<div class="tabcordion">
+	<ul id="myTab" class="nav nav-tabs {class_widget}">
+		<li class="active"><a href="#general" data-toggle="tab">{{tr('general')|title}}</a></li>
+		
+		<li><a href="#controls" data-toggle="tab">{{tr('controls')|title}}</a></li>
+		<!--<li><a href="#options" data-toggle="tab">{{tr('options')|title}}</a></li>-->
+	
+		
+		
+	</ul>
+	<div id="myTabContent" class="tab-content">
+			
+			<!-- GENERAL -->
+			<div class="tab-pane fade active in" id="general">
+				<div class="row">
+				
+					<div class="col-md-12">	
+						{{form.build(dataform.codice)}}
+						{{form.build(dataform.form)}}
+						{{form.build(dataform.type)}}
+						{{form.buildCol(dataform.campo,'col-md-12')}}
+						{{form.buildCol(dataform.gettext,'col-md-12')}}
+						{{form.buildCol(dataform.etichetta,'col-md-12')}}
+						{{form.buildCol(dataform.descrizione,'col-md-12')}}
+						{{form.buildCol(dataform.attivo,'col-md-4')}}
+						{{form.buildCol(dataform.default_value,'col-md-12')}}
+						{{form.buildCol(dataform.class,'col-md-12')}}
+						
+					</div>
+				</div>
+			</div>
+
+			<!-- CONTROLS -->
+			<div class="tab-pane fade  in" id="controls">
+				<div class="row">
+				
+					<div class="col-md-12">	
+						{{form.buildCol(dataform.tipo,'col-md-12')}}
+						{% if checkbox %}
+							{{form.buildCol(dataform.unique_value,'col-md-6')}}
+							{{form.buildCol(dataform.value_ifisnull,'col-md-6')}}
+						{% endif %}
+						{{form.buildCol(dataform.obbligatorio,'col-md-12')}}
+
+						{{form.buildCol(dataform.tipo_valori,'col-md-12')}}
+						
+						{{form.buildCol(dataform.function_template,'col-md-12')}}
+						
+
+
+						<span id="static_fields">
+						{{form.buildCol(dataform.multilocale,'col-md-12')}}
+						{{ include('@developer/form/static_fields.htm') }}
+						</span>
+
+					</div>
+				</div>
+			</div>
+			
+
+			
+	</div>
+</div>
+{% endblock %}
+

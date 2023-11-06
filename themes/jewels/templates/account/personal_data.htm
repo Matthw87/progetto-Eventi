@@ -1,0 +1,103 @@
+{% extends 'layouts/page_backend.htm' %}
+
+{% block backend_header %}
+	<img src="themes/jewels/images/ico-dati-personali-backend.png">{{tr('personal-data.personal_data')}}
+{% endblock %}
+
+
+{% block backend_content %}
+{% import "macro/form.htm" as form %}
+
+<form class="form" method="POST">
+	<span class="errore">{{messages|raw}}</span>
+	<h6 class="m-t-0">{{tr('personal-data.info_account')}}</h6>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.email)}}
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			<div class="controls controls-password">
+				<label for="formdata[password]">{{tr('personal-data.password')}}*</label>
+				<input type="password" name="formdata[password]" value="{{dataform.password.value}}">
+				<input id="reset_password" type="checkbox" name="formdata[reset_password]" value="1" {% if dataform.reset_password.value %}checked{% endif %}>
+				<label for="reset_password"></label>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.name)}}
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.surname)}}
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.fiscalCode)}}
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.cellular)}}
+		</div>
+	</div>
+	<h6>{{tr('personal-data.default_address')}}</h6>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.address)}}
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.postalCode)}}
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.city)}}
+		</div>
+		
+		
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.country)}}
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="div_province">
+			{{form.buildCol(dataform.province)}}
+		</div>
+	</div>
+	<h6>{{tr('personal-data.invoice_data')}}</h6>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.company)}}
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.vatNumber)}}
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.sdi_code)}}
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			{{form.buildCol(dataform.pec)}}
+		</div>
+	</div>
+	{{form.build(dataform.id)}}
+	<div class="space30"></div>
+	<span id="fields_form_anchor"></span>
+	<button class="btn-default pull-left">{{tr('personal-data.save')}}</button>
+	<div class="space60"></div>
+</form>
+
+<script>
+	$('#country').on('change',function(){
+		if( $(this).val() == 'IT' ){
+			$('#div_province').show();
+		}else{
+			$('#province').val(0);
+			$('#div_province').hide();
+		}
+	});
+
+	
+	if( $('#country').val() == 'IT' ){
+		$('#div_province').show();
+	}else{
+		$('#province').val(0);
+		$('#div_province').hide();
+	}
+	
+</script>
+
+{% endblock %}
+
+  

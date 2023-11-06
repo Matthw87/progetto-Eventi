@@ -1,0 +1,42 @@
+{% extends "@core/layouts/base_form_widget.htm" %}
+{% block content %}
+	{% import "macro/form.htm" as form %}
+
+	{{form.buildCol(dataform.tipo_video)}}
+	
+	
+	{{form.buildCol(dataform.url)}}
+	
+	<div class="form-group carica_file " style="display:none">
+		{% if file_caricato %}
+			<p>Il file fcaricato è <b>{{file_caricato}}</b></p>
+		{% endif %}
+		<label>Carica il file</label>
+		<div class="controls">					
+			<input type="file" name="file" class="form-control">
+		</div>
+	</div>
+
+
+
+	<script>
+		if($('#tipo_video').val() == 'carica'){
+			$('.carica_file').show();
+			$('#div_url').hide();
+			$('#div_url').val('');
+		}
+
+		$('#tipo_video').on('change',function(){
+			if($(this).val() == 'carica'){
+				$('.carica_file').show();
+				$('#div_url').hide();
+			}else{
+				$('.carica_file').hide();
+				$('#div_url').show();
+			}
+		})
+			
+		
+	
+	</script>
+{% endblock %}
