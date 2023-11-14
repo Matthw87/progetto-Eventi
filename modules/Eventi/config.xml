@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<module>
+    <info> 
+        <author>Mattia Pio Musollino</author>
+        <name>Eventi</name>
+        <permission>superadmin</permission>
+        <tag>Eventi</tag>
+        <kind>cms</kind>
+        <compatibility>
+            <min>3.1.1</min>
+        </compatibility>
+		<autoload>1</autoload>
+        <version>0.0.1</version>
+        <scope></scope> 
+        <description><![CDATA[Modulo che gestisce eventi e biglietti acquistati]]></description> 
+    </info>
+<admin>
+	  <menu>
+		<items>
+			<item>
+				<locale>
+					<name>
+						<it>Eventi</it>
+						<en>Event</en>
+					</name>
+				</locale>
+				<tag>eventi</tag> 
+				<icon>fa fa-archive</icon> 
+				<permission>cms</permission> 
+				<priority>100</priority> 
+			</item>
+            <item>
+				<locale>
+					<name>
+						<it>Biglietti</it>
+						<en>Tickets</en>
+					</name>
+				</locale>
+				<tag>eventi_status</tag> 
+                <parent>eventi</parent>
+				<permission>cms</permission> 
+				<priority>100</priority> 
+                <url>index.php?mod=Eventi&amp;ctrl=Status&amp;action=list</url>
+
+			</item>
+			
+		</items>
+	</menu>
+  </admin>
+</module>

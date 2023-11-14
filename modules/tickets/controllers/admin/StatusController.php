@@ -27,10 +27,9 @@ class StatusController extends ListAdminController{
 
         $dataSource = new DataSource('ticket_status');
         $dataSource->queryBuilder()
-            ->leftJoin('ticket_status_langs','ticket_status.id','=','ticket_status_langs.ticket_status_id')
-            ->where('lang',_MARION_LANG_)
-            ->select(['ticket_status.id','ticket_status.active','ticket_status_langs.name']);
-
+            ->leftJoin('ticket_status_langs', 'ticket_status.id', '=', 'ticket_status_langs.ticket_status_id')
+            ->where('lang', _MARION_LANG_)
+            ->select(['ticket_status.id', 'ticket_status.active', 'ticket_status_langs.name']);
 
         $fields = [
             [
