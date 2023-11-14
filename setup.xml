@@ -49,4 +49,7 @@
         <name>catalogo</name>
         <seed>1</seed>
     </module>
+    <module>
+        <name>Eventi</name>
+    </module>
 </modules>

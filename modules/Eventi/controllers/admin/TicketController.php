@@ -1,14 +1,13 @@
 <?php
-use Marion\Controllers\Elements\UrlButton;
+
+use Eventi\Event;
+use Eventi\Ticket;
 use Marion\Controllers\ListAdminController;
-use Marion\Core\Marion;
 use Marion\Support\Form\FormHelper;
 use Marion\Support\ListWrapper\DataSource;
 use Marion\Support\ListWrapper\ListHelper;
-use Eventi\EventStatus;
 
-
-class StatusController extends ListAdminController{
+class TicketController extends ListAdminController{
 
 
     function displayList()
@@ -28,16 +27,11 @@ class StatusController extends ListAdminController{
 
 
 
-        $dataSource = new DataSource('Biglietti');
-        $dataSource->queryBuilder()
-        ->join('Eventi', 'Biglietti.id_evento', '=', 'Eventi.id')
-        ->select([
-        'Biglietti.id',
-        'Biglietti.nome prenotatore',
-        'Biglietti.numero di biglietti',
-        'Eventi.Event Name',
-        'Eventi.Location',
-        'Eventi.date'
+        $dataSource = new DataSource('tickets');
+        $dataSource->queryBuilder()->select([
+            'tickets.id',
+            'tickets.user',
+            'tickets.ticket_numbers'
         ]);
 
         $fields = [
@@ -47,26 +41,13 @@ class StatusController extends ListAdminController{
             ],
             [
                 'name' => 'Nome prenotatore',
-                'field_value' => 'nome prenotatore',
+                'field_value' => 'user',
             ],
 
             [
                 'name' => 'Biglietti acquistati',
-                'field_value' => 'numero di biglietti',
-            ],
-            
-            [
-                'name' => 'Evento',
-                'field_value' => 'Event Name',
-            ],
-            [
-                'name' => 'Location',
-                'field_value' => 'Location',
-            ],
-            [
-                'name' => 'Data',
-                'field_value' => 'date',
-            ],
+                'field_value' => 'ticket_numbers',
+            ]
             
         ];
 
@@ -78,7 +59,7 @@ class StatusController extends ListAdminController{
             ->addDeleteActionRowButton()
             ->onDelete(function($id){
 				if( $id ){
-                    $obj = EventStatus::withId($id);
+                    $obj = Ticket::withId($id);
                     if( $obj ){
                         $this->displayMessage('Stato eliminato con successo');
                         $obj->delete();
@@ -102,38 +83,11 @@ class StatusController extends ListAdminController{
         $this->setMenu('event_status');
 
 
-        $eventi_array = [
-            '1' => 'Sum41',
-            '2' => 'Ultimo',
-            '3' => 'Ed Sheeran',
-            '4' => 'Ariana Grande',
-            '5' => 'Drake',
-            '6' => 'Lady Gaga',
-            '7' => 'Eminem',
-            '8' => 'Katy Perry',
-            '9' => 'Kendrick Lamar',
-            '10' => 'Bruno Mars',
-            '11' => 'Adele',
-            '12' => 'Rihanna',
-            '13' => 'Blink-182',
-            '14' => 'Tony Tammaro',
-            '15' => 'Imagine Dragons',
-            '16' => 'Twenty One Pilots',
-            '17' => 'Geolier',
-            '18' => 'Green Day',
-            '19' => 'Lazza',
-            '20' => 'Sferaebbasta',
-            '21' => 'Shiva',
-            '22' => 'Tha Supreme',
-            '23' => 'lil cdp',
-            '24' => 'Trebiscott',
-            '25' => 'The Weeknd',
-            '26' => 'Marracash',
-            '27' => 'Fedez',
-            '28' => 'DPG',
-            '29' => 'Shakira',
-            '30' => 'Sabaku',
-        ];
+        $eventi = Event::prepareQuery()->get();
+        $eventi_select = [];
+        foreach($eventi as $e){
+            $eventi_select[$e->id] = $e->get('name');
+        }
 
 
         $fields = [
@@ -141,42 +95,31 @@ class StatusController extends ListAdminController{
                 'type' => 'hidden',
                 'label' => 'Id'
             ],
-            'name' => [
+            'user' => [
                 'type' => 'text',
-                'label' => 'Nome prenotatore',
+                'label' => 'Intestatario',
                 'validation' => 'required',
-
-                
             ],
 
-            'numero_di_biglietti' => [
- 
-
+            'ticket_numbers' => [
                 'type' => 'number',
                 'label' => 'numero di biglietti',
                 'validation' => ['required', 'integer'], 
             ],
-
-
-            'Evento' => [
+            'event_id' => [
                 'type' => 'select',
                 'label' => 'Evento',
-                'validation' => 'required',
-                'options' => array_flip($eventi_array),
-                ],
-
-            ];
-
-            
-            
-
+                'options' => $eventi_select,
+                'validation' => ['required', 'integer'], 
+            ]
+        ];
         
         $action = $this->getAction();
         
 
         //form
-        FormHelper::create('Biglietti',$this)
-            ->layoutFile(_MARION_MODULE_DIR_."Eventi/templates/admin/forms/event.xml")
+        FormHelper::create('ticket',$this)
+            ->layoutFile(_MARION_MODULE_DIR_."eventi/templates/admin/forms/ticket.xml")
             ->setFields($fields)
             ->init(function( FormHelper $form) use ($action){
                 if( $action == 'edit' ){
@@ -194,9 +137,9 @@ class StatusController extends ListAdminController{
                 $data = $form->getValidatedData();
 
                 if( $action == 'edit' ){
-                    $obj = EventStatus::withId($data['id']);
+                    $obj = Ticket::withId($data['id']);
                 }else{
-                    $obj = EventStatus::create();
+                    $obj = Ticket::create();
                 }
 
                 $obj->set($data);

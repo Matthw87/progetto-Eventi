@@ -3,23 +3,18 @@
         <row>
             <col>
                 <field name="id" hidden="true"/>
-                <field name="name"/>
+                <field name="user"/>
                 
             </col>
         </row>
-         <row>
+        <row>
             <col>
-                <field name="description"/>
+                <field name="ticket_numbers"/>
             </col>
         </row>
-         <row>
+          <row>
             <col>
-                <field name="location"/>
-            </col>
-        </row>
-         <row>
-            <col>
-                <field name="date"/>
+                <field name="event_id"/>
             </col>
         </row>
     </sheet>

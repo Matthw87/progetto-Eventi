@@ -8,23 +8,29 @@ class Eventi extends Module
 
     function install(): bool{
         if( parent::install() ){ 
-
-            DB::schema()->create('Eventi',function(Blueprint $table){
+            DB::schema()->create('events',function(Blueprint $table){
                 $table->id();
-                $table->string('Event Name');
-                $table->string('Location');
                 $table->date('date');
-                $table->string('description');
 
             });
+            DB::schema()->create('event_langs',function(Blueprint $table){
+                $table->string('name');
+                $table->string('location');
+                $table->text('description');
+                $table->string('lang',3)->default('it');
+                $table->bigInteger('event_id')->unsigned(true);
+                $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            });
 
-            DB::schema()->create('Biglietti',function(Blueprint $table){
+            DB::schema()->create('tickets',function(Blueprint $table){
                 $table->id();
-                $table->integer('numero di biglietti');
-                $table->bigInteger('id_evento')->unsigned();
-                $table->string('nome prenotatore');
-                $table->foreign('id_evento')->references('id')->on('Eventi')->onDelete('cascade');
+                $table->string('user');
+                $table->integer('ticket_numbers');
+                $table->bigInteger('event_id')->unsigned(true)->nullable(true);
+                $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+
             });
+            
             return true;
         }else{
             return false;
@@ -35,8 +41,9 @@ class Eventi extends Module
     function uninstall(): bool
     {
         if( parent::uninstall() ){
-            DB::schema()->dropIfExists('Biglietti');
-            DB::schema()->dropIfExists('Eventi');
+            DB::schema()->dropIfExists('tickets');
+            DB::schema()->dropIfExists('event_langs');
+            DB::schema()->dropIfExists('events');
             
 
 
